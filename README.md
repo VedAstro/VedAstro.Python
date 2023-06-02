@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/blob/main/LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/issues)
 
-This is a Python wrapper library for [VedAstro](https://github.com/VedAstro/VedAstro), a powerful astrological calculations and analysis tool. The wrapper provides a convenient way to interact with the VedAstro functionality using Python programming language.
+This is a Python wrapper library for [VedAstro](https://github.com/VedAstro/VedAstro) calculator lib, a powerful astrological calculations and analysis tool. The wrapper provides a convenient way to interact with the VedAstro functionality using Python programming language.
 
 
 ## Contributing
