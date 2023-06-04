@@ -73,6 +73,16 @@ class Time:
     """
         return self.time_object.GetStdDateTimeOffsetText()
 
+    def __sub__(self, other):
+        """
+        Subtracts the specified Time.
+
+        :param other:Time object:
+        :return:
+        """
+        return self.time_object.Subtract(other)
+
+    #
     def get_std_date_time_offset(self) -> DateTimeOffset:
         """
     Retrieves the Standard DateTimeOffset.
@@ -81,6 +91,32 @@ class Time:
         DateTimeOffset: The Standard DateTimeOffset.
     """
         return self.time_object.GetStdDateTimeOffset()
+
+    def get_geolocation(self):
+        """
+        return: geolocation object
+        """""
+        return self.time_object.GetGeoLocation()
+
+    def get_lmt_date_time_offset_text(self) -> str:
+        """
+        return:
+        """""
+        return self.time_object.GetLmtDateTimeOffsetText()
+
+    def to_xml(self):
+        # Todo: test this method thoroughly
+        """
+        create xml object
+        """""
+        self.time_object.ToXml()
+
+    def to_json(self):
+        # Todo: test this method thoroughly
+        """
+        create json object
+        """""
+        self.time_object.ToJson()
 
     @staticmethod
     def date_time_format_info(self):
