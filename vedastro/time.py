@@ -39,6 +39,7 @@ class Time(libray.Time):
         self.date = date
         self.time = time
         self.geolocation = geolocation
+        self.time_offset = time_offset
         combined_time = time + " " + date + " " + time_offset
         self.time_object = libray.Time(combined_time, geolocation)
 
@@ -57,7 +58,11 @@ class Time(libray.Time):
     """
         if not isinstance(years, int):
             raise TypeError("Years must be an integer")
-        return self.time_object.AddYears(years)
+        # Can't call AddYears() because we need Time object
+        new_year = int(self.date.split("/")[-1])+years
+        new_date = self.date.replace(self.date.split("/")[-1], str(new_year))
+        new_time = Time(new_date, self.time, self.time_offset, self.geolocation)
+        return new_time
 
     def subtract_hours(self, granularity_hours: float):
         """
