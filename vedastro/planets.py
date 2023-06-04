@@ -4,7 +4,7 @@ from VedAstro.Library import PlanetName
 
 
 @dataclass
-class Planets:
+class Planets(PlanetName):
     """
     This class represents the nine planets in Vedic astrology.
 

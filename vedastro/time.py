@@ -34,8 +34,6 @@ class Time(libray.Time):
         if not isinstance(time_offset, str):
             raise TypeError("Time offset must be a string")
         if not isinstance(geolocation, GeoLocation):
-            print(type(geolocation))
-            print(type(GeoLocation))
             raise TypeError("Geolocation must be a GeoLocation object")
 
         self.date = date
