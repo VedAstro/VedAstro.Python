@@ -118,6 +118,42 @@ class Time:
         """""
         self.time_object.ToJson()
 
+    # public static Time Now(GeoLocation geoLocation)
+    # public int GetStdYear() => this.GetStdDateTimeOffset().Year;
+    # public int GetStdMonth() => this.GetStdDateTimeOffset().Month;
+    # public int GetStdDate() => this.GetStdDateTimeOffset().Day;
+    # public int GetStdHour() => this.GetStdDateTimeOffset().Hour;
+    def get_std_year(self):
+        """
+        return std year
+        """""
+        return self.time_object.GetStdYear()
+
+    def get_std_month(self):
+        """
+        return std month
+        """""
+        return self.time_object.GetStdMonth()
+
+    def get_std_date(self):
+        """
+        return std date
+        """""
+        return self.time_object.GetStdDate()
+
+    def get_std_hour(self):
+        """
+        return std hour
+        """""
+        return self.time_object.GetStdHour()
+
+    @staticmethod
+    def now(location: GeoLocation):
+        """
+        return: current time of the chosen geolocation
+        """""
+        return libray.Time.Now(location)
+
     @staticmethod
     def date_time_format_info(self):
         """
@@ -128,3 +164,12 @@ class Time:
   """
 
         return self.time_object.GetDateTimeFormatInfo()
+
+
+"""
+these methods need to implement later
+public dynamic FromXml<T>
+public static Time FromXml
+public static Time FromJson
+public static List<Time> FromXml
+"""
