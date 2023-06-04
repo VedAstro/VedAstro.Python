@@ -10,7 +10,7 @@ dll_path = os.path.join(current_path,'dlls', 'VedAstro.Library.dll')
 full_path = os.path.abspath(dll_path)
 clr.AddReference(full_path)
 
-# importing calc functions
 from .calc import *
 from .planets import Planets
+from .astronomical_calculator import AstronomicalCalculator
 
