@@ -6,20 +6,41 @@ from vedastro.geolocation import GeoLocation
 
 class Time:
     """
-    Class representing VedAstro time.
+    Create a Time object with the provided date, time, time_offset, and geolocation.
+
+    Args:
+        date (str): The date. (ex - 10/05/2023)
+        time (str): The time. (ex - 06:42)
+        time_offset (str): The time offset. (ex - +08:00)
+        geolocation (GeoLocation): The geolocation object you got by get_geolocation.
+
+    Returns:
+        Time: An instance of the VedAstro Time class representing the time.
+
+    Raises:
+        TypeError: If the input types are not as expected.
+            - If date is not a string.
+            - If time is not a string.
+            - If time_offset is not a string.
+            - If geolocation is not a GeoLocation object.
     """
 
-    def __init__(self, date: str, time: str, location: GeoLocation):
+    def __init__(self, date: str, time: str, time_offset: str, geolocation: GeoLocation):
+
         if not isinstance(date, str):
             raise TypeError("Date must be a string")
         if not isinstance(time, str):
             raise TypeError("Time must be a string")
-        if not isinstance(location, GeoLocation):
-            raise TypeError("Location must be a GeoLocation")
+        if not isinstance(time_offset, str):
+            raise TypeError("Time offset must be a string")
+        if not isinstance(geolocation, GeoLocation):
+            raise TypeError("Geolocation must be a GeoLocation object")
+
         self.date = date
         self.time = time
-        self.location = location
-        self.time_object = libray.Time(date, time, location)
+        self.geolocation = geolocation
+        combined_time = time + " " + date + " " + time_offset
+        self.time_object = libray.Time(combined_time, geolocation)
 
     def add_years(self, years: int):
         """
