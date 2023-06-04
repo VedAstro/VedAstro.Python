@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from VedAstro.Library import PlanetName
 
 
-@dataclass
 class Planets(PlanetName):
     """
     This class represents the nine planets in Vedic astrology.
@@ -28,3 +27,5 @@ class Planets(PlanetName):
     saturn = PlanetName.Saturn
     ketu = PlanetName.Ketu
     rahu = PlanetName.Rahu
+
+# Todo:- just for now stored as attribs. Need to change in future
