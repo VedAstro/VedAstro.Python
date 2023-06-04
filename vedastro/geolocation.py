@@ -1,4 +1,7 @@
-class GeoLocation:
+import VedAstro.Library as library
+
+
+class GeoLocation(library.GeoLocation):
     """
     Create a GeoLocation object with the provided location, longitude, and latitude.
 
@@ -24,7 +27,7 @@ class GeoLocation:
             try:
                 longitude = float(longitude)
             except ValueError:
-                raise TypeError("Longtitude must be a float or convertible to a float")
+                raise TypeError("Longitude must be a float or convertible to a float")
         if not isinstance(latitude, float):
             try:
                 latitude = float(latitude)
@@ -33,4 +36,4 @@ class GeoLocation:
         self.location = location
         self.longitude = longitude
         self.latitude = latitude
-        self.geoLocation = GeoLocation(location, longitude, latitude)
+        self.geoLocation = library.GeoLocation(location, longitude, latitude)

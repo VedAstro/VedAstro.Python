@@ -4,7 +4,7 @@ from vedastro.datetime_offset import DateTimeOffset
 from vedastro.geolocation import GeoLocation
 
 
-class Time:
+class Time(libray.Time):
     """
     Create a Time object with the provided date, time, time_offset, and geolocation.
 
@@ -34,6 +34,8 @@ class Time:
         if not isinstance(time_offset, str):
             raise TypeError("Time offset must be a string")
         if not isinstance(geolocation, GeoLocation):
+            print(type(geolocation))
+            print(type(GeoLocation))
             raise TypeError("Geolocation must be a GeoLocation object")
 
         self.date = date
