@@ -35,18 +35,18 @@ def set_geolocation(location: str, longtitude: float, latitude: float):
     return geoLocation
 
 
-def set_birthtime(date: str, time: str, time_offset: str, geolocation: GeoLocation) -> Time:
+def set_time(date: str, time: str, time_offset: str, geolocation: GeoLocation) -> Time:
     """
     Create a Time object with the provided date, time, time_offset, and geolocation.
 
     Args:
-        date (str): The date of the birthtime. (ex - 10/05/2023)
-        time (str): The time of the birthtime. (ex - 06:42)
-        time_offset (str): The time offset of the birthtime. (ex - +08:00)
-        geolocation (GeoLocation): The geolocation of the birthtime.
+        date (str): The date. (ex - 10/05/2023)
+        time (str): The time. (ex - 06:42)
+        time_offset (str): The time offset. (ex - +08:00)
+        geolocation (GeoLocation): The geolocation object you got by get_geolocation.
 
     Returns:
-        Time: An instance of the Time class representing the birthtime.
+        Time: An instance of the VedAstro Time class representing the time.
 
     Raises:
         TypeError: If the input types are not as expected.
@@ -64,5 +64,5 @@ def set_birthtime(date: str, time: str, time_offset: str, geolocation: GeoLocati
     if not isinstance(geolocation, GeoLocation):
         raise TypeError("Geolocation must be a GeoLocation object")
     combined_time = time + " " + date + " " + time_offset
-    birthtime = Time(combined_time, geolocation)
-    return birthtime
+    processed_time = Time(combined_time, geolocation)
+    return processed_time
