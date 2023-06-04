@@ -12,4 +12,5 @@ clr.AddReference(full_path)
 
 # importing calc functions
 from .calc import *
+from .planets import Planets
 
