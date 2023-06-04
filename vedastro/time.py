@@ -81,7 +81,7 @@ class Time:
         DateTimeOffset: The Standard DateTimeOffset.
     """
         return self.time_object.GetStdDateTimeOffset()
-
+    @staticmethod
     def date_time_format_info(self):
         """
   Retrieves the DateTimeFormatInfo object.
