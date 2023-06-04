@@ -1,4 +1,4 @@
-# import os
+import os
 from pythonnet import load
 
 load("coreclr")

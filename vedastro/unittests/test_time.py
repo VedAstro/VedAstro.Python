@@ -40,6 +40,7 @@ class TestTime(unittest.TestCase):
         new_time = time_obj.add_years(years)
 
         self.assertEqual(new_time.date, "07/05/2017")
+        self.assertIsInstance(new_time, libray.Time)
 
         # Test with invalid argument
         with self.assertRaises(TypeError):
