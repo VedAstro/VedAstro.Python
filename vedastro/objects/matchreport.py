@@ -4,7 +4,6 @@ from vedastro.objects import Person
 from vedastro.objects.matchprediction import MatchPrediction
 
 
-#        public MatchReport(string id, Person male, Person female, double kutaScore, string notes, List<MatchPrediction> prediction_list, string[] user_id)
 class MatchReport(libray.MatchReport):
     def __init__(self, id: str, male: Person, female: Person, kuta_score: float, notes: str,
                  prediction_list: [MatchPrediction], user_id: [str]):
