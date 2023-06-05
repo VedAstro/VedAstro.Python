@@ -1,6 +1,7 @@
 import VedAstro.Library as libray
 
 from vedastro import Time
+from vedastro.objects import Person
 
 
 def Empty(time: Time, person: Person):
