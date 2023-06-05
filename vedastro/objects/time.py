@@ -1,7 +1,7 @@
 import VedAstro.Library as libray
 
-from vedastro.datetime_offset import DateTimeOffset
-from vedastro.geolocation import GeoLocation
+from vedastro.objects.datetime_offset import DateTimeOffset
+from vedastro.objects.geolocation import GeoLocation
 
 
 class Time(libray.Time):
