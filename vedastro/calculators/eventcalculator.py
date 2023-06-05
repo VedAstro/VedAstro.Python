@@ -1,5 +1,7 @@
 import VedAstro.Library as libray
 
+from vedastro import Time
+
 
 def Empty(time: Time, person: Person):
     return libray.Empty(time, person)
@@ -83,3 +85,32 @@ def IsTarabalaMitraMiddlingOccuring(time: Time, person: Person):
 
 def IsTarabalaParamaMitraMiddlingOccuring(time: Time, person: Person):
     return libray.IsTarabalaParamaMitraMiddlingOccuring(time, person)
+
+
+def IsTarabalaJanmaWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaJanmaWeakOccuring(time,person)
+def IsTarabalaSampatWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaSampatWeakOccuring(time,person)
+def IsTarabalaVipatWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaVipatWeakOccuring(time,person)
+def IsTarabalaKshemaWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaKshemaWeakOccuring(time,person)
+def IsTarabalaPratyakWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaPratyakWeakOccuring(time,person)
+def IsTarabalaSadhanaWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaSadhanaWeakOccuring(time,person)
+def IsTarabalaNaidhanaWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaNaidhanaWeakOccuring(time,person)
+def IsTarabalaMitraWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaMitraWeakOccuring(time,person)
+def IsTarabalaParamaMitraWeakOccuring( time:Time,person:Person):
+    return libray.IsTarabalaParamaMitraWeakOccuring(time,person)
+def IsGoodChandrabalaOccuring( time:Time,person:Person):
+    return libray.IsGoodChandrabalaOccuring(time,person)
+def IsBadChandrabalaOccuring( time:Time,person:Person):
+    return libray.IsBadChandrabalaOccuring(time,person)
+def IsGoodPanchakaOccuring( time:Time,person:Person):
+    return libray.IsGoodPanchakaOccuring(time,person)
+def IsBadPanchakaOccuring( time:Time,person:Person):
+    return libray.IsBadPanchakaOccuring(time,person)
+
