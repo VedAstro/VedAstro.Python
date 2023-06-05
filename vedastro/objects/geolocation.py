@@ -36,4 +36,4 @@ class GeoLocation(library.GeoLocation):
         self.location = location
         self.longitude = longitude
         self.latitude = latitude
-        self.geoLocation = library.GeoLocation(location, longitude, latitude)
+        super().__init__(location, longitude, latitude)
