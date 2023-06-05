@@ -15,3 +15,5 @@ class LifeEvent(LifeEvent):
         self.Location: str
         self.Nature: str
         self.Timezone: str = ""
+        super.__init__(self)
+
