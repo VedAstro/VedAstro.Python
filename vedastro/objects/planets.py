@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from VedAstro.Library import PlanetName
 
+from VedAstro.Library import PlanetName
 
 class Planets(PlanetName):
     """
