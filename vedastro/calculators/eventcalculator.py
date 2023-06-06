@@ -475,7 +475,7 @@ def IsHouse8IsStrongOccuring(time: Time, person: Person):
 
 
 def IsHouse9IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse9IsStrongOccuring(time, person).Occuring
+    return libray.EventCalculatorMethods.IsHouse9IsStrongOccuring(time, person)
 
 
 def IsHouse10IsStrongOccuring(time: Time, person: Person):
@@ -503,2264 +503,2264 @@ def IsMiddayOccuring(time: Time, person: Person):
 
 
 def BadLunarMonthForBuilding(time: Time, person: Person):
-    return libray.BadLunarMonthForBuilding(time, person)
+    return libray.EventCalculatorMethods.BadLunarMonthForBuilding(time, person).Occuring
 
 
 def GoodSunSignForBuilding(time: Time, person: Person):
-    return libray.GoodSunSignForBuilding(time, person)
+    return libray.EventCalculatorMethods.GoodSunSignForBuilding(time, person).Occuring
 
 
 def BadSunSignForBuilding(time: Time, person: Person):
-    return libray.BadSunSignForBuilding(time, person)
+    return libray.EventCalculatorMethods.BadSunSignForBuilding(time, person).Occuring
 
 
 def GoodLunarDayForBuilding(time: Time, person: Person):
-    return libray.GoodLunarDayForBuilding(time, person)
+    return libray.EventCalculatorMethods.GoodLunarDayForBuilding(time, person).Occuring
 
 
 def GoodWeekDayForBuilding(time: Time, person: Person):
-    return libray.GoodWeekDayForBuilding(time, person)
+    return libray.EventCalculatorMethods.GoodWeekDayForBuilding(time, person).Occuring
 
 
 def BadLunarPhaseForBuilding(time: Time, person: Person):
-    return libray.BadLunarPhaseForBuilding(time, person)
+    return libray.EventCalculatorMethods.BadLunarPhaseForBuilding(time, person).Occuring
 
 
 def BadWeekDayForBuilding(time: Time, person: Person):
-    return libray.BadWeekDayForBuilding(time, person)
+    return libray.EventCalculatorMethods.BadWeekDayForBuilding(time, person).Occuring
 
 
 def BadWeekDayForRepairs(time: Time, person: Person):
-    return libray.BadWeekDayForRepairs(time, person)
+    return libray.EventCalculatorMethods.BadWeekDayForRepairs(time, person).Occuring
 
 
 def GoodYogaForRepairs(time: Time, person: Person):
-    return libray.GoodYogaForRepairs(time, person)
+    return libray.EventCalculatorMethods.GoodYogaForRepairs(time, person).Occuring
 
 
 def GoodYogaForRepairs2(time: Time, person: Person):
-    return libray.GoodYogaForRepairs2(time, person)
+    return libray.EventCalculatorMethods.GoodYogaForRepairs2(time, person).Occuring
 
 
 def GocharaSummary(time: Time, person: Person):
-    return libray.GocharaSummary(time, person)
+    return libray.EventCalculatorMethods.GocharaSummary(time, person).Occuring
 
 
 def SunGocharaInHouse1(time: Time, person: Person):
-    return libray.SunGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse1(time, person).Occuring
 
 
 def SunGocharaInHouse2(time: Time, person: Person):
-    return libray.SunGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse2(time, person).Occuring
 
 
 def SunGocharaInHouse3(time: Time, person: Person):
-    return libray.SunGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse3(time, person).Occuring
 
 
 def SunGocharaInHouse4(time: Time, person: Person):
-    return libray.SunGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse4(time, person).Occuring
 
 
 def SunGocharaInHouse5(time: Time, person: Person):
-    return libray.SunGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse5(time, person).Occuring
 
 
 def SunGocharaInHouse6(time: Time, person: Person):
-    return libray.SunGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse6(time, person).Occuring
 
 
 def SunGocharaInHouse7(time: Time, person: Person):
-    return libray.SunGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse7(time, person).Occuring
 
 
 def SunGocharaInHouse8(time: Time, person: Person):
-    return libray.SunGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse8(time, person).Occuring
 
 
 def SunGocharaInHouse9(time: Time, person: Person):
-    return libray.SunGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse9(time, person).Occuring
 
 
 def SunGocharaInHouse10(time: Time, person: Person):
-    return libray.SunGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse10(time, person).Occuring
 
 
 def SunGocharaInHouse11(time: Time, person: Person):
-    return libray.SunGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse11(time, person).Occuring
 
 
 def SunGocharaInHouse12(time: Time, person: Person):
-    return libray.SunGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.SunGocharaInHouse12(time, person).Occuring
 
 
 def MoonGocharaInHouse1(time: Time, person: Person):
-    return libray.MoonGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse1(time, person).Occuring
 
 
 def MoonGocharaInHouse2(time: Time, person: Person):
-    return libray.MoonGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse2(time, person).Occuring
 
 
 def MoonGocharaInHouse3(time: Time, person: Person):
-    return libray.MoonGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse3(time, person).Occuring
 
 
 def MoonGocharaInHouse4(time: Time, person: Person):
-    return libray.MoonGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse4(time, person).Occuring
 
 
 def MoonGocharaInHouse5(time: Time, person: Person):
-    return libray.MoonGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse5(time, person).Occuring
 
 
 def MoonGocharaInHouse6(time: Time, person: Person):
-    return libray.MoonGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse6(time, person).Occuring
 
 
 def MoonGocharaInHouse7(time: Time, person: Person):
-    return libray.MoonGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse7(time, person).Occuring
 
 
 def MoonGocharaInHouse8(time: Time, person: Person):
-    return libray.MoonGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse8(time, person).Occuring
 
 
 def MoonGocharaInHouse9(time: Time, person: Person):
-    return libray.MoonGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse9(time, person).Occuring
 
 
 def MoonGocharaInHouse10(time: Time, person: Person):
-    return libray.MoonGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse10(time, person).Occuring
 
 
 def MoonGocharaInHouse11(time: Time, person: Person):
-    return libray.MoonGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse11(time, person).Occuring
 
 
 def MoonGocharaInHouse12(time: Time, person: Person):
-    return libray.MoonGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.MoonGocharaInHouse12(time, person).Occuring
 
 
 def MarsGocharaInHouse1(time: Time, person: Person):
-    return libray.MarsGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse1(time, person).Occuring
 
 
 def MarsGocharaInHouse2(time: Time, person: Person):
-    return libray.MarsGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse2(time, person).Occuring
 
 
 def MarsGocharaInHouse3(time: Time, person: Person):
-    return libray.MarsGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse3(time, person).Occuring
 
 
 def MarsGocharaInHouse4(time: Time, person: Person):
-    return libray.MarsGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse4(time, person).Occuring
 
 
 def MarsGocharaInHouse5(time: Time, person: Person):
-    return libray.MarsGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse5(time, person).Occuring
 
 
 def MarsGocharaInHouse6(time: Time, person: Person):
-    return libray.MarsGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse6(time, person).Occuring
 
 
 def MarsGocharaInHouse7(time: Time, person: Person):
-    return libray.MarsGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse7(time, person).Occuring
 
 
 def MarsGocharaInHouse8(time: Time, person: Person):
-    return libray.MarsGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse8(time, person).Occuring
 
 
 def MarsGocharaInHouse9(time: Time, person: Person):
-    return libray.MarsGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse9(time, person).Occuring
 
 
 def MarsGocharaInHouse10(time: Time, person: Person):
-    return libray.MarsGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse10(time, person).Occuring
 
 
 def MarsGocharaInHouse11(time: Time, person: Person):
-    return libray.MarsGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse11(time, person).Occuring
 
 
 def MarsGocharaInHouse12(time: Time, person: Person):
-    return libray.MarsGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.MarsGocharaInHouse12(time, person).Occuring
 
 
 def MercuryGocharaInHouse1(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse1(time, person).Occuring
 
 
 def MercuryGocharaInHouse2(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse2(time, person).Occuring
 
 
 def MercuryGocharaInHouse3(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse3(time, person).Occuring
 
 
 def MercuryGocharaInHouse4(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse4(time, person).Occuring
 
 
 def MercuryGocharaInHouse5(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse5(time, person).Occuring
 
 
 def MercuryGocharaInHouse6(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse6(time, person).Occuring
 
 
 def MercuryGocharaInHouse7(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse7(time, person).Occuring
 
 
 def MercuryGocharaInHouse8(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse8(time, person).Occuring
 
 
 def MercuryGocharaInHouse9(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse9(time, person).Occuring
 
 
 def MercuryGocharaInHouse10(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse10(time, person).Occuring
 
 
 def MercuryGocharaInHouse11(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse11(time, person).Occuring
 
 
 def MercuryGocharaInHouse12(time: Time, person: Person):
-    return libray.MercuryGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.MercuryGocharaInHouse12(time, person).Occuring
 
 
 def JupiterGocharaInHouse1(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse1(time, person).Occuring
 
 
 def JupiterGocharaInHouse2(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse2(time, person).Occuring
 
 
 def JupiterGocharaInHouse3(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse3(time, person).Occuring
 
 
 def JupiterGocharaInHouse4(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse4(time, person).Occuring
 
 
 def JupiterGocharaInHouse5(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse5(time, person).Occuring
 
 
 def JupiterGocharaInHouse6(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse6(time, person).Occuring
 
 
 def JupiterGocharaInHouse7(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse7(time, person).Occuring
 
 
 def JupiterGocharaInHouse8(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse8(time, person).Occuring
 
 
 def JupiterGocharaInHouse9(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse9(time, person).Occuring
 
 
 def JupiterGocharaInHouse10(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse10(time, person).Occuring
 
 
 def JupiterGocharaInHouse11(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse11(time, person).Occuring
 
 
 def JupiterGocharaInHouse12(time: Time, person: Person):
-    return libray.JupiterGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.JupiterGocharaInHouse12(time, person).Occuring
 
 
 def VenusGocharaInHouse1(time: Time, person: Person):
-    return libray.VenusGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse1(time, person).Occuring
 
 
 def VenusGocharaInHouse2(time: Time, person: Person):
-    return libray.VenusGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse2(time, person).Occuring
 
 
 def VenusGocharaInHouse3(time: Time, person: Person):
-    return libray.VenusGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse3(time, person).Occuring
 
 
 def VenusGocharaInHouse4(time: Time, person: Person):
-    return libray.VenusGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse4(time, person).Occuring
 
 
 def VenusGocharaInHouse5(time: Time, person: Person):
-    return libray.VenusGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse5(time, person).Occuring
 
 
 def VenusGocharaInHouse6(time: Time, person: Person):
-    return libray.VenusGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse6(time, person).Occuring
 
 
 def VenusGocharaInHouse7(time: Time, person: Person):
-    return libray.VenusGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse7(time, person).Occuring
 
 
 def VenusGocharaInHouse8(time: Time, person: Person):
-    return libray.VenusGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse8(time, person).Occuring
 
 
 def VenusGocharaInHouse9(time: Time, person: Person):
-    return libray.VenusGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse9(time, person).Occuring
 
 
 def VenusGocharaInHouse10(time: Time, person: Person):
-    return libray.VenusGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse10(time, person).Occuring
 
 
 def VenusGocharaInHouse11(time: Time, person: Person):
-    return libray.VenusGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse11(time, person).Occuring
 
 
 def VenusGocharaInHouse12(time: Time, person: Person):
-    return libray.VenusGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.VenusGocharaInHouse12(time, person).Occuring
 
 
 def SaturnGocharaInHouse1(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse1(time, person).Occuring
 
 
 def SaturnGocharaInHouse2(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse2(time, person).Occuring
 
 
 def SaturnGocharaInHouse3(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse3(time, person).Occuring
 
 
 def SaturnGocharaInHouse4(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse4(time, person).Occuring
 
 
 def SaturnGocharaInHouse5(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse5(time, person).Occuring
 
 
 def SaturnGocharaInHouse6(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse6(time, person).Occuring
 
 
 def SaturnGocharaInHouse7(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse7(time, person).Occuring
 
 
 def SaturnGocharaInHouse8(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse8(time, person).Occuring
 
 
 def SaturnGocharaInHouse9(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse9(time, person).Occuring
 
 
 def SaturnGocharaInHouse10(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse10(time, person).Occuring
 
 
 def SaturnGocharaInHouse11(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse11(time, person).Occuring
 
 
 def SaturnGocharaInHouse12(time: Time, person: Person):
-    return libray.SaturnGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.SaturnGocharaInHouse12(time, person).Occuring
 
 
 def RahuGocharaInHouse1(time: Time, person: Person):
-    return libray.RahuGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse1(time, person).Occuring
 
 
 def RahuGocharaInHouse2(time: Time, person: Person):
-    return libray.RahuGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse2(time, person).Occuring
 
 
 def RahuGocharaInHouse3(time: Time, person: Person):
-    return libray.RahuGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse3(time, person).Occuring
 
 
 def RahuGocharaInHouse4(time: Time, person: Person):
-    return libray.RahuGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse4(time, person).Occuring
 
 
 def RahuGocharaInHouse5(time: Time, person: Person):
-    return libray.RahuGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse5(time, person).Occuring
 
 
 def RahuGocharaInHouse6(time: Time, person: Person):
-    return libray.RahuGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse6(time, person).Occuring
 
 
 def RahuGocharaInHouse7(time: Time, person: Person):
-    return libray.RahuGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse7(time, person).Occuring
 
 
 def RahuGocharaInHouse8(time: Time, person: Person):
-    return libray.RahuGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse8(time, person).Occuring
 
 
 def RahuGocharaInHouse9(time: Time, person: Person):
-    return libray.RahuGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse9(time, person).Occuring
 
 
 def RahuGocharaInHouse10(time: Time, person: Person):
-    return libray.RahuGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse10(time, person).Occuring
 
 
 def RahuGocharaInHouse11(time: Time, person: Person):
-    return libray.RahuGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse11(time, person).Occuring
 
 
 def RahuGocharaInHouse12(time: Time, person: Person):
-    return libray.RahuGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.RahuGocharaInHouse12(time, person).Occuring
 
 
 def KetuGocharaInHouse1(time: Time, person: Person):
-    return libray.KetuGocharaInHouse1(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse1(time, person).Occuring
 
 
 def KetuGocharaInHouse2(time: Time, person: Person):
-    return libray.KetuGocharaInHouse2(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse2(time, person).Occuring
 
 
 def KetuGocharaInHouse3(time: Time, person: Person):
-    return libray.KetuGocharaInHouse3(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse3(time, person).Occuring
 
 
 def KetuGocharaInHouse4(time: Time, person: Person):
-    return libray.KetuGocharaInHouse4(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse4(time, person).Occuring
 
 
 def KetuGocharaInHouse5(time: Time, person: Person):
-    return libray.KetuGocharaInHouse5(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse5(time, person).Occuring
 
 
 def KetuGocharaInHouse6(time: Time, person: Person):
-    return libray.KetuGocharaInHouse6(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse6(time, person).Occuring
 
 
 def KetuGocharaInHouse7(time: Time, person: Person):
-    return libray.KetuGocharaInHouse7(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse7(time, person).Occuring
 
 
 def KetuGocharaInHouse8(time: Time, person: Person):
-    return libray.KetuGocharaInHouse8(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse8(time, person).Occuring
 
 
 def KetuGocharaInHouse9(time: Time, person: Person):
-    return libray.KetuGocharaInHouse9(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse9(time, person).Occuring
 
 
 def KetuGocharaInHouse10(time: Time, person: Person):
-    return libray.KetuGocharaInHouse10(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse10(time, person).Occuring
 
 
 def KetuGocharaInHouse11(time: Time, person: Person):
-    return libray.KetuGocharaInHouse11(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse11(time, person).Occuring
 
 
 def KetuGocharaInHouse12(time: Time, person: Person):
-    return libray.KetuGocharaInHouse12(time, person)
+    return libray.EventCalculatorMethods.KetuGocharaInHouse12(time, person).Occuring
 
 
 def AriesSunDasa(time: Time, person: Person):
-    return libray.AriesSunDasa(time, person)
+    return libray.EventCalculatorMethods.AriesSunDasa(time, person).Occuring
 
 
 def TaurusSunDasa(time: Time, person: Person):
-    return libray.TaurusSunDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusSunDasa(time, person).Occuring
 
 
 def GeminiSunDasa(time: Time, person: Person):
-    return libray.GeminiSunDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiSunDasa(time, person).Occuring
 
 
 def CancerSunDasa(time: Time, person: Person):
-    return libray.CancerSunDasa(time, person)
+    return libray.EventCalculatorMethods.CancerSunDasa(time, person).Occuring
 
 
 def LeoSunDasa(time: Time, person: Person):
-    return libray.LeoSunDasa(time, person)
+    return libray.EventCalculatorMethods.LeoSunDasa(time, person).Occuring
 
 
 def VirgoSunDasa(time: Time, person: Person):
-    return libray.VirgoSunDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoSunDasa(time, person).Occuring
 
 
 def LibraSunDasa(time: Time, person: Person):
-    return libray.LibraSunDasa(time, person)
+    return libray.EventCalculatorMethods.LibraSunDasa(time, person).Occuring
 
 
 def ScorpioSunDasa(time: Time, person: Person):
-    return libray.ScorpioSunDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioSunDasa(time, person).Occuring
 
 
 def SagittariusSunDasa(time: Time, person: Person):
-    return libray.SagittariusSunDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusSunDasa(time, person).Occuring
 
 
 def CapricornusSunDasa(time: Time, person: Person):
-    return libray.CapricornusSunDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusSunDasa(time, person).Occuring
 
 
 def AquariusSunDasa(time: Time, person: Person):
-    return libray.AquariusSunDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusSunDasa(time, person).Occuring
 
 
 def PiscesSunDasa(time: Time, person: Person):
-    return libray.PiscesSunDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesSunDasa(time, person).Occuring
 
 
 def AriesMoonDasa(time: Time, person: Person):
-    return libray.AriesMoonDasa(time, person)
+    return libray.EventCalculatorMethods.AriesMoonDasa(time, person).Occuring
 
 
 def TaurusMoonDasa(time: Time, person: Person):
-    return libray.TaurusMoonDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusMoonDasa(time, person).Occuring
 
 
 def GeminiMoonDasa(time: Time, person: Person):
-    return libray.GeminiMoonDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiMoonDasa(time, person).Occuring
 
 
 def CancerMoonDasa(time: Time, person: Person):
-    return libray.CancerMoonDasa(time, person)
+    return libray.EventCalculatorMethods.CancerMoonDasa(time, person).Occuring
 
 
 def LeoMoonDasa(time: Time, person: Person):
-    return libray.LeoMoonDasa(time, person)
+    return libray.EventCalculatorMethods.LeoMoonDasa(time, person).Occuring
 
 
 def VirgoMoonDasa(time: Time, person: Person):
-    return libray.VirgoMoonDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoMoonDasa(time, person).Occuring
 
 
 def LibraMoonDasa(time: Time, person: Person):
-    return libray.LibraMoonDasa(time, person)
+    return libray.EventCalculatorMethods.LibraMoonDasa(time, person).Occuring
 
 
 def ScorpioMoonDasa(time: Time, person: Person):
-    return libray.ScorpioMoonDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioMoonDasa(time, person).Occuring
 
 
 def SagittariusMoonDasa(time: Time, person: Person):
-    return libray.SagittariusMoonDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusMoonDasa(time, person).Occuring
 
 
 def CapricornusMoonDasa(time: Time, person: Person):
-    return libray.CapricornusMoonDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusMoonDasa(time, person).Occuring
 
 
 def AquariusMoonDasa(time: Time, person: Person):
-    return libray.AquariusMoonDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusMoonDasa(time, person).Occuring
 
 
 def PiscesMoonDasa(time: Time, person: Person):
-    return libray.PiscesMoonDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesMoonDasa(time, person).Occuring
 
 
 def AriesMarsDasa(time: Time, person: Person):
-    return libray.AriesMarsDasa(time, person)
+    return libray.EventCalculatorMethods.AriesMarsDasa(time, person).Occuring
 
 
 def TaurusMarsDasa(time: Time, person: Person):
-    return libray.TaurusMarsDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusMarsDasa(time, person).Occuring
 
 
 def GeminiMarsDasa(time: Time, person: Person):
-    return libray.GeminiMarsDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiMarsDasa(time, person).Occuring
 
 
 def CancerMarsDasa(time: Time, person: Person):
-    return libray.CancerMarsDasa(time, person)
+    return libray.EventCalculatorMethods.CancerMarsDasa(time, person).Occuring
 
 
 def LeoMarsDasa(time: Time, person: Person):
-    return libray.LeoMarsDasa(time, person)
+    return libray.EventCalculatorMethods.LeoMarsDasa(time, person).Occuring
 
 
 def VirgoMarsDasa(time: Time, person: Person):
-    return libray.VirgoMarsDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoMarsDasa(time, person).Occuring
 
 
 def LibraMarsDasa(time: Time, person: Person):
-    return libray.LibraMarsDasa(time, person)
+    return libray.EventCalculatorMethods.LibraMarsDasa(time, person).Occuring
 
 
 def ScorpioMarsDasa(time: Time, person: Person):
-    return libray.ScorpioMarsDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioMarsDasa(time, person).Occuring
 
 
 def SagittariusMarsDasa(time: Time, person: Person):
-    return libray.SagittariusMarsDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusMarsDasa(time, person).Occuring
 
 
 def CapricornusMarsDasa(time: Time, person: Person):
-    return libray.CapricornusMarsDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusMarsDasa(time, person).Occuring
 
 
 def AquariusMarsDasa(time: Time, person: Person):
-    return libray.AquariusMarsDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusMarsDasa(time, person).Occuring
 
 
 def PiscesMarsDasa(time: Time, person: Person):
-    return libray.PiscesMarsDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesMarsDasa(time, person).Occuring
 
 
 def AriesRahuDasa(time: Time, person: Person):
-    return libray.AriesRahuDasa(time, person)
+    return libray.EventCalculatorMethods.AriesRahuDasa(time, person).Occuring
 
 
 def TaurusRahuDasa(time: Time, person: Person):
-    return libray.TaurusRahuDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusRahuDasa(time, person).Occuring
 
 
 def GeminiRahuDasa(time: Time, person: Person):
-    return libray.GeminiRahuDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiRahuDasa(time, person).Occuring
 
 
 def CancerRahuDasa(time: Time, person: Person):
-    return libray.CancerRahuDasa(time, person)
+    return libray.EventCalculatorMethods.CancerRahuDasa(time, person).Occuring
 
 
 def LeoRahuDasa(time: Time, person: Person):
-    return libray.LeoRahuDasa(time, person)
+    return libray.EventCalculatorMethods.LeoRahuDasa(time, person).Occuring
 
 
 def VirgoRahuDasa(time: Time, person: Person):
-    return libray.VirgoRahuDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoRahuDasa(time, person).Occuring
 
 
 def LibraRahuDasa(time: Time, person: Person):
-    return libray.LibraRahuDasa(time, person)
+    return libray.EventCalculatorMethods.LibraRahuDasa(time, person).Occuring
 
 
 def ScorpioRahuDasa(time: Time, person: Person):
-    return libray.ScorpioRahuDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioRahuDasa(time, person).Occuring
 
 
 def SagittariusRahuDasa(time: Time, person: Person):
-    return libray.SagittariusRahuDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusRahuDasa(time, person).Occuring
 
 
 def CapricornusRahuDasa(time: Time, person: Person):
-    return libray.CapricornusRahuDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusRahuDasa(time, person).Occuring
 
 
 def AquariusRahuDasa(time: Time, person: Person):
-    return libray.AquariusRahuDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusRahuDasa(time, person).Occuring
 
 
 def PiscesRahuDasa(time: Time, person: Person):
-    return libray.PiscesRahuDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesRahuDasa(time, person).Occuring
 
 
 def AriesJupiterDasa(time: Time, person: Person):
-    return libray.AriesJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.AriesJupiterDasa(time, person).Occuring
 
 
 def TaurusJupiterDasa(time: Time, person: Person):
-    return libray.TaurusJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusJupiterDasa(time, person).Occuring
 
 
 def GeminiJupiterDasa(time: Time, person: Person):
-    return libray.GeminiJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiJupiterDasa(time, person).Occuring
 
 
 def CancerJupiterDasa(time: Time, person: Person):
-    return libray.CancerJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.CancerJupiterDasa(time, person).Occuring
 
 
 def LeoJupiterDasa(time: Time, person: Person):
-    return libray.LeoJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.LeoJupiterDasa(time, person).Occuring
 
 
 def VirgoJupiterDasa(time: Time, person: Person):
-    return libray.VirgoJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoJupiterDasa(time, person).Occuring
 
 
 def LibraJupiterDasa(time: Time, person: Person):
-    return libray.LibraJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.LibraJupiterDasa(time, person).Occuring
 
 
 def ScorpioJupiterDasa(time: Time, person: Person):
-    return libray.ScorpioJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioJupiterDasa(time, person).Occuring
 
 
 def SagittariusJupiterDasa(time: Time, person: Person):
-    return libray.SagittariusJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusJupiterDasa(time, person).Occuring
 
 
 def CapricornusJupiterDasa(time: Time, person: Person):
-    return libray.CapricornusJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusJupiterDasa(time, person).Occuring
 
 
 def AquariusJupiterDasa(time: Time, person: Person):
-    return libray.AquariusJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusJupiterDasa(time, person).Occuring
 
 
 def PiscesJupiterDasa(time: Time, person: Person):
-    return libray.PiscesJupiterDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesJupiterDasa(time, person).Occuring
 
 
 def AriesSaturnDasa(time: Time, person: Person):
-    return libray.AriesSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.AriesSaturnDasa(time, person).Occuring
 
 
 def TaurusSaturnDasa(time: Time, person: Person):
-    return libray.TaurusSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusSaturnDasa(time, person).Occuring
 
 
 def GeminiSaturnDasa(time: Time, person: Person):
-    return libray.GeminiSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiSaturnDasa(time, person).Occuring
 
 
 def CancerSaturnDasa(time: Time, person: Person):
-    return libray.CancerSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.CancerSaturnDasa(time, person).Occuring
 
 
 def LeoSaturnDasa(time: Time, person: Person):
-    return libray.LeoSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.LeoSaturnDasa(time, person).Occuring
 
 
 def VirgoSaturnDasa(time: Time, person: Person):
-    return libray.VirgoSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoSaturnDasa(time, person).Occuring
 
 
 def LibraSaturnDasa(time: Time, person: Person):
-    return libray.LibraSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.LibraSaturnDasa(time, person).Occuring
 
 
 def ScorpioSaturnDasa(time: Time, person: Person):
-    return libray.ScorpioSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioSaturnDasa(time, person).Occuring
 
 
 def SagittariusSaturnDasa(time: Time, person: Person):
-    return libray.SagittariusSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusSaturnDasa(time, person).Occuring
 
 
 def CapricornusSaturnDasa(time: Time, person: Person):
-    return libray.CapricornusSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusSaturnDasa(time, person).Occuring
 
 
 def AquariusSaturnDasa(time: Time, person: Person):
-    return libray.AquariusSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusSaturnDasa(time, person).Occuring
 
 
 def PiscesSaturnDasa(time: Time, person: Person):
-    return libray.PiscesSaturnDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesSaturnDasa(time, person).Occuring
 
 
 def AriesMercuryDasa(time: Time, person: Person):
-    return libray.AriesMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.AriesMercuryDasa(time, person).Occuring
 
 
 def TaurusMercuryDasa(time: Time, person: Person):
-    return libray.TaurusMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusMercuryDasa(time, person).Occuring
 
 
 def GeminiMercuryDasa(time: Time, person: Person):
-    return libray.GeminiMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiMercuryDasa(time, person).Occuring
 
 
 def CancerMercuryDasa(time: Time, person: Person):
-    return libray.CancerMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.CancerMercuryDasa(time, person).Occuring
 
 
 def LeoMercuryDasa(time: Time, person: Person):
-    return libray.LeoMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.LeoMercuryDasa(time, person).Occuring
 
 
 def VirgoMercuryDasa(time: Time, person: Person):
-    return libray.VirgoMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoMercuryDasa(time, person).Occuring
 
 
 def LibraMercuryDasa(time: Time, person: Person):
-    return libray.LibraMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.LibraMercuryDasa(time, person).Occuring
 
 
 def ScorpioMercuryDasa(time: Time, person: Person):
-    return libray.ScorpioMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioMercuryDasa(time, person).Occuring
 
 
 def SagittariusMercuryDasa(time: Time, person: Person):
-    return libray.SagittariusMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusMercuryDasa(time, person).Occuring
 
 
 def CapricornusMercuryDasa(time: Time, person: Person):
-    return libray.CapricornusMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusMercuryDasa(time, person).Occuring
 
 
 def AquariusMercuryDasa(time: Time, person: Person):
-    return libray.AquariusMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusMercuryDasa(time, person).Occuring
 
 
 def PiscesMercuryDasa(time: Time, person: Person):
-    return libray.PiscesMercuryDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesMercuryDasa(time, person).Occuring
 
 
 def AriesKetuDasa(time: Time, person: Person):
-    return libray.AriesKetuDasa(time, person)
+    return libray.EventCalculatorMethods.AriesKetuDasa(time, person).Occuring
 
 
 def TaurusKetuDasa(time: Time, person: Person):
-    return libray.TaurusKetuDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusKetuDasa(time, person).Occuring
 
 
 def GeminiKetuDasa(time: Time, person: Person):
-    return libray.GeminiKetuDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiKetuDasa(time, person).Occuring
 
 
 def CancerKetuDasa(time: Time, person: Person):
-    return libray.CancerKetuDasa(time, person)
+    return libray.EventCalculatorMethods.CancerKetuDasa(time, person).Occuring
 
 
 def LeoKetuDasa(time: Time, person: Person):
-    return libray.LeoKetuDasa(time, person)
+    return libray.EventCalculatorMethods.LeoKetuDasa(time, person).Occuring
 
 
 def VirgoKetuDasa(time: Time, person: Person):
-    return libray.VirgoKetuDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoKetuDasa(time, person).Occuring
 
 
 def LibraKetuDasa(time: Time, person: Person):
-    return libray.LibraKetuDasa(time, person)
+    return libray.EventCalculatorMethods.LibraKetuDasa(time, person).Occuring
 
 
 def ScorpioKetuDasa(time: Time, person: Person):
-    return libray.ScorpioKetuDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioKetuDasa(time, person).Occuring
 
 
 def SagittariusKetuDasa(time: Time, person: Person):
-    return libray.SagittariusKetuDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusKetuDasa(time, person).Occuring
 
 
 def CapricornusKetuDasa(time: Time, person: Person):
-    return libray.CapricornusKetuDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusKetuDasa(time, person).Occuring
 
 
 def AquariusKetuDasa(time: Time, person: Person):
-    return libray.AquariusKetuDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusKetuDasa(time, person).Occuring
 
 
 def PiscesKetuDasa(time: Time, person: Person):
-    return libray.PiscesKetuDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesKetuDasa(time, person).Occuring
 
 
 def AriesVenusDasa(time: Time, person: Person):
-    return libray.AriesVenusDasa(time, person)
+    return libray.EventCalculatorMethods.AriesVenusDasa(time, person).Occuring
 
 
 def TaurusVenusDasa(time: Time, person: Person):
-    return libray.TaurusVenusDasa(time, person)
+    return libray.EventCalculatorMethods.TaurusVenusDasa(time, person).Occuring
 
 
 def GeminiVenusDasa(time: Time, person: Person):
-    return libray.GeminiVenusDasa(time, person)
+    return libray.EventCalculatorMethods.GeminiVenusDasa(time, person).Occuring
 
 
 def CancerVenusDasa(time: Time, person: Person):
-    return libray.CancerVenusDasa(time, person)
+    return libray.EventCalculatorMethods.CancerVenusDasa(time, person).Occuring
 
 
 def LeoVenusDasa(time: Time, person: Person):
-    return libray.LeoVenusDasa(time, person)
+    return libray.EventCalculatorMethods.LeoVenusDasa(time, person).Occuring
 
 
 def VirgoVenusDasa(time: Time, person: Person):
-    return libray.VirgoVenusDasa(time, person)
+    return libray.EventCalculatorMethods.VirgoVenusDasa(time, person).Occuring
 
 
 def LibraVenusDasa(time: Time, person: Person):
-    return libray.LibraVenusDasa(time, person)
+    return libray.EventCalculatorMethods.LibraVenusDasa(time, person).Occuring
 
 
 def ScorpioVenusDasa(time: Time, person: Person):
-    return libray.ScorpioVenusDasa(time, person)
+    return libray.EventCalculatorMethods.ScorpioVenusDasa(time, person).Occuring
 
 
 def SagittariusVenusDasa(time: Time, person: Person):
-    return libray.SagittariusVenusDasa(time, person)
+    return libray.EventCalculatorMethods.SagittariusVenusDasa(time, person).Occuring
 
 
 def CapricornusVenusDasa(time: Time, person: Person):
-    return libray.CapricornusVenusDasa(time, person)
+    return libray.EventCalculatorMethods.CapricornusVenusDasa(time, person).Occuring
 
 
 def AquariusVenusDasa(time: Time, person: Person):
-    return libray.AquariusVenusDasa(time, person)
+    return libray.EventCalculatorMethods.AquariusVenusDasa(time, person).Occuring
 
 
 def PiscesVenusDasa(time: Time, person: Person):
-    return libray.PiscesVenusDasa(time, person)
+    return libray.EventCalculatorMethods.PiscesVenusDasa(time, person).Occuring
 
 
 def SunDasaSunBhukti(time: Time, person: Person):
-    return libray.SunDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaSunBhukti(time, person).Occuring
 
 
 def SunDasaMoonBhukti(time: Time, person: Person):
-    return libray.SunDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaMoonBhukti(time, person).Occuring
 
 
 def SunDasaMarsBhukti(time: Time, person: Person):
-    return libray.SunDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaMarsBhukti(time, person).Occuring
 
 
 def SunDasaRahuBhukti(time: Time, person: Person):
-    return libray.SunDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaRahuBhukti(time, person).Occuring
 
 
 def SunDasaJupiterBhukti(time: Time, person: Person):
-    return libray.SunDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaJupiterBhukti(time, person).Occuring
 
 
 def SunDasaSaturnBhukti(time: Time, person: Person):
-    return libray.SunDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaSaturnBhukti(time, person).Occuring
 
 
 def SunDasaMercuryBhukti(time: Time, person: Person):
-    return libray.SunDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaMercuryBhukti(time, person).Occuring
 
 
 def SunDasaKetuBhukti(time: Time, person: Person):
-    return libray.SunDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaKetuBhukti(time, person).Occuring
 
 
 def SunDasaVenusBhukti(time: Time, person: Person):
-    return libray.SunDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.SunDasaVenusBhukti(time, person).Occuring
 
 
 def MoonDasaSunBhukti(time: Time, person: Person):
-    return libray.MoonDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaSunBhukti(time, person).Occuring
 
 
 def MoonDasaMoonBhukti(time: Time, person: Person):
-    return libray.MoonDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaMoonBhukti(time, person).Occuring
 
 
 def MoonDasaMarsBhukti(time: Time, person: Person):
-    return libray.MoonDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaMarsBhukti(time, person).Occuring
 
 
 def MoonDasaRahuBhukti(time: Time, person: Person):
-    return libray.MoonDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaRahuBhukti(time, person).Occuring
 
 
 def MoonDasaJupiterBhukti(time: Time, person: Person):
-    return libray.MoonDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaJupiterBhukti(time, person).Occuring
 
 
 def MoonDasaSaturnBhukti(time: Time, person: Person):
-    return libray.MoonDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaSaturnBhukti(time, person).Occuring
 
 
 def MoonDasaMercuryBhukti(time: Time, person: Person):
-    return libray.MoonDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaMercuryBhukti(time, person).Occuring
 
 
 def MoonDasaKetuBhukti(time: Time, person: Person):
-    return libray.MoonDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaKetuBhukti(time, person).Occuring
 
 
 def MoonDasaVenusBhukti(time: Time, person: Person):
-    return libray.MoonDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.MoonDasaVenusBhukti(time, person).Occuring
 
 
 def MarsDasaSunBhukti(time: Time, person: Person):
-    return libray.MarsDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaSunBhukti(time, person).Occuring
 
 
 def MarsDasaMoonBhukti(time: Time, person: Person):
-    return libray.MarsDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaMoonBhukti(time, person).Occuring
 
 
 def MarsDasaMarsBhukti(time: Time, person: Person):
-    return libray.MarsDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaMarsBhukti(time, person).Occuring
 
 
 def MarsDasaRahuBhukti(time: Time, person: Person):
-    return libray.MarsDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaRahuBhukti(time, person).Occuring
 
 
 def MarsDasaJupiterBhukti(time: Time, person: Person):
-    return libray.MarsDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaJupiterBhukti(time, person).Occuring
 
 
 def MarsDasaSaturnBhukti(time: Time, person: Person):
-    return libray.MarsDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaSaturnBhukti(time, person).Occuring
 
 
 def MarsDasaMercuryBhukti(time: Time, person: Person):
-    return libray.MarsDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaMercuryBhukti(time, person).Occuring
 
 
 def MarsDasaKetuBhukti(time: Time, person: Person):
-    return libray.MarsDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaKetuBhukti(time, person).Occuring
 
 
 def MarsDasaVenusBhukti(time: Time, person: Person):
-    return libray.MarsDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.MarsDasaVenusBhukti(time, person).Occuring
 
 
 def RahuDasaSunBhukti(time: Time, person: Person):
-    return libray.RahuDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaSunBhukti(time, person).Occuring
 
 
 def RahuDasaMoonBhukti(time: Time, person: Person):
-    return libray.RahuDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaMoonBhukti(time, person).Occuring
 
 
 def RahuDasaMarsBhukti(time: Time, person: Person):
-    return libray.RahuDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaMarsBhukti(time, person).Occuring
 
 
 def RahuDasaRahuBhukti(time: Time, person: Person):
-    return libray.RahuDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaRahuBhukti(time, person).Occuring
 
 
 def RahuDasaJupiterBhukti(time: Time, person: Person):
-    return libray.RahuDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaJupiterBhukti(time, person).Occuring
 
 
 def RahuDasaSaturnBhukti(time: Time, person: Person):
-    return libray.RahuDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaSaturnBhukti(time, person).Occuring
 
 
 def RahuDasaMercuryBhukti(time: Time, person: Person):
-    return libray.RahuDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaMercuryBhukti(time, person).Occuring
 
 
 def RahuDasaKetuBhukti(time: Time, person: Person):
-    return libray.RahuDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaKetuBhukti(time, person).Occuring
 
 
 def RahuDasaVenusBhukti(time: Time, person: Person):
-    return libray.RahuDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.RahuDasaVenusBhukti(time, person).Occuring
 
 
 def JupiterDasaSunBhukti(time: Time, person: Person):
-    return libray.JupiterDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaSunBhukti(time, person).Occuring
 
 
 def JupiterDasaMoonBhukti(time: Time, person: Person):
-    return libray.JupiterDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaMoonBhukti(time, person).Occuring
 
 
 def JupiterDasaMarsBhukti(time: Time, person: Person):
-    return libray.JupiterDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaMarsBhukti(time, person).Occuring
 
 
 def JupiterDasaRahuBhukti(time: Time, person: Person):
-    return libray.JupiterDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaRahuBhukti(time, person).Occuring
 
 
 def JupiterDasaJupiterBhukti(time: Time, person: Person):
-    return libray.JupiterDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaJupiterBhukti(time, person).Occuring
 
 
 def JupiterDasaSaturnBhukti(time: Time, person: Person):
-    return libray.JupiterDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaSaturnBhukti(time, person).Occuring
 
 
 def JupiterDasaMercuryBhukti(time: Time, person: Person):
-    return libray.JupiterDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaMercuryBhukti(time, person).Occuring
 
 
 def JupiterDasaKetuBhukti(time: Time, person: Person):
-    return libray.JupiterDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaKetuBhukti(time, person).Occuring
 
 
 def JupiterDasaVenusBhukti(time: Time, person: Person):
-    return libray.JupiterDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.JupiterDasaVenusBhukti(time, person).Occuring
 
 
 def SaturnDasaSunBhukti(time: Time, person: Person):
-    return libray.SaturnDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaSunBhukti(time, person).Occuring
 
 
 def SaturnDasaMoonBhukti(time: Time, person: Person):
-    return libray.SaturnDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaMoonBhukti(time, person).Occuring
 
 
 def SaturnDasaMarsBhukti(time: Time, person: Person):
-    return libray.SaturnDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaMarsBhukti(time, person).Occuring
 
 
 def SaturnDasaRahuBhukti(time: Time, person: Person):
-    return libray.SaturnDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaRahuBhukti(time, person).Occuring
 
 
 def SaturnDasaJupiterBhukti(time: Time, person: Person):
-    return libray.SaturnDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaJupiterBhukti(time, person).Occuring
 
 
 def SaturnDasaSaturnBhukti(time: Time, person: Person):
-    return libray.SaturnDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaSaturnBhukti(time, person).Occuring
 
 
 def SaturnDasaMercuryBhukti(time: Time, person: Person):
-    return libray.SaturnDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaMercuryBhukti(time, person).Occuring
 
 
 def SaturnDasaKetuBhukti(time: Time, person: Person):
-    return libray.SaturnDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaKetuBhukti(time, person).Occuring
 
 
 def SaturnDasaVenusBhukti(time: Time, person: Person):
-    return libray.SaturnDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.SaturnDasaVenusBhukti(time, person).Occuring
 
 
 def MercuryDasaSunBhukti(time: Time, person: Person):
-    return libray.MercuryDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaSunBhukti(time, person).Occuring
 
 
 def MercuryDasaMoonBhukti(time: Time, person: Person):
-    return libray.MercuryDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaMoonBhukti(time, person).Occuring
 
 
 def MercuryDasaMarsBhukti(time: Time, person: Person):
-    return libray.MercuryDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaMarsBhukti(time, person).Occuring
 
 
 def MercuryDasaRahuBhukti(time: Time, person: Person):
-    return libray.MercuryDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaRahuBhukti(time, person).Occuring
 
 
 def MercuryDasaJupiterBhukti(time: Time, person: Person):
-    return libray.MercuryDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaJupiterBhukti(time, person).Occuring
 
 
 def MercuryDasaSaturnBhukti(time: Time, person: Person):
-    return libray.MercuryDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaSaturnBhukti(time, person).Occuring
 
 
 def MercuryDasaMercuryBhukti(time: Time, person: Person):
-    return libray.MercuryDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaMercuryBhukti(time, person).Occuring
 
 
 def MercuryDasaKetuBhukti(time: Time, person: Person):
-    return libray.MercuryDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaKetuBhukti(time, person).Occuring
 
 
 def MercuryDasaVenusBhukti(time: Time, person: Person):
-    return libray.MercuryDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.MercuryDasaVenusBhukti(time, person).Occuring
 
 
 def KetuDasaSunBhukti(time: Time, person: Person):
-    return libray.KetuDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaSunBhukti(time, person).Occuring
 
 
 def KetuDasaMoonBhukti(time: Time, person: Person):
-    return libray.KetuDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaMoonBhukti(time, person).Occuring
 
 
 def KetuDasaMarsBhukti(time: Time, person: Person):
-    return libray.KetuDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaMarsBhukti(time, person).Occuring
 
 
 def KetuDasaRahuBhukti(time: Time, person: Person):
-    return libray.KetuDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaRahuBhukti(time, person).Occuring
 
 
 def KetuDasaJupiterBhukti(time: Time, person: Person):
-    return libray.KetuDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaJupiterBhukti(time, person).Occuring
 
 
 def KetuDasaSaturnBhukti(time: Time, person: Person):
-    return libray.KetuDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaSaturnBhukti(time, person).Occuring
 
 
 def KetuDasaMercuryBhukti(time: Time, person: Person):
-    return libray.KetuDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaMercuryBhukti(time, person).Occuring
 
 
 def KetuDasaKetuBhukti(time: Time, person: Person):
-    return libray.KetuDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaKetuBhukti(time, person).Occuring
 
 
 def KetuDasaVenusBhukti(time: Time, person: Person):
-    return libray.KetuDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.KetuDasaVenusBhukti(time, person).Occuring
 
 
 def VenusDasaSunBhukti(time: Time, person: Person):
-    return libray.VenusDasaSunBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaSunBhukti(time, person).Occuring
 
 
 def VenusDasaMoonBhukti(time: Time, person: Person):
-    return libray.VenusDasaMoonBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaMoonBhukti(time, person).Occuring
 
 
 def VenusDasaMarsBhukti(time: Time, person: Person):
-    return libray.VenusDasaMarsBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaMarsBhukti(time, person).Occuring
 
 
 def VenusDasaRahuBhukti(time: Time, person: Person):
-    return libray.VenusDasaRahuBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaRahuBhukti(time, person).Occuring
 
 
 def VenusDasaJupiterBhukti(time: Time, person: Person):
-    return libray.VenusDasaJupiterBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaJupiterBhukti(time, person).Occuring
 
 
 def VenusDasaSaturnBhukti(time: Time, person: Person):
-    return libray.VenusDasaSaturnBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaSaturnBhukti(time, person).Occuring
 
 
 def VenusDasaMercuryBhukti(time: Time, person: Person):
-    return libray.VenusDasaMercuryBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaMercuryBhukti(time, person).Occuring
 
 
 def VenusDasaKetuBhukti(time: Time, person: Person):
-    return libray.VenusDasaKetuBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaKetuBhukti(time, person).Occuring
 
 
 def VenusDasaVenusBhukti(time: Time, person: Person):
-    return libray.VenusDasaVenusBhukti(time, person)
+    return libray.EventCalculatorMethods.VenusDasaVenusBhukti(time, person).Occuring
 
 
 def SunBhuktiSunAntaram(time: Time, person: Person):
-    return libray.SunBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiSunAntaram(time, person).Occuring
 
 
 def MoonBhuktiSunAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiSunAntaram(time, person).Occuring
 
 
 def MarsBhuktiSunAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiSunAntaram(time, person).Occuring
 
 
 def RahuBhuktiSunAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiSunAntaram(time, person).Occuring
 
 
 def JupiterBhuktiSunAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiSunAntaram(time, person).Occuring
 
 
 def SaturnBhuktiSunAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiSunAntaram(time, person).Occuring
 
 
 def MercuryBhuktiSunAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiSunAntaram(time, person).Occuring
 
 
 def KetuBhuktiSunAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiSunAntaram(time, person).Occuring
 
 
 def VenusBhuktiSunAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiSunAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiSunAntaram(time, person).Occuring
 
 
 def SunBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.SunBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiMoonAntaram(time, person).Occuring
 
 
 def MoonBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiMoonAntaram(time, person).Occuring
 
 
 def MarsBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiMoonAntaram(time, person).Occuring
 
 
 def RahuBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiMoonAntaram(time, person).Occuring
 
 
 def JupiterBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiMoonAntaram(time, person).Occuring
 
 
 def SaturnBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiMoonAntaram(time, person).Occuring
 
 
 def MercuryBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiMoonAntaram(time, person).Occuring
 
 
 def KetuBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiMoonAntaram(time, person).Occuring
 
 
 def VenusBhuktiMoonAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiMoonAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiMoonAntaram(time, person).Occuring
 
 
 def SunBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.SunBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiMarsAntaram(time, person).Occuring
 
 
 def MoonBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiMarsAntaram(time, person).Occuring
 
 
 def MarsBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiMarsAntaram(time, person).Occuring
 
 
 def RahuBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiMarsAntaram(time, person).Occuring
 
 
 def JupiterBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiMarsAntaram(time, person).Occuring
 
 
 def SaturnBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiMarsAntaram(time, person).Occuring
 
 
 def MercuryBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiMarsAntaram(time, person).Occuring
 
 
 def KetuBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiMarsAntaram(time, person).Occuring
 
 
 def VenusBhuktiMarsAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiMarsAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiMarsAntaram(time, person).Occuring
 
 
 def SunBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.SunBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiRahuAntaram(time, person).Occuring
 
 
 def MoonBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiRahuAntaram(time, person).Occuring
 
 
 def MarsBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiRahuAntaram(time, person).Occuring
 
 
 def RahuBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiRahuAntaram(time, person).Occuring
 
 
 def JupiterBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiRahuAntaram(time, person).Occuring
 
 
 def SaturnBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiRahuAntaram(time, person).Occuring
 
 
 def MercuryBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiRahuAntaram(time, person).Occuring
 
 
 def KetuBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiRahuAntaram(time, person).Occuring
 
 
 def VenusBhuktiRahuAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiRahuAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiRahuAntaram(time, person).Occuring
 
 
 def SunBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.SunBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiJupiterAntaram(time, person).Occuring
 
 
 def MoonBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiJupiterAntaram(time, person).Occuring
 
 
 def MarsBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiJupiterAntaram(time, person).Occuring
 
 
 def RahuBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiJupiterAntaram(time, person).Occuring
 
 
 def JupiterBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiJupiterAntaram(time, person).Occuring
 
 
 def SaturnBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiJupiterAntaram(time, person).Occuring
 
 
 def MercuryBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiJupiterAntaram(time, person).Occuring
 
 
 def KetuBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiJupiterAntaram(time, person).Occuring
 
 
 def VenusBhuktiJupiterAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiJupiterAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiJupiterAntaram(time, person).Occuring
 
 
 def SunBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.SunBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiSaturnAntaram(time, person).Occuring
 
 
 def MoonBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiSaturnAntaram(time, person).Occuring
 
 
 def MarsBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiSaturnAntaram(time, person).Occuring
 
 
 def RahuBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiSaturnAntaram(time, person).Occuring
 
 
 def JupiterBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiSaturnAntaram(time, person).Occuring
 
 
 def SaturnBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiSaturnAntaram(time, person).Occuring
 
 
 def MercuryBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiSaturnAntaram(time, person).Occuring
 
 
 def KetuBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiSaturnAntaram(time, person).Occuring
 
 
 def VenusBhuktiSaturnAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiSaturnAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiSaturnAntaram(time, person).Occuring
 
 
 def SunBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.SunBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiMercuryAntaram(time, person).Occuring
 
 
 def MoonBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiMercuryAntaram(time, person).Occuring
 
 
 def MarsBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiMercuryAntaram(time, person).Occuring
 
 
 def RahuBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiMercuryAntaram(time, person).Occuring
 
 
 def JupiterBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiMercuryAntaram(time, person).Occuring
 
 
 def SaturnBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiMercuryAntaram(time, person).Occuring
 
 
 def MercuryBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiMercuryAntaram(time, person).Occuring
 
 
 def KetuBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiMercuryAntaram(time, person).Occuring
 
 
 def VenusBhuktiMercuryAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiMercuryAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiMercuryAntaram(time, person).Occuring
 
 
 def SunBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.SunBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiKetuAntaram(time, person).Occuring
 
 
 def MoonBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiKetuAntaram(time, person).Occuring
 
 
 def MarsBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiKetuAntaram(time, person).Occuring
 
 
 def RahuBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiKetuAntaram(time, person).Occuring
 
 
 def JupiterBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiKetuAntaram(time, person).Occuring
 
 
 def SaturnBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiKetuAntaram(time, person).Occuring
 
 
 def MercuryBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiKetuAntaram(time, person).Occuring
 
 
 def KetuBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiKetuAntaram(time, person).Occuring
 
 
 def VenusBhuktiKetuAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiKetuAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiKetuAntaram(time, person).Occuring
 
 
 def SunBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.SunBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.SunBhuktiVenusAntaram(time, person).Occuring
 
 
 def MoonBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.MoonBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.MoonBhuktiVenusAntaram(time, person).Occuring
 
 
 def MarsBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.MarsBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.MarsBhuktiVenusAntaram(time, person).Occuring
 
 
 def RahuBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.RahuBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.RahuBhuktiVenusAntaram(time, person).Occuring
 
 
 def JupiterBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.JupiterBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.JupiterBhuktiVenusAntaram(time, person).Occuring
 
 
 def SaturnBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.SaturnBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.SaturnBhuktiVenusAntaram(time, person).Occuring
 
 
 def MercuryBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.MercuryBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.MercuryBhuktiVenusAntaram(time, person).Occuring
 
 
 def KetuBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.KetuBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.KetuBhuktiVenusAntaram(time, person).Occuring
 
 
 def VenusBhuktiVenusAntaram(time: Time, person: Person):
-    return libray.VenusBhuktiVenusAntaram(time, person)
+    return libray.EventCalculatorMethods.VenusBhuktiVenusAntaram(time, person).Occuring
 
 
 def SunAntaramSunSukshma(time: Time, person: Person):
-    return libray.SunAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramSunSukshma(time, person).Occuring
 
 
 def MoonAntaramSunSukshma(time: Time, person: Person):
-    return libray.MoonAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramSunSukshma(time, person).Occuring
 
 
 def MarsAntaramSunSukshma(time: Time, person: Person):
-    return libray.MarsAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramSunSukshma(time, person).Occuring
 
 
 def RahuAntaramSunSukshma(time: Time, person: Person):
-    return libray.RahuAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramSunSukshma(time, person).Occuring
 
 
 def JupiterAntaramSunSukshma(time: Time, person: Person):
-    return libray.JupiterAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramSunSukshma(time, person).Occuring
 
 
 def SaturnAntaramSunSukshma(time: Time, person: Person):
-    return libray.SaturnAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramSunSukshma(time, person).Occuring
 
 
 def MercuryAntaramSunSukshma(time: Time, person: Person):
-    return libray.MercuryAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramSunSukshma(time, person).Occuring
 
 
 def KetuAntaramSunSukshma(time: Time, person: Person):
-    return libray.KetuAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramSunSukshma(time, person).Occuring
 
 
 def VenusAntaramSunSukshma(time: Time, person: Person):
-    return libray.VenusAntaramSunSukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramSunSukshma(time, person).Occuring
 
 
 def SunAntaramMoonSukshma(time: Time, person: Person):
-    return libray.SunAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramMoonSukshma(time, person).Occuring
 
 
 def MoonAntaramMoonSukshma(time: Time, person: Person):
-    return libray.MoonAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramMoonSukshma(time, person).Occuring
 
 
 def MarsAntaramMoonSukshma(time: Time, person: Person):
-    return libray.MarsAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramMoonSukshma(time, person).Occuring
 
 
 def RahuAntaramMoonSukshma(time: Time, person: Person):
-    return libray.RahuAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramMoonSukshma(time, person).Occuring
 
 
 def JupiterAntaramMoonSukshma(time: Time, person: Person):
-    return libray.JupiterAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramMoonSukshma(time, person).Occuring
 
 
 def SaturnAntaramMoonSukshma(time: Time, person: Person):
-    return libray.SaturnAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramMoonSukshma(time, person).Occuring
 
 
 def MercuryAntaramMoonSukshma(time: Time, person: Person):
-    return libray.MercuryAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramMoonSukshma(time, person).Occuring
 
 
 def KetuAntaramMoonSukshma(time: Time, person: Person):
-    return libray.KetuAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramMoonSukshma(time, person).Occuring
 
 
 def VenusAntaramMoonSukshma(time: Time, person: Person):
-    return libray.VenusAntaramMoonSukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramMoonSukshma(time, person).Occuring
 
 
 def SunAntaramMarsSukshma(time: Time, person: Person):
-    return libray.SunAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramMarsSukshma(time, person).Occuring
 
 
 def MoonAntaramMarsSukshma(time: Time, person: Person):
-    return libray.MoonAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramMarsSukshma(time, person).Occuring
 
 
 def MarsAntaramMarsSukshma(time: Time, person: Person):
-    return libray.MarsAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramMarsSukshma(time, person).Occuring
 
 
 def RahuAntaramMarsSukshma(time: Time, person: Person):
-    return libray.RahuAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramMarsSukshma(time, person).Occuring
 
 
 def JupiterAntaramMarsSukshma(time: Time, person: Person):
-    return libray.JupiterAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramMarsSukshma(time, person).Occuring
 
 
 def SaturnAntaramMarsSukshma(time: Time, person: Person):
-    return libray.SaturnAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramMarsSukshma(time, person).Occuring
 
 
 def MercuryAntaramMarsSukshma(time: Time, person: Person):
-    return libray.MercuryAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramMarsSukshma(time, person).Occuring
 
 
 def KetuAntaramMarsSukshma(time: Time, person: Person):
-    return libray.KetuAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramMarsSukshma(time, person).Occuring
 
 
 def VenusAntaramMarsSukshma(time: Time, person: Person):
-    return libray.VenusAntaramMarsSukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramMarsSukshma(time, person).Occuring
 
 
 def SunAntaramRahuSukshma(time: Time, person: Person):
-    return libray.SunAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramRahuSukshma(time, person).Occuring
 
 
 def MoonAntaramRahuSukshma(time: Time, person: Person):
-    return libray.MoonAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramRahuSukshma(time, person).Occuring
 
 
 def MarsAntaramRahuSukshma(time: Time, person: Person):
-    return libray.MarsAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramRahuSukshma(time, person).Occuring
 
 
 def RahuAntaramRahuSukshma(time: Time, person: Person):
-    return libray.RahuAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramRahuSukshma(time, person).Occuring
 
 
 def JupiterAntaramRahuSukshma(time: Time, person: Person):
-    return libray.JupiterAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramRahuSukshma(time, person).Occuring
 
 
 def SaturnAntaramRahuSukshma(time: Time, person: Person):
-    return libray.SaturnAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramRahuSukshma(time, person).Occuring
 
 
 def MercuryAntaramRahuSukshma(time: Time, person: Person):
-    return libray.MercuryAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramRahuSukshma(time, person).Occuring
 
 
 def KetuAntaramRahuSukshma(time: Time, person: Person):
-    return libray.KetuAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramRahuSukshma(time, person).Occuring
 
 
 def VenusAntaramRahuSukshma(time: Time, person: Person):
-    return libray.VenusAntaramRahuSukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramRahuSukshma(time, person).Occuring
 
 
 def SunAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.SunAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramJupiterSukshma(time, person).Occuring
 
 
 def MoonAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.MoonAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramJupiterSukshma(time, person).Occuring
 
 
 def MarsAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.MarsAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramJupiterSukshma(time, person).Occuring
 
 
 def RahuAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.RahuAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramJupiterSukshma(time, person).Occuring
 
 
 def JupiterAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.JupiterAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramJupiterSukshma(time, person).Occuring
 
 
 def SaturnAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.SaturnAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramJupiterSukshma(time, person).Occuring
 
 
 def MercuryAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.MercuryAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramJupiterSukshma(time, person).Occuring
 
 
 def KetuAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.KetuAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramJupiterSukshma(time, person).Occuring
 
 
 def VenusAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.VenusAntaramJupiterSukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramJupiterSukshma(time, person).Occuring
 
 
 def SunAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.SunAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramSaturnSukshma(time, person).Occuring
 
 
 def MoonAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.MoonAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramSaturnSukshma(time, person).Occuring
 
 
 def MarsAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.MarsAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramSaturnSukshma(time, person).Occuring
 
 
 def RahuAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.RahuAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramSaturnSukshma(time, person).Occuring
 
 
 def JupiterAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.JupiterAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramSaturnSukshma(time, person).Occuring
 
 
 def SaturnAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.SaturnAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramSaturnSukshma(time, person).Occuring
 
 
 def MercuryAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.MercuryAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramSaturnSukshma(time, person).Occuring
 
 
 def KetuAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.KetuAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramSaturnSukshma(time, person).Occuring
 
 
 def VenusAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.VenusAntaramSaturnSukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramSaturnSukshma(time, person).Occuring
 
 
 def SunAntaramMercurySukshma(time: Time, person: Person):
-    return libray.SunAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramMercurySukshma(time, person).Occuring
 
 
 def MoonAntaramMercurySukshma(time: Time, person: Person):
-    return libray.MoonAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramMercurySukshma(time, person).Occuring
 
 
 def MarsAntaramMercurySukshma(time: Time, person: Person):
-    return libray.MarsAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramMercurySukshma(time, person).Occuring
 
 
 def RahuAntaramMercurySukshma(time: Time, person: Person):
-    return libray.RahuAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramMercurySukshma(time, person).Occuring
 
 
 def JupiterAntaramMercurySukshma(time: Time, person: Person):
-    return libray.JupiterAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramMercurySukshma(time, person).Occuring
 
 
 def SaturnAntaramMercurySukshma(time: Time, person: Person):
-    return libray.SaturnAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramMercurySukshma(time, person).Occuring
 
 
 def MercuryAntaramMercurySukshma(time: Time, person: Person):
-    return libray.MercuryAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramMercurySukshma(time, person).Occuring
 
 
 def KetuAntaramMercurySukshma(time: Time, person: Person):
-    return libray.KetuAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramMercurySukshma(time, person).Occuring
 
 
 def VenusAntaramMercurySukshma(time: Time, person: Person):
-    return libray.VenusAntaramMercurySukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramMercurySukshma(time, person).Occuring
 
 
 def SunAntaramKetuSukshma(time: Time, person: Person):
-    return libray.SunAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramKetuSukshma(time, person).Occuring
 
 
 def MoonAntaramKetuSukshma(time: Time, person: Person):
-    return libray.MoonAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramKetuSukshma(time, person).Occuring
 
 
 def MarsAntaramKetuSukshma(time: Time, person: Person):
-    return libray.MarsAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramKetuSukshma(time, person).Occuring
 
 
 def RahuAntaramKetuSukshma(time: Time, person: Person):
-    return libray.RahuAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramKetuSukshma(time, person).Occuring
 
 
 def JupiterAntaramKetuSukshma(time: Time, person: Person):
-    return libray.JupiterAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramKetuSukshma(time, person).Occuring
 
 
 def SaturnAntaramKetuSukshma(time: Time, person: Person):
-    return libray.SaturnAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramKetuSukshma(time, person).Occuring
 
 
 def MercuryAntaramKetuSukshma(time: Time, person: Person):
-    return libray.MercuryAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramKetuSukshma(time, person).Occuring
 
 
 def KetuAntaramKetuSukshma(time: Time, person: Person):
-    return libray.KetuAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramKetuSukshma(time, person).Occuring
 
 
 def VenusAntaramKetuSukshma(time: Time, person: Person):
-    return libray.VenusAntaramKetuSukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramKetuSukshma(time, person).Occuring
 
 
 def SunAntaramVenusSukshma(time: Time, person: Person):
-    return libray.SunAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.SunAntaramVenusSukshma(time, person).Occuring
 
 
 def MoonAntaramVenusSukshma(time: Time, person: Person):
-    return libray.MoonAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.MoonAntaramVenusSukshma(time, person).Occuring
 
 
 def MarsAntaramVenusSukshma(time: Time, person: Person):
-    return libray.MarsAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.MarsAntaramVenusSukshma(time, person).Occuring
 
 
 def RahuAntaramVenusSukshma(time: Time, person: Person):
-    return libray.RahuAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.RahuAntaramVenusSukshma(time, person).Occuring
 
 
 def JupiterAntaramVenusSukshma(time: Time, person: Person):
-    return libray.JupiterAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.JupiterAntaramVenusSukshma(time, person).Occuring
 
 
 def SaturnAntaramVenusSukshma(time: Time, person: Person):
-    return libray.SaturnAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.SaturnAntaramVenusSukshma(time, person).Occuring
 
 
 def MercuryAntaramVenusSukshma(time: Time, person: Person):
-    return libray.MercuryAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.MercuryAntaramVenusSukshma(time, person).Occuring
 
 
 def KetuAntaramVenusSukshma(time: Time, person: Person):
-    return libray.KetuAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.KetuAntaramVenusSukshma(time, person).Occuring
 
 
 def VenusAntaramVenusSukshma(time: Time, person: Person):
-    return libray.VenusAntaramVenusSukshma(time, person)
+    return libray.EventCalculatorMethods.VenusAntaramVenusSukshma(time, person).Occuring
 
 
 def SunSukshmaSunPrana(time: Time, person: Person):
-    return libray.SunSukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaSunPrana(time, person).Occuring
 
 
 def MoonSukshmaSunPrana(time: Time, person: Person):
-    return libray.MoonSukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaSunPrana(time, person).Occuring
 
 
 def MarsSukshmaSunPrana(time: Time, person: Person):
-    return libray.MarsSukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaSunPrana(time, person).Occuring
 
 
 def RahuSukshmaSunPrana(time: Time, person: Person):
-    return libray.RahuSukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaSunPrana(time, person).Occuring
 
 
 def JupiterSukshmaSunPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaSunPrana(time, person).Occuring
 
 
 def SaturnSukshmaSunPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaSunPrana(time, person).Occuring
 
 
 def MercurySukshmaSunPrana(time: Time, person: Person):
-    return libray.MercurySukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaSunPrana(time, person).Occuring
 
 
 def KetuSukshmaSunPrana(time: Time, person: Person):
-    return libray.KetuSukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaSunPrana(time, person).Occuring
 
 
 def VenusSukshmaSunPrana(time: Time, person: Person):
-    return libray.VenusSukshmaSunPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaSunPrana(time, person).Occuring
 
 
 def SunSukshmaMoonPrana(time: Time, person: Person):
-    return libray.SunSukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaMoonPrana(time, person).Occuring
 
 
 def MoonSukshmaMoonPrana(time: Time, person: Person):
-    return libray.MoonSukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaMoonPrana(time, person).Occuring
 
 
 def MarsSukshmaMoonPrana(time: Time, person: Person):
-    return libray.MarsSukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaMoonPrana(time, person).Occuring
 
 
 def RahuSukshmaMoonPrana(time: Time, person: Person):
-    return libray.RahuSukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaMoonPrana(time, person).Occuring
 
 
 def JupiterSukshmaMoonPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaMoonPrana(time, person).Occuring
 
 
 def SaturnSukshmaMoonPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaMoonPrana(time, person).Occuring
 
 
 def MercurySukshmaMoonPrana(time: Time, person: Person):
-    return libray.MercurySukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaMoonPrana(time, person).Occuring
 
 
 def KetuSukshmaMoonPrana(time: Time, person: Person):
-    return libray.KetuSukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaMoonPrana(time, person).Occuring
 
 
 def VenusSukshmaMoonPrana(time: Time, person: Person):
-    return libray.VenusSukshmaMoonPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaMoonPrana(time, person).Occuring
 
 
 def SunSukshmaMarsPrana(time: Time, person: Person):
-    return libray.SunSukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaMarsPrana(time, person).Occuring
 
 
 def MoonSukshmaMarsPrana(time: Time, person: Person):
-    return libray.MoonSukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaMarsPrana(time, person).Occuring
 
 
 def MarsSukshmaMarsPrana(time: Time, person: Person):
-    return libray.MarsSukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaMarsPrana(time, person).Occuring
 
 
 def RahuSukshmaMarsPrana(time: Time, person: Person):
-    return libray.RahuSukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaMarsPrana(time, person).Occuring
 
 
 def JupiterSukshmaMarsPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaMarsPrana(time, person).Occuring
 
 
 def SaturnSukshmaMarsPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaMarsPrana(time, person).Occuring
 
 
 def MercurySukshmaMarsPrana(time: Time, person: Person):
-    return libray.MercurySukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaMarsPrana(time, person).Occuring
 
 
 def KetuSukshmaMarsPrana(time: Time, person: Person):
-    return libray.KetuSukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaMarsPrana(time, person).Occuring
 
 
 def VenusSukshmaMarsPrana(time: Time, person: Person):
-    return libray.VenusSukshmaMarsPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaMarsPrana(time, person).Occuring
 
 
 def SunSukshmaRahuPrana(time: Time, person: Person):
-    return libray.SunSukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaRahuPrana(time, person).Occuring
 
 
 def MoonSukshmaRahuPrana(time: Time, person: Person):
-    return libray.MoonSukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaRahuPrana(time, person).Occuring
 
 
 def MarsSukshmaRahuPrana(time: Time, person: Person):
-    return libray.MarsSukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaRahuPrana(time, person).Occuring
 
 
 def RahuSukshmaRahuPrana(time: Time, person: Person):
-    return libray.RahuSukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaRahuPrana(time, person).Occuring
 
 
 def JupiterSukshmaRahuPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaRahuPrana(time, person).Occuring
 
 
 def SaturnSukshmaRahuPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaRahuPrana(time, person).Occuring
 
 
 def MercurySukshmaRahuPrana(time: Time, person: Person):
-    return libray.MercurySukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaRahuPrana(time, person).Occuring
 
 
 def KetuSukshmaRahuPrana(time: Time, person: Person):
-    return libray.KetuSukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaRahuPrana(time, person).Occuring
 
 
 def VenusSukshmaRahuPrana(time: Time, person: Person):
-    return libray.VenusSukshmaRahuPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaRahuPrana(time, person).Occuring
 
 
 def SunSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.SunSukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaJupiterPrana(time, person).Occuring
 
 
 def MoonSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.MoonSukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaJupiterPrana(time, person).Occuring
 
 
 def MarsSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.MarsSukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaJupiterPrana(time, person).Occuring
 
 
 def RahuSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.RahuSukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaJupiterPrana(time, person).Occuring
 
 
 def JupiterSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaJupiterPrana(time, person).Occuring
 
 
 def SaturnSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaJupiterPrana(time, person).Occuring
 
 
 def MercurySukshmaJupiterPrana(time: Time, person: Person):
-    return libray.MercurySukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaJupiterPrana(time, person).Occuring
 
 
 def KetuSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.KetuSukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaJupiterPrana(time, person).Occuring
 
 
 def VenusSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.VenusSukshmaJupiterPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaJupiterPrana(time, person).Occuring
 
 
 def SunSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.SunSukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaSaturnPrana(time, person).Occuring
 
 
 def MoonSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.MoonSukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaSaturnPrana(time, person).Occuring
 
 
 def MarsSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.MarsSukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaSaturnPrana(time, person).Occuring
 
 
 def RahuSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.RahuSukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaSaturnPrana(time, person).Occuring
 
 
 def JupiterSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaSaturnPrana(time, person).Occuring
 
 
 def SaturnSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaSaturnPrana(time, person).Occuring
 
 
 def MercurySukshmaSaturnPrana(time: Time, person: Person):
-    return libray.MercurySukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaSaturnPrana(time, person).Occuring
 
 
 def KetuSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.KetuSukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaSaturnPrana(time, person).Occuring
 
 
 def VenusSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.VenusSukshmaSaturnPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaSaturnPrana(time, person).Occuring
 
 
 def SunSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.SunSukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaMercuryPrana(time, person).Occuring
 
 
 def MoonSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.MoonSukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaMercuryPrana(time, person).Occuring
 
 
 def MarsSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.MarsSukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaMercuryPrana(time, person).Occuring
 
 
 def RahuSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.RahuSukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaMercuryPrana(time, person).Occuring
 
 
 def JupiterSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaMercuryPrana(time, person).Occuring
 
 
 def SaturnSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaMercuryPrana(time, person).Occuring
 
 
 def MercurySukshmaMercuryPrana(time: Time, person: Person):
-    return libray.MercurySukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaMercuryPrana(time, person).Occuring
 
 
 def KetuSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.KetuSukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaMercuryPrana(time, person).Occuring
 
 
 def VenusSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.VenusSukshmaMercuryPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaMercuryPrana(time, person).Occuring
 
 
 def SunSukshmaKetuPrana(time: Time, person: Person):
-    return libray.SunSukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaKetuPrana(time, person).Occuring
 
 
 def MoonSukshmaKetuPrana(time: Time, person: Person):
-    return libray.MoonSukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaKetuPrana(time, person).Occuring
 
 
 def MarsSukshmaKetuPrana(time: Time, person: Person):
-    return libray.MarsSukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaKetuPrana(time, person).Occuring
 
 
 def RahuSukshmaKetuPrana(time: Time, person: Person):
-    return libray.RahuSukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaKetuPrana(time, person).Occuring
 
 
 def JupiterSukshmaKetuPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaKetuPrana(time, person).Occuring
 
 
 def SaturnSukshmaKetuPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaKetuPrana(time, person).Occuring
 
 
 def MercurySukshmaKetuPrana(time: Time, person: Person):
-    return libray.MercurySukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaKetuPrana(time, person).Occuring
 
 
 def KetuSukshmaKetuPrana(time: Time, person: Person):
-    return libray.KetuSukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaKetuPrana(time, person).Occuring
 
 
 def VenusSukshmaKetuPrana(time: Time, person: Person):
-    return libray.VenusSukshmaKetuPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaKetuPrana(time, person).Occuring
 
 
 def SunSukshmaVenusPrana(time: Time, person: Person):
-    return libray.SunSukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.SunSukshmaVenusPrana(time, person).Occuring
 
 
 def MoonSukshmaVenusPrana(time: Time, person: Person):
-    return libray.MoonSukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.MoonSukshmaVenusPrana(time, person).Occuring
 
 
 def MarsSukshmaVenusPrana(time: Time, person: Person):
-    return libray.MarsSukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.MarsSukshmaVenusPrana(time, person).Occuring
 
 
 def RahuSukshmaVenusPrana(time: Time, person: Person):
-    return libray.RahuSukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.RahuSukshmaVenusPrana(time, person).Occuring
 
 
 def JupiterSukshmaVenusPrana(time: Time, person: Person):
-    return libray.JupiterSukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.JupiterSukshmaVenusPrana(time, person).Occuring
 
 
 def SaturnSukshmaVenusPrana(time: Time, person: Person):
-    return libray.SaturnSukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.SaturnSukshmaVenusPrana(time, person).Occuring
 
 
 def MercurySukshmaVenusPrana(time: Time, person: Person):
-    return libray.MercurySukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.MercurySukshmaVenusPrana(time, person).Occuring
 
 
 def KetuSukshmaVenusPrana(time: Time, person: Person):
-    return libray.KetuSukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.KetuSukshmaVenusPrana(time, person).Occuring
 
 
 def VenusSukshmaVenusPrana(time: Time, person: Person):
-    return libray.VenusSukshmaVenusPrana(time, person)
+    return libray.EventCalculatorMethods.VenusSukshmaVenusPrana(time, person).Occuring
 
 
 def Lord6And8Dasa(time: Time, person: Person):
-    return libray.Lord6And8Dasa(time, person)
+    return libray.EventCalculatorMethods.Lord6And8Dasa(time, person).Occuring
 
 
 def Lord5And9Dasa(time: Time, person: Person):
-    return libray.Lord5And9Dasa(time, person)
+    return libray.EventCalculatorMethods.Lord5And9Dasa(time, person).Occuring
 
 
 def Lord5And9DasaBhukti(time: Time, person: Person):
-    return libray.Lord5And9DasaBhukti(time, person)
+    return libray.EventCalculatorMethods.Lord5And9DasaBhukti(time, person).Occuring
 
 
 def BhuktiDasaLordInBadHouses(time: Time, person: Person):
-    return libray.BhuktiDasaLordInBadHouses(time, person)
+    return libray.EventCalculatorMethods.BhuktiDasaLordInBadHouses(time, person).Occuring
 
 
 def Lord2Dasa(time: Time, person: Person):
-    return libray.Lord2Dasa(time, person)
+    return libray.EventCalculatorMethods.Lord2Dasa(time, person).Occuring
 
 
 def Lord3Dasa(time: Time, person: Person):
-    return libray.Lord3Dasa(time, person)
+    return libray.EventCalculatorMethods.Lord3Dasa(time, person).Occuring
 
 
 def LagnaLordDasa(time: Time, person: Person):
-    return libray.LagnaLordDasa(time, person)
+    return libray.EventCalculatorMethods.LagnaLordDasa(time, person).Occuring
 
 
 def Saturn4thDasa(time: Time, person: Person):
-    return libray.Saturn4thDasa(time, person)
+    return libray.EventCalculatorMethods.Saturn4thDasa(time, person).Occuring
 
 
 def Jupiter6thDasa(time: Time, person: Person):
-    return libray.Jupiter6thDasa(time, person)
+    return libray.EventCalculatorMethods.Jupiter6thDasa(time, person).Occuring
 
 
 def ElevatedSunDasa(time: Time, person: Person):
-    return libray.ElevatedSunDasa(time, person)
+    return libray.EventCalculatorMethods.ElevatedSunDasa(time, person).Occuring
 
 
 def SunWithLord9Or10Dasa(time: Time, person: Person):
-    return libray.SunWithLord9Or10Dasa(time, person)
+    return libray.EventCalculatorMethods.SunWithLord9Or10Dasa(time, person).Occuring
 
 
 def SunWithLord5Dasa(time: Time, person: Person):
-    return libray.SunWithLord5Dasa(time, person)
+    return libray.EventCalculatorMethods.SunWithLord5Dasa(time, person).Occuring
 
 
 def SunWithLord2Dasa(time: Time, person: Person):
-    return libray.SunWithLord2Dasa(time, person)
+    return libray.EventCalculatorMethods.SunWithLord2Dasa(time, person).Occuring
 
 
 def SunBadPositionDasa(time: Time, person: Person):
-    return libray.SunBadPositionDasa(time, person)
+    return libray.EventCalculatorMethods.SunBadPositionDasa(time, person).Occuring
 
 
 def ExaltatedSunDasa(time: Time, person: Person):
-    return libray.ExaltatedSunDasa(time, person)
+    return libray.EventCalculatorMethods.ExaltatedSunDasa(time, person).Occuring
