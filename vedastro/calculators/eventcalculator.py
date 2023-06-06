@@ -7,499 +7,499 @@ def Empty(time: Time, person: Person):
 
 
 def IsGoodTarabalaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodTarabalaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodTarabalaOccuring(time, person).Occuring
 
 
 def IsBadTarabalaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBadTarabalaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBadTarabalaOccuring(time, person).Occuring
 
 
 def IsTarabalaJanmaStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaJanmaStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaJanmaStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaSampatStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaSampatStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaSampatStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaVipatStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaVipatStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaVipatStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaKshemaStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaKshemaStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaKshemaStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaPratyakStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaPratyakStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaPratyakStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaSadhanaStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaSadhanaStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaSadhanaStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaNaidhanaStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaNaidhanaStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaNaidhanaStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaMitraStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaMitraStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaMitraStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaParamaMitraStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaParamaMitraStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaParamaMitraStrongOccuring(time, person).Occuring
 
 
 def IsTarabalaJanmaMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaJanmaMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaJanmaMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaSampatMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaSampatMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaSampatMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaVipatMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaVipatMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaVipatMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaKshemaMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaKshemaMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaKshemaMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaPratyakMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaPratyakMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaPratyakMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaSadhanaMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaSadhanaMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaSadhanaMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaNaidhanaMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaNaidhanaMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaNaidhanaMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaMitraMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaMitraMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaMitraMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaParamaMitraMiddlingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaParamaMitraMiddlingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaParamaMitraMiddlingOccuring(time, person).Occuring
 
 
 def IsTarabalaJanmaWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaJanmaWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaJanmaWeakOccuring(time, person).Occuring
 
 
 def IsTarabalaSampatWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaSampatWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaSampatWeakOccuring(time, person).Occuring
 
 
 def IsTarabalaVipatWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaVipatWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaVipatWeakOccuring(time, person).Occuring
 
 
 def IsTarabalaKshemaWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaKshemaWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaKshemaWeakOccuring(time, person).Occuring
 
 
 def IsTarabalaPratyakWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaPratyakWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaPratyakWeakOccuring(time, person).Occuring
 
 
 def IsTarabalaSadhanaWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaSadhanaWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaSadhanaWeakOccuring(time, person).Occuring
 
 
 def IsTarabalaNaidhanaWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaNaidhanaWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaNaidhanaWeakOccuring(time, person).Occuring
 
 
 def IsTarabalaMitraWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaMitraWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaMitraWeakOccuring(time, person).Occuring
 
 
 def IsTarabalaParamaMitraWeakOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTarabalaParamaMitraWeakOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTarabalaParamaMitraWeakOccuring(time, person).Occuring
 
 
 def IsGoodChandrabalaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodChandrabalaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodChandrabalaOccuring(time, person).Occuring
 
 
 def IsBadChandrabalaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBadChandrabalaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBadChandrabalaOccuring(time, person).Occuring
 
 
 def IsGoodPanchakaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodPanchakaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodPanchakaOccuring(time, person).Occuring
 
 
 def IsBadPanchakaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBadPanchakaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBadPanchakaOccuring(time, person).Occuring
 
 
 def IsJanmaNakshatraRullingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsJanmaNakshatraRullingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsJanmaNakshatraRullingOccuring(time, person).Occuring
 
 
 def IsUgraYogaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsUgraYogaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsUgraYogaOccuring(time, person).Occuring
 
 
 def IsGoodTakingInjectionsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodTakingInjectionsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodTakingInjectionsOccuring(time, person).Occuring
 
 
 def IsCustomEventOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsCustomEventOccuring(time, person)
+    return libray.EventCalculatorMethods.IsCustomEventOccuring(time, person).Occuring
 
 
 def IsTaitulaKaranaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsTaitulaKaranaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsTaitulaKaranaOccuring(time, person).Occuring
 
 
 def IsSakunaKaranaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSakunaKaranaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSakunaKaranaOccuring(time, person).Occuring
 
 
 def IsBavaKaranaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBavaKaranaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBavaKaranaOccuring(time, person).Occuring
 
 
 def IsBhadraKaranaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBhadraKaranaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBhadraKaranaOccuring(time, person).Occuring
 
 
 def IsEkadashiOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsEkadashiOccuring(time, person)
+    return libray.EventCalculatorMethods.IsEkadashiOccuring(time, person).Occuring
 
 
 def IsBhriguShatkaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBhriguShatkaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBhriguShatkaOccuring(time, person).Occuring
 
 
 def IsKujasthamaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsKujasthamaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsKujasthamaOccuring(time, person).Occuring
 
 
 def IsKarthariDoshaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsKarthariDoshaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsKarthariDoshaOccuring(time, person).Occuring
 
 
 def IsShashtashtaRiphagathaChandraDoshaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsShashtashtaRiphagathaChandraDoshaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsShashtashtaRiphagathaChandraDoshaOccuring(time, person).Occuring
 
 
 def IsSagrahaChandraDoshaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSagrahaChandraDoshaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSagrahaChandraDoshaOccuring(time, person).Occuring
 
 
 def IsUdayasthaSuddhiOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsUdayasthaSuddhiOccuring(time, person)
+    return libray.EventCalculatorMethods.IsUdayasthaSuddhiOccuring(time, person).Occuring
 
 
 def IsLagnaThyajyaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsLagnaThyajyaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsLagnaThyajyaOccuring(time, person).Occuring
 
 
 def IsNotAuspiciousDayOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsNotAuspiciousDayOccuring(time, person)
+    return libray.EventCalculatorMethods.IsNotAuspiciousDayOccuring(time, person).Occuring
 
 
 def IsGoodPlanetsInLagnaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodPlanetsInLagnaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodPlanetsInLagnaOccuring(time, person).Occuring
 
 
 def IsGoodPlanetsIn11thOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodPlanetsIn11thOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodPlanetsIn11thOccuring(time, person).Occuring
 
 
 def IsGoodPlanetsInKendraOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodPlanetsInKendraOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodPlanetsInKendraOccuring(time, person).Occuring
 
 
 def IsGoodRullingConstellationOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodRullingConstellationOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodRullingConstellationOccuring(time, person).Occuring
 
 
 def IsBadRullingConstellationOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBadRullingConstellationOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBadRullingConstellationOccuring(time, person).Occuring
 
 
 def IsSiddhaYogaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSiddhaYogaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSiddhaYogaOccuring(time, person).Occuring
 
 
 def IsAmritaSiddhaYogaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsAmritaSiddhaYogaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsAmritaSiddhaYogaOccuring(time, person).Occuring
 
 
 def IsPanchangaSuddhiOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsPanchangaSuddhiOccuring(time, person)
+    return libray.EventCalculatorMethods.IsPanchangaSuddhiOccuring(time, person).Occuring
 
 
 def IsBadNithyaYogaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBadNithyaYogaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBadNithyaYogaOccuring(time, person).Occuring
 
 
 def IsSuryaSankramanaOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSuryaSankramanaOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSuryaSankramanaOccuring(time, person).Occuring
 
 
 def IsPapashadvargasOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsPapashadvargasOccuring(time, person)
+    return libray.EventCalculatorMethods.IsPapashadvargasOccuring(time, person).Occuring
 
 
 def IsGoodHairCuttingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodHairCuttingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodHairCuttingOccuring(time, person).Occuring
 
 
 def IsGoodNailCuttingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodNailCuttingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodNailCuttingOccuring(time, person).Occuring
 
 
 def IsFixedConstellationRulingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsFixedConstellationRulingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsFixedConstellationRulingOccuring(time, person).Occuring
 
 
 def IsSoftConstellationRulingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSoftConstellationRulingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSoftConstellationRulingOccuring(time, person).Occuring
 
 
 def IsLightConstellationRulingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsLightConstellationRulingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsLightConstellationRulingOccuring(time, person).Occuring
 
 
 def IsSharpConstellationRulingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSharpConstellationRulingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSharpConstellationRulingOccuring(time, person).Occuring
 
 
 def IsMovableConstellationRulingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsMovableConstellationRulingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsMovableConstellationRulingOccuring(time, person).Occuring
 
 
 def IsDreadfulConstellationRulingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsDreadfulConstellationRulingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsDreadfulConstellationRulingOccuring(time, person).Occuring
 
 
 def IsMixedConstellationRulingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsMixedConstellationRulingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsMixedConstellationRulingOccuring(time, person).Occuring
 
 
 def IsGoodAnySeedsSowingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodAnySeedsSowingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodAnySeedsSowingOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingTreesOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingTreesOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingTreesOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingFlowerSeedsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingFlowerSeedsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingFlowerSeedsOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingSugarcaneOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingSugarcaneOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingSugarcaneOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingFruitTreesOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingFruitTreesOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingFruitTreesOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingFlowerTreesOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingFlowerTreesOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingFlowerTreesOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingFlowersOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingFlowersOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingFlowersOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingFlowerCuttingsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingFlowerCuttingsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingFlowerCuttingsOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingFloweringPlantsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingFloweringPlantsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingFloweringPlantsOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingGarlicOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingGarlicOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingGarlicOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingPeachAndOthersOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingPeachAndOthersOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingPeachAndOthersOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingTomatoesAndOthersOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingTomatoesAndOthersOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingTomatoesAndOthersOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingGrainsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingGrainsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingGrainsOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingOnionAndOthersOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingOnionAndOthersOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingOnionAndOthersOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingPepperAndOthersOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingPepperAndOthersOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingPepperAndOthersOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingPotatoAndOthersOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingPotatoAndOthersOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingPotatoAndOthersOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingGrainsAndOthersOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingGrainsAndOthersOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingGrainsAndOthersOccuring(time, person).Occuring
 
 
 def IsGoodForPlantingPumpkinsAndOthersOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForPlantingPumpkinsAndOthersOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForPlantingPumpkinsAndOthersOccuring(time, person).Occuring
 
 
 def IsGoodYogaForAllAgricultureOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodYogaForAllAgricultureOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodYogaForAllAgricultureOccuring(time, person).Occuring
 
 
 def IsBadForStartingAllAgricultureOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBadForStartingAllAgricultureOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBadForStartingAllAgricultureOccuring(time, person).Occuring
 
 
 def IsLagnaLordIsWeekdayLordOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsLagnaLordIsWeekdayLordOccuring(time, person)
+    return libray.EventCalculatorMethods.IsLagnaLordIsWeekdayLordOccuring(time, person).Occuring
 
 
 def IsGoodLunarDayAgricultureOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodLunarDayAgricultureOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodLunarDayAgricultureOccuring(time, person).Occuring
 
 
 def IsBadLagnaForAllAgricultureOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBadLagnaForAllAgricultureOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBadLagnaForAllAgricultureOccuring(time, person).Occuring
 
 
 def IsGoodSellingForProfitOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodSellingForProfitOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodSellingForProfitOccuring(time, person).Occuring
 
 
 def IsGoodWeekdayForSellingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodWeekdayForSellingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodWeekdayForSellingOccuring(time, person).Occuring
 
 
 def IsGoodMoonSignForSellingOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodMoonSignForSellingOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodMoonSignForSellingOccuring(time, person).Occuring
 
 
 def IsBadForBuyingToolsUtensilsJewelleryOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsBadForBuyingToolsUtensilsJewelleryOccuring(time, person)
+    return libray.EventCalculatorMethods.IsBadForBuyingToolsUtensilsJewelleryOccuring(time, person).Occuring
 
 
 def IsGoodForBuyingBrassVesselsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForBuyingBrassVesselsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForBuyingBrassVesselsOccuring(time, person).Occuring
 
 
 def IsGoodForBuyingCopperVesselsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForBuyingCopperVesselsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForBuyingCopperVesselsOccuring(time, person).Occuring
 
 
 def IsGoodForBuyingSteelIronVesselsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForBuyingSteelIronVesselsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForBuyingSteelIronVesselsOccuring(time, person).Occuring
 
 
 def IsGoodForBuyingSilverVesselsOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForBuyingSilverVesselsOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForBuyingSilverVesselsOccuring(time, person).Occuring
 
 
 def IsGoodForBuyingJewelleryOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsGoodForBuyingJewelleryOccuring(time, person)
+    return libray.EventCalculatorMethods.IsGoodForBuyingJewelleryOccuring(time, person).Occuring
 
 
 def IsSunIsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSunIsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSunIsStrongOccuring(time, person).Occuring
 
 
 def IsMoonIsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsMoonIsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsMoonIsStrongOccuring(time, person).Occuring
 
 
 def IsMarsIsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsMarsIsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsMarsIsStrongOccuring(time, person).Occuring
 
 
 def IsMercuryIsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsMercuryIsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsMercuryIsStrongOccuring(time, person).Occuring
 
 
 def IsJupiterIsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsJupiterIsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsJupiterIsStrongOccuring(time, person).Occuring
 
 
 def IsVenusIsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsVenusIsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsVenusIsStrongOccuring(time, person).Occuring
 
 
 def IsSaturnIsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSaturnIsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSaturnIsStrongOccuring(time, person).Occuring
 
 
 def IsHouse1IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse1IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse1IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse2IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse2IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse2IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse3IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse3IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse3IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse4IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse4IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse4IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse5IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse5IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse5IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse6IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse6IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse6IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse7IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse7IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse7IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse8IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse8IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse8IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse9IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse9IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse9IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse10IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse10IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse10IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse11IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse11IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse11IsStrongOccuring(time, person).Occuring
 
 
 def IsHouse12IsStrongOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsHouse12IsStrongOccuring(time, person)
+    return libray.EventCalculatorMethods.IsHouse12IsStrongOccuring(time, person).Occuring
 
 
 def IsSunriseOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSunriseOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSunriseOccuring(time, person).Occuring
 
 
 def IsSunsetOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsSunsetOccuring(time, person)
+    return libray.EventCalculatorMethods.IsSunsetOccuring(time, person).Occuring
 
 
 def IsMiddayOccuring(time: Time, person: Person):
-    return libray.EventCalculatorMethods.IsMiddayOccuring(time, person)
+    return libray.EventCalculatorMethods.IsMiddayOccuring(time, person).Occuring
 
 
 def BadLunarMonthForBuilding(time: Time, person: Person):
