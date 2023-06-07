@@ -1,7 +1,6 @@
-from enum import Enum
+import VedAstro.Library as library
 
-
-class Gender(Enum):
-    Empty = 0,
-    Male = 1,
-    Female = 2
+class Gender:
+    Empty = library.Gender.Empty
+    Male = library.Gender.Male
+    Female = library.Gender.Female
