@@ -1,5 +1,6 @@
 import VedAstro.Library as libray
 from vedastro.objects import Person, Time
+from vedastro.objects.calculatorresult import CalculatorResult
 
 
 def Empty(time: Time, person: Person):
@@ -2059,651 +2060,651 @@ def VenusBhuktiVenusAntaram(time: Time, person: Person):
 
 
 def SunAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramSunSukshma(time, person))
 
 
 def MoonAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramSunSukshma(time, person))
 
 
 def MarsAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramSunSukshma(time, person))
 
 
 def RahuAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramSunSukshma(time, person))
 
 
 def JupiterAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramSunSukshma(time, person))
 
 
 def SaturnAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramSunSukshma(time, person))
 
 
 def MercuryAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramSunSukshma(time, person))
 
 
 def KetuAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramSunSukshma(time, person))
 
 
 def VenusAntaramSunSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramSunSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramSunSukshma(time, person))
 
 
 def SunAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramMoonSukshma(time, person))
 
 
 def MoonAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramMoonSukshma(time, person))
 
 
 def MarsAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramMoonSukshma(time, person))
 
 
 def RahuAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramMoonSukshma(time, person))
 
 
 def JupiterAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramMoonSukshma(time, person))
 
 
 def SaturnAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramMoonSukshma(time, person))
 
 
 def MercuryAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramMoonSukshma(time, person))
 
 
 def KetuAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramMoonSukshma(time, person))
 
 
 def VenusAntaramMoonSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramMoonSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramMoonSukshma(time, person))
 
 
 def SunAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramMarsSukshma(time, person))
 
 
 def MoonAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramMarsSukshma(time, person))
 
 
 def MarsAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramMarsSukshma(time, person))
 
 
 def RahuAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramMarsSukshma(time, person))
 
 
 def JupiterAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramMarsSukshma(time, person))
 
 
 def SaturnAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramMarsSukshma(time, person))
 
 
 def MercuryAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramMarsSukshma(time, person))
 
 
 def KetuAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramMarsSukshma(time, person))
 
 
 def VenusAntaramMarsSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramMarsSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramMarsSukshma(time, person))
 
 
 def SunAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramRahuSukshma(time, person))
 
 
 def MoonAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramRahuSukshma(time, person))
 
 
 def MarsAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramRahuSukshma(time, person))
 
 
 def RahuAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramRahuSukshma(time, person))
 
 
 def JupiterAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramRahuSukshma(time, person))
 
 
 def SaturnAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramRahuSukshma(time, person))
 
 
 def MercuryAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramRahuSukshma(time, person))
 
 
 def KetuAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramRahuSukshma(time, person))
 
 
 def VenusAntaramRahuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramRahuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramRahuSukshma(time, person))
 
 
 def SunAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramJupiterSukshma(time, person))
 
 
 def MoonAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramJupiterSukshma(time, person))
 
 
 def MarsAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramJupiterSukshma(time, person))
 
 
 def RahuAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramJupiterSukshma(time, person))
 
 
 def JupiterAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramJupiterSukshma(time, person))
 
 
 def SaturnAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramJupiterSukshma(time, person))
 
 
 def MercuryAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramJupiterSukshma(time, person))
 
 
 def KetuAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramJupiterSukshma(time, person))
 
 
 def VenusAntaramJupiterSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramJupiterSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramJupiterSukshma(time, person))
 
 
 def SunAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramSaturnSukshma(time, person))
 
 
 def MoonAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramSaturnSukshma(time, person))
 
 
 def MarsAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramSaturnSukshma(time, person))
 
 
 def RahuAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramSaturnSukshma(time, person))
 
 
 def JupiterAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramSaturnSukshma(time, person))
 
 
 def SaturnAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramSaturnSukshma(time, person))
 
 
 def MercuryAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramSaturnSukshma(time, person))
 
 
 def KetuAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramSaturnSukshma(time, person))
 
 
 def VenusAntaramSaturnSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramSaturnSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramSaturnSukshma(time, person))
 
 
 def SunAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramMercurySukshma(time, person))
 
 
 def MoonAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramMercurySukshma(time, person))
 
 
 def MarsAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramMercurySukshma(time, person))
 
 
 def RahuAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramMercurySukshma(time, person))
 
 
 def JupiterAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramMercurySukshma(time, person))
 
 
 def SaturnAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramMercurySukshma(time, person))
 
 
 def MercuryAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramMercurySukshma(time, person))
 
 
 def KetuAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramMercurySukshma(time, person))
 
 
 def VenusAntaramMercurySukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramMercurySukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramMercurySukshma(time, person))
 
 
 def SunAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramKetuSukshma(time, person))
 
 
 def MoonAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramKetuSukshma(time, person))
 
 
 def MarsAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramKetuSukshma(time, person))
 
 
 def RahuAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramKetuSukshma(time, person))
 
 
 def JupiterAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramKetuSukshma(time, person))
 
 
 def SaturnAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramKetuSukshma(time, person))
 
 
 def MercuryAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramKetuSukshma(time, person))
 
 
 def KetuAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramKetuSukshma(time, person))
 
 
 def VenusAntaramKetuSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramKetuSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramKetuSukshma(time, person))
 
 
 def SunAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunAntaramVenusSukshma(time, person))
 
 
 def MoonAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonAntaramVenusSukshma(time, person))
 
 
 def MarsAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsAntaramVenusSukshma(time, person))
 
 
 def RahuAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuAntaramVenusSukshma(time, person))
 
 
 def JupiterAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterAntaramVenusSukshma(time, person))
 
 
 def SaturnAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnAntaramVenusSukshma(time, person))
 
 
 def MercuryAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercuryAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercuryAntaramVenusSukshma(time, person))
 
 
 def KetuAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuAntaramVenusSukshma(time, person))
 
 
 def VenusAntaramVenusSukshma(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusAntaramVenusSukshma(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusAntaramVenusSukshma(time, person))
 
 
 def SunSukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaSunPrana(time, person))
 
 
 def MoonSukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaSunPrana(time, person))
 
 
 def MarsSukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaSunPrana(time, person))
 
 
 def RahuSukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaSunPrana(time, person))
 
 
 def JupiterSukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaSunPrana(time, person))
 
 
 def SaturnSukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaSunPrana(time, person))
 
 
 def MercurySukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaSunPrana(time, person))
 
 
 def KetuSukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaSunPrana(time, person))
 
 
 def VenusSukshmaSunPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaSunPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaSunPrana(time, person))
 
 
 def SunSukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaMoonPrana(time, person))
 
 
 def MoonSukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaMoonPrana(time, person))
 
 
 def MarsSukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaMoonPrana(time, person))
 
 
 def RahuSukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaMoonPrana(time, person))
 
 
 def JupiterSukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaMoonPrana(time, person))
 
 
 def SaturnSukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaMoonPrana(time, person))
 
 
 def MercurySukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaMoonPrana(time, person))
 
 
 def KetuSukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaMoonPrana(time, person))
 
 
 def VenusSukshmaMoonPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaMoonPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaMoonPrana(time, person))
 
 
 def SunSukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaMarsPrana(time, person))
 
 
 def MoonSukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaMarsPrana(time, person))
 
 
 def MarsSukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaMarsPrana(time, person))
 
 
 def RahuSukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaMarsPrana(time, person))
 
 
 def JupiterSukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaMarsPrana(time, person))
 
 
 def SaturnSukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaMarsPrana(time, person))
 
 
 def MercurySukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaMarsPrana(time, person))
 
 
 def KetuSukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaMarsPrana(time, person))
 
 
 def VenusSukshmaMarsPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaMarsPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaMarsPrana(time, person))
 
 
 def SunSukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaRahuPrana(time, person))
 
 
 def MoonSukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaRahuPrana(time, person))
 
 
 def MarsSukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaRahuPrana(time, person))
 
 
 def RahuSukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaRahuPrana(time, person))
 
 
 def JupiterSukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaRahuPrana(time, person))
 
 
 def SaturnSukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaRahuPrana(time, person))
 
 
 def MercurySukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaRahuPrana(time, person))
 
 
 def KetuSukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaRahuPrana(time, person))
 
 
 def VenusSukshmaRahuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaRahuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaRahuPrana(time, person))
 
 
 def SunSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaJupiterPrana(time, person))
 
 
 def MoonSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaJupiterPrana(time, person))
 
 
 def MarsSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaJupiterPrana(time, person))
 
 
 def RahuSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaJupiterPrana(time, person))
 
 
 def JupiterSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaJupiterPrana(time, person))
 
 
 def SaturnSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaJupiterPrana(time, person))
 
 
 def MercurySukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaJupiterPrana(time, person))
 
 
 def KetuSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaJupiterPrana(time, person))
 
 
 def VenusSukshmaJupiterPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaJupiterPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaJupiterPrana(time, person))
 
 
 def SunSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaSaturnPrana(time, person))
 
 
 def MoonSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaSaturnPrana(time, person))
 
 
 def MarsSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaSaturnPrana(time, person))
 
 
 def RahuSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaSaturnPrana(time, person))
 
 
 def JupiterSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaSaturnPrana(time, person))
 
 
 def SaturnSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaSaturnPrana(time, person))
 
 
 def MercurySukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaSaturnPrana(time, person))
 
 
 def KetuSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaSaturnPrana(time, person))
 
 
 def VenusSukshmaSaturnPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaSaturnPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaSaturnPrana(time, person))
 
 
 def SunSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaMercuryPrana(time, person))
 
 
 def MoonSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaMercuryPrana(time, person))
 
 
 def MarsSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaMercuryPrana(time, person))
 
 
 def RahuSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaMercuryPrana(time, person))
 
 
 def JupiterSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaMercuryPrana(time, person))
 
 
 def SaturnSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaMercuryPrana(time, person))
 
 
 def MercurySukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaMercuryPrana(time, person))
 
 
 def KetuSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaMercuryPrana(time, person))
 
 
 def VenusSukshmaMercuryPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaMercuryPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaMercuryPrana(time, person))
 
 
 def SunSukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaKetuPrana(time, person))
 
 
 def MoonSukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaKetuPrana(time, person))
 
 
 def MarsSukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaKetuPrana(time, person))
 
 
 def RahuSukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaKetuPrana(time, person))
 
 
 def JupiterSukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaKetuPrana(time, person))
 
 
 def SaturnSukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaKetuPrana(time, person))
 
 
 def MercurySukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaKetuPrana(time, person))
 
 
 def KetuSukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaKetuPrana(time, person))
 
 
 def VenusSukshmaKetuPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaKetuPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaKetuPrana(time, person))
 
 
 def SunSukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SunSukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SunSukshmaVenusPrana(time, person))
 
 
 def MoonSukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MoonSukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MoonSukshmaVenusPrana(time, person))
 
 
 def MarsSukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MarsSukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MarsSukshmaVenusPrana(time, person))
 
 
 def RahuSukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.RahuSukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.RahuSukshmaVenusPrana(time, person))
 
 
 def JupiterSukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.JupiterSukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.JupiterSukshmaVenusPrana(time, person))
 
 
 def SaturnSukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.SaturnSukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.SaturnSukshmaVenusPrana(time, person))
 
 
 def MercurySukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.MercurySukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.MercurySukshmaVenusPrana(time, person))
 
 
 def KetuSukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.KetuSukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.KetuSukshmaVenusPrana(time, person))
 
 
 def VenusSukshmaVenusPrana(time: Time, person: Person):
-    return libray.EventCalculatorMethods.VenusSukshmaVenusPrana(time, person)
+    return CalculatorResult(libray.EventCalculatorMethods.VenusSukshmaVenusPrana(time, person))
 
 
 def Lord6And8Dasa(time: Time, person: Person):
