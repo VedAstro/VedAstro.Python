@@ -1,10 +1,8 @@
-import VedAstro.Library as libray
+class CalculatorResult:
 
-
-class CalculatorResult(libray.CalculatorResult):
-
-    def __init__(self):
+    def __init__(self, parent_class):
         super().__init__()
-        self.occuring = super().Occuring
-        self.nature_override = super().NatureOverride
-        self.description_override = super().DescriptionOverride
+        self.occuring = parent_class.Occuring
+        self.nature_override = parent_class.NatureOverride
+        self.description_override = parent_class.DescriptionOverride
+        self.related_body = parent_class.RelatedBody
