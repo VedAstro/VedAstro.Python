@@ -1,0 +1,66 @@
+package:
+   name:vedastro
+   version:"7.0"
+
+source:
+  git_rev:0.1
+  git_url:https://github.com/VedAstro/VedAstro.Python.git
+
+requirements:
+  build:
+   - python=3.10.11
+   - pip=23.0.1
+   - _libgcc_mutex=0.1=conda_forge
+   - _openmp_mutex=4.5=2_kmp_llvm
+   - bzip2=1.0.8=h7b6447c_0
+   - c-ares=1.19.0=hd590300_0
+   - ca-certificates=2023.5.7=hbcca054_0
+   - cffi=1.15.1=py310h255011f_3
+   - clr_loader=0.2.5=pyhd8ed1ab_0
+   - dotnet=7.0.102=ha770c72_0
+   - dotnet-aspnetcore=7.0.2=h41ceda8_0
+   - dotnet-runtime=7.0.2=h41ceda8_0
+   - dotnet-sdk=7.0.102=h41ceda8_0
+   - icu=72.1=hcb278e6_0
+   - keyutils=1.6.1=h166bdaf_0
+   - krb5=1.19.3=h3790be6_0
+   - ld_impl_linux-64=2.38=h1181459_1
+   - libcurl=7.87.0=h91b91d3_0
+   - libedit=3.1.20191231=he28a2e2_2
+   - libev=4.33=h516909a_1
+   - libffi=3.4.4=h6a678d5_0
+   - libgcc-ng=12.2.0=h65d4601_19
+   - libnghttp2=1.46.0=hce63b2e_0
+   - libssh2=1.10.0=haa6b8db_3
+   - libstdcxx-ng=12.2.0=h46fd767_19
+   - liburcu=0.13.2=h166bdaf_0
+   - libuuid=1.41.5=h5eee18b_0
+   - libzlib=1.2.13=h166bdaf_4
+   - llvm-openmp=16.0.4=h4dfa4b3_0
+   - lttng-ust=2.13.4=hfdfcbd3_0
+   - mono=6.12.0.90=h780b84a_0
+   - ncurses=6.4=h6a678d5_0
+   - openssl=1.1.1u=hd590300_0
+   - pycparser=2.21=pyhd8ed1ab_0
+   - python_abi=3.10=2_cp310
+   - pythonnet=3.0.1=pyhd8ed1ab_0
+   - readline=8.2=h5eee18b_0
+   - setuptools=66.0.0=py310h06a4308_0
+   - sqlite=3.41.2=h5eee18b_0
+   - tk=8.6.12=h1ccaba5_0
+   - tzdata=2023c=h04d1e81_0
+   - wheel=0.38.4=py310h06a4308_0
+   - xz=5.4.2=h5eee18b_0
+   - zlib=1.2.13=h166bdaf_4
+   - zstd=1.5.2=h3eb15da_6
+
+run:
+  - python
+
+test:
+  imports:vedastro
+    -
+
+about:
+  home:https://github.com/VedAstro/VedAstro.Python
+  license:MIT
