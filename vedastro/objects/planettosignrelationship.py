@@ -1,0 +1,2 @@
+class PlanetToSignRelationship:
+    pass
