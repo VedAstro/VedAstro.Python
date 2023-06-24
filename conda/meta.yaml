@@ -10,6 +10,8 @@ requirements:
   build:
     - python
     - setuptools
+    - pip
+    - git
   run:
     - _libgcc_mutex=0.1
     - _openmp_mutex=4.5
