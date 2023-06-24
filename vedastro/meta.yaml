@@ -3,8 +3,8 @@ package:
   version: "0.22"
 
 source:
-  git_rev:0.2
-  git_url:https://github.com/VedAstro/VedAstro.Python.git
+  git_rev: 0.2
+  git_url: https://github.com/VedAstro/VedAstro.Python.git
 
 requirements:
   build:
@@ -22,5 +22,5 @@ requirements:
 
 
 about:
-  home:https://github.com/VedAstro/VedAstro.Python
-  license:MIT
+  home: https://github.com/VedAstro/VedAstro.Python
+  license: MIT
