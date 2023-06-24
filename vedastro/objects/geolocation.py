@@ -1,7 +1,7 @@
 import VedAstro.Library as library
 
 
-class GeoLocation(library.GeoLocation):
+class GeoLocation:
     """
     Create a GeoLocation object with the provided location, longitude, and latitude.
 
@@ -36,4 +36,4 @@ class GeoLocation(library.GeoLocation):
         self.location = location
         self.longitude = longitude
         self.latitude = latitude
-        super().__init__(location, longitude, latitude)
+        self.geolocation = library.GeoLocation(location, longitude, latitude)

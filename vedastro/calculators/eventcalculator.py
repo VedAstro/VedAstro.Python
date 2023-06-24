@@ -1,6 +1,6 @@
 import VedAstro.Library as libray
-from Backend.vedastro.objects import Person, Time
-from Backend.vedastro.objects.calculatorresult import CalculatorResult
+from vedastro.objects import Person, Time
+from vedastro.objects.calculatorresult import CalculatorResult
 
 
 def Empty(time: Time, person: Person):
