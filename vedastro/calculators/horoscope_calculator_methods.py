@@ -1,7 +1,7 @@
 import VedAstro.Library as libray
 
-from Backend.vedastro.objects import Time, Person
-from Backend.vedastro.objects.calculatorresult import CalculatorResult
+from vedastro.objects import Time, Person
+from vedastro.objects.calculatorresult import CalculatorResult
 
 
 def House1LordInHouse1Occuring(time: Time, person: Person) -> CalculatorResult:
