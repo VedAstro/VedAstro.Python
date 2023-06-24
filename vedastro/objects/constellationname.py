@@ -1,0 +1,2 @@
+class ConstellationName:
+    pass

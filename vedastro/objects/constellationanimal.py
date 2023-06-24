@@ -1,0 +1,2 @@
+class ConstellationAnimal:
+    pass
