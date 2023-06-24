@@ -9,8 +9,8 @@ source:
 requirements:
   build:
 
-   - dotnet=7.0.102
-   - pythonnet=3.0.1
+   - dotnet
+   - pythonnet
 
 run:
   - python
