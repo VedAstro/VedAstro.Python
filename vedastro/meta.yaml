@@ -1,6 +1,6 @@
 package:
-   name:vedastro
-   version:"0.22"
+  name: vedastro
+  version: "0.22"
 
 source:
   git_rev:0.2
@@ -14,7 +14,7 @@ requirements:
     - wheel
 
   host:
-   - python
+    - python
 
   run:
     - pythonnet=3.0.1
