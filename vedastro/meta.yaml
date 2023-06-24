@@ -12,12 +12,13 @@ requirements:
     - setuptools
     - pip
     - wheel
-    - dotnet
-    - pythonnet
 
+  host:
+   - python
 
-run:
-  - python
+  run:
+    - pythonnet=3.0.1
+    - dotnet=7.0.102
 
 
 about:
