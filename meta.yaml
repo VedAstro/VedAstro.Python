@@ -1,0 +1,64 @@
+package:
+  name: vedastro
+  version: "0.2"
+
+source:
+  git_rev: 0.2
+  git_url: https://github.com/VedAstro/VedAstro.Python.git
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - _libgcc_mutex=0.1
+    - _openmp_mutex=4.5
+    - bzip2=1.0.8
+    - c-ares=1.19.0
+    - ca-certificates=2023.5.7
+    - cffi=1.15.1
+    - clr_loader=0.2.5
+    - dotnet=7.0.102
+    - dotnet-aspnetcore=7.0.2
+    - dotnet-runtime=7.0.2
+    - dotnet-sdk=7.0.102
+    - icu=72.1
+    - keyutils=1.6.1
+    - krb5=1.19.3
+    - ld_impl_linux-64=2.38
+    - libcurl=7.87.0
+    - libedit=3.1.20191231
+    - libev=4.33
+    - libffi=3.4.4
+    - libgcc-ng=12.2.0
+    - libnghttp2=1.46.0
+    - libssh2=1.10.0
+    - libstdcxx-ng=12.2.0
+    - liburcu=0.13.2
+    - libuuid=1.41.5
+    - libzlib=1.2.13
+    - llvm-openmp=16.0.4
+    - lttng-ust=2.13.4
+    - mono=6.12.0.90
+    - ncurses=6.4
+    - openssl=1.1.1u
+    - pip=23.0.1
+    - pycparser=2.21
+    - python=3.10.11
+    - python_abi=3.10
+    - pythonnet=3.0.1
+    - readline=8.2
+    - setuptools=66.0.0
+    - sqlite=3.41.2
+    - tk=8.6.12
+    - tzdata=2023c
+    - wheel=0.38.4
+    - xz=5.4.2
+    - zlib=1.2.13
+    - zstd=1.5.2
+
+about:
+  home: https://github.com/VedAstro/VedAstro.Python
+  license: MIT
+  license_file: LICENSE
+  summary: A Python wrapper for VedAstro. Vedic Astrology Calculation libray
