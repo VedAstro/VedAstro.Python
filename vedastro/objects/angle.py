@@ -1,0 +1,2 @@
+class Angle:
+    pass
