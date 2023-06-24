@@ -1,8 +1,8 @@
 import VedAstro.Library as libray
 
-from Backend.vedastro.objects import Person
-from Backend.vedastro.objects.matchprediction import MatchPrediction
-from Backend.vedastro.objects.matchreport import MatchReport
+from vedastro.objects import Person
+from vedastro.objects.matchprediction import MatchPrediction
+from vedastro.objects.matchreport import MatchReport
 
 
 def GetNewMatchReport(male: Person, female: Person, user_id: str) -> MatchReport:

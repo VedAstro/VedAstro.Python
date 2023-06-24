@@ -1,10 +1,9 @@
 import VedAstro.Library as libray
 
 from vedastro.objects.datetime_offset import DateTimeOffset
-from vedastro.objects.geolocation import GeoLocation
 
 
-class Time(libray.Time):
+class Time:
     """
     Create a Time object with the provided date, time, time_offset, and geolocation.
 
@@ -25,7 +24,7 @@ class Time(libray.Time):
             - If geolocation is not a GeoLocation object.
     """
 
-    def __init__(self, date: str, time: str, time_offset: str, geolocation: GeoLocation):
+    def __init__(self, date: str, time: str, time_offset: str, geolocation: libray.GeoLocation):
 
         if not isinstance(date, str):
             raise TypeError("Date must be a string")
@@ -33,7 +32,7 @@ class Time(libray.Time):
             raise TypeError("Time must be a string")
         if not isinstance(time_offset, str):
             raise TypeError("Time offset must be a string")
-        if not isinstance(geolocation, GeoLocation):
+        if not isinstance(geolocation, libray.GeoLocation):
             raise TypeError("Geolocation must be a GeoLocation object")
 
         self.date = date
@@ -43,7 +42,11 @@ class Time(libray.Time):
         combined_time = time + " " + date + " " + time_offset
         self.time_object = libray.Time(combined_time, geolocation)
 
-    def add_years(self, years: int):
+    def get_time(self):
+        return self.time_object
+
+    def AddYears(self, years: int):
+
         """
     Adds the specified number of years to the current DateTime object.
 
@@ -59,10 +62,23 @@ class Time(libray.Time):
         if not isinstance(years, int):
             raise TypeError("Years must be an integer")
         # Can't call AddYears() because we need Time object
-        new_year = int(self.date.split("/")[-1])+years
-        new_date = self.date.replace(self.date.split("/")[-1], str(new_year))
-        new_time = Time(new_date, self.time, self.time_offset, self.geolocation)
-        return new_time
+        # new_year = int(self.date.split("/")[-1])+years
+        # new_date = self.date.replace(self.date.split("/")[-1], str(new_year))
+        # new_time = Time(new_date, self.time, self.time_offset, self.geolocation)
+        return self.time_object.AddYears(years)
+
+    def AddHours(self, granularity_hours: float):
+        """
+    Adds the specified number of hours to the current DateTime object.
+
+    Args:
+        granularity_hours (float): The number of hours to add.    """
+        if not isinstance(granularity_hours, float):
+            try:
+                granularity_hours = float(granularity_hours)
+            except ValueError:
+                raise TypeError("Granularity hours must be a float")
+        return self.time_object.AddHours(granularity_hours)
 
     def subtract_hours(self, granularity_hours: float):
         """
@@ -174,7 +190,7 @@ class Time(libray.Time):
         return self.time_object.GetStdHour()
 
     @staticmethod
-    def now(location: GeoLocation):
+    def now(location: libray.GeoLocation):
         """
         return: current time of the chosen geolocation
         """""
