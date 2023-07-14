@@ -11,6 +11,9 @@ This is a Python wrapper library for [VedAstro](https://github.com/VedAstro/VedA
 - Calculate Charts ( Rasi , Dasa .. etc)
 - Many more ...
 ## Installation
+Before installing VedAstro, please ensure that you have DotNET 7 installed on your system. If you don't have it yet, you can download and install it from the official Microsoft website:
+
+[Download .NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
 You can install VedAstro  using pip:
 
