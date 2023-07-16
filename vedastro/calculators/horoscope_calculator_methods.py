@@ -845,367 +845,1201 @@ def House10LordInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
     """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse3Occuring(time, person))
 
-def House10LordInHouse4Occuring(time: Time, person: Person):
+def House10LordInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse4Occuring(time, person))
 
 
-def House10LordInHouse5Occuring(time: Time, person: Person):
+def House10LordInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse5Occuring(time, person))
 
 
-def House10LordInHouse6Occuring(time: Time, person: Person):
+def House10LordInHouse6Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 6th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse6Occuring(time, person))
 
 
-def House10LordInHouse7Occuring(time: Time, person: Person):
+def House10LordInHouse7Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 7th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse7Occuring(time, person))
 
 
-def House10LordInHouse8Occuring(time: Time, person: Person):
+def House10LordInHouse8Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 8th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse8Occuring(time, person))
 
 
-def House10LordInHouse9Occuring(time: Time, person: Person):
+def House10LordInHouse9Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 9th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse9Occuring(time, person))
 
 
-def House10LordInHouse10Occuring(time: Time, person: Person):
+def House10LordInHouse10Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 10th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse10Occuring(time, person))
 
 
-def House10LordInHouse11Occuring(time: Time, person: Person):
+def House10LordInHouse11Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 11th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse11Occuring(time, person))
 
 
-def House10LordInHouse12Occuring(time: Time, person: Person):
+def House10LordInHouse12Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 10th house lord in the 12th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House10LordInHouse12Occuring(time, person))
 
 
-def House11LordInHouse1Occuring(time: Time, person: Person):
+def House11LordInHouse1Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 1st house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse1Occuring(time, person))
 
 
-def House11LordInHouse2Occuring(time: Time, person: Person):
+def House11LordInHouse2Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 2nd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse2Occuring(time, person))
 
 
-def House11LordInHouse3Occuring(time: Time, person: Person):
+def House11LordInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse3Occuring(time, person))
 
 
-def House11LordInHouse4Occuring(time: Time, person: Person):
+def House11LordInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse4Occuring(time, person))
 
 
-def House11LordInHouse5Occuring(time: Time, person: Person):
+def House11LordInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse5Occuring(time, person))
 
+def House11LordInHouse6Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 6th house.
 
-def House11LordInHouse6Occuring(time: Time, person: Person):
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse6Occuring(time, person))
 
 
-def House11LordInHouse7Occuring(time: Time, person: Person):
+def House11LordInHouse7Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 7th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse7Occuring(time, person))
 
 
-def House11LordInHouse8Occuring(time: Time, person: Person):
+def House11LordInHouse8Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 8th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse8Occuring(time, person))
 
 
-def House11LordInHouse9Occuring(time: Time, person: Person):
+def House11LordInHouse9Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 9th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse9Occuring(time, person))
 
 
-def House11LordInHouse10Occuring(time: Time, person: Person):
+def House11LordInHouse10Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 10th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse10Occuring(time, person))
 
 
-def House11LordInHouse11Occuring(time: Time, person: Person):
+def House11LordInHouse11Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 11th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse11Occuring(time, person))
 
 
-def House11LordInHouse12Occuring(time: Time, person: Person):
+def House11LordInHouse12Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 11th house lord in the 12th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House11LordInHouse12Occuring(time, person))
 
 
-def House12LordInHouse1Occuring(time: Time, person: Person):
+def House12LordInHouse1Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 1st house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse1Occuring(time, person))
 
 
-def House12LordInHouse2Occuring(time: Time, person: Person):
+def House12LordInHouse2Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 2nd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse2Occuring(time, person))
 
 
-def House12LordInHouse3Occuring(time: Time, person: Person):
+def House12LordInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse3Occuring(time, person))
 
 
-def House12LordInHouse4Occuring(time: Time, person: Person):
+def House12LordInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse4Occuring(time, person))
 
 
-def House12LordInHouse5Occuring(time: Time, person: Person):
+def House12LordInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse5Occuring(time, person))
 
 
-def House12LordInHouse6Occuring(time: Time, person: Person):
+def House12LordInHouse6Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 6th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse6Occuring(time, person))
 
 
-def House12LordInHouse7Occuring(time: Time, person: Person):
+def House12LordInHouse7Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 7th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse7Occuring(time, person))
 
 
-def House12LordInHouse8Occuring(time: Time, person: Person):
+def House12LordInHouse8Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 8th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse8Occuring(time, person))
 
 
-def House12LordInHouse9Occuring(time: Time, person: Person):
+def House12LordInHouse9Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 9th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse9Occuring(time, person))
 
 
-def House12LordInHouse10Occuring(time: Time, person: Person):
+def House12LordInHouse10Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 10th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse10Occuring(time, person))
 
 
-def House12LordInHouse11Occuring(time: Time, person: Person):
+def House12LordInHouse11Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 11th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse11Occuring(time, person))
 
 
-def House12LordInHouse12Occuring(time: Time, person: Person):
+def House12LordInHouse12Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 12th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse12Occuring(time, person))
 
 
-def AriesRisingOccuring(time: Time, person: Person):
+def AriesRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Aries rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.AriesRisingOccuring(time, person))
 
 
-def TaurusRisingOccuring(time: Time, person: Person):
+def TaurusRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Taurus rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.TaurusRisingOccuring(time, person))
 
 
-def GeminiRisingOccuring(time: Time, person: Person):
+def GeminiRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Gemini rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.GeminiRisingOccuring(time, person))
 
 
-def CancerRisingOccuring(time: Time, person: Person):
+def CancerRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Cancer rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.CancerRisingOccuring(time, person))
 
 
-def LeoRisingOccuring(time: Time, person: Person):
+def LeoRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Leo rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.LeoRisingOccuring(time, person))
 
 
-def VirgoRisingOccuring(time: Time, person: Person):
+def VirgoRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Virgo rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.VirgoRisingOccuring(time, person))
 
+def House12LordInHouse6Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 6th house.
 
-def LibraRisingOccuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.LibraRisingOccuring(time, person))
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
 
-
-def ScorpioRisingOccuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.ScorpioRisingOccuring(time, person))
-
-
-def SagittariusRisingOccuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.SagittariusRisingOccuring(time, person))
-
-
-def CapricornusRisingOccuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.CapricornusRisingOccuring(time, person))
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse6Occuring(time, person))
 
 
-def AquariusRisingOccuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.AquariusRisingOccuring(time, person))
+def House12LordInHouse7Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 7th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse7Occuring(time, person))
 
 
-def PiscesRisingOccuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.PiscesRisingOccuring(time, person))
+def House12LordInHouse8Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 8th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse8Occuring(time, person))
 
 
-def SunInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.SunInHouse1(time, person))
+def House12LordInHouse9Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 9th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse9Occuring(time, person))
 
 
-def MoonInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.MoonInHouse1(time, person))
+def House12LordInHouse10Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 10th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse10Occuring(time, person))
 
 
-def MarsInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.MarsInHouse1(time, person))
+def House12LordInHouse11Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 11th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse11Occuring(time, person))
 
 
-def MercuryInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.MercuryInHouse1(time, person))
+def House12LordInHouse12Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the 12th house lord in the 12th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.House12LordInHouse12Occuring(time, person))
 
 
-def JupiterInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.JupiterInHouse1(time, person))
+def AriesRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Aries rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.AriesRisingOccuring(time, person))
 
 
-def VenusInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.VenusInHouse1(time, person))
+def TaurusRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Taurus rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.TaurusRisingOccuring(time, person))
 
 
-def SaturnInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.SaturnInHouse1(time, person))
+def GeminiRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Gemini rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.GeminiRisingOccuring(time, person))
 
 
-def RahuInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.RahuInHouse1(time, person))
+def CancerRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Cancer rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.CancerRisingOccuring(time, person))
 
 
-def KetuInHouse1(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.KetuInHouse1(time, person))
+def LeoRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Leo rising in the horoscope.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.LeoRisingOccuring(time, person))
 
 
-def SunInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.SunInHouse2Occuring(time, person))
+def VirgoRisingOccuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Virgo rising in the horoscope.
 
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
 
-def MoonInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.MoonInHouse2Occuring(time, person))
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.VirgoRisingOccuring(time, person))
 
+def SaturnInHouse2Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Saturn in the 2nd house.
 
-def MarsInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.MarsInHouse2Occuring(time, person))
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
 
-
-def MercuryInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.MercuryInHouse2Occuring(time, person))
-
-
-def JupiterInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.JupiterInHouse2Occuring(time, person))
-
-
-def VenusInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.VenusInHouse2Occuring(time, person))
-
-
-def SaturnInHouse2Occuring(time: Time, person: Person):
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.SaturnInHouse2Occuring(time, person))
 
 
-def RahuInHouse2Occuring(time: Time, person: Person):
+def RahuInHouse2Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Rahu in the 2nd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.RahuInHouse2Occuring(time, person))
 
 
-def KetuInHouse2Occuring(time: Time, person: Person):
+def KetuInHouse2Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Ketu in the 2nd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.KetuInHouse2Occuring(time, person))
 
 
-def SunInHouse3Occuring(time: Time, person: Person):
+def SunInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the Sun in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.SunInHouse3Occuring(time, person))
 
 
-def MoonInHouse3Occuring(time: Time, person: Person):
+def MoonInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the Moon in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MoonInHouse3Occuring(time, person))
 
 
-def MarsInHouse3Occuring(time: Time, person: Person):
+def MarsInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Mars in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MarsInHouse3Occuring(time, person))
 
 
-def MercuryInHouse3Occuring(time: Time, person: Person):
+def MercuryInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Mercury in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MercuryInHouse3Occuring(time, person))
 
 
-def JupiterInHouse3Occuring(time: Time, person: Person):
+def JupiterInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Jupiter in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.JupiterInHouse3Occuring(time, person))
 
 
-def VenusInHouse3Occuring(time: Time, person: Person):
+def VenusInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Venus in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.VenusInHouse3Occuring(time, person))
 
 
-def SaturnInHouse3Occuring(time: Time, person: Person):
+def SaturnInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Saturn in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.SaturnInHouse3Occuring(time, person))
 
 
-def RahuInHouse3Occuring(time: Time, person: Person):
+def RahuInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Rahu in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.RahuInHouse3Occuring(time, person))
 
 
-def KetuInHouse3Occuring(time: Time, person: Person):
+def KetuInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Ketu in the 3rd house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.KetuInHouse3Occuring(time, person))
 
 
-def SunInHouse4Occuring(time: Time, person: Person):
+def SunInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the Sun in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.SunInHouse4Occuring(time, person))
 
 
-def MoonInHouse4Occuring(time: Time, person: Person):
+def MoonInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the Moon in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MoonInHouse4Occuring(time, person))
 
 
-def MarsInHouse4Occuring(time: Time, person: Person):
+def MarsInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Mars in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MarsInHouse4Occuring(time, person))
 
 
-def MercuryInHouse4Occuring(time: Time, person: Person):
+def MercuryInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Mercury in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MercuryInHouse4Occuring(time, person))
 
 
-def JupiterInHouse4Occuring(time: Time, person: Person):
+def JupiterInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Jupiter in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.JupiterInHouse4Occuring(time, person))
 
 
-def VenusInHouse4Occuring(time: Time, person: Person):
+def VenusInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Venus in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.VenusInHouse4Occuring(time, person))
 
 
-def SaturnInHouse4Occuring(time: Time, person: Person):
+def SaturnInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Saturn in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.SaturnInHouse4Occuring(time, person))
 
 
-def RahuInHouse4Occuring(time: Time, person: Person):
+def RahuInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Rahu in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.RahuInHouse4Occuring(time, person))
 
 
-def KetuInHouse4Occuring(time: Time, person: Person):
+def KetuInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Ketu in the 4th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.KetuInHouse4Occuring(time, person))
 
 
-def SunInHouse5Occuring(time: Time, person: Person):
+def SunInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the Sun in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.SunInHouse5Occuring(time, person))
 
 
-def MoonInHouse5Occuring(time: Time, person: Person):
+def MoonInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the Moon in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MoonInHouse5Occuring(time, person))
 
 
-def MarsInHouse5Occuring(time: Time, person: Person):
+def MarsInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Mars in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MarsInHouse5Occuring(time, person))
 
 
-def MercuryInHouse5Occuring(time: Time, person: Person):
+def MercuryInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Mercury in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.MercuryInHouse5Occuring(time, person))
 
 
-def JupiterInHouse5Occuring(time: Time, person: Person):
+def JupiterInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Jupiter in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.JupiterInHouse5Occuring(time, person))
 
 
-def VenusInHouse5Occuring(time: Time, person: Person):
+def VenusInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Venus in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.VenusInHouse5Occuring(time, person))
 
 
-def SaturnInHouse5Occuring(time: Time, person: Person):
+def SaturnInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Saturn in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.SaturnInHouse5Occuring(time, person))
 
 
-def RahuInHouse5Occuring(time: Time, person: Person):
+def RahuInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Rahu in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.RahuInHouse5Occuring(time, person))
 
 
-def KetuInHouse5Occuring(time: Time, person: Person):
+def KetuInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of Ketu in the 5th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.KetuInHouse5Occuring(time, person))
 
 
-def SunInHouse6Occuring(time: Time, person: Person):
+def SunInHouse6Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates the occurrence of the Sun in the 6th house.
+
+    Args:
+        time (Time): The time for which the calculation is being performed.
+        person (Person): The person for whom the calculation is being done.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.SunInHouse6Occuring(time, person))
 
 
