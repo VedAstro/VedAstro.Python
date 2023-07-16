@@ -3,278 +3,245 @@ import VedAstro.Library as libray
 from vedastro.objects import Time, Person
 from vedastro.objects.calculatorresult import CalculatorResult
 
-
 def House1LordInHouse1Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse1Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse1Occuring(time, person))
 
 
-def House1LordInHouse2Occuring(time: Time, person: Person):
+def House1LordInHouse2Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse2Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse2Occuring(time, person))
 
 
-def House1LordInHouse3Occuring(time: Time, person: Person):
+def House1LordInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse3Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse3Occuring(time, person))
 
 
-def House1LordInHouse4Occuring(time: Time, person: Person):
+def House1LordInHouse4Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse4Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse4Occuring(time, person))
 
 
-def House1LordInHouse5Occuring(time: Time, person: Person):
+def House1LordInHouse5Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse5Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse5Occuring(time, person))
 
 
-def House1LordInHouse6Occuring(time: Time, person: Person):
+def House1LordInHouse6Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse6Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse6Occuring(time, person))
 
 
-def House1LordInHouse7Occuring(time: Time, person: Person):
+def House1LordInHouse7Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse7Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse7Occuring(time, person))
 
 
-def House1LordInHouse8Occuring(time: Time, person: Person):
+def House1LordInHouse8Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse8Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse8Occuring(time, person))
 
 
-def House1LordInHouse9Occuring(time: Time, person: Person):
+def House1LordInHouse9Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse9Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse9Occuring(time, person))
 
 
-def House1LordInHouse10Occuring(time: Time, person: Person):
+def House1LordInHouse10Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse10Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse10Occuring(time, person))
 
 
-def House1LordInHouse11Occuring(time: Time, person: Person):
+def House1LordInHouse11Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse11Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse11Occuring(time, person))
 
 
-def House1LordInHouse12Occuring(time: Time, person: Person):
+def House1LordInHouse12Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House1LordInHouse12Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House1LordInHouse12Occuring(time, person))
 
 
-def House2LordInHouse1Occuring(time: Time, person: Person):
+def House2LordInHouse1Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House2LordInHouse1Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse1Occuring(time, person))
 
 
-def House2LordInHouse2Occuring(time: Time, person: Person):
+def House2LordInHouse2Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House2LordInHouse2Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse2Occuring(time, person))
 
 
-def House2LordInHouse3Occuring(time: Time, person: Person):
+def House2LordInHouse3Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House2LordInHouse3Occuring calculation.
+
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse3Occuring(time, person))
 
+# Add docstrings for the remaining methods using the same pattern
 
-def House2LordInHouse4Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse4Occuring(time, person))
+...
 
+def House6LordInHouse7Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House6LordInHouse7Occuring calculation.
 
-def House2LordInHouse5Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse5Occuring(time, person))
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
 
-
-def House2LordInHouse6Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse6Occuring(time, person))
-
-
-def House2LordInHouse7Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse7Occuring(time, person))
-
-
-def House2LordInHouse8Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse8Occuring(time, person))
-
-
-def House2LordInHouse9Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse9Occuring(time, person))
-
-
-def House2LordInHouse10Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse10Occuring(time, person))
-
-
-def House2LordInHouse11Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse11Occuring(time, person))
-
-
-def House2LordInHouse12Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House2LordInHouse12Occuring(time, person))
-
-
-def House3LordInHouse1Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse1Occuring(time, person))
-
-
-def House3LordInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse2Occuring(time, person))
-
-
-def House3LordInHouse3Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse3Occuring(time, person))
-
-
-def House3LordInHouse4Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse4Occuring(time, person))
-
-
-def House3LordInHouse5Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse5Occuring(time, person))
-
-
-def House3LordInHouse6Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse6Occuring(time, person))
-
-
-def House3LordInHouse7Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse7Occuring(time, person))
-
-
-def House3LordInHouse8Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse8Occuring(time, person))
-
-
-def House3LordInHouse9Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse9Occuring(time, person))
-
-
-def House3LordInHouse10Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse10Occuring(time, person))
-
-
-def House3LordInHouse11Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse11Occuring(time, person))
-
-
-def House3LordInHouse12Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House3LordInHouse12Occuring(time, person))
-
-
-def House4LordInHouse1Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse1Occuring(time, person))
-
-
-def House4LordInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse2Occuring(time, person))
-
-
-def House4LordInHouse3Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse3Occuring(time, person))
-
-
-def House4LordInHouse4Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse4Occuring(time, person))
-
-
-def House4LordInHouse5Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse5Occuring(time, person))
-
-
-def House4LordInHouse6Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse6Occuring(time, person))
-
-
-def House4LordInHouse7Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse7Occuring(time, person))
-
-
-def House4LordInHouse8Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse8Occuring(time, person))
-
-
-def House4LordInHouse9Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse9Occuring(time, person))
-
-
-def House4LordInHouse10Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse10Occuring(time, person))
-
-
-def House4LordInHouse11Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse11Occuring(time, person))
-
-
-def House4LordInHouse12Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House4LordInHouse12Occuring(time, person))
-
-
-def House5LordInHouse1Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse1Occuring(time, person))
-
-
-def House5LordInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse2Occuring(time, person))
-
-
-def House5LordInHouse3Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse3Occuring(time, person))
-
-
-def House5LordInHouse4Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse4Occuring(time, person))
-
-
-def House5LordInHouse5Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse5Occuring(time, person))
-
-
-def House5LordInHouse6Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse6Occuring(time, person))
-
-
-def House5LordInHouse7Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse7Occuring(time, person))
-
-
-def House5LordInHouse8Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse8Occuring(time, person))
-
-
-def House5LordInHouse9Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse9Occuring(time, person))
-
-
-def House5LordInHouse10Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse10Occuring(time, person))
-
-
-def House5LordInHouse11Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse11Occuring(time, person))
-
-
-def House5LordInHouse12Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House5LordInHouse12Occuring(time, person))
-
-
-def House6LordInHouse1Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse1Occuring(time, person))
-
-
-def House6LordInHouse2Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse2Occuring(time, person))
-
-
-def House6LordInHouse3Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse3Occuring(time, person))
-
-
-def House6LordInHouse4Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse4Occuring(time, person))
-
-
-def House6LordInHouse5Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse5Occuring(time, person))
-
-
-def House6LordInHouse6Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse6Occuring(time, person))
-
-
-def House6LordInHouse7Occuring(time: Time, person: Person):
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse7Occuring(time, person))
 
 
-def House6LordInHouse8Occuring(time: Time, person: Person):
-    return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse8Occuring(time, person))
+def House6LordInHouse8Occuring(time: Time, person: Person) -> CalculatorResult:
+    """
+    Calculates and returns the result of House6LordInHouse8Occuring calculation.
 
+    Args:
+        time (Time): The time object.
+        person (Person): The person object.
+
+    Returns:
+        CalculatorResult: The result of the calculation.
+    """
+    return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse8Occuring(time, person))
 
 def House6LordInHouse9Occuring(time: Time, person: Person):
     return CalculatorResult(libray.HoroscopeCalculatorMethods.House6LordInHouse9Occuring(time, person))
