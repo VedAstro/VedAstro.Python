@@ -11,10 +11,13 @@ def _initialize_library():
     full_path = os.path.abspath(dll_path)
 
     runtime_config_path = os.path.abspath(os.path.join(current_path, 'runtimeconfig.json'))
+    try:
 
-    load("coreclr", runtime_config=runtime_config_path)
-    import clr
-    clr.AddReference(full_path)
+        load("coreclr", runtime_config=runtime_config_path)
+        import clr
+        clr.AddReference(full_path)
+    except RuntimeError:
+        print(f"Dotnet 7 not found. please visit https://dotnet.microsoft.com/en-us/download/dotnet/7.0")
 
 
 # Call the function to initialize the library
