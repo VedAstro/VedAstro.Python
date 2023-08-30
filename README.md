@@ -4,24 +4,26 @@
 
 This is a Python wrapper library for [VedAstro](https://github.com/VedAstro/VedAstro). A powerful tool for astronomical calculations and data analysis. It provides a collection of functions and classes to perform various astronomical calculations, such as celestial object positions, time conversions, coordinate transformations, and more.
 
-## Features
 
+## Features
 - Calculate the position of celestial objects (planets, stars, etc.) at a given date and time.
 - Calculate Dasas
 - Calculate Charts ( Rasi , Dasa .. etc)
 - Many more ...
-## Installation
-Before installing VedAstro, please ensure that you have DotNET 7 installed on your system. If you don't have it yet, you can download and install it from the official Microsoft website:
 
-[Download .NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
-You can install VedAstro  using pip:
+## Install
+Step 1: [Download .NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.400-windows-x64-installer)
+
+Step 2: Install VedAstro using pip:
 
 ```shell
 pip install vedastro
 ```
 
-## Usage
+[Watch Video Guide](https://youtu.be/chEeF-xEQ48?si=KBaLD-8dX1_NGr67)
+
+## Demo Usage
 
 Here's a simple example.
 ```python
