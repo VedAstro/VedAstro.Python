@@ -29,6 +29,7 @@ Here's a simple example.
 ```python
 from vedastro.calculators import SaturnInAries
 from vedastro.objects import GeoLocation, Time, Person, Gender
+import VedAstro.Library as libray
 
 # Create a GeoLocation object for Tokyo, Japan
 geolocation = GeoLocation(location="Tokyo", latitude=35.6895, longitude=139.6917).geolocation
@@ -51,21 +52,24 @@ gender = Gender.Male
 # Create a Person object for John Doe with the provided details
 john_doe = Person(id=id, user_id=user_id, name=name, gender=gender, birth_time=time_ob, notes=notes).person
 
-# Create a SaturnInAries calculator object for the given time and person
-saturn_aries = SaturnInAries(time_ob, john_doe)
+# do calculation to check if saturn is in aries at a given time
+saturn_aries = libray.HoroscopeCalculatorMethods.SaturnInAries(time_ob)
 
-# Calculate the occurrence of Saturn in Aries
-occurrence = saturn_aries.occuring
+# data if the astro event occured
+occurrence = saturn_aries.Occuring
 
-# Get the related celestial body for Saturn in Aries
-related_body = saturn_aries.related_body
+# get the planets or houses related to this astro event
+related_body = saturn_aries.RelatedBody
 
 # Print the results
 print("Occurrence of Saturn in Aries:", occurrence)
 print("Related celestial body:", related_body)
 ```
 
-For more examples and detailed documentation, please refer to the [documentation](https://github.com/VedAstro/VedAstro.Python) provided.
+Other Example/Demo Code
+- [Calculate Events](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-calculate-events.py) calculate Muhurtha events for a person in a time range
+- [Planet & House Data](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-general-calculators.py) calculate astrological data for a house or planet, exp: House Strenght, Planet Longitude, House Sign, etc.. 
+
 
 ## Contributing
 

@@ -22,13 +22,13 @@ gender = Gender.Male
 # Create a Person object for John Doe with the provided details
 john_doe = Person(id=id, user_id=user_id, name=name, gender=gender, birth_time=time_ob, notes=notes).person
 
-# Create a SaturnInAries calculator object for the given time and person
+# do calculation to check if saturn is in aries at a given time
 saturn_aries = libray.HoroscopeCalculatorMethods.SaturnInAries(time_ob)
 
-# Calculate the occurrence of Saturn in Aries
+# data if the astro event occured
 occurrence = saturn_aries.Occuring
 
-# Get the related celestial body for Saturn in Aries
+# get the planets or houses related to this astro event
 related_body = saturn_aries.RelatedBody
 
 # Print the results
