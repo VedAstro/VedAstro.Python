@@ -68,6 +68,7 @@ print("Related celestial body:", related_body)
 
 Other Example/Demo Code
 - [Calculate Events](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-calculate-events.py) calculate Muhurtha events for a person in a time range
+- [Set Custom Ayanamsa](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-custom-ayanamsa.py) change Ayanamsa to Lahiri, Krishnamurti or Yukteswar
 - [Planet & House Data](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-general-calculators.py) calculate astrological data for a house or planet, exp: House Strenght, Planet Longitude, House Sign, etc.. 
 
 
