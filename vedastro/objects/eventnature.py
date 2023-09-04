@@ -1,8 +1,8 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 
 class EventNature:
-    Empty = library.EventNature.Empty,
-    Good = library.EventNature.Good,
-    Neutral = library.EventNature.Neutral,
-    Bad = library.EventNature.Bad
+    Empty = VedAstro.EventNature.Empty,
+    Good = VedAstro.EventNature.Good,
+    Neutral = VedAstro.EventNature.Neutral,
+    Bad = VedAstro.EventNature.Bad

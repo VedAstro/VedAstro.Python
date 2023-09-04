@@ -1,6 +1,6 @@
 from enum import Enum
 
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 
 class MatchPredictionName(Enum):
@@ -30,7 +30,7 @@ class EventNature(Enum):
     Bad = 3
 
 
-class MatchPrediction(library.MatchPrediction):
+class MatchPrediction(VedAstro.MatchPrediction):
 
     def __init__(self, name: MatchPredictionName, nature: EventNature, male_info: str, female_info: str, info: str,
                  description: str):

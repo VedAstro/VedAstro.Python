@@ -8,5 +8,5 @@ setup(
     license='MIT',
     author='',
     author_email='',
-    description='A Python wrapper library for VedAstro '
+    description='A Python wrapper VedAstro for VedAstro '
 )

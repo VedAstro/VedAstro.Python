@@ -24,12 +24,12 @@ birth_time = Time(date, time, time_offset, geolocation).time_object
 #-----------------------------------
 
 print(f"LAHIRI AYANAMSA : 285 AD") 
-library.Calculate.YearOfCoincidence = int(library.Ayanamsa.Lahiri);
+VedAstro.Calculate.YearOfCoincidence = int(VedAstro.Ayanamsa.Lahiri);
 
 #PART 3 : MAKE CALCULATION
 #-----------------------------------
-moon_constellation = library.Calculate.PlanetConstellation(birth_time, library.PlanetName.Sun)
-planet_longitude = library.Calculate.PlanetNirayanaLongitude(birth_time, library.PlanetName.Sun)
+moon_constellation = VedAstro.Calculate.PlanetConstellation(birth_time, VedAstro.PlanetName.Sun)
+planet_longitude = VedAstro.Calculate.PlanetNirayanaLongitude(birth_time, VedAstro.PlanetName.Sun)
 print(f"Sun Constellation : {moon_constellation}")  
 print(f"Nirayana Longitude : {planet_longitude}")
 
@@ -39,11 +39,11 @@ print(f"Nirayana Longitude : {planet_longitude}")
 #-----------------------------------
 
 print(f"\nRAMAN AYANAMSA : 397 AD")  
-library.Calculate.YearOfCoincidence = int(library.Ayanamsa.Raman);
+VedAstro.Calculate.YearOfCoincidence = int(VedAstro.Ayanamsa.Raman);
 
 #PART 5 : MAKE CALCULATION
 #-----------------------------------
-moon_constellation = library.Calculate.PlanetConstellation(birth_time, library.PlanetName.Sun)
-planet_longitude = library.Calculate.PlanetNirayanaLongitude(birth_time, library.PlanetName.Sun)
+moon_constellation = VedAstro.Calculate.PlanetConstellation(birth_time, VedAstro.PlanetName.Sun)
+planet_longitude = VedAstro.Calculate.PlanetNirayanaLongitude(birth_time, VedAstro.PlanetName.Sun)
 print(f"Sun Constellation : {moon_constellation}") 
 print(f"Nirayana Longitude : {planet_longitude}") 

@@ -1,4 +1,4 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 
 class GeoLocation:
@@ -36,4 +36,4 @@ class GeoLocation:
         self.location = location
         self.longitude = longitude
         self.latitude = latitude
-        self.geolocation = library.GeoLocation(location, longitude, latitude)
+        self.geolocation = VedAstro.GeoLocation(location, longitude, latitude)

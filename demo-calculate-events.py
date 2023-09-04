@@ -2,7 +2,7 @@
 from vedastro.calculators import *
 from vedastro.objects import *
 from System.Collections.Generic import List
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 
 # Create a GeoLocation object for Tokyo, Japan
@@ -28,14 +28,14 @@ john_doe = Person(id=id, user_id=user_id, name=name, gender=gender, birth_time=s
 
 # select category of events to find and calculate
 # note: each category can have multiple events (Muhurtha Events/Good Time Finder tool)
-tagList = List[library.EventTag]()
-tagList.Add(library.EventTag.General)
-tagList.Add(library.EventTag.Medical)
+tagList = List[VedAstro.EventTag]()
+tagList.Add(VedAstro.EventTag.General)
+tagList.Add(VedAstro.EventTag.Medical)
 
 # set how accurately the start & end time of each event is calculated
 # exp: setting 1 hour, means given in a time range of 1 day, it will be checked 24 times 
 precisionInHours = 1;
-event_list = library.EventManager.CalculateEvents(precisionInHours, start_time, end_time, geolocation,john_doe,tagList).GetAwaiter().GetResult()
+event_list = VedAstro.EventManager.CalculateEvents(precisionInHours, start_time, end_time, geolocation,john_doe,tagList).GetAwaiter().GetResult()
 
 # print out each event
 for event in event_list:

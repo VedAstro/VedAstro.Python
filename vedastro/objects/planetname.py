@@ -1,18 +1,18 @@
 from enum import Enum
 
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 
 class PlanetName:
-    Sun = library.PlanetName.Sun
-    Moon = library.PlanetName.Moon
-    Mars = library.PlanetName.Mars
-    Mercury = library.PlanetName.Mercury
-    Jupiter = library.PlanetName.Jupiter
-    Venus = library.PlanetName.Venus
-    Saturn = library.PlanetName.Saturn
-    Ketu = library.PlanetName.Ketu
-    Rahu = library.PlanetName.Rahu
+    Sun = VedAstro.PlanetName.Sun
+    Moon = VedAstro.PlanetName.Moon
+    Mars = VedAstro.PlanetName.Mars
+    Mercury = VedAstro.PlanetName.Mercury
+    Jupiter = VedAstro.PlanetName.Jupiter
+    Venus = VedAstro.PlanetName.Venus
+    Saturn = VedAstro.PlanetName.Saturn
+    Ketu = VedAstro.PlanetName.Ketu
+    Rahu = VedAstro.PlanetName.Rahu
 
     planet_names = [Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Ketu,Rahu]
 

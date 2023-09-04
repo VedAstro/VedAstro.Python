@@ -1,4 +1,4 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 from vedastro.objects.datetime_offset import DateTimeOffset
 
@@ -24,7 +24,7 @@ class Time:
             - If geolocation is not a GeoLocation object.
     """
 
-    def __init__(self, date: str, time: str, time_offset: str, geolocation: library.GeoLocation):
+    def __init__(self, date: str, time: str, time_offset: str, geolocation: VedAstro.GeoLocation):
 
         if not isinstance(date, str):
             raise TypeError("Date must be a string")
@@ -32,7 +32,7 @@ class Time:
             raise TypeError("Time must be a string")
         if not isinstance(time_offset, str):
             raise TypeError("Time offset must be a string")
-        if not isinstance(geolocation, library.GeoLocation):
+        if not isinstance(geolocation, VedAstro.GeoLocation):
             raise TypeError("Geolocation must be a GeoLocation object")
 
         self.date = date
@@ -40,7 +40,7 @@ class Time:
         self.geolocation = geolocation
         self.time_offset = time_offset
         combined_time = time + " " + date + " " + time_offset
-        self.time_object = library.Time(combined_time, geolocation)
+        self.time_object = VedAstro.Time(combined_time, geolocation)
 
     def get_time(self):
         return self.time_object
@@ -190,11 +190,11 @@ class Time:
         return self.time_object.GetStdHour()
 
     @staticmethod
-    def now(location: library.GeoLocation):
+    def now(location: VedAstro.GeoLocation):
         """
         return: current time of the chosen geolocation
         """""
-        return library.Time.Now(location)
+        return VedAstro.Time.Now(location)
 
     @staticmethod
     def date_time_format_info(self):

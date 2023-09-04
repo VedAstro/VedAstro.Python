@@ -2,7 +2,7 @@
 [![License](https://img.shields.io/github/license/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/blob/main/LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/issues)
 
-This is a Python wrapper library for [VedAstro](https://github.com/VedAstro/VedAstro). A powerful tool for astronomical calculations and data analysis. It provides a collection of functions and classes to perform various astronomical calculations, such as celestial object positions, time conversions, coordinate transformations, and more.
+This is a Python wrapper VedAstro for [VedAstro](https://github.com/VedAstro/VedAstro). A powerful tool for astronomical calculations and data analysis. It provides a collection of functions and classes to perform various astronomical calculations, such as celestial object positions, time conversions, coordinate transformations, and more.
 
 
 ## Features
@@ -29,7 +29,7 @@ Here's a simple example.
 ```python
 from vedastro.calculators import SaturnInAries
 from vedastro.objects import GeoLocation, Time, Person, Gender
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 # Create a GeoLocation object for Tokyo, Japan
 geolocation = GeoLocation(location="Tokyo", latitude=35.6895, longitude=139.6917).geolocation
@@ -53,7 +53,7 @@ gender = Gender.Male
 john_doe = Person(id=id, user_id=user_id, name=name, gender=gender, birth_time=time_ob, notes=notes).person
 
 # do calculation to check if saturn is in aries at a given time
-saturn_aries = library.HoroscopeCalculatorMethods.SaturnInAries(time_ob)
+saturn_aries = VedAstro.HoroscopeCalculatorMethods.SaturnInAries(time_ob)
 
 # data if the astro event occured
 occurrence = saturn_aries.Occuring

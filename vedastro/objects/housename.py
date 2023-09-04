@@ -1,22 +1,22 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 class HouseName:
     """
     return a tuple of given housename.
     tuple has only one element.
     """
 
-    HOUSE1 = library.HouseName.House1,
-    HOUSE2 = library.HouseName.House2,
-    HOUSE3 = library.HouseName.House3,
-    HOUSE4 = library.HouseName.House4,
-    HOUSE5 = library.HouseName.House5,
-    HOUSE6 = library.HouseName.House6,
-    HOUSE7 = library.HouseName.House7,
-    HOUSE8 = library.HouseName.House8,
-    HOUSE9 = library.HouseName.House9,
-    HOUSE10 = library.HouseName.House10,
-    HOUSE11 = library.HouseName.House11,
-    HOUSE12 = library.HouseName.House12
+    HOUSE1 = VedAstro.HouseName.House1,
+    HOUSE2 = VedAstro.HouseName.House2,
+    HOUSE3 = VedAstro.HouseName.House3,
+    HOUSE4 = VedAstro.HouseName.House4,
+    HOUSE5 = VedAstro.HouseName.House5,
+    HOUSE6 = VedAstro.HouseName.House6,
+    HOUSE7 = VedAstro.HouseName.House7,
+    HOUSE8 = VedAstro.HouseName.House8,
+    HOUSE9 = VedAstro.HouseName.House9,
+    HOUSE10 = VedAstro.HouseName.House10,
+    HOUSE11 = VedAstro.HouseName.House11,
+    HOUSE12 = VedAstro.HouseName.House12
 
 
     @staticmethod

@@ -1,33 +1,33 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 
 class EventTag:
-    Agriculture = library.EventTag.Agriculture,
-    General = library.EventTag.General,
-    Personal = library.EventTag.Personal,
-    Yoga = library.EventTag.Yoga,
-    RulingConstellation = library.EventTag.RulingConstellation,
-    HairNailCutting = library.EventTag.HairNailCutting,
-    Medical = library.EventTag.Medical,
-    Debug = library.EventTag.Debug,
-    Marriage = library.EventTag.Marriage,
-    Astronomical = library.EventTag.Astronomical,
-    BuyingSelling = library.EventTag.BuyingSelling,
-    Building = library.EventTag.Building,
-    Gochara = library.EventTag.Gochara,
-    Dasa = library.EventTag.Dasa,
-    Bhukti = library.EventTag.Bhukti,
-    Antaram = library.EventTag.Antaram,
-    Sukshma = library.EventTag.Sukshma,  # weeks
-    Prana = library.EventTag.Prana,  # days
-    DasaSpecialRules = library.EventTag.DasaSpecialRules,
-    Horoscope = library.EventTag.Horoscope,
-    Tarabala = library.EventTag.Tarabala,
-    Chandrabala = library.EventTag.Chandrabala,
-    Travel = library.EventTag.Travel,
-    RisingSign = library.EventTag.RisingSign,  # used in birth time finder
-    GocharaSummary = library.EventTag.GocharaSummary,
+    Agriculture = VedAstro.EventTag.Agriculture,
+    General = VedAstro.EventTag.General,
+    Personal = VedAstro.EventTag.Personal,
+    Yoga = VedAstro.EventTag.Yoga,
+    RulingConstellation = VedAstro.EventTag.RulingConstellation,
+    HairNailCutting = VedAstro.EventTag.HairNailCutting,
+    Medical = VedAstro.EventTag.Medical,
+    Debug = VedAstro.EventTag.Debug,
+    Marriage = VedAstro.EventTag.Marriage,
+    Astronomical = VedAstro.EventTag.Astronomical,
+    BuyingSelling = VedAstro.EventTag.BuyingSelling,
+    Building = VedAstro.EventTag.Building,
+    Gochara = VedAstro.EventTag.Gochara,
+    Dasa = VedAstro.EventTag.Dasa,
+    Bhukti = VedAstro.EventTag.Bhukti,
+    Antaram = VedAstro.EventTag.Antaram,
+    Sukshma = VedAstro.EventTag.Sukshma,  # weeks
+    Prana = VedAstro.EventTag.Prana,  # days
+    DasaSpecialRules = VedAstro.EventTag.DasaSpecialRules,
+    Horoscope = VedAstro.EventTag.Horoscope,
+    Tarabala = VedAstro.EventTag.Tarabala,
+    Chandrabala = VedAstro.EventTag.Chandrabala,
+    Travel = VedAstro.EventTag.Travel,
+    RisingSign = VedAstro.EventTag.RisingSign,  # used in birth time finder
+    GocharaSummary = VedAstro.EventTag.GocharaSummary,
 
     @staticmethod
     def get_eventtag_type():
-        return library.EventTag
+        return VedAstro.EventTag
