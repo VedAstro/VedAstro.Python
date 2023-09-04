@@ -1,4 +1,4 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 from vedastro.objects import Person
 from vedastro.objects.matchprediction import MatchPrediction
 from vedastro.objects.matchreport import MatchReport
@@ -16,7 +16,7 @@ def GetNewMatchReport(male: Person, female: Person, user_id: str) -> MatchReport
     Returns:
         MatchReport: The match report object.
     """
-    return library.MatchCalculator.GetNewMatchReport(male, female, user_id)
+    return VedAstro.MatchCalculator.GetNewMatchReport(male, female, user_id)
 
 
 def Mahendra(male: Person, female: Person) -> MatchPrediction:
@@ -30,7 +30,7 @@ def Mahendra(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.Mahendra(male, female)
+    return VedAstro.MatchCalculator.Mahendra(male, female)
 
 
 def NadiKuta(male: Person, female: Person) -> MatchPrediction:
@@ -44,7 +44,7 @@ def NadiKuta(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.NadiKuta(male, female)
+    return VedAstro.MatchCalculator.NadiKuta(male, female)
 
 
 def GunaKuta(male: Person, female: Person) -> MatchPrediction:
@@ -58,7 +58,7 @@ def GunaKuta(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.GunaKuta(male, female)
+    return VedAstro.MatchCalculator.GunaKuta(male, female)
 
 
 def Varna(male: Person, female: Person) -> MatchPrediction:
@@ -72,7 +72,7 @@ def Varna(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.Varna(male, female)
+    return VedAstro.MatchCalculator.Varna(male, female)
 
 
 def YoniKuta(male: Person, female: Person) -> MatchPrediction:
@@ -86,7 +86,7 @@ def YoniKuta(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.YoniKuta(male, female)
+    return VedAstro.MatchCalculator.YoniKuta(male, female)
 
 
 def VedhaKuta(male: Person, female: Person) -> MatchPrediction:
@@ -100,7 +100,7 @@ def VedhaKuta(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.VedhaKuta(male, female)
+    return VedAstro.MatchCalculator.VedhaKuta(male, female)
 
 
 def Rajju(male: Person, female: Person) -> MatchPrediction:
@@ -114,7 +114,7 @@ def Rajju(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.Rajju(male, female)
+    return VedAstro.MatchCalculator.Rajju(male, female)
 
 
 def VasyaKuta(male: Person, female: Person) -> MatchPrediction:
@@ -128,7 +128,7 @@ def VasyaKuta(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.VasyaKuta(male, female)
+    return VedAstro.MatchCalculator.VasyaKuta(male, female)
 
 
 def GrahaMaitram(male: Person, female: Person) -> MatchPrediction:
@@ -142,7 +142,7 @@ def GrahaMaitram(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.GrahaMaitram(male, female)
+    return VedAstro.MatchCalculator.GrahaMaitram(male, female)
 
 
 def RasiKuta(male: Person, female: Person) -> MatchPrediction:
@@ -156,7 +156,7 @@ def RasiKuta(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.RasiKuta(male, female)
+    return VedAstro.MatchCalculator.RasiKuta(male, female)
 
 
 def StreeDeergha(male: Person, female: Person) -> MatchPrediction:
@@ -170,7 +170,7 @@ def StreeDeergha(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.StreeDeergha(male, female)
+    return VedAstro.MatchCalculator.StreeDeergha(male, female)
 
 
 def DinaKuta(male: Person, female: Person) -> MatchPrediction:
@@ -184,7 +184,7 @@ def DinaKuta(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.DinaKuta(male, female)
+    return VedAstro.MatchCalculator.DinaKuta(male, female)
 
 
 def LagnaAndHouse7Good(male: Person, female: Person) -> MatchPrediction:
@@ -198,7 +198,7 @@ def LagnaAndHouse7Good(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.LagnaAndHouse7Good(male, female)
+    return VedAstro.MatchCalculator.LagnaAndHouse7Good(male, female)
 
 
 def KujaDosa(male: Person, female: Person) -> MatchPrediction:
@@ -212,7 +212,7 @@ def KujaDosa(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.KujaDosa(male, female)
+    return VedAstro.MatchCalculator.KujaDosa(male, female)
 
 
 def BadConstellations(male: Person, female: Person) -> MatchPrediction:
@@ -226,7 +226,7 @@ def BadConstellations(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.BadConstellations(male, female)
+    return VedAstro.MatchCalculator.BadConstellations(male, female)
 
 
 def SexEnergyCompatibility(male: Person, female: Person) -> MatchPrediction:
@@ -240,4 +240,4 @@ def SexEnergyCompatibility(male: Person, female: Person) -> MatchPrediction:
     Returns:
         MatchPrediction: The match prediction object.
     """
-    return library.MatchCalculator.SexEnergyCompatibility(male, female)
+    return VedAstro.MatchCalculator.SexEnergyCompatibility(male, female)

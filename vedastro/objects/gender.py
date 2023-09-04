@@ -1,6 +1,6 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 class Gender:
-    Empty = library.Gender.Empty
-    Male = library.Gender.Male
-    Female = library.Gender.Female
+    Empty = VedAstro.Gender.Empty
+    Male = VedAstro.Gender.Male
+    Female = VedAstro.Gender.Female

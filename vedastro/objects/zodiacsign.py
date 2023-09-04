@@ -1,4 +1,4 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 from vedastro.objects import ZodiacName
 from vedastro.objects.angle import Angle
@@ -11,9 +11,9 @@ class ZodiacSign():
         self.degrees_in_sign = degrees_in_sign
     #
     # def get_sign_name(self):
-    #     return library.ZodiacSign.GetSignName()
+    #     return VedAstro.ZodiacSign.GetSignName()
     #
     # def get_degrees_in_sign(self):
-    #     return library.ZodiacSign.GetDegreesInSign()
+    #     return VedAstro.ZodiacSign.GetDegreesInSign()
     #
     #

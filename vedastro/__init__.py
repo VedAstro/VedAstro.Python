@@ -2,9 +2,9 @@ import os
 from pythonnet import load
 
 
-def _initialize_library():
+def _initialize_VedAstro():
     """
-    Initialize the library by loading the necessary DLL and setting up the runtime configuration.
+    Initialize the VedAstro by loading the necessary DLL and setting up the runtime configuration.
     """
     current_path = os.path.dirname(os.path.abspath(__file__))
     dll_path = os.path.join(current_path, 'dlls', 'VedAstro.Library.dll')
@@ -20,5 +20,5 @@ def _initialize_library():
         print(f"Dotnet 7 not found. please visit https://dotnet.microsoft.com/en-us/download/dotnet/7.0")
 
 
-# Call the function to initialize the library
-_initialize_library()
+# Call the function to initialize the VedAstro
+_initialize_VedAstro()

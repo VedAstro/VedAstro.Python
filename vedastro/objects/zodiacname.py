@@ -1,16 +1,16 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
 
 class ZodiacName:
-    Aries = library.ZodiacName.Aries,
-    Taurus = library.ZodiacName.Taurus,
-    Gemini = library.ZodiacName.Gemini,
-    Cancer = library.ZodiacName.Cancer,
-    Leo = library.ZodiacName.Leo,
-    Virgo = library.ZodiacName.Virgo,
-    Libra = library.ZodiacName.Libra,
-    Scorpio = library.ZodiacName.Scorpio,
-    Sagittarius = library.ZodiacName.Sagittarius,
-    Capricornus = library.ZodiacName.Capricornus,
-    Aquarius = library.ZodiacName.Aquarius,
-    Pisces = library.ZodiacName.Pisces
+    Aries = VedAstro.ZodiacName.Aries,
+    Taurus = VedAstro.ZodiacName.Taurus,
+    Gemini = VedAstro.ZodiacName.Gemini,
+    Cancer = VedAstro.ZodiacName.Cancer,
+    Leo = VedAstro.ZodiacName.Leo,
+    Virgo = VedAstro.ZodiacName.Virgo,
+    Libra = VedAstro.ZodiacName.Libra,
+    Scorpio = VedAstro.ZodiacName.Scorpio,
+    Sagittarius = VedAstro.ZodiacName.Sagittarius,
+    Capricornus = VedAstro.ZodiacName.Capricornus,
+    Aquarius = VedAstro.ZodiacName.Aquarius,
+    Pisces = VedAstro.ZodiacName.Pisces

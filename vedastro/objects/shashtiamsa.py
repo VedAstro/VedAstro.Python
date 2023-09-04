@@ -1,6 +1,6 @@
-import VedAstro.Library as library
+import VedAstro.Library as VedAstro
 
-class Shashtiamsa(library.Shashtiamsa):
+class Shashtiamsa(VedAstro.Shashtiamsa):
 
 
     def __init__(self):
