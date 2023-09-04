@@ -1,6 +1,6 @@
 from typing import List
 
-import VedAstro.Library as libray
+import VedAstro.Library as library
 
 from vedastro.objects import Time, GeoLocation, Person
 from vedastro.objects.eventtag import EventTag
@@ -20,6 +20,6 @@ class EventManager:
         :param inputed_event_tags:
         :return:
         """
-        event_list = libray.EventManager.CalculateEvents(events_precision, start_time, end_time, geo_location, person,
+        event_list = library.EventManager.CalculateEvents(events_precision, start_time, end_time, geo_location, person,
                                                          inputed_event_tags)
         return event_list
