@@ -33,7 +33,7 @@ juliet = Person(id=id, user_id=user_id, name="Juliet", gender=Gender.Female, bir
 #-----------------------------------
 
 # option 1 : calculate if an astrological event is occuring
-saturn_aries = libray.HoroscopeCalculatorMethods.SunInLeo(birth_romeo)
+saturn_aries = library.HoroscopeCalculatorMethods.SunInLeo(birth_romeo)
 
 # print the results
 occurrence = saturn_aries.Occuring
@@ -41,7 +41,7 @@ print(f"Saturn In Aries occuring on {date} : {occurrence}")
 
 
 # option 2 : get zodiac sign behind a planet (astronomical) 
-lordOfHouse1 = libray.AstronomicalCalculator.GetLordOfHouse(libray.HouseName.House1, birth_romeo)
+lordOfHouse1 = library.Calculate.LordOfHouse(library.HouseName.House1, birth_romeo)
 print(f"House 1 Lord : {lordOfHouse1}")  # Outputs: Mercury
 
 

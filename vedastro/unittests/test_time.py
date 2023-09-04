@@ -1,6 +1,6 @@
 import unittest
 from vedastro.datetime_offset import DateTimeOffset
-import VedAstro.Library as libray
+import VedAstro.Library as library
 from vedastro.time import Time
 from vedastro.geolocation import GeoLocation
 
@@ -18,7 +18,7 @@ class TestTime(unittest.TestCase):
         self.assertEqual(time_obj.date, self.date)
         self.assertEqual(time_obj.time, self.time)
         self.assertEqual(time_obj.geolocation, self.geolocation)
-        self.assertIsInstance(time_obj, libray.Time)
+        self.assertIsInstance(time_obj, library.Time)
 
         # Test with invalid arguments
         with self.assertRaises(TypeError):
@@ -40,7 +40,7 @@ class TestTime(unittest.TestCase):
         new_time = time_obj.add_years(years)
 
         self.assertEqual(new_time.date, "07/05/2017")
-        self.assertIsInstance(new_time, libray.Time)
+        self.assertIsInstance(new_time, library.Time)
 
         # Test with invalid argument
         with self.assertRaises(TypeError):

@@ -1,33 +1,33 @@
-import VedAstro.Library as libray
+import VedAstro.Library as library
 
 
 class EventTag:
-    Agriculture = libray.EventTag.Agriculture,
-    General = libray.EventTag.General,
-    Personal = libray.EventTag.Personal,
-    Yoga = libray.EventTag.Yoga,
-    RulingConstellation = libray.EventTag.RulingConstellation,
-    HairNailCutting = libray.EventTag.HairNailCutting,
-    Medical = libray.EventTag.Medical,
-    Debug = libray.EventTag.Debug,
-    Marriage = libray.EventTag.Marriage,
-    Astronomical = libray.EventTag.Astronomical,
-    BuyingSelling = libray.EventTag.BuyingSelling,
-    Building = libray.EventTag.Building,
-    Gochara = libray.EventTag.Gochara,
-    Dasa = libray.EventTag.Dasa,
-    Bhukti = libray.EventTag.Bhukti,
-    Antaram = libray.EventTag.Antaram,
-    Sukshma = libray.EventTag.Sukshma,  # weeks
-    Prana = libray.EventTag.Prana,  # days
-    DasaSpecialRules = libray.EventTag.DasaSpecialRules,
-    Horoscope = libray.EventTag.Horoscope,
-    Tarabala = libray.EventTag.Tarabala,
-    Chandrabala = libray.EventTag.Chandrabala,
-    Travel = libray.EventTag.Travel,
-    RisingSign = libray.EventTag.RisingSign,  # used in birth time finder
-    GocharaSummary = libray.EventTag.GocharaSummary,
+    Agriculture = library.EventTag.Agriculture,
+    General = library.EventTag.General,
+    Personal = library.EventTag.Personal,
+    Yoga = library.EventTag.Yoga,
+    RulingConstellation = library.EventTag.RulingConstellation,
+    HairNailCutting = library.EventTag.HairNailCutting,
+    Medical = library.EventTag.Medical,
+    Debug = library.EventTag.Debug,
+    Marriage = library.EventTag.Marriage,
+    Astronomical = library.EventTag.Astronomical,
+    BuyingSelling = library.EventTag.BuyingSelling,
+    Building = library.EventTag.Building,
+    Gochara = library.EventTag.Gochara,
+    Dasa = library.EventTag.Dasa,
+    Bhukti = library.EventTag.Bhukti,
+    Antaram = library.EventTag.Antaram,
+    Sukshma = library.EventTag.Sukshma,  # weeks
+    Prana = library.EventTag.Prana,  # days
+    DasaSpecialRules = library.EventTag.DasaSpecialRules,
+    Horoscope = library.EventTag.Horoscope,
+    Tarabala = library.EventTag.Tarabala,
+    Chandrabala = library.EventTag.Chandrabala,
+    Travel = library.EventTag.Travel,
+    RisingSign = library.EventTag.RisingSign,  # used in birth time finder
+    GocharaSummary = library.EventTag.GocharaSummary,
 
     @staticmethod
     def get_eventtag_type():
-        return libray.EventTag
+        return library.EventTag

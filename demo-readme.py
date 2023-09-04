@@ -1,5 +1,5 @@
 from vedastro.objects import GeoLocation, Time, Person, Gender
-import VedAstro.Library as libray
+import VedAstro.Library as library
 
 # Create a GeoLocation object for Tokyo, Japan
 geolocation = GeoLocation(location="Tokyo", latitude=35.6895, longitude=139.6917).geolocation
@@ -23,7 +23,7 @@ gender = Gender.Male
 john_doe = Person(id=id, user_id=user_id, name=name, gender=gender, birth_time=time_ob, notes=notes).person
 
 # do calculation to check if saturn is in aries at a given time
-saturn_aries = libray.HoroscopeCalculatorMethods.SaturnInAries(time_ob)
+saturn_aries = library.HoroscopeCalculatorMethods.SaturnInAries(time_ob)
 
 # data if the astro event occured
 occurrence = saturn_aries.Occuring

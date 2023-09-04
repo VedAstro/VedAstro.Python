@@ -1,6 +1,6 @@
 from vedastro.objects import Time, LifeEvent, GeoLocation
 from vedastro.objects import Gender
-import VedAstro.Library as libray
+import VedAstro.Library as library
 
 
 class Person:
@@ -15,7 +15,7 @@ class Person:
         self.notes = notes
         self.lifeEventList = life_event_list
 
-        self.person = libray.Person(id, name, birth_time, gender, user_id, notes, life_event_list)
+        self.person = library.Person(id, name, birth_time, gender, user_id, notes, life_event_list)
 
     def get_birth_location(self):
         return self.person.GetBirthLocation()

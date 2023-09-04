@@ -12,6 +12,6 @@ full_path = os.path.abspath(dll_path)
 clr.AddReference(full_path)
 #
 # from ..planets import Planets
-# from ..astronomical_calculator import AstronomicalCalculator
+# from ..astronomical_calculator import Calculator
 # from ..time import Time
 # from ..geolocation import GeoLocation
