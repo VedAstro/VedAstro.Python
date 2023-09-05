@@ -977,3 +977,31 @@ def pd1_planet_full_years(planet):
         return 7.0
     if planet == PlanetName.Venus:
         return 20.0
+
+def pd2_planet_full_years(pd1_planet, pd2_planet):
+    """
+    Gets the full years of a bhukti planet in a dasa.
+
+    Parameters:
+        pd1_planet (PlanetName): The dasa planet.
+        pd2_planet (PlanetName): The bhukti planet.
+
+    Returns:
+        float: The full years of the bhukti planet in the dasa.
+
+    Notes:
+        - The total of all the dasa planet's years is assumed to be 120 years.
+        - The time a bhukti planet consumes in a dasa is a fixed percentage it consumes in a person's full life.
+        - Bhukti planet's years in a dasa is a percentage of the dasa planet's full years.
+    """
+    # 120 years is the total of all the dasa planet's years
+    full_human_life_years = 120.0
+
+    # The time a bhukti planet consumes in a dasa is a fixed percentage it consumes in a person's full life
+    bhukti_planet_percentage = pd1_planet_full_years(pd2_planet) / full_human_life_years
+
+    # Bhukti planet's years in a dasa is a percentage of the dasa planet's full years
+    bhukti_planet_full_years = bhukti_planet_percentage * pd1_planet_full_years(pd1_planet)
+
+    # Return the calculated value
+    return bhukti_planet_full_years
