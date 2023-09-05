@@ -1034,3 +1034,131 @@ def pd3_planet_full_years(pd1_planet, pd2_planet, pd3_planet):
 
     # Return the calculated value
     return antaram_planet_full_years
+
+def pd4_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet):
+    """
+    Gets the full time of a Sukshma planet.
+
+    Sukshma is a Sanskrit word meaning "subtle" or "dormant." The presence of sukshma is felt, but not seen.
+
+    Parameters:
+        pd1_planet (PlanetName): The dasa planet.
+        pd2_planet (PlanetName): The bhukti planet.
+        pd3_planet (PlanetName): The antaram planet.
+        pd4_planet (PlanetName): The Sukshma planet.
+
+    Returns:
+        float: The full time of the Sukshma planet.
+
+    Notes:
+        - The total of all the dasa planet's years is assumed to be 120 years.
+        - The time a Sukshma planet consumes in an antaram is a fixed percentage it consumes in a person's full life.
+        - Sukshma planet's full time is a percentage of the Antaram planet's full time.
+    """
+    # 120 years is the total of all the dasa planet's years
+    full_human_life_years = 120.0
+
+    # The time a Sukshma planet consumes in an antaram is a fixed percentage it consumes in a person's full life
+    sukshma_planet_percentage = pd1_planet_full_years(pd4_planet) / full_human_life_years
+
+    # Sukshma planet's full time is a percentage of the Antaram planet's full time
+    sukshma_planet_full_years = sukshma_planet_percentage * pd3_planet_full_years(pd1_planet, pd2_planet, pd3_planet)
+
+    # Return the calculated value
+    return sukshma_planet_full_years
+
+def pd5_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet, pd5_planet):
+    """
+    Gets the full time of a Prana planet.
+
+    Parameters:
+        pd1_planet (PlanetName): The dasa planet.
+        pd2_planet (PlanetName): The bhukti planet.
+        pd3_planet (PlanetName): The antaram planet.
+        pd4_planet (PlanetName): The Sukshma planet.
+        pd5_planet (PlanetName): The Prana planet.
+
+    Returns:
+        float: The full time of the Prana planet.
+
+    Notes:
+        - The total of all the dasa planet's years is assumed to be 120 years.
+        - The time a Prana planet consumes in a Sukshma is a fixed percentage it consumes in a person's full life.
+        - Prana planet's full time is a percentage of the Sukshma planet's full time.
+    """
+    # 120 years is the total of all the dasa planet's years
+    full_human_life_years = 120.0
+
+    # The time a Prana planet consumes in a Sukshma is a fixed percentage it consumes in a person's full life
+    pd5_planet_percentage = pd1_planet_full_years(pd5_planet) / full_human_life_years
+
+    # Prana planet's full time is a percentage of the Sukshma planet's full time
+    pd5_planet_full_time = pd5_planet_percentage * pd4_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet)
+
+    # Return the calculated value
+    return pd5_planet_full_time
+
+def pd6_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet, pd5_planet, pd6_planet):
+    """
+    Gets the full time of a Prana planet.
+
+    Parameters:
+        pd1_planet (PlanetName): The dasa planet.
+        pd2_planet (PlanetName): The bhukti planet.
+        pd3_planet (PlanetName): The antaram planet.
+        pd4_planet (PlanetName): The Sukshma planet.
+        pd5_planet (PlanetName): The Prana planet.
+        pd6_planet (PlanetName): The PD6 planet.
+
+    Returns:
+        float: The full time of the PD6 planet.
+
+    Notes:
+        - The total of all the dasa planet's years is assumed to be 120 years.
+        - The time a PD6 planet consumes in a PD5 is a fixed percentage it consumes in a person's full life.
+        - PD6 planet's full time is a percentage of the PD5 planet's full time.
+    """
+    # 120 years is the total of all the dasa planet's years
+    full_human_life_years = 120.0
+
+    # The time a PD6 planet consumes in a PD5 is a fixed percentage it consumes in a person's full life
+    pd6_planet_percentage = pd1_planet_full_years(pd6_planet) / full_human_life_years
+
+    # PD6 planet's full time is a percentage of the PD5 planet's full time
+    pd6_planet_full_time = pd6_planet_percentage * pd5_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet, pd5_planet)
+
+    # Return the calculated value
+    return pd6_planet_full_time
+
+def pd7_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet, pd5_planet, pd6_planet, pd7_planet):
+    """
+    Gets the full time of a Prana planet.
+
+    Parameters:
+        pd1_planet (PlanetName): The dasa planet.
+        pd2_planet (PlanetName): The bhukti planet.
+        pd3_planet (PlanetName): The antaram planet.
+        pd4_planet (PlanetName): The Sukshma planet.
+        pd5_planet (PlanetName): The Prana planet.
+        pd6_planet (PlanetName): The PD6 planet.
+        pd7_planet (PlanetName): The PD7 planet.
+
+    Returns:
+        float: The full time of the PD7 planet.
+
+    Notes:
+        - The total of all the dasa planet's years is assumed to be 120 years.
+        - The time a PD7 planet consumes in a PD6 is a fixed percentage it consumes in a person's full life.
+        - PD7 planet's full time is a percentage of the PD6 planet's full time.
+    """
+    # 120 years is the total of all the dasa planet's years
+    full_human_life_years = 120.0
+
+    # The time a PD7 planet consumes in a PD6 is a fixed percentage it consumes in a person's full life
+    pd7_planet_percentage = pd1_planet_full_years(pd7_planet) / full_human_life_years
+
+    # PD7 planet's full time is a percentage of the PD6 planet's full time
+    pd7_planet_full_time = pd7_planet_percentage * pd6_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet, pd5_planet, pd6_planet)
+
+    # Return the calculated value
+    return pd7_planet_full_time
