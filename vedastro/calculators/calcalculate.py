@@ -1005,3 +1005,32 @@ def pd2_planet_full_years(pd1_planet, pd2_planet):
 
     # Return the calculated value
     return bhukti_planet_full_years
+
+def pd3_planet_full_years(pd1_planet, pd2_planet, pd3_planet):
+    """
+    Gets the full years of an antaram planet in a bhukti of a dasa.
+
+    Parameters:
+        pd1_planet (PlanetName): The dasa planet.
+        pd2_planet (PlanetName): The bhukti planet.
+        pd3_planet (PlanetName): The antaram planet.
+
+    Returns:
+        float: The full years of the antaram planet in the bhukti of the dasa.
+
+    Notes:
+        - The total of all the dasa planet's years is assumed to be 120 years.
+        - The time an antaram planet consumes in a bhukti is a fixed percentage it consumes in a person's full life.
+        - Antaram planet's full years is a percentage of the bhukti planet's full years.
+    """
+    # 120 years is the total of all the dasa planet's years
+    full_human_life_years = 120.0
+
+    # The time an antaram planet consumes in a bhukti is a fixed percentage it consumes in a person's full life
+    antaram_planet_percentage = pd1_planet_full_years(pd3_planet) / full_human_life_years
+
+    # Antaram planet's full years is a percentage of the bhukti planet's full years
+    antaram_planet_full_years = antaram_planet_percentage * pd2_planet_full_years(pd1_planet, pd2_planet)
+
+    # Return the calculated value
+    return antaram_planet_full_years
