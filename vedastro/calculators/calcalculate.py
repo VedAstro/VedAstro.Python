@@ -1162,3 +1162,40 @@ def pd7_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet, pd5_pl
 
     # Return the calculated value
     return pd7_planet_full_time
+
+
+def pd8_planet_full_years(pd1_planet, pd2_planet, pd3_planet, pd4_planet, pd5_planet, pd6_planet, pd7_planet, pd8_planet):
+    """
+    Gets the full time of a PD8 planet.
+
+    Parameters:
+        pd1_planet (PlanetName): The dasa planet.
+        pd2_planet (PlanetName): The bhukti planet.
+        pd3_planet (PlanetName): The antaram planet.
+        pd4_planet (PlanetName): The Sukshma planet.
+        pd5_planet (PlanetName): The Prana planet.
+        pd6_planet (PlanetName): The PD6 planet.
+        pd7_planet (PlanetName): The PD7 planet.
+        pd8_planet (PlanetName): The PD8 planet.
+
+    Returns:
+        float: The full time of the PD8 planet.
+
+    Notes:
+        - The total of all the dasa planet's years is assumed to be 120 years.
+        - The time a PD8 planet consumes in a PD7 is a fixed percentage it consumes in a person's full life.
+        - PD8 planet's full time is a percentage of the PD7 planet's full time.
+    """
+    # 120 years is the total of all the dasa planet's years
+    full_human_life_years = 120.0
+
+    # The time a PD8 planet consumes in a PD7 is a fixed percentage it consumes in a person's full life
+    pd8_planet_percentage = pd1_planet_full_years(pd8_planet) / full_human_life_years
+
+    # PD8 planet's full time is a percentage of the PD7 planet's full time
+    pd8_planet_full_time = pd8_planet_percentage * pd7_planet_full_years(
+        pd1_planet, pd2_planet, pd3_planet, pd4_planet, pd5_planet, pd6_planet, pd7_planet
+    )
+
+    # Return the calculated value
+    return pd8_planet_full_time
