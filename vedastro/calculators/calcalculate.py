@@ -599,13 +599,13 @@ def get_antaram_planet_full_years(dasa_planet: PlanetName, bhukti_planet: Planet
 def get_sukshma_planet_full_years(dasa_planet: PlanetName, bhukti_planet: PlanetName, antaram_planet: PlanetName,
                                   sukshma_planet: PlanetName) -> float:
     return VedAstro.Calculate.SukshmaPlanetFullYears(dasa_planet, bhukti_planet, antaram_planet,
-                                                                   sukshma_planet)
+                                                     sukshma_planet)
 
 
 def get_prana_planet_full_years(dasa_planet: PlanetName, bhukti_planet: PlanetName, antaram_planet: PlanetName,
                                 sukshma_planet: PlanetName, prana_planet: PlanetName) -> float:
     return VedAstro.Calculate.PranaPlanetFullYears(dasa_planet, bhukti_planet, antaram_planet,
-                                                                 sukshma_planet, prana_planet)
+                                                   sukshma_planet, prana_planet)
 
 
 def get_constellation_dasa_planet(constellation_name: ConstellationName) -> PlanetName:
@@ -660,13 +660,13 @@ def get_antaram_planet_full_years(dasa_planet: PlanetName, bhukti_planet: Planet
 def get_sukshma_planet_full_years(dasa_planet: PlanetName, bhukti_planet: PlanetName, antaram_planet: PlanetName,
                                   sukshma_planet: PlanetName) -> float:
     return VedAstro.Calculate.SukshmaPlanetFullYears(dasa_planet, bhukti_planet, antaram_planet,
-                                                                   sukshma_planet)
+                                                     sukshma_planet)
 
 
 def get_prana_planet_full_years(dasa_planet: PlanetName, bhukti_planet: PlanetName, antaram_planet: PlanetName,
                                 sukshma_planet: PlanetName, prana_planet: PlanetName) -> float:
     return VedAstro.Calculate.PranaPlanetFullYears(dasa_planet, bhukti_planet, antaram_planet,
-                                                                 sukshma_planet, prana_planet)
+                                                   sukshma_planet, prana_planet)
 
 
 def get_constellation_dasa_planet(constellation_name: ConstellationName) -> PlanetName:
@@ -923,6 +923,7 @@ def get_benefic_planet_list_by_shadbala(person_birth_time: Time, threshold: int 
 def get_benefic_house_list_by_shadbala(person_birth_time: Time, threshold: int = 0) -> List[HouseName]:
     return VedAstro.Calculate.BeneficHouseListByShadbala(person_birth_time, threshold)
 
+
 #
 # def get_benefic_house_list_by_shadbala(person_birth_time: Time) -> List[HouseName]:
 #     return VedAstro.Calculate.BeneficHouseListByShadbala(person_birth_time)
@@ -944,9 +945,35 @@ def get_malefic_house_list_by_shadbala(person_birth_time: Time, threshold: int =
 #     return VedAstro.Calculate.MaleficHouseListByShadbala(person_birth_time)
 
 
-def get_astral_body_prediction(person: Person) -> str:
-    return VedAstro.Calculate.AstralBodyPrediction(person)
+# def get_astral_body_prediction(person: Person) -> str:
+#     return VedAstro.Calculate.AstralBodyPrediction(person)
+# Todo:- can't find reference to this function. Look into that
+#
+# def get_animal(sign: ConstellationName) -> ConstellationAnimal:
+#     return VedAstro.Calculate.Animal(sign)
+# Todo:- can't find reference to this function. Look into that
 
-
-def get_animal(sign: ConstellationName) -> ConstellationAnimal:
-    return VedAstro.Calculate.Animal(sign)
+def pd1_planet_full_years(planet):
+    """
+    Gets the full Dasa years for a given planet
+		Note: Returns "double" so that division down the road is accurate
+		Ref:Hindu Predictive Astrology pg. 54
+    """
+    if planet == PlanetName.Sun:
+        return 6.0
+    if planet == PlanetName.Moon:
+        return 10.0
+    if planet == PlanetName.Mars:
+        return 7.0
+    if planet == PlanetName.Rahu:
+        return 18.0
+    if planet == PlanetName.Jupiter:
+        return 16.0
+    if planet == PlanetName.Saturn:
+        return 19.0
+    if planet == PlanetName.Mercury:
+        return 17.0
+    if planet == PlanetName.Ketu:
+        return 7.0
+    if planet == PlanetName.Venus:
+        return 20.0
