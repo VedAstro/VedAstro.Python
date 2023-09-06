@@ -1,4 +1,7 @@
+from enum import Enum
+
 import VedAstro.Library as VedAstro
+
 
 class AyanamsaSettings:
     """
@@ -31,3 +34,22 @@ class AyanamsaSettings:
             value (int): The new value for the year of coincidence.
         """
         cls.YearOfCoincidence = value
+
+
+class Ayanamsa(Enum):
+    """
+    Represents different Ayanamsa values.
+
+    Enum Members:
+    - Yukteshwar: The meeting of V.E. with the first point of Aries took place in 499 A.D.
+    - Raman: B.V.Raman accepted 397 AD as the Zero Ayanamsa Year.
+    - Lahiri: N.C.Lahiri took 285 AD as the Zero Ayanamsa Year.
+    - Krishnamurti: K.S.Krishnamurti fixed 291 AD as the Zero Ayanamsa Year.
+    - Western: Western astrology does not use ayanamsa, set year 0.
+    """
+
+    Yukteshwar = 499
+    Raman = 397
+    Lahiri = 285
+    Krishnamurti = 291
+    Western = 0
