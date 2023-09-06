@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "VedAstro"
+version = "0.2b.0"
+description = "A Python libray for astronomical calculations."
+authors = ["Tharaka Umayanga <tharakau@gmail.com>"]
+readme = "README.md"
+packages = [{include = "vedastro"}]
+
+[tool.poetry.dependencies]
+python = "<3.12,>=3.9"
+pythonnet = "^3.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
