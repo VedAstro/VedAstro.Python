@@ -1,22 +1,14 @@
-# Load the necessary .NET assemblies
-# Import the enum
-from vedastro.calculators import *
-from vedastro.objects import *
-
+import VedAstro # install via pip
+from VedAstro.Library import * # reference full library
 
 #PART 1 : PREPARE NEEDED DATA
 #-----------------------------------
 
 # set birth location
-geolocation = GeoLocation(location="Tokyo", latitude=35.6895, longitude=139.6917).geolocation
-
-# set birth time
-date = "31/12/2010" # day/month/year
-time = "23:40" # 24 Hour
-time_offset = "+08:00" # standard timezone at birth location
+geolocation = GeoLocation("Tokyo, Japan", 139.83, 35.65)
 
 # group all birth time data together
-birth_time = Time(date, time, time_offset, geolocation).time_object
+birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
 
 
 #PART 2 : SET CUSTOM AYANAMSA
@@ -24,12 +16,12 @@ birth_time = Time(date, time, time_offset, geolocation).time_object
 #-----------------------------------
 
 print(f"LAHIRI AYANAMSA : 285 AD") 
-VedAstro.Calculate.YearOfCoincidence = int(VedAstro.Ayanamsa.Lahiri);
+Calculate.YearOfCoincidence = int(Ayanamsa.Lahiri);
 
 #PART 3 : MAKE CALCULATION
 #-----------------------------------
-moon_constellation = VedAstro.Calculate.PlanetConstellation(birth_time, VedAstro.PlanetName.Sun)
-planet_longitude = VedAstro.Calculate.PlanetNirayanaLongitude(birth_time, VedAstro.PlanetName.Sun)
+moon_constellation = Calculate.PlanetConstellation(birth_time, PlanetName.Sun)
+planet_longitude = Calculate.PlanetNirayanaLongitude(birth_time, PlanetName.Sun)
 print(f"Sun Constellation : {moon_constellation}")  
 print(f"Nirayana Longitude : {planet_longitude}")
 
@@ -39,11 +31,11 @@ print(f"Nirayana Longitude : {planet_longitude}")
 #-----------------------------------
 
 print(f"\nRAMAN AYANAMSA : 397 AD")  
-VedAstro.Calculate.YearOfCoincidence = int(VedAstro.Ayanamsa.Raman);
+Calculate.YearOfCoincidence = int(Ayanamsa.Raman);
 
 #PART 5 : MAKE CALCULATION
 #-----------------------------------
-moon_constellation = VedAstro.Calculate.PlanetConstellation(birth_time, VedAstro.PlanetName.Sun)
-planet_longitude = VedAstro.Calculate.PlanetNirayanaLongitude(birth_time, VedAstro.PlanetName.Sun)
+moon_constellation = Calculate.PlanetConstellation(birth_time, PlanetName.Sun)
+planet_longitude = Calculate.PlanetNirayanaLongitude(birth_time, PlanetName.Sun)
 print(f"Sun Constellation : {moon_constellation}") 
 print(f"Nirayana Longitude : {planet_longitude}") 
