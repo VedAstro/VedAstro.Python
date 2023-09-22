@@ -1,38 +1,30 @@
 # Load the necessary .NET assemblies
-# Import the enum
-from vedastro.calculators import *
-from vedastro.objects import *
+import VedAstro # install via pip
+from VedAstro.Library import * # reference full library
 
 
 #PART 1 : PREPARE NEEDED DATA
 #-----------------------------------
 
 # set birth location
-geolocation = GeoLocation(location="Tokyo", latitude=35.6895, longitude=139.6917).geolocation
+geolocation = GeoLocation("Tokyo, Japan", 139.83, 35.65)
 
-# set birth time
-date = "31/12/2010" # day/month/year
-time = "23:40" # 24 Hour
-time_offset = "+08:00" # standard timezone at birth location
-
-# group all birth time data together
-birth_time = Time(date, time, time_offset, geolocation).time_object
+# group all birth time data together (day/month/year)
+birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
 
 
 #PART 2 : CALCULATE ALL DATA
 #-----------------------------------
 
 #PLANETS
-allPlanetDataList = VedAstro.Calculate.AllPlanetData(VedAstro.PlanetName.Sun, birth_time)
-allDataJson = VedAstro.APIFunctionResult.ToJsonList(allPlanetDataList)
-print(allDataJson)
+allPlanetDataList = Calculate.AllPlanetData(PlanetName.Sun, birth_time)
+Tools.Print(allPlanetDataList)
 
 #HOUSES
-allHouseDataList = VedAstro.Calculate.AllHouseData(VedAstro.HouseName.House1, birth_time)
-allDataJson = VedAstro.APIFunctionResult.ToJsonList(allHouseDataList)
-print(allDataJson)
+allHouseDataList = Calculate.AllHouseData(HouseName.House1, birth_time)
+Tools.Print(allHouseDataList)
 
 #ZODIAC SIGNS
-allZodiacDataList = VedAstro.Calculate.AllZodiacSignData(VedAstro.ZodiacName.Gemini, birth_time)
-allDataJson = VedAstro.APIFunctionResult.ToJsonList(allZodiacDataList)
-print(allDataJson)
+allZodiacDataList = Calculate.AllZodiacSignData(ZodiacName.Gemini, birth_time)
+Tools.Print(allZodiacDataList)
+
