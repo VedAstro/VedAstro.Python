@@ -1,12 +1,16 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name='vedastro',
-    version='0.1b',
-    packages=['vedastro', 'vedastro.objects', 'vedastro.unittests', 'vedastro.calculators'],
-    url='https://github.com/VedAstro/VedAstro.Python',
+    name="VedAstro",
+    version="1.0.0",
     license='MIT',
-    author='',
-    author_email='',
-    description='A Python wrapper VedAstro for VedAstro '
+    description="An open source Python library for advanced astronomical calculations like planet longitude, house sign, shadbala, etc...",
+    author="VedAstro",
+    author_email="developer@vedastro.org",
+    packages=find_packages(include=["vedastro"]),
+    install_requires=[
+        "packaging",
+        "pythonnet",
+    ],
+    python_requires=">=3.9.*",
 )
