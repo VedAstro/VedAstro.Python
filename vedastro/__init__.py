@@ -22,7 +22,7 @@ try:
     #note CLR can only be imported AFTER runtime config has been set above
     import clr # provided by the Pythonnet package
     clr.AddReference(full_path)
-    from VedAstro.Library as vedastro.library
+    from VedAstro.Library import * 
 
 except RuntimeError:
     print(f"Dotnet 7 not found. please visit https://dotnet.microsoft.com/en-us/download/dotnet/7.0")
