@@ -1,4 +1,3 @@
-# Load the necessary .NET assemblies
 import VedAstro # install via pip
 from VedAstro.Library import * # reference full library
 
