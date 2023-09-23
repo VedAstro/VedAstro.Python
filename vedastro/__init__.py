@@ -25,13 +25,11 @@ try:
 
     # Add reference to .NET assembly
     clr.AddReference(full_path)
-
     clr.AddReference('VedAstro.Library')
+    
     # Import the namespace from the assembly
     from VedAstro.Library import *
     
-    # Import the necessary classes and functions from the VedAstro library
-    #from VedAstro.Library import GeoLocation, Time, Calculate, Tools, PlanetName
 
 except RuntimeError:
     print(f"Dotnet 7 not found. please visit https://dotnet.microsoft.com/en-us/download/dotnet/7.0")

@@ -1,5 +1,4 @@
-import VedAstro # install via pip
-from VedAstro.Library import * # reference full library
+from vedastro import *
 
 # set location
 geolocation = GeoLocation("Tokyo, Japan", 139.83, 35.65)
