@@ -59,6 +59,15 @@ jobs:
         done
     - name: Commit changes
       run: |
+    
+        echo "--------SETTING NAME--------------"
+        git config --global user.name 'GitHub Actions Bot'
+        git config --global user.email 'actions@github.com'
+
+        # Clones the other repository where you want to commit the DLL.
+        echo "--------CLONING VEDASTRO.PYTHON--"
+        git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/VedAstro/VedAstro.Python.git
+
         git fetch origin main
         # commit only if needed
         if [[ -n "$(git diff origin/main)" ]]; then
@@ -68,7 +77,7 @@ jobs:
             git commit -am "GITHUB ROBOT : Published to Pypip.org"
           fi
           echo "--------MAKING A PUSH FOR IT!--"
-          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/VedAstro/VedAstro.Python.git
+          git push 
         fi
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
