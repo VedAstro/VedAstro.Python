@@ -8,7 +8,7 @@ packages = [{include = "vedastro"}]
 [tool.poetry.dependencies]
 python = ">=3.9,<3.12"
 packaging = "*"
-pythonnet = "^3.0.2"
+pythonnet = "^3.0.1"
 pycparser = "*"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
