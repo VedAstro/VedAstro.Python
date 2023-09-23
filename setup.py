@@ -11,6 +11,7 @@ setup(
     install_requires=[
         "packaging",
         "pythonnet",
+        "pycparser"
     ],
     python_requires=">=3.9.*",
 )
