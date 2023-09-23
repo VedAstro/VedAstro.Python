@@ -2,8 +2,7 @@ import os # used to get file paths
 from pythonnet import load
 
 # welcome message
-print("VedAstro - Made & Funded by Users")
-print("Support Development - https://vedastro.org/Donate\n")
+print("VedAstro - Made & Funded by Users - https://vedastro.org/Donate\n")
 
 # check if current package is up to date else warn user
 from .update_check import check_for_update
@@ -22,7 +21,6 @@ try:
     #note CLR can only be imported AFTER runtime config has been set above
     import clr # provided by the Pythonnet package
     clr.AddReference(full_path)
-    from VedAstro.Library import * 
 
 except RuntimeError:
     print(f"Dotnet 7 not found. please visit https://dotnet.microsoft.com/en-us/download/dotnet/7.0")
