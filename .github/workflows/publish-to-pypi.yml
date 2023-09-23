@@ -31,6 +31,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        pip install vedastro
         PYPI_VERSION=$(pip show vedastro | grep Version | cut -d ' ' -f 2)
         CURRENT_VERSION=$(poetry version | cut -d ' ' -f 2)
         IFS='.' read -ra PYPI_VERSION_PARTS <<< "$PYPI_VERSION"
