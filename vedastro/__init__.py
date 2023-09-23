@@ -1,6 +1,9 @@
 import os # used to get file paths
 from pythonnet import load
 
+# check if current package is up to date else warn user
+from .update_check import check_for_update
+check_for_update("vedastro")
 
 # initialize the VedAstro by loading the necessary DLL and setting up the runtime configuration.
 current_path = os.path.dirname(os.path.abspath(__file__))
