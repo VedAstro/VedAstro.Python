@@ -54,13 +54,17 @@ jobs:
         done
     - name: Commit changes
       run: |
-        if [[ "${{ steps.check_version.outputs.bump_version }}" == "true" ]]; then
-          git commit -am "GITHUB ROBOT : Increment version & published to Pypip.org"
-        else
-          git commit -am "GITHUB ROBOT : Published to Pypip.org"
+        git fetch origin main
+        # commit only if needed
+        if [[ -n "$(git diff origin/main)" ]]; then
+          if [[ "${{ steps.check_version.outputs.bump_version }}" == "true" ]]; then
+            git commit -am "GITHUB ROBOT : Increment version & published to Pypip.org"
+          else
+            git commit -am "GITHUB ROBOT : Published to Pypip.org"
+          fi
+          echo "--------MAKING A PUSH FOR IT!--"
+          git push
         fi
-        echo "--------MAKING A PUSH FOR IT!--"
-        git push
     - name: Build package
       run: poetry build
     - name: Publish to PyPI
