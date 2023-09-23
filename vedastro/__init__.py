@@ -1,6 +1,10 @@
 import os # used to get file paths
 from pythonnet import load
 
+# welcome message
+print("VedAstro - Made & Funded by Users")
+print("Support Development - https://vedastro.org/Donate\n")
+
 # check if current package is up to date else warn user
 from .update_check import check_for_update
 check_for_update("vedastro")
