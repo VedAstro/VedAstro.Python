@@ -34,6 +34,11 @@ jobs:
         pip install vedastro
         PYPI_VERSION=$(pip show vedastro | grep Version | cut -d ' ' -f 2)
         CURRENT_VERSION=$(poetry version | cut -d ' ' -f 2)
+        
+        # show version in log
+        echo "PYPI_VERSION is $PYPI_VERSION"
+        echo "CURRENT_VERSION is $CURRENT_VERSION"
+
         IFS='.' read -ra PYPI_VERSION_PARTS <<< "$PYPI_VERSION"
         IFS='.' read -ra CURRENT_VERSION_PARTS <<< "$CURRENT_VERSION"
         while true; do
