@@ -1,8 +1,20 @@
-# AUTO GENERATED ON 05:01 23/09/2023 +08:00
+# AUTO GENERATED ON 04:14 24/09/2023 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
 
+class Tarabala:
+    pass
+class Karana:
+    pass
+class NithyaYoga:
+    pass
+class House:
+    pass
+class DayOfWeek:
+    pass
+class LunarMonth:
+    pass
 class Object:
     pass
 class Type:
@@ -63,6 +75,9 @@ class Dasas:
     pass
 class Tools:
     pass
+class LunarDay:
+    pass
+
 
 class Calculate:
     def PlanetAvasta(planetName: PlanetName, time: Time) -> Any:
