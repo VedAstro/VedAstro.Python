@@ -10,21 +10,21 @@ build:
   script: "{{ PYTHON }} -m pip install . -vv"
 requirements:
   host:
-    - python >=3.9
+    - python >=3.9,<3.12
     - pip
   run:
-    - python >=3.9
+    - python >=3.9,<3.12
     - packaging
-    - pythonnet
+    - pythonnet 3.0.2
     - pycparser
 about:
-  home: https://github.com/vedastro/vedastro
+  home: https://github.com/VedAstro/VedAstro
   license: MIT
   license_family: MIT
   summary: An open source Python library for advanced astronomical calculations like planet longitude, house sign, shadbala, etc...
   description: An open source Python library for advanced astronomical calculations like planet longitude, house sign, shadbala, etc...
-  doc_url: https://github.com/vedastro/vedastro
-  dev_url: https://github.com/vedastro/vedastro
+  doc_url: https://github.com/VedAstro/VedAstro
+  dev_url: https://github.com/VedAstro/VedAstro
 extra:
   recipe-maintainers:
     - vedastro
