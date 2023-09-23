@@ -1,5 +1,4 @@
-import VedAstro # install via pip
-from VedAstro.Library import * # reference full library
+from vedastro import *  # install via pip
 
 
 #PART 1 : PREPARE NEEDED DATA
