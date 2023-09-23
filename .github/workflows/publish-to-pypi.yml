@@ -31,7 +31,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        PYPI_VERSION=$(pip show your-package-name | grep Version | cut -d ' ' -f 2)
+        PYPI_VERSION=$(pip show vedastro | grep Version | cut -d ' ' -f 2)
         CURRENT_VERSION=$(poetry version | cut -d ' ' -f 2)
         IFS='.' read -ra PYPI_VERSION_PARTS <<< "$PYPI_VERSION"
         IFS='.' read -ra CURRENT_VERSION_PARTS <<< "$CURRENT_VERSION"
