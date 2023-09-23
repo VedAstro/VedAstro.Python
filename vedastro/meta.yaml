@@ -16,6 +16,7 @@ requirements:
     - python >=3.9
     - packaging
     - pythonnet
+    - pycparser
 about:
   home: https://github.com/vedastro/vedastro
   license: MIT
