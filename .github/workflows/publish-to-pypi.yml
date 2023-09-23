@@ -1,11 +1,19 @@
-name: Publish to PyPI
+#  workflow automates the Python package publishing process 
+# to PyPI upon pushes to the main branch or manual triggers,
+# incrementing version if needed.
+
+name: Publish to PyPI and Anaconda Cloud
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**.md' # Ignore changes to Markdown files to prevent infinite loop
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]' # This line prevents the loop
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -16,14 +24,43 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install poetry
+        pip install conda # Install conda for Anaconda Cloud publishing
     - name: Install project dependencies
       run: poetry install
-    - name: Bump version
+    - name: Check version
+      id: check_version
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        poetry version minor
-        git commit -am "Auto update release"
+        PYPI_VERSION=$(pip show your-package-name | grep Version | cut -d ' ' -f 2)
+        CURRENT_VERSION=$(poetry version | cut -d ' ' -f 2)
+        IFS='.' read -ra PYPI_VERSION_PARTS <<< "$PYPI_VERSION"
+        IFS='.' read -ra CURRENT_VERSION_PARTS <<< "$CURRENT_VERSION"
+        while true; do
+          for i in "${!PYPI_VERSION_PARTS[@]}"; do
+            if (( ${PYPI_VERSION_PARTS[i]} < ${CURRENT_VERSION_PARTS[i]} )); then
+              echo "PYPI_VERSION is lower. Committing without bumping version."
+              echo "::set-output name=bump_version::false"
+              break 2
+            elif (( ${PYPI_VERSION_PARTS[i]} > ${CURRENT_VERSION_PARTS[i]} )); then
+              echo "Bumping version."
+              poetry version minor
+              CURRENT_VERSION=$(poetry version | cut -d ' ' -f 2)
+              IFS='.' read -ra CURRENT_VERSION_PARTS <<< "$CURRENT_VERSION"
+              echo "::set-output name=bump_version::true"
+              break 2
+            fi
+          done
+        done
+    - name: Commit changes
+      run: |
+        if [[ "${{ steps.check_version.outputs.bump_version }}" == "true" ]]; then
+          git commit -am "GITHUB ROBOT : Increment version & published to Pypip.org and Anaconda Cloud"
+        else
+          git commit -am "GITHUB ROBOT : Published to Pypip.org and Anaconda Cloud"
+        fi
+        echo "--------MAKING A PUSH FOR IT!--"
+        git push
     - name: Build package
       run: poetry build
     - name: Publish to PyPI
@@ -31,3 +68,8 @@ jobs:
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
+    - name: Publish to Anaconda Cloud
+      run: |
+        conda config --set anaconda_upload yes
+        anaconda login --token ${{ secrets.ANACONDA_API_KEY }}
+        anaconda upload dist/* # Upload all distribution files to Anaconda Cloud
