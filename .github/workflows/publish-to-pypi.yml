@@ -68,8 +68,10 @@ jobs:
             git commit -am "GITHUB ROBOT : Published to Pypip.org"
           fi
           echo "--------MAKING A PUSH FOR IT!--"
-          git push
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/VedAstro/VedAstro.Python.git
         fi
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     - name: Build package
       run: poetry build
     - name: Publish to PyPI
