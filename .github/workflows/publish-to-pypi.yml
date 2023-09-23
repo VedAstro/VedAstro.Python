@@ -47,7 +47,7 @@ jobs:
               echo "PYPI_VERSION is lower. Committing without bumping version."
               echo "::set-output name=bump_version::false"
               break 2
-            elif (( ${PYPI_VERSION_PARTS[i]} > ${CURRENT_VERSION_PARTS[i]} )); then
+            elif (( ${PYPI_VERSION_PARTS[i]} >= ${CURRENT_VERSION_PARTS[i]} )); then
               echo "Bumping version."
               poetry version minor
               CURRENT_VERSION=$(poetry version | cut -d ' ' -f 2)
