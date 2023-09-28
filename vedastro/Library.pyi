@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 09:30 28/09/2023 +08:00
+# AUTO GENERATED ON 16:40 28/09/2023 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -144,6 +144,12 @@ class Calculate:
         """
          All possible calculations for a Zodiac Sign at a given Time 
         :return: List`1
+         """
+        ...
+    def FortunePoint(ascZodiacSignName: ZodiacName, moon: PlanetName, sun: PlanetName, time: Time) -> Int32:
+        """
+         Calculate Fortuna Point for a given birth time place. Returns Sign Number from Lagna 
+        :return: Int32
          """
         ...
     def DestinyPoint(time: Time, ascZodiacSignName: ZodiacName, rahu: PlanetName, moon: PlanetName) -> Int32:
@@ -1204,7 +1210,7 @@ class Calculate:
         ...
     def AllBhinnashtakavargaChart(birthTime: Time) -> Any:
         """
-         Bhinnashtakavarga or individual Ashtakvarga charts Made on cold winter morning in July 
+         Bhinnashtakavarga or individual Ashtakvarga charts List of planets ascendant with their their bindu point
         :return: Dictionary`2
          """
         ...
