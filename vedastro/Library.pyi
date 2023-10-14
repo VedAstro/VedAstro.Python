@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 16:40 28/09/2023 +08:00
+# AUTO GENERATED ON 12:26 14/10/2023 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -118,13 +118,13 @@ class Calculate:
         ...
     def IsPlanetInKshobhitaAvasta(planetName: PlanetName, time: Time) -> Boolean:
         """
-         If a planet is conjunct by Sun or it is aspected by Enemy Malefic Planets then it should always be known as Kshobhita AvasthaAgitated State Kshobhita guilty repentant Planet in conjunction with sun and aspected by malefics and an enemy. Penury
+         If a planet is conjunct by Sun or it is aspected by Enemy Malefic Planets then it should always be known as Kshobhita AvasthaAgitated State Kshobhita guilty repentant Planet in conjunction with sun and aspected by malefics and an enemy. Penury 
         :return: Boolean
          """
         ...
     def AllPlanetData(planetName: PlanetName, time: Time) -> Any:
         """
-         Gets all possible calculations for a Planet at a given Time
+         Gets all possible calculations for a Planet at a given Time 
         :return: List`1
          """
         ...
@@ -144,6 +144,12 @@ class Calculate:
         """
          All possible calculations for a Zodiac Sign at a given Time 
         :return: List`1
+         """
+        ...
+    def AyanamsaFinder(inputPlanet: PlanetName, expectedConstellation: ConstellationName, expectedPada: Int32, time: Time) -> Double:
+        """
+        Empty sample text
+        :return: Double
          """
         ...
     def FortunePoint(ascZodiacSignName: ZodiacName, moon: PlanetName, sun: PlanetName, time: Time) -> Int32:
@@ -204,12 +210,6 @@ class Calculate:
         """
          Gets the ephemris time that is consumed by Swiss Ephemeris Converts normal time to Ephemeris time shown as a number 
         :return: Double
-         """
-        ...
-    def PlanetNirayanaLongitude(time: Time, planetName: PlanetName) -> Angle:
-        """
-         Planet longitude that has been corrected with Ayanamsa Gets planet longitude used vedic astrology Nirayana Longitude Sayana Longitude corrected to Ayanamsa Number from 0 to 360 represent the degrees in the zodiac as viewed from earth Note Since Nirayana is corrected in actuality 0 degrees will start at Taurus not Aries 
-        :return: Angle
          """
         ...
     def LunarDay(time: Time) -> LunarDay:
@@ -329,6 +329,12 @@ class Calculate:
     def AllPlanetSigns(time: Time) -> Any:
         """
          Gets list of all planets and the zodiac signs they are in 
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetConstellation(time: Time) -> Any:
+        """
+         Gets list of all planets and the constellation they are in 
         :return: Dictionary`2
          """
         ...
@@ -872,6 +878,12 @@ class Calculate:
         :return: Object
          """
         ...
+    def SwissEphemerisAll(time: Time) -> Any:
+        """
+         For all planets including Pluto Neptune Uranus Get planets Longitude Latitude DistanceAU SpeedLongitude SpeedLatitude... Uses Swiss Ephemeris directly to get values 
+        :return: List`1
+         """
+        ...
     def IsPlanetSameHouseWithHouseLord(birthTime: Time, houseNumber: Int32, planet: PlanetName) -> Boolean:
         """
          Checks if a planet is same house not nessarly conjunct with the lord of a certain house Example Is Sun joined with lord of 9th 
@@ -992,7 +1004,7 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def Ayanamsa(time: Time) -> Angle:
+    def AyanamsaDegree(time: Time) -> Angle:
         """
          The distance between the Hindu First Point and the Vernal Equinox measured at an epoch is known as the Ayanamsa in Varahamihiras time the summer solistice coincided with the first degree of Cancer and the winter solistice with the first degree of Capricorn whereas at one time the summer solistice coincided with the middle of the Aslesha 
         :return: Angle
@@ -1001,6 +1013,12 @@ class Calculate:
     def PlanetSayanaLongitude(time: Time, planetName: PlanetName) -> Angle:
         """
          Get fixed longitude used in western systems connects SwissEph Library with VedAstro NOTE This method connects SwissEph Library with VedAstro Library 
+        :return: Angle
+         """
+        ...
+    def PlanetNirayanaLongitude(time: Time, planetName: PlanetName) -> Angle:
+        """
+         Planet longitude that has been corrected with Ayanamsa Gets planet longitude used vedic astrology Nirayana Longitude Sayana Longitude corrected to Ayanamsa Number from 0 to 360 represent the degrees in the zodiac as viewed from earth Note Since Nirayana is corrected in actuality 0 degrees will start at Taurus not Aries 
         :return: Angle
          """
         ...
@@ -1210,13 +1228,13 @@ class Calculate:
         ...
     def AllBhinnashtakavargaChart(birthTime: Time) -> Any:
         """
-         Bhinnashtakavarga or individual Ashtakvarga charts List of planets ascendant with their their bindu point
+         Bhinnashtakavarga or individual Ashtakvarga charts List of planets ascendant with their their bindu point 
         :return: Dictionary`2
          """
         ...
     def PlanetBhinnashtakavargaChart(mainPlanet: PlanetName, birthTime: Time) -> Any:
         """
-         Calculates full ashtakvarga chart for a given planet for all 12 signs Needed to compute final ashtakvarga 
+         Calculates full ashtakvarga chart for a given planet for all 12 signs Used to for calculating final Ashtakvarga Rahu Ketu will return 0 
         :return: Dictionary`2
          """
         ...
@@ -1238,7 +1256,7 @@ class Calculate:
         :return: Int32
          """
         ...
-    def CurrentPlanetDasas(birthTime: Time, currentTime: Time) -> Dasas:
+    def CurrentDasa8Levels(birthTime: Time, currentTime: Time) -> Dasas:
         """
          The main method that starts all Dasa Calculations Gets the occuring Planet Dasas PD1 PD2... for a person at the given time 
         :return: Dasas
@@ -1436,7 +1454,7 @@ class Calculate:
         :return: List`1
          """
         ...
-    def GetAllHousesOrderedByStrength(time: Time) -> HouseName:
+    def AllHousesOrderedByStrength(time: Time) -> HouseName:
         """
          Returns an array of all houses sorted by strength 0 index being strongest to 11 index being weakest 
         :return: HouseName[]
@@ -1751,6 +1769,12 @@ class Calculate:
     def GetDasaInfoForAscendant(ascendantName: ZodiacName) -> String:
         """
          Get general planetary info for persons dasa hardcoded table It is intended to be used to interpret dasa predictions as such should be displayed next to dasa chart. This method is direct translation from the book. Similar to method GetPlanetDasaNature Data from pg 80 of Keyplanets for Each Sign in Hindu Predictive Astrology 
+        :return: String
+         """
+        ...
+    def BouncBackInputAsString(planetName: PlanetName, time: Time) -> String:
+        """
+        NO DESC FOUND!! ERROR
         :return: String
          """
         ...
