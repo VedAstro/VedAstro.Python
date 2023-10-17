@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 12:26 14/10/2023 +08:00
+# AUTO GENERATED ON 19:26 17/10/2023 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -152,6 +152,12 @@ class Calculate:
         :return: Double
          """
         ...
+    def LordOfConstellation(constellation: ConstellationName) -> PlanetName:
+        """
+         Calculate Lord of Star Constellation given Constellation. Returns Star Lord Name 
+        :return: PlanetName
+         """
+        ...
     def FortunePoint(ascZodiacSignName: ZodiacName, moon: PlanetName, sun: PlanetName, time: Time) -> Int32:
         """
          Calculate Fortuna Point for a given birth time place. Returns Sign Number from Lagna 
@@ -186,6 +192,18 @@ class Calculate:
         """
          Get sky chart at a given time. SVG image file. URL can be used like a image source link 
         :return: Task`1
+         """
+        ...
+    def SouthIndianChart(time: Time) -> String:
+        """
+         Get sky chart at a given time. SVG image file. URL can be used like a image source link 
+        :return: String
+         """
+        ...
+    def NorthIndianChart(time: Time) -> String:
+        """
+         Get sky chart at a given time. SVG image file. URL can be used like a image source link 
+        :return: String
          """
         ...
     def IsPlanetInWaterySign(planetName: PlanetName, time: Time) -> Boolean:
@@ -284,6 +302,24 @@ class Calculate:
         :return: Time
          """
         ...
+    def AllHouseLongitudesKP(time: Time) -> Any:
+        """
+         Gets longitudes for houses under Krishnamurti KP astrology system Note Ayanamsa hard set to Krishnamurti 
+        :return: List`1
+         """
+        ...
+    def AllHouseConstellationKP(time: Time) -> Any:
+        """
+         Gets all houses with their constelation for KP Krishnamurti system 
+        :return: Dictionary`2
+         """
+        ...
+    def TimeToJulianDay(time: Time) -> Double:
+        """
+         special function localized to allow caching note there is another version that does caching 
+        :return: Double
+         """
+        ...
     def AllHouseLongitudes(time: Time) -> Any:
         """
          Calculates creates all houses as list 
@@ -317,6 +353,12 @@ class Calculate:
     def PlanetsInHouse(houseNumber: HouseName, time: Time) -> Any:
         """
          Gets list of all planets thats in a housebhava at a given time 
+        :return: List`1
+         """
+        ...
+    def PlanetsInHouseBasedOnSign(houseNumber: HouseName, time: Time) -> Any:
+        """
+         Gets list of all planets thats in a housebhava at a given time based on sign the house and planet is in 
         :return: List`1
          """
         ...
@@ -356,6 +398,42 @@ class Calculate:
         :return: HouseName
          """
         ...
+    def HousePlanetIsInKP(time: Time, planetName: PlanetName) -> HouseName:
+        """
+         Gets the House number a given planet is in at a time 
+        :return: HouseName
+         """
+        ...
+    def AllPlanetHousePositionsBasedOnSign(time: Time) -> Any:
+        """
+         List of all planets and the houses they are located in at a given time based on zodiac sign. 
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetHousePositions(time: Time) -> Any:
+        """
+         List of all planets and the houses they are located in at a given time 
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetHousePositionsKP(time: Time) -> Any:
+        """
+         List of all planets and the houses they are located in at a given time using KP Krishnamurti system note KP ayanamsa is hard set 
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetZodiacSigns(time: Time) -> Any:
+        """
+         List of all planets and the zodiac signs they are located in at a given time 
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetZodiacSignsKP(time: Time) -> Any:
+        """
+         List of all planets and the zodiac signs they are located in at a given time using KP Krishnamurti system note KP ayanamsa is hard set 
+        :return: Dictionary`2
+         """
+        ...
     def LordOfHouse(houseNumber: HouseName, time: Time) -> PlanetName:
         """
          Gets planet lord of given house at given time The lord of a bhava is the Graha planet in whose Rasi sign the Bhavamadhya falls 
@@ -378,6 +456,18 @@ class Calculate:
         """
          Gets the zodiac sign at middle longitude of the house. 
         :return: ZodiacName
+         """
+        ...
+    def AllHouseSignName(time: Time) -> Any:
+        """
+         Gets the zodiac sign at middle longitude of the house. 
+        :return: Dictionary`2
+         """
+        ...
+    def AllHousePlanetsInHouseBasedOnSign(time: Time) -> Any:
+        """
+         Gets the zodiac sign at middle longitude of the house. 
+        :return: Dictionary`2
          """
         ...
     def HouseConstellation(houseNumber: HouseName, time: Time) -> PlanetConstellation:
@@ -1188,6 +1278,12 @@ class Calculate:
         """
          Gets the Gochara House number which is the count from birth Moon sign janma rasi to the sign the planet is at the current time. Gochara Transits 
         :return: Int32
+         """
+        ...
+    def GetConstellationTransitStartTime(planetName: PlanetName, timeRange: TimeRange) -> Any:
+        """
+         Gets all the constellation start time for a given planet 
+        :return: List`1
          """
         ...
     def IsGocharaObstructed(planet: PlanetName, gocharaHouse: Int32, birthTime: Time, currentTime: Time) -> Boolean:
