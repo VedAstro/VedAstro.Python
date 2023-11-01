@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 19:26 17/10/2023 +08:00
+# AUTO GENERATED ON 00:34 01/11/2023 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -122,6 +122,18 @@ class Calculate:
         :return: Boolean
          """
         ...
+    def PlanetSignTransit(startTime: Time, endTime: Time, planetName: PlanetName) -> Any:
+        """
+        Empty sample text
+        :return: List`1
+         """
+        ...
+    def GetConstellationTransitStartTime(startTime: Time, endTime: Time, planetName: PlanetName) -> Any:
+        """
+         Gets all the constellation start time for a given planet Set to an accuracy of 1 minute 
+        :return: List`1
+         """
+        ...
     def AllPlanetData(planetName: PlanetName, time: Time) -> Any:
         """
          Gets all possible calculations for a Planet at a given Time 
@@ -146,9 +158,39 @@ class Calculate:
         :return: List`1
          """
         ...
-    def AyanamsaFinder(inputPlanet: PlanetName, expectedConstellation: ConstellationName, expectedPada: Int32, time: Time) -> Double:
+    def EventDataAtTime(birthTime: Time, checkTime: Time, nameOfEvent: EventName) -> Any:
+        """
+         Given a birth time current time and event name gets the event data occuring at current time Easy way to check if Gochara is occuring at given time with start and end time calculated Precision hard set to 1 hour TODO 
+        :return: Task`1
+         """
+        ...
+    def EventStartTime(birthTime: Time, checkTime: Time, eventData: EventData, precisionInHours: Int32) -> Time:
         """
         Empty sample text
+        :return: Time
+         """
+        ...
+    def EventEndTime(birthTime: Time, checkTime: Time, eventData: EventData, precisionInHours: Int32) -> Time:
+        """
+        Empty sample text
+        :return: Time
+         """
+        ...
+    def LocalMeanTime(time: Time) -> String:
+        """
+         Given a standard time LMT and location will get Local mean time 
+        :return: String
+         """
+        ...
+    def LocalStandardTime(time: Time) -> String:
+        """
+         Given a standard time STD and location will get local standard time based on location Offset auto set by Google Offset API 
+        :return: String
+         """
+        ...
+    def AyanamsaFinder(inputPlanet: PlanetName, expectedConstellation: ConstellationName, expectedPada: Int32, time: Time) -> Double:
+        """
+         Given a specified constellation name and pada brute force find ayanamsa 
         :return: Double
          """
         ...
@@ -236,16 +278,16 @@ class Calculate:
         :return: LunarDay
          """
         ...
-    def MoonConstellation(time: Time) -> PlanetConstellation:
+    def MoonConstellation(time: Time) -> Constellation:
         """
          Gets name of Constellation behind the moon at a given time 
-        :return: PlanetConstellation
+        :return: Constellation
          """
         ...
-    def PlanetConstellation(time: Time, planet: PlanetName) -> PlanetConstellation:
+    def PlanetConstellation(time: Time, planet: PlanetName) -> Constellation:
         """
          Gets the constellation behind a planet at a given time 
-        :return: PlanetConstellation
+        :return: Constellation
          """
         ...
     def Tarabala(time: Time, person: Person) -> Tarabala:
@@ -300,18 +342,6 @@ class Calculate:
         """
         Find time when Sun was in 29 degrees in current sign just about to leave sign Note 2 possible ways leaving time is calculated 1. degrees Sun is in sign is more than 29.999 degrees very very close to leaving sign 2. accuracy limit is hit
         :return: Time
-         """
-        ...
-    def AllHouseLongitudesKP(time: Time) -> Any:
-        """
-         Gets longitudes for houses under Krishnamurti KP astrology system Note Ayanamsa hard set to Krishnamurti 
-        :return: List`1
-         """
-        ...
-    def AllHouseConstellationKP(time: Time) -> Any:
-        """
-         Gets all houses with their constelation for KP Krishnamurti system 
-        :return: Dictionary`2
          """
         ...
     def TimeToJulianDay(time: Time) -> Double:
@@ -398,12 +428,6 @@ class Calculate:
         :return: HouseName
          """
         ...
-    def HousePlanetIsInKP(time: Time, planetName: PlanetName) -> HouseName:
-        """
-         Gets the House number a given planet is in at a time 
-        :return: HouseName
-         """
-        ...
     def AllPlanetHousePositionsBasedOnSign(time: Time) -> Any:
         """
          List of all planets and the houses they are located in at a given time based on zodiac sign. 
@@ -416,21 +440,9 @@ class Calculate:
         :return: Dictionary`2
          """
         ...
-    def AllPlanetHousePositionsKP(time: Time) -> Any:
-        """
-         List of all planets and the houses they are located in at a given time using KP Krishnamurti system note KP ayanamsa is hard set 
-        :return: Dictionary`2
-         """
-        ...
     def AllPlanetZodiacSigns(time: Time) -> Any:
         """
          List of all planets and the zodiac signs they are located in at a given time 
-        :return: Dictionary`2
-         """
-        ...
-    def AllPlanetZodiacSignsKP(time: Time) -> Any:
-        """
-         List of all planets and the zodiac signs they are located in at a given time using KP Krishnamurti system note KP ayanamsa is hard set 
         :return: Dictionary`2
          """
         ...
@@ -454,13 +466,25 @@ class Calculate:
         ...
     def HouseSignName(houseNumber: HouseName, time: Time) -> ZodiacName:
         """
-         Gets the zodiac sign at middle longitude of the house. 
+         Gets only the the zodiac sign name at middle longitude of the house. 
         :return: ZodiacName
          """
         ...
-    def AllHouseSignName(time: Time) -> Any:
+    def HouseSign(houseNumber: HouseName, time: Time) -> ZodiacSign:
+        """
+         Gets the zodiac sign at middle longitude of the house with degrees data 
+        :return: ZodiacSign
+         """
+        ...
+    def AllHouseSign(time: Time) -> Any:
         """
          Gets the zodiac sign at middle longitude of the house. 
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseConstellationLord(time: Time) -> Any:
+        """
+         For all houses. Calculate Lord of Star Constellation given Constellation. Returns Star Lord Name 
         :return: Dictionary`2
          """
         ...
@@ -470,10 +494,10 @@ class Calculate:
         :return: Dictionary`2
          """
         ...
-    def HouseConstellation(houseNumber: HouseName, time: Time) -> PlanetConstellation:
+    def HouseConstellation(houseNumber: HouseName, time: Time) -> Constellation:
         """
          Gets the zodiac sign at middle longitude of the house. 
-        :return: PlanetConstellation
+        :return: Constellation
          """
         ...
     def NavamsaSignNameFromLongitude(longitude: Angle) -> ZodiacName:
@@ -488,7 +512,7 @@ class Calculate:
         :return: ZodiacName
          """
         ...
-    def SignCountedFromMoonSign(countToNextSign: Int32, inputTime: Time) -> ZodiacName:
+    def SignCountedFromPlanetSign(countToNextSign: Int32, startPlanet: PlanetName, inputTime: Time) -> ZodiacName:
         """
          Exp Get 4th sign from Moon 
         :return: ZodiacName
@@ -512,7 +536,7 @@ class Calculate:
         :return: Int32
          """
         ...
-    def PlanetSignName(planetName: PlanetName, time: Time) -> ZodiacSign:
+    def PlanetZodiacSign(planetName: PlanetName, time: Time) -> ZodiacSign:
         """
          Get zodiac sign planet is in. 
         :return: ZodiacSign
@@ -520,7 +544,7 @@ class Calculate:
         ...
     def IsPlanetInSign(planetName: PlanetName, signInput: ZodiacName, time: Time) -> Boolean:
         """
-         Checks if a given planet is in a given sign at a given time 
+         Checks if a given planet is in a given sign at a given time
         :return: Boolean
          """
         ...
@@ -618,12 +642,6 @@ class Calculate:
         """
          Shows local apparent time from Swiss Eph 
         :return: DateTime
-         """
-        ...
-    def LocalMeanTime(time: Time) -> DateTimeOffset:
-        """
-         This method exists mainly for testing internal time calculation of LMT Important that this method passes the test at all times so much depends on this 
-        :return: DateTimeOffset
          """
         ...
     def House(houseNumber: HouseName, time: Time) -> House:
@@ -770,6 +788,12 @@ class Calculate:
         :return: Boolean
          """
         ...
+    def IsBeneficsInKendra(time: Time) -> Boolean:
+        """
+         Checks if any goodbenefic planets are in kendra houses house 
+        :return: Boolean
+         """
+        ...
     def IsMaleficPlanetInSign(sign: ZodiacName, time: Time) -> Boolean:
         """
          Checks if any evilmalefic planets are in a sign 
@@ -842,7 +866,7 @@ class Calculate:
         :return: Int32
          """
         ...
-    def CountFromConstellationToConstellation(start: PlanetConstellation, end: PlanetConstellation) -> Int32:
+    def CountFromConstellationToConstellation(start: Constellation, end: Constellation) -> Int32:
         """
          Counts from start Constellation to end Constellation Example Aquarius to Taurus is 4 
         :return: Int32
@@ -1028,19 +1052,19 @@ class Calculate:
         :return: Double
          """
         ...
-    def AllPlanetsSignsFromMoon(signsFromMoon: Int32, birthTime: Time) -> Any:
+    def AllPlanetsSignsFromPlanet(signsFromMoon: Int32, startPlanet: PlanetName, birthTime: Time) -> Any:
         """
          Gets all planets in certain sign from the moon. Exp get planets 3rd from the moon 
         :return: List`1
          """
         ...
-    def AllPlanetsSignsFromLagna(signsFromLagna: Int32, birthTime: Time) -> Any:
+    def AllPlanetsInASignFromLagna(signsFromLagna: Int32, birthTime: Time) -> Any:
         """
          Gets all planets in certain sign from the LagnaAscendant. Exp get planets 3rd from the LagnaAscendant 
         :return: List`1
          """
         ...
-    def AllPlanetsSignsFromMoon(signsFromList: Int32, birthTime: Time) -> Any:
+    def AllPlanetsSignsFromPlanet(signsFromList: Int32, startPlanet: PlanetName, birthTime: Time) -> Any:
         """
          Gets all planets in certain sign from the moon given list of signs. Exp get planets 3rd from the moon 
         :return: List`1
@@ -1058,16 +1082,10 @@ class Calculate:
         :return: List`1
          """
         ...
-    def AllPlanetsSignsFromLagna(signsFromList: Int32, birthTime: Time) -> Any:
+    def AllPlanetsInSignsFromLagna(signsFromList: Int32, birthTime: Time) -> Any:
         """
          Gets all planets in certain sign from the LagnaAscendant given list of signs. Exp get planets 3rd from the LagnaAscendant 
         :return: List`1
-         """
-        ...
-    def IsPlanetsInSignsFromMoon(signsFromList: Int32, planetList: PlanetName, birthTime: Time) -> Boolean:
-        """
-         Checks if a given list of planets are found in any inputed signs from moon Exp Is Sun or Moon in 6 or 7th from Moon 
-        :return: Boolean
          """
         ...
     def IsPlanetsInSignsFromPlanet(signsFromList: Int32, planetList: PlanetName, startPlanet: PlanetName, birthTime: Time) -> Boolean:
@@ -1082,7 +1100,7 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def IsBeneficsInSignsFromMoon(signsFromList: Int32, birthTime: Time) -> Boolean:
+    def IsBeneficsInSignsFromPlanet(signsFromList: Int32, startPlanet: PlanetName, birthTime: Time) -> Boolean:
         """
          Checks if benefics are found in any inputed signs from moon Exp Is benefics in 6 7th from moon 
         :return: Boolean
@@ -1142,10 +1160,10 @@ class Calculate:
         :return: Double
          """
         ...
-    def ConstellationAtLongitude(planetLongitude: Angle) -> PlanetConstellation:
+    def ConstellationAtLongitude(planetLongitude: Angle) -> Constellation:
         """
          Converts Planet Longitude to Constellation equivelant Gets info about the constellation at a given longitude ie. Constellation Name Quarter Degrees in constellation etc. 
-        :return: PlanetConstellation
+        :return: Constellation
          """
         ...
     def ZodiacSignAtLongitude(longitude: Angle) -> ZodiacSign:
@@ -1274,16 +1292,10 @@ class Calculate:
         :return: DateTimeOffset
          """
         ...
-    def GocharaHouse(birthTime: Time, currentTime: Time, planet: PlanetName) -> Int32:
+    def GocharaZodiacSignCountFromMoon(birthTime: Time, currentTime: Time, planet: PlanetName) -> Int32:
         """
          Gets the Gochara House number which is the count from birth Moon sign janma rasi to the sign the planet is at the current time. Gochara Transits 
         :return: Int32
-         """
-        ...
-    def GetConstellationTransitStartTime(planetName: PlanetName, timeRange: TimeRange) -> Any:
-        """
-         Gets all the constellation start time for a given planet 
-        :return: List`1
          """
         ...
     def IsGocharaObstructed(planet: PlanetName, gocharaHouse: Int32, birthTime: Time, currentTime: Time) -> Boolean:
@@ -1370,13 +1382,13 @@ class Calculate:
         :return: PlanetName
          """
         ...
-    def TimeLeftInBirthDasa(birthTime: Time, startConstellation: PlanetConstellation) -> Double:
+    def TimeLeftInBirthDasa(birthTime: Time, startConstellation: Constellation) -> Double:
         """
          Gets years left in birth dasa at birth Note Returned years can only be 0 or above Start constellation can be of moon or Lagna 
         :return: Double
          """
         ...
-    def YearsTraversedInBirthDasa(birthTime: Time, startConstellation: PlanetConstellation) -> Double:
+    def YearsTraversedInBirthDasa(birthTime: Time, startConstellation: Constellation) -> Double:
         """
          Gets the time in years traversed in Dasa at birth Start constellation can of Moons or Lagna lord 
         :return: Double
@@ -1532,15 +1544,15 @@ class Calculate:
         :return: List`1
          """
         ...
-    def IsPlanetBeneficInShadbala(planet: PlanetName, time: Time) -> Boolean:
+    def IsPlanetStrongInShadbala(planet: PlanetName, time: Time) -> Boolean:
         """
-         Significance of being Powerful.Among the several planets associated with a bhava that which has the greatest Sbadbala influences the bhava most. Powerful Planets.Ravi is befd to be powerful when hiShadbala Pinda is 5 or more rupas. Chandra becomes strong when his Shadbala Pinda is 6 or more rupas. Kuja becomes powerful when bis Shadbala Pinda does not fall short of 5 rupas.Budha becomes potent by having his Sbadbala Pinda as 7 rupas Guru Sukra and Sani become thoroughly powerful if their Shadbala Pindas are 6.5 5.5 and 5 rupas or more respectively. 
+         Significance of being Powerful.Among the several planets associated with a bhava that which has the greatest Sbadbala influences the bhava most. Powerful Planets.Ravi is befd to be powerful when his Shadbala Pinda is 5 or more rupas. Chandra becomes strong when his Shadbala Pinda is 6 or more rupas. Kuja becomes powerful when bis Shadbala Pinda does not fall short of 5 rupas.Budha becomes potent by having his Sbadbala Pinda as 7 rupas Guru Sukra and Sani become thoroughly powerful if their Shadbala Pindas are 6.5 5.5 and 5 rupas or more respectively. 
         :return: Boolean
          """
         ...
     def IsHouseBeneficInShadbala(house: HouseName, birthTime: Time, threshold: Double) -> Boolean:
         """
-        Empty sample text
+         sets benefic if above 450 score 
         :return: Boolean
          """
         ...
@@ -1638,12 +1650,6 @@ class Calculate:
         """
          Shadvarga bala This is the strength of a planet due to its residence in the 6 subdivisions according to its relation with the dispositor. They are 1 Rasi 2 Hora 3 Drekkana 4 Navamsa 5 Dwadasamsa and 6 Trimsamsa. 
         :return: Shashtiamsa
-         """
-        ...
-    def IsPlanetStrongInShadvarga(planet: PlanetName, time: Time) -> Boolean:
-        """
-         TODO use of shadvarga bala might be wrong here needs clarification problem is too much of time goes under bad doesnt seem right for now we put it 140 threhold so guarenteed to be strong and doesn not occur all the time 
-        :return: Boolean
          """
         ...
     def PlanetSthanaBala(planetName: PlanetName, time: Time) -> Shashtiamsa:
@@ -1872,6 +1878,78 @@ class Calculate:
         """
         NO DESC FOUND!! ERROR
         :return: String
+         """
+        ...
+    def HouseZodiacSignHorary(inputHouse: HouseName, birthTime: Time, horaryNumber: Int32) -> ZodiacSign:
+        """
+        Empty sample text
+        :return: ZodiacSign
+         """
+        ...
+    def PlanetHouseHorary(inputPlanet: PlanetName, birthTime: Time, horaryNumber: Int32) -> HouseName:
+        """
+        Empty sample text
+        :return: HouseName
+         """
+        ...
+    def HouseZodiacSignKundali(inputHouse: HouseName, birthTime: Time) -> ZodiacSign:
+        """
+        Empty sample text
+        :return: ZodiacSign
+         """
+        ...
+    def PlanetHouseKundali(inputPlanet: PlanetName, birthTime: Time) -> HouseName:
+        """
+        Empty sample text
+        :return: HouseName
+         """
+        ...
+    def PlanetLordOfConstellation(inputPlanet: PlanetName, birthTime: Time) -> PlanetName:
+        """
+        Empty sample text
+        :return: PlanetName
+         """
+        ...
+    def PlanetConstellation(inputPlanet: PlanetName, birthTime: Time) -> Constellation:
+        """
+        Empty sample text
+        :return: Constellation
+         """
+        ...
+    def PlanetLordOfZodiacSign(inputPlanet: PlanetName, birthTime: Time) -> PlanetName:
+        """
+        Empty sample text
+        :return: PlanetName
+         """
+        ...
+    def IsPlanetInHouseKP(cusps: Any, planetNirayanaDegrees: Angle, house: HouseName) -> Boolean:
+        """
+        Empty sample text
+        :return: Boolean
+         """
+        ...
+    def AllHouseCuspLongitudesHorary(time: Time, horaryNumber: Int32) -> Any:
+        """
+         Calculates the astrological house cusps for a given time and horary number. It uses the Swiss Ephemeris to compute high precision astronomical data. The method converts the horary number to Tropical Ascendant degrees then to ARMC Sidereal Time which is used to calculate house cusps. The house system is calculated using the ARMC latitude and obliquity of the ecliptic. The results are packaged into a dictionary mapping each house to its corresponding angle 
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseCuspLongitudesKundali(time: Time) -> Any:
+        """
+         Calculates the astrological house cusps for a specific time and location which is a key aspect in the creation of a Kundali astrological chart. The function swe_houses_ex from the Swiss Ephemeris library is used to calculate the house cusps and the ascmc values which include the Ascendant Midheaven etc.. The house system used is P Placidus. The longitudes of the house cusps are then stored in a dictionary with the house names as keys and the longitudes as values converted to degrees. This dictionary is returned by the function providing the longitudes of all houses in the Kundali. 
+        :return: Dictionary`2
+         """
+        ...
+    def ConvertTropicalAscToARMC(tropicalAscendant: Double, obliquityOfEcliptic: Double, geographicLatitude: Double, time: Time) -> Double:
+        """
+         This method is used to convert the tropical ascendant to the ARMC Ascendant Right Meridian Circle. It first calculates the right ascension and declination using the provided tropical ascendant and obliquity of the ecliptic. Then it calculates the oblique ascension by subtracting a value derived from the declination and geographic latitude from the right ascension. Finally it calculates the ARMC based on the value of the tropical ascendant and the oblique ascension. 
+        :return: Double
+         """
+        ...
+    def HoraryNumberTropicalAsc(horaryNumber: Int32) -> Double:
+        """
+         This method calculates the tropical ascendant for a given horary number. It does this by iterating over all constellations and planets calculating various parameters before and after adding a certain degree to the tropical ascendant tropAsc and handling special cases such as when tropAsc is 0 or when there are overlapping signs. The tropical ascendant corresponding to the given horary number is then returned. 
+        :return: Double
          """
         ...
 
