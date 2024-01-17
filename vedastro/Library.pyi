@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 00:34 01/11/2023 +08:00
+# AUTO GENERATED ON 10:58 17/01/2024 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -80,6 +80,66 @@ class LunarDay:
 
 
 class Calculate:
+    def PanchangaTable(inputTime: Time) -> PanchangaTable:
+        """
+         Its used to determine auspicious times and rituals. It includes multiple attributes such as Tithi lunar day Lunar Month Vara weekday Nakshatra constellation Yoga lunisolar day and Karana half of a Tithi. Disha Shool 
+        :return: PanchangaTable
+         """
+        ...
+    def DishaShool(inputTime: Time) -> String:
+        """
+         Here are the following Disha shool days and the directions that are considered as inauspicious or Disha shool. Check the Disha Shool chart to find the inauspicious direction to travel 
+        :return: String
+         """
+        ...
+    def LunarMonth(inputTime: Time, ignoreLeapMonth: Boolean) -> LunarMonth:
+        """
+         Also know as Chandramana or Hindu Month. Each Hindu month begins with the New Moon. These lunar months go by special names. The name of a lunar month is decided by the rasi in which SunMoon conjunction takes place. These names come from the constellation that Moon is most likely to occupy on the full Moon day. Names are Chaitra Vaisaakha Jyeshtha Aashaadha Sraavana etc... 
+        :return: LunarMonth
+         """
+        ...
+    def NextNewMoon(inputTime: Time) -> Time:
+        """
+         Gets next future New Moon date when tithi will be 1. Uses conjunctions angle to calculate with accuracy of 30min Includes start time in scan 
+        :return: Time
+         """
+        ...
+    def PreviousNewMoon(inputTime: Time) -> Time:
+        """
+         Gets last occured New Moon date when tithi will be 1. Uses conjunctions angle to calculate with accuracy of 30min Includes start time in scan 
+        :return: Time
+         """
+        ...
+    def SunMoonConjunctionAngle(ccc: Time) -> Angle:
+        """
+         Gets the distance in degrees between Sun Moon at a given time Used to calculate lunar months. 
+        :return: Angle
+         """
+        ...
+    def BirthNumber(birthTime: Time) -> Int32:
+        """
+         Numerology Your birth number denotes your ruling power the structure of the body and the character depend on that number. The birth number denotes a persons status and desires. let us take it as 17101931. Number 17 becomes 17 8. So 8 is your Birth number. 
+        :return: Int32
+         """
+        ...
+    def DestinyNumber(birthTime: Time) -> Int32:
+        """
+         Numerology The events that occur in your life your relationship with others your future and the end of your life are all denoted by your destiny number. The destiny number denotes to what extent a person will come up in life as well as it determines his fate. 
+        :return: Int32
+         """
+        ...
+    def NameNumber(fullName: String) -> Int32:
+        """
+         The numerical values given to the alphabets are based on the Chaldean System Numbers values denote the wave length of the sound and impact of letters. The powers of the nine planets in twelve star signs at different times are indicated in 108 numbers. 
+        :return: Int32
+         """
+        ...
+    def NameNumberPrediction(fullName: String) -> String:
+        """
+         Shows numerology prediction for given name. At first the name number is calculated based on Chaldean System then prediction is matched with translation from Mantra Sutras. 
+        :return: String
+         """
+        ...
     def PlanetAvasta(planetName: PlanetName, time: Time) -> Any:
         """
          Gets all the Avastas for a planet Lajjita Garvita Kshudita etc... 
@@ -134,6 +194,12 @@ class Calculate:
         :return: List`1
          """
         ...
+    def AllTimeData(time: Time) -> Any:
+        """
+         Gets all possible calculations for a given Time 
+        :return: List`1
+         """
+        ...
     def AllPlanetData(planetName: PlanetName, time: Time) -> Any:
         """
          Gets all possible calculations for a Planet at a given Time 
@@ -156,6 +222,54 @@ class Calculate:
         """
          All possible calculations for a Zodiac Sign at a given Time 
         :return: List`1
+         """
+        ...
+    def LocationGeoCoordinates(locationName: String) -> Any:
+        """
+         Given a time and location will return the coordinates at that location Longitude and latitude at a location from Google Maps API 
+        :return: Task`1
+         """
+        ...
+    def ParseJHDFiles(cls) -> String:
+        """
+         Easyly import Jaganath Hora files into VedAstro. Yeah Competitions 
+        :return: String
+         """
+        ...
+    def HousesOwnedByPlanetKP(inputPlanet: PlanetName, time: Time, horaryNumber: Int32) -> Any:
+        """
+         Gets all houses owned by a planet at a given time for KP astrology Horary Kundali 
+        :return: List`1
+         """
+        ...
+    def HousesOwnedByPlanet(inputPlanet: PlanetName, time: Time) -> Any:
+        """
+         Gets all houses owned by a planet at a given time 
+        :return: List`1
+         """
+        ...
+    def HouseFromSignName(zodiacName: ZodiacName, inputTime: Time) -> HouseName:
+        """
+         Given a sign name and time will get the house that it is in based on middle longitude. 
+        :return: HouseName
+         """
+        ...
+    def HoroscopePredictionAlpacaTemplateLoRA(birthTime: Time) -> Any:
+        """
+         All horoscope predictions as Alpaca Template ready for LoRA training in JSON 
+        :return: Task`1
+         """
+        ...
+    def HoroscopePredictions(birthTime: Time) -> Any:
+        """
+         Given a birth time will calculate all predictions that match for given birth time and return the data 
+        :return: Task`1
+         """
+        ...
+    def HoroscopePredictionNames(birthTime: Time) -> Any:
+        """
+         Given a birth time will calculate all prediction names that match for given birth time example Moon House 8 10th Lord in 8th House note used by AI Chat when talking to Astro tuned LLM server 
+        :return: Task`1
          """
         ...
     def EventDataAtTime(birthTime: Time, checkTime: Time, nameOfEvent: EventName) -> Any:
@@ -188,25 +302,25 @@ class Calculate:
         :return: String
          """
         ...
-    def AyanamsaFinder(inputPlanet: PlanetName, expectedConstellation: ConstellationName, expectedPada: Int32, time: Time) -> Double:
-        """
-         Given a specified constellation name and pada brute force find ayanamsa 
-        :return: Double
-         """
-        ...
     def LordOfConstellation(constellation: ConstellationName) -> PlanetName:
         """
          Calculate Lord of Star Constellation given Constellation. Returns Star Lord Name 
         :return: PlanetName
          """
         ...
-    def FortunePoint(ascZodiacSignName: ZodiacName, moon: PlanetName, sun: PlanetName, time: Time) -> Int32:
+    def LordOfConstellationKP(inputHouse: HouseName, time: Time, horaryNumber: Int32, rotateDegrees: Double) -> PlanetName:
         """
-         Calculate Fortuna Point for a given birth time place. Returns Sign Number from Lagna 
+         Gets lord of constellation for a given KP House horary or kundali also know as House Star Lord 
+        :return: PlanetName
+         """
+        ...
+    def FortunaPoint(ascZodiacSignName: ZodiacName, time: Time) -> Int32:
+        """
+         Calculate Fortuna Point for a given birth time place. Returns Sign Number from Lagna for KP system a fastmoving point which can differentiate between two early births as twins. 
         :return: Int32
          """
         ...
-    def DestinyPoint(time: Time, ascZodiacSignName: ZodiacName, rahu: PlanetName, moon: PlanetName) -> Int32:
+    def DestinyPoint(time: Time, ascZodiacSignName: ZodiacName) -> Int32:
         """
          Calculate Destiny Point for a given birth time place. Returns Sign Number from Lagna 
         :return: Int32
@@ -236,7 +350,7 @@ class Calculate:
         :return: Task`1
          """
         ...
-    def SouthIndianChart(time: Time) -> String:
+    def SouthIndianChart(time: Time, chartType: ChartType) -> String:
         """
          Get sky chart at a given time. SVG image file. URL can be used like a image source link 
         :return: String
@@ -284,7 +398,7 @@ class Calculate:
         :return: Constellation
          """
         ...
-    def PlanetConstellation(time: Time, planet: PlanetName) -> Constellation:
+    def PlanetConstellation(planet: PlanetName, time: Time) -> Constellation:
         """
          Gets the constellation behind a planet at a given time 
         :return: Constellation
@@ -316,7 +430,7 @@ class Calculate:
         ...
     def NithyaYoga(time: Time) -> NithyaYoga:
         """
-         Nithya Yoga Longitude of Sun Longitude of Moon 1320 or 800 
+         Also know as Panchanga Yoga Nithya Yoga Longitude of Sun Longitude of Moon 1320 or 800 
         :return: NithyaYoga
          """
         ...
@@ -350,9 +464,9 @@ class Calculate:
         :return: Double
          """
         ...
-    def AllHouseLongitudes(time: Time) -> Any:
+    def AllHouseMiddleLongitudes(time: Time) -> Any:
         """
-         Calculates creates all houses as list 
+         Gives the middle longitude of all houses at a give time 
         :return: List`1
          """
         ...
@@ -362,7 +476,7 @@ class Calculate:
         :return: Double
          """
         ...
-    def PlanetsInConjuction(time: Time, inputedPlanetName: PlanetName) -> Any:
+    def PlanetsInConjuction(inputPlanet: PlanetName, time: Time) -> Any:
         """
          Gets all the planets that are in conjunction with the inputed planet Note 1.The planet inputed is not included in return list 2. Theory behind conjunction Conjunction Two heavenly bodies in the same longitude. The effect of an aspect is felt even if the planets are not exactly in the mutual distances mentioned above. Therefore a socalled orb of aspect and this varies in each aspect is allowed. The orbs of aspects are Conjunction 8 degrees Planets can be in same sign but not conjunct There are also other variations of aspects brought about by two planets remaining in the same sign and not in conjunction but another planet occupying a trine in respect of the two. 
         :return: List`1
@@ -382,13 +496,19 @@ class Calculate:
         ...
     def PlanetsInHouse(houseNumber: HouseName, time: Time) -> Any:
         """
-         Gets list of all planets thats in a housebhava at a given time 
+         Gets list of all planets thats in a housebhava at a given time based on house longitudes and not sign 
+        :return: List`1
+         """
+        ...
+    def PlanetsInHouseKP(inputHouse: HouseName, time: Time, horaryNumber: Int32, rotateDegrees: Double) -> Any:
+        """
+         Gets list of all planets thats in a housebhava at a given time for KP Astrology horary kundali 
         :return: List`1
          """
         ...
     def PlanetsInHouseBasedOnSign(houseNumber: HouseName, time: Time) -> Any:
         """
-         Gets list of all planets thats in a housebhava at a given time based on sign the house and planet is in 
+         Gets list of all planets thats in a house at a given time based on sign the house and planet is in and not house longitudes 
         :return: List`1
          """
         ...
@@ -404,10 +524,40 @@ class Calculate:
         :return: Dictionary`2
          """
         ...
-    def AllPlanetConstellation(time: Time) -> Any:
+    def AllPlanetHoraSign(time: Time) -> Any:
         """
-         Gets list of all planets and the constellation they are in 
+        Empty sample text
         :return: Dictionary`2
+         """
+        ...
+    def AllPlanetDrekkanaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetChaturthamsaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetPanchamsaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def DrekkanaSignName(zodiacSign: ZodiacSign) -> ZodiacName:
+        """
+         Given a zodiac sign will convert to drekkana 
+        :return: ZodiacName
+         """
+        ...
+    def HoraSignName(zodiacSign: ZodiacSign) -> ZodiacName:
+        """
+        Empty sample text
+        :return: ZodiacName
          """
         ...
     def AllPlanetLongitude(time: Time) -> Any:
@@ -422,33 +572,51 @@ class Calculate:
         :return: List`1
          """
         ...
-    def HousePlanetIsIn(time: Time, planetName: PlanetName) -> HouseName:
+    def HousePlanetOccupies(planetName: PlanetName, time: Time) -> HouseName:
         """
          Gets the House number a given planet is in at a time 
         :return: HouseName
          """
         ...
-    def AllPlanetHousePositionsBasedOnSign(time: Time) -> Any:
+    def HousePlanetOccupiesKP(inputPlanet: PlanetName, time: Time, horaryNumber: Int32, rotateDegrees: Double) -> HouseName:
+        """
+         Given a planet will return the house it is specific for KP Astrology 
+        :return: HouseName
+         """
+        ...
+    def HouseAllPlanetOccupiesBasedOnSign(time: Time) -> Any:
         """
          List of all planets and the houses they are located in at a given time based on zodiac sign. 
         :return: Dictionary`2
          """
         ...
-    def AllPlanetHousePositions(time: Time) -> Any:
+    def HouseAllPlanetOccupies(time: Time) -> Any:
         """
          List of all planets and the houses they are located in at a given time 
         :return: Dictionary`2
          """
         ...
-    def AllPlanetZodiacSigns(time: Time) -> Any:
-        """
-         List of all planets and the zodiac signs they are located in at a given time 
-        :return: Dictionary`2
-         """
-        ...
     def LordOfHouse(houseNumber: HouseName, time: Time) -> PlanetName:
         """
-         Gets planet lord of given house at given time The lord of a bhava is the Graha planet in whose Rasi sign the Bhavamadhya falls 
+         Gets lord of given house at given time The lord is the Graha planet in whose Rasi sign the Bhavamadhya falls 
+        :return: PlanetName
+         """
+        ...
+    def LordOfHouseKP(inputHouse: HouseName, time: Time, horaryNumber: Int32, rotateDegrees: Double) -> PlanetName:
+        """
+         Gets lord of given house at given time aka House Sign Lord for KP astrology Horary Kundali 
+        :return: PlanetName
+         """
+        ...
+    def PlanetLordOfZodiacSign(inputPlanet: PlanetName, time: Time) -> PlanetName:
+        """
+         Gets the lord of zodiac sign planet is in aka Planet Sign Lord 
+        :return: PlanetName
+         """
+        ...
+    def PlanetLordOfConstellation(inputPlanet: PlanetName, time: Time) -> PlanetName:
+        """
+         Gets the lord of constellation planet is in aka Planet Star Lord 
         :return: PlanetName
          """
         ...
@@ -470,9 +638,15 @@ class Calculate:
         :return: ZodiacName
          """
         ...
-    def HouseSign(houseNumber: HouseName, time: Time) -> ZodiacSign:
+    def HouseZodiacSign(houseNumber: HouseName, time: Time) -> ZodiacSign:
         """
          Gets the zodiac sign at middle longitude of the house with degrees data 
+        :return: ZodiacSign
+         """
+        ...
+    def HouseZodiacSignKP(inputHouse: HouseName, time: Time, horaryNumber: Int32, rotateDegrees: Double) -> ZodiacSign:
+        """
+         Gets sign of house at a given time for KP astrology Horary Kundali 
         :return: ZodiacSign
          """
         ...
@@ -488,16 +662,22 @@ class Calculate:
         :return: Dictionary`2
          """
         ...
-    def AllHousePlanetsInHouseBasedOnSign(time: Time) -> Any:
+    def HouseConstellationKP(inputHouse: HouseName, time: Time, horaryNumber: Int32, rotateDegrees: Double) -> Constellation:
         """
-         Gets the zodiac sign at middle longitude of the house. 
-        :return: Dictionary`2
+         Gets the constellation specific for KP system horary or kundali uses cusps of houses instead of middle longitudes and Placidus House system 
+        :return: Constellation
          """
         ...
     def HouseConstellation(houseNumber: HouseName, time: Time) -> Constellation:
         """
-         Gets the zodiac sign at middle longitude of the house. 
+         Gets the constellation at middle longitude of the house. 
         :return: Constellation
+         """
+        ...
+    def AllHousePlanetsInHouseBasedOnSign(time: Time) -> Any:
+        """
+         Gets the zodiac sign at middle longitude of the house. 
+        :return: Dictionary`2
          """
         ...
     def NavamsaSignNameFromLongitude(longitude: Angle) -> ZodiacName:
@@ -536,6 +716,18 @@ class Calculate:
         :return: Int32
          """
         ...
+    def HouseSubLordKP(inputHouse: HouseName, time: Time, horaryNumber: Int32, rotateDegrees: Double) -> PlanetName:
+        """
+         Gets sub lord of a house at a given time based on KP Astrology The Sub lord of a house is the final authority or happening of event related to that house which is fixed at the time of birth. 
+        :return: PlanetName
+         """
+        ...
+    def PlanetSubLordKP(inputPlanet: PlanetName, time: Time) -> PlanetName:
+        """
+         Gets sub lord of a planet at a given time based on KP Astrology Sub lord is the deciding factor of any event and the nature of the event is indicated by the Star or constellation lord. 
+        :return: PlanetName
+         """
+        ...
     def PlanetZodiacSign(planetName: PlanetName, time: Time) -> ZodiacSign:
         """
          Get zodiac sign planet is in. 
@@ -544,7 +736,7 @@ class Calculate:
         ...
     def IsPlanetInSign(planetName: PlanetName, signInput: ZodiacName, time: Time) -> Boolean:
         """
-         Checks if a given planet is in a given sign at a given time
+         Checks if a given planet is in a given sign at a given time 
         :return: Boolean
          """
         ...
@@ -587,6 +779,30 @@ class Calculate:
     def PlanetDrekkanaSign(planetName: PlanetName, time: Time) -> ZodiacName:
         """
          Gets the Drekkana sign the planet is in 
+        :return: ZodiacName
+         """
+        ...
+    def PlanetChaturthamsaSign(planetName: PlanetName, time: Time) -> ZodiacName:
+        """
+        Empty sample text
+        :return: ZodiacName
+         """
+        ...
+    def PlanetPanchamsaSign(planetName: PlanetName, time: Time) -> ZodiacName:
+        """
+        Empty sample text
+        :return: ZodiacName
+         """
+        ...
+    def ChaturthamsaSignName(zodiacSign: ZodiacSign) -> ZodiacName:
+        """
+        Empty sample text
+        :return: ZodiacName
+         """
+        ...
+    def PanchamsaSignName(zodiacSign: ZodiacSign) -> ZodiacName:
+        """
+        Empty sample text
         :return: ZodiacName
          """
         ...
@@ -644,7 +860,7 @@ class Calculate:
         :return: DateTime
          """
         ...
-    def House(houseNumber: HouseName, time: Time) -> House:
+    def HouseDegrees(houseNumber: HouseName, time: Time) -> House:
         """
          House start middle and end longitudes 
         :return: House
@@ -680,7 +896,7 @@ class Calculate:
         :return: Int32
          """
         ...
-    def PlanetHoraSign(planetName: PlanetName, time: Time) -> ZodiacName:
+    def PlanetHoraSigns(planetName: PlanetName, time: Time) -> ZodiacName:
         """
          Gets hora zodiac sign of a planet 
         :return: ZodiacName
@@ -722,21 +938,27 @@ class Calculate:
         :return: Double
          """
         ...
-    def PlanetShadvargaBalaNeutralPoint(planet: PlanetName) -> Double:
+    def IsPlanetInTrikona(planet: PlanetName, time: Time) -> Boolean:
         """
-         EXPERIMENTAL To determine if Shadvarga bala is strong or weak a neutral point is set anything above is strong below is weak Note Neutral point is derived from all possible Shadvarga bala values across 25 years 20002025 with 1 hour granularity Formula used maxmin2min add min to get exact neutral point from 0 range max hightest possible value min lowest possible value 
-        :return: Double
+         Checks if a planet is in a Trikona house trines159 Equals to Is Jupiter in Trine from Lagna 
+        :return: Boolean
          """
         ...
     def IsPlanetInKendra(planet: PlanetName, time: Time) -> Boolean:
         """
-         Checks if a planet is in a kendra house 14710 
+         Checks if a planet is in a kendra house 14710 Equals to Is Jupiter in Kendra from Lagna 
+        :return: Boolean
+         """
+        ...
+    def IsPlanetInUpachaya(planet: PlanetName, time: Time) -> Boolean:
+        """
+         Checks if a planet is in a Upachayas 3rd 6th 10th and 11th 
         :return: Boolean
          """
         ...
     def IsPlanetInKendra(planetList: PlanetName, time: Time) -> Boolean:
         """
-         Checks if any given planet is in a kendra house 14710 
+         Checks if any 1 given planet is in a kendra house 14710 Equals to Is Jupiter or Venus in Kendra from Lagna 
         :return: Boolean
          """
         ...
@@ -791,6 +1013,12 @@ class Calculate:
     def IsBeneficsInKendra(time: Time) -> Boolean:
         """
          Checks if any goodbenefic planets are in kendra houses house 
+        :return: Boolean
+         """
+        ...
+    def IsAllMaleficsInUpachayas(time: Time) -> Boolean:
+        """
+         Checks if all malefics are in places in Upachayas. Malefic planets are those that are generally considered to bring challenges or difficulties. The Upachayas are the 3rd 6th 10th and 11th houses. These houses are known as the houses of growth and expansion. When malefic planets are in these houses they can drive ambition and personal growth. 
         :return: Boolean
          """
         ...
@@ -872,19 +1100,25 @@ class Calculate:
         :return: Int32
          """
         ...
-    def IsPlanetInHouse(time: Time, planet: PlanetName, houseNumber: HouseName) -> Boolean:
+    def IsPlanetInHouse(planet: PlanetName, houseNumber: HouseName, time: Time) -> Boolean:
         """
          Checks if a planet is in a given house at a specified time 
         :return: Boolean
          """
         ...
-    def IsAllPlanetInHouse(time: Time, planetList: Any, houseNumber: HouseName) -> Boolean:
+    def IsPlanetInHouseKP(cusps: Any, planetNirayanaDegrees: Angle, house: HouseName) -> Boolean:
+        """
+         Checks if a planet is in a given house at a specified time using KP method 
+        :return: Boolean
+         """
+        ...
+    def IsAllPlanetInHouse(planetList: Any, houseNumber: HouseName, time: Time) -> Boolean:
         """
          Checks if a planet is in a given house at a specified time 
         :return: Boolean
          """
         ...
-    def IsAnyPlanetInHouse(time: Time, planetList: Any, houseNumber: HouseName) -> Boolean:
+    def IsAnyPlanetInHouse(planetList: Any, houseNumber: HouseName, time: Time) -> Boolean:
         """
          Checks if any planet in list is at a given house at a specified time 
         :return: Boolean
@@ -902,15 +1136,15 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def LunarMonth(time: Time) -> LunarMonth:
-        """
-         Gets name of vedic month 
-        :return: LunarMonth
-         """
-        ...
     def IsFullMoon(time: Time) -> Boolean:
         """
-         Checks if the moon is FULL moon day 15 
+         Checks if the moon is FULL moon day 15 at given time 
+        :return: Boolean
+         """
+        ...
+    def IsNewMoon(time: Time) -> Boolean:
+        """
+         Checks if the moon is New moon day 1 at given time 
         :return: Boolean
          """
         ...
@@ -968,25 +1202,25 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def IsPlanetInOwnHouse(time: Time, planetName: PlanetName) -> Boolean:
+    def IsPlanetInOwnHouse(planetName: PlanetName, time: Time) -> Boolean:
         """
          Checks if planet is placed in own house meaning house sign owned by planet note rahu and ketu return false always 
         :return: Boolean
          """
         ...
-    def IsPlanetInEnemyHouse(time: Time, planetName: PlanetName) -> Boolean:
+    def IsPlanetInEnemyHouse(planetName: PlanetName, time: Time) -> Boolean:
         """
          True if a planet is in a house sign owned by an enemy. Rahu and Ketu is false always 
         :return: Boolean
          """
         ...
-    def IsPlanetInFriendHouse(time: Time, planetName: PlanetName) -> Boolean:
+    def IsPlanetInFriendHouse(planetName: PlanetName, time: Time) -> Boolean:
         """
          True if a planet is in a house sign owned by a friend. Rahu and Ketu is false always 
         :return: Boolean
          """
         ...
-    def SwissEphemeris(time: Time, planetName: PlanetName) -> Object:
+    def SwissEphemeris(planetName: PlanetName, time: Time) -> Object:
         """
          Get planets Longitude Latitude DistanceAU SpeedLongitude SpeedLatitude... Swiss Ephemeris swe_calc wrapper for open API 
         :return: Object
@@ -998,13 +1232,13 @@ class Calculate:
         :return: List`1
          """
         ...
-    def IsPlanetSameHouseWithHouseLord(birthTime: Time, houseNumber: Int32, planet: PlanetName) -> Boolean:
+    def IsPlanetSameHouseWithHouseLord(houseNumber: Int32, planet: PlanetName, birthTime: Time) -> Boolean:
         """
          Checks if a planet is same house not nessarly conjunct with the lord of a certain house Example Is Sun joined with lord of 9th 
         :return: Boolean
          """
         ...
-    def HouseNatureScore(personBirthTime: Time, inputHouse: HouseName) -> Int32:
+    def HouseNatureScore(inputHouse: HouseName, personBirthTime: Time) -> Int32:
         """
          Based on Shadvarga get nature of house for a person nature in number form to for easy calculation into summary good 1 bad 1 neutral 0 specially made method for life chart summary 
         :return: Int32
@@ -1037,6 +1271,12 @@ class Calculate:
     def PlanetIshtaKashtaScore(planet: PlanetName, birthTime: Time) -> Double:
         """
          Used for judging dasa good or bad Bala book pg 110 if planet has more Ishta than good 1 else if more Kashta than bad 1 
+        :return: Double
+         """
+        ...
+    def PlanetIshtaKashtaScoreDegree(planet: PlanetName, birthTime: Time) -> Double:
+        """
+         Used for judging dasa good or bad Bala book pg 110 output range 5 to 5 
         :return: Double
          """
         ...
@@ -1112,19 +1352,31 @@ class Calculate:
         :return: Boolean
          """
         ...
+    def Nutation(time: Time) -> Double:
+        """
+         Gets nutation from Swiss Ephemeris
+        :return: Double
+         """
+        ...
+    def AscendantDegreesToARMC(ascendant: Double, obliquityOfEcliptic: Double, geographicLatitude: Double, time: Time) -> Double:
+        """
+         This method is used to convert the tropical ascendant to the ARMC Ascendant Right Meridian Circle. It first calculates the right ascension and declination using the provided tropical ascendant and obliquity of the ecliptic. Then it calculates the oblique ascension by subtracting a value derived from the declination and geographic latitude from the right ascension. Finally it calculates the ARMC based on the value of the tropical ascendant and the oblique ascension. 
+        :return: Double
+         """
+        ...
     def AyanamsaDegree(time: Time) -> Angle:
         """
          The distance between the Hindu First Point and the Vernal Equinox measured at an epoch is known as the Ayanamsa in Varahamihiras time the summer solistice coincided with the first degree of Cancer and the winter solistice with the first degree of Capricorn whereas at one time the summer solistice coincided with the middle of the Aslesha 
         :return: Angle
          """
         ...
-    def PlanetSayanaLongitude(time: Time, planetName: PlanetName) -> Angle:
+    def PlanetSayanaLongitude(planetName: PlanetName, time: Time) -> Angle:
         """
          Get fixed longitude used in western systems connects SwissEph Library with VedAstro NOTE This method connects SwissEph Library with VedAstro Library 
         :return: Angle
          """
         ...
-    def PlanetNirayanaLongitude(time: Time, planetName: PlanetName) -> Angle:
+    def PlanetNirayanaLongitude(planetName: PlanetName, time: Time) -> Angle:
         """
          Planet longitude that has been corrected with Ayanamsa Gets planet longitude used vedic astrology Nirayana Longitude Sayana Longitude corrected to Ayanamsa Number from 0 to 360 represent the degrees in the zodiac as viewed from earth Note Since Nirayana is corrected in actuality 0 degrees will start at Taurus not Aries 
         :return: Angle
@@ -1142,19 +1394,19 @@ class Calculate:
         :return: DateTime
          """
         ...
-    def PlanetEphemerisLongitude(time: Time, planetName: PlanetName) -> Angle:
+    def PlanetEphemerisLongitude(planetName: PlanetName, time: Time) -> Angle:
         """
          Get fixed longitude used in western systems aka Sayana longitude NOTE This method connects SwissEph Library with VedAstro Library 
         :return: Angle
          """
         ...
-    def PlanetSayanaLatitude(time: Time, planetName: PlanetName) -> Angle:
+    def PlanetSayanaLatitude(planetName: PlanetName, time: Time) -> Angle:
         """
          Gets Swiss Ephemeris longitude for a planet 
         :return: Angle
          """
         ...
-    def PlanetSpeed(time: Time, planetName: PlanetName) -> Double:
+    def PlanetSpeed(planetName: PlanetName, time: Time) -> Double:
         """
          Speed of planet from Swiss eph 
         :return: Double
@@ -1180,7 +1432,7 @@ class Calculate:
         ...
     def DayOfWeek(time: Time) -> DayOfWeek:
         """
-         Get Day Of Week 
+         Get Vedic Day Of Week The Hindu day begins with sunrise and continues till next sunrise.The first hora on any day will be the first hour after sunrise and the last hora the hour before sunrise the next day. 
         :return: DayOfWeek
          """
         ...
@@ -1200,6 +1452,12 @@ class Calculate:
         """
          Gets planet which is the lord of a given sign 
         :return: PlanetName
+         """
+        ...
+    def ZodiacSignsOwnedByPlanet(planetName: PlanetName) -> Any:
+        """
+         Given a planet name will return list of signs that the planet rules 
+        :return: List`1
          """
         ...
     def NextZodiacSign(inputSign: ZodiacName) -> ZodiacName:
@@ -1292,6 +1550,30 @@ class Calculate:
         :return: DateTimeOffset
          """
         ...
+    def SarvashtakavargaChart(birthTime: Time) -> Sarvashtakavarga:
+        """
+         When the benefic points contributed by each planet in Bhinnashtakavargas different signs are added we get a Sarvashtakavarga. A total of 337 benefic points are contributed by the seven planets to various houses in relation to seven planets and the lagna. 
+        :return: Sarvashtakavarga
+         """
+        ...
+    def BhinnashtakavargaChart(birthTime: Time) -> Bhinnashtakavarga:
+        """
+         Seven different charts are thus possible for the seven different planets. These are called as Bhinnashtakavargas. The position of each planet in the natal chart is of primary consideration. 
+        :return: Bhinnashtakavarga
+         """
+        ...
+    def PlanetAshtakvargaBindu(planet: PlanetName, signToCheck: ZodiacName, time: Time) -> Int32:
+        """
+         Give a planet and sign and ashtakvarga bindu can be calculated EXP In the Suns own Ashtakvarga there are 5 bindus in Aries NOTE ON USE Ashtakvarga System pg.128 For example in the Standard Horoscope the Suns transit of Aries 3rd from Moon should prove favorable. In the Suns own Ashtakvarga there are 5 bindus in Aries. Therefore the good effects produced should be to the extent of 62. The Suns transit of Capricorn 12th from the Moon should prove adverse. Capricorn has no bindus.Therefore the evil results to be produced by this transit are to the brim. 
+        :return: Int32
+         """
+        ...
+    def GocharaKakshas(checkTime: Time, birthTime: Time) -> GocharaKakshas:
+        """
+         Kakshyas for daily use The concept of Kakshyas can be employed for daily use. The method of this application is simple. Prepare the Prastaraka charts for the seven planets. Then find out the longitudes of each of the seven planets on a given day. In the Prastaraka of the Sun see if the transiting Sun is passing through a Kakshya with a benefic point. For the Moons transit consider the Prastaraka of the Moon. See for all the planets. When several planets are transiting the Kakshyas where the natal planets have contributed benefic points that day is auspicious. When several planets transit the Kakshyas where there are no benefic points it is adverse time for the native The Concept of Kakshya The Prastaraka charts for different planets can be represented in a different manner to make use of the concept of Kakshyas. Each rashi or sign is divided into eight equal parts or Kakshyas The Prastaraka chart for each planet can thus be readjusted to bring in the concept of the Kakshyas. A planet is considered to be productive ofbenefic results when it transits a Kakshya where there is a benefic point 
+        :return: GocharaKakshas
+         """
+        ...
     def GocharaZodiacSignCountFromMoon(birthTime: Time, currentTime: Time, planet: PlanetName) -> Int32:
         """
          Gets the Gochara House number which is the count from birth Moon sign janma rasi to the sign the planet is at the current time. Gochara Transits 
@@ -1324,134 +1606,32 @@ class Calculate:
         ...
     def IsPlanetGocharaBindu(birthTime: Time, nowTime: Time, planet: PlanetName, bindu: Int32) -> Boolean:
         """
-         SunTransit8Bindu Checks if a given planets with given number of bindu is transiting now Gochara 
+         Checks if a given planets with given number of bindu is transiting now Gochara 
         :return: Boolean
          """
         ...
-    def PlanetAshtakvargaBindu(planet: PlanetName, signToCheck: ZodiacName, time: Time) -> Int32:
+    def DasaForLife(birthTime: Time, levels: Int32, precisionHours: Int32, scanYears: Int32) -> Any:
         """
-         Give a planet and sign and ashtakvarga bindu can be calculated EXP In the Suns own Ashtakvarga there are 5 bindus in Aries NOTE ON USE Ashtakvarga System pg.128 For example in the Standard Horoscope the Suns transit of Aries 3rd from Moon should prove favourable. In the Suns own Ashtakvarga there are 5 bindus in Aries. Therefore the good effects produced should be to the extent of 62. The Suns transit of Capricorn 12th from the Moon should prove adverse. Capricorn has no bindus.Therefore the evil results to be produced by this transit are to the brim. 
-        :return: Int32
+         Given a start time and end time and birth time will calculate all dasa periods in nice JSON table format You can also set how many levels of dasa you want to calculate default is 4 7 Levels Dasa Bhukti Antaram Sukshma Prana Avi Prana Viprana 
+        :return: Task`1
          """
         ...
-    def AllBhinnashtakavargaChart(birthTime: Time) -> Any:
+    def DasaAtRange(birthTime: Time, startTime: Time, endTime: Time, levels: Int32, precisionHours: Int32) -> Any:
         """
-         Bhinnashtakavarga or individual Ashtakvarga charts List of planets ascendant with their their bindu point 
-        :return: Dictionary`2
+         Calculates dasa for a specific time frame 
+        :return: Task`1
          """
         ...
-    def PlanetBhinnashtakavargaChart(mainPlanet: PlanetName, birthTime: Time) -> Any:
-        """
-         Calculates full ashtakvarga chart for a given planet for all 12 signs Used to for calculating final Ashtakvarga Rahu Ketu will return 0 
-        :return: Dictionary`2
-         """
-        ...
-    def GetPlanetBeneficHouseAshtakvarga(mainPlanet: String, minorPlanet: String) -> Int32:
-        """
-         This a constant that does not change when calculating ashtakvarga this is the constant count used data from ashtakvarga table Ashtakvarga System pg.9 Code Once this data was memorized by human minds today it is programmed by human hands 
-        :return: Int32[]
-         """
-        ...
-    def GetPlanetDasaMajorPlanetAndMinorRelationship(majorPlanet: PlanetName, minorPlanet: PlanetName) -> Any:
-        """
-         Gets the relationship between a mojor period planet and minor period planet based solely on relationship between the planets and nothing to do with the signs yet based on cyclic relationship between planets 
-        :return: ValueTuple`2
-         """
-        ...
-    def CurrentDasaCountFromBirth(birthTime: Time, currentTime: Time) -> Int32:
-        """
-         Gets dasa counted from birth dasa 
-        :return: Int32
-         """
-        ...
-    def CurrentDasa8Levels(birthTime: Time, currentTime: Time) -> Dasas:
-        """
-         The main method that starts all Dasa Calculations Gets the occuring Planet Dasas PD1 PD2... for a person at the given time 
-        :return: Dasas
-         """
-        ...
-    def DasaCountedFromInputDasa(startDasaPlanet: PlanetName, years: Double) -> Dasas:
-        """
-         Counts from inputed dasa by years to dasa bhukti antaram Inputed planet is taken as birth dasa starting dasa to count from Note It is easier to calculate from start of Dasa so years already traversed at birth must be added into inputed years Exp Get dasa bhukti antaram planet 3.5 years from start of Sun dasa 
-        :return: Dasas
-         """
-        ...
-    def NextDasaPlanet(planet: PlanetName) -> PlanetName:
-        """
-         Gets next planet in Dasa order This order is also used for Bhukti Antaram RefHindu Predictive Astrology pg. 54 
-        :return: PlanetName
-         """
-        ...
-    def TimeLeftInBirthDasa(birthTime: Time, startConstellation: Constellation) -> Double:
-        """
-         Gets years left in birth dasa at birth Note Returned years can only be 0 or above Start constellation can be of moon or Lagna 
-        :return: Double
-         """
-        ...
-    def YearsTraversedInBirthDasa(birthTime: Time, startConstellation: Constellation) -> Double:
-        """
-         Gets the time in years traversed in Dasa at birth Start constellation can of Moons or Lagna lord 
-        :return: Double
-         """
-        ...
-    def DasaTimePerMinute(constellationName: ConstellationName) -> Double:
-        """
-         Gets the Dasa time period each longitude minute in a constellation represents based on the planet which is related lord to it. Note Returns the time in years exp 0.5 half year 
-        :return: Double
-         """
-        ...
-    def ConstellationDasaPlanet(constellationName: ConstellationName) -> PlanetName:
-        """
-         Gets the related lord Dasa planet for a given constellation Used to find the ruling Dasa Planet RefHindu Predictive Astrology pg. 54 
-        :return: PlanetName
-         """
-        ...
-    def PD1PlanetFullYears(planet: PlanetName) -> Double:
-        """
-         Gets the full Dasa years for a given planet Note Returns double so that division down the road is accurate RefHindu Predictive Astrology pg. 54 
-        :return: Double
-         """
-        ...
-    def PD2PlanetFullYears(pd1Planet: PlanetName, pd2Planet: PlanetName) -> Double:
-        """
-         Gets the full years of a bhukti planet in a dasa 
-        :return: Double
-         """
-        ...
-    def PD3PlanetFullYears(pd1Planet: PlanetName, pd2Planet: PlanetName, pd3Planet: PlanetName) -> Double:
-        """
-         Gets the full years of an antaram planet in a bhukti of a dasa 
-        :return: Double
-         """
-        ...
-    def PD4PlanetFullYears(pd1Planet: PlanetName, pd2Planet: PlanetName, pd3Planet: PlanetName, pd4Planet: PlanetName) -> Double:
-        """
-         Gets the full time of an Sukshma planet Sukshma is a Sanskrit word meaning subtle or dormant. The presence of sukshma is felt but not seen. 
-        :return: Double
-         """
-        ...
-    def PD5PlanetFullYears(pd1Planet: PlanetName, pd2Planet: PlanetName, pd3Planet: PlanetName, pd4Planet: PlanetName, pd5Planet: PlanetName) -> Double:
-        """
-         Gets the full time of an Prana planet 
-        :return: Double
-         """
-        ...
-    def PD6PlanetFullYears(pd1Planet: PlanetName, pd2Planet: PlanetName, pd3Planet: PlanetName, pd4Planet: PlanetName, pd5Planet: PlanetName, pd6Planet: PlanetName) -> Double:
+    def DasaAtTime(birthTime: Time, checkTime: Time, levels: Int32) -> Any:
         """
         Empty sample text
-        :return: Double
+        :return: Task`1
          """
         ...
-    def PD7PlanetFullYears(pd1Planet: PlanetName, pd2Planet: PlanetName, pd3Planet: PlanetName, pd4Planet: PlanetName, pd5Planet: PlanetName, pd6Planet: PlanetName, pd7Planet: PlanetName) -> Double:
+    def DasaForNow(birthTime: Time, levels: Int32) -> Any:
         """
         Empty sample text
-        :return: Double
-         """
-        ...
-    def PD8PlanetFullYears(pd1Planet: PlanetName, pd2Planet: PlanetName, pd3Planet: PlanetName, pd4Planet: PlanetName, pd5Planet: PlanetName, pd6Planet: PlanetName, pd7Planet: PlanetName, pd8Planet: PlanetName) -> Double:
-        """
-        Empty sample text
-        :return: Double
+        :return: Task`1
          """
         ...
     def IsMercuryAfflicted(time: Time) -> Boolean:
@@ -1502,7 +1682,13 @@ class Calculate:
         :return: List`1
          """
         ...
-    def PlanetsAspectingPlanet(time: Time, receivingAspect: PlanetName) -> Any:
+    def PlanetAspectDegree(receiver: PlanetName, trasmitter: PlanetName, time: Time) -> Double:
+        """
+         Calculate aspect angle between 2 planets 
+        :return: Double
+         """
+        ...
+    def PlanetsAspectingPlanet(receivingAspect: PlanetName, time: Time) -> Any:
         """
          Gets all planets the transmitting aspect to inputed planet 
         :return: List`1
@@ -1536,6 +1722,12 @@ class Calculate:
         """
          Checks if the a planet is conjunct with another planet Note Both planets A B are checked if they are in conjunct with each other performance might be effected mildly but errors in conjunction calculation would be caught here. Can be removed once conjunction calculator is confirmed accurate. 
         :return: Boolean
+         """
+        ...
+    def PlanetPowerPercentage(inputPlanet: PlanetName, time: Time) -> Double:
+        """
+         convert the planets strength into a value over hundred with max min set by strongest weakest planet 
+        :return: Double
          """
         ...
     def AllPlanetOrderedByStrength(time: Time) -> Any:
@@ -1604,13 +1796,19 @@ class Calculate:
         :return: Shashtiamsa
          """
         ...
-    def PlanetChestaBala(planetName: PlanetName, time: Time, includeSunMoon: Boolean) -> Shashtiamsa:
+    def PlanetChestaBala(planetName: PlanetName, time: Time) -> Shashtiamsa:
         """
          NOTE sun moon get score for ISHTAKESHA calculation TODO MOTIONAL STRENGTH Chesta here means Vakra Chesta or act of retrogression. Each planet except the Sun and the Moon and shadowy planets get into the state of Vakra or retrogression when its distance from the Sun exceeds a particular limit. And the strength or potency due to the planet on account of the arc of the retrogression is termed as Chesta Bala Deduct from the Seeghrocbcha half the sum of the True and Mean Longitudes of planets and divide the difference by 3. The quotient is the Chestabala. Max 60 meaning RetrogradeVakra When the distance of any one planet from the Sun exceeds a particular limit it becomes retrograde i.e. when the planet goes from perihelion the point in a planets orbit nearest to the Sun to aphelion the part of a planets oroit most distant from the Sun as it recedes from the Sun it gradually loses the power of the Suns gravitation and consequently 
         :return: Shashtiamsa
          """
         ...
-    def SunMoonChestaBala(planetName: PlanetName) -> Shashtiamsa:
+    def SunChestaBala(inputTime: Time) -> Shashtiamsa:
+        """
+         special function to get chesta score for IshtaKashta score Bala book pg. 108 Sun has no Chesta kendra or Chesta bala as he never gets into retrogression. But still a method is prescribed to find his Chesla Bala which is necessary to ascertain the lshta and Kashta Phalas. 
+        :return: Shashtiamsa
+         """
+        ...
+    def MoonChestaBala(inputTime: Time) -> Shashtiamsa:
         """
          special function to get chesta score for IshtaKashta score Bala book pg. 108 
         :return: Shashtiamsa
@@ -1643,12 +1841,6 @@ class Calculate:
     def PlanetSaptavargajaBala(planetName: PlanetName, time: Time) -> Shashtiamsa:
         """
          Sapthavargajabala This is the strength of a planet due to its residence in the seven subdivisions according to its relation with the dispositor. Saptavargaja bala means the strength a planet gets by virtue of its disposition in a friendly neutral or inimical Rasi Hora Drekkana Sapthamsa Navamsa Dwadasamsa and Thrimsamsa. 
-        :return: Shashtiamsa
-         """
-        ...
-    def PlanetShadvargaBala(planetName: PlanetName, time: Time) -> Shashtiamsa:
-        """
-         Shadvarga bala This is the strength of a planet due to its residence in the 6 subdivisions according to its relation with the dispositor. They are 1 Rasi 2 Hora 3 Drekkana 4 Navamsa 5 Dwadasamsa and 6 Trimsamsa. 
         :return: Shashtiamsa
          """
         ...
@@ -1784,7 +1976,7 @@ class Calculate:
         :return: HouseSubStrength
          """
         ...
-    def CalcBhavaDigBala(time: Time) -> HouseSubStrength:
+    def BhavaDigBala(time: Time) -> HouseSubStrength:
         """
          House strength from different types of signs Bhava Digbala.This is the strength acquired by the different bhavas falling in the different groups or types of signs. For all 12 houses 
         :return: HouseSubStrength
@@ -1856,6 +2048,12 @@ class Calculate:
         :return: String
          """
         ...
+    def GetPlanetTags(planetList: Any) -> String:
+        """
+        Empty sample text
+        :return: String
+         """
+        ...
     def GetPlanetTags(lordOfHouse: PlanetName) -> String:
         """
          Get keywords related to a planet. 
@@ -1880,76 +2078,16 @@ class Calculate:
         :return: String
          """
         ...
-    def HouseZodiacSignHorary(inputHouse: HouseName, birthTime: Time, horaryNumber: Int32) -> ZodiacSign:
+    def PickOutStrongestPlanet(relatedPlanets: Any, birthTime: Time) -> PlanetName:
         """
-        Empty sample text
-        :return: ZodiacSign
-         """
-        ...
-    def PlanetHouseHorary(inputPlanet: PlanetName, birthTime: Time, horaryNumber: Int32) -> HouseName:
-        """
-        Empty sample text
-        :return: HouseName
-         """
-        ...
-    def HouseZodiacSignKundali(inputHouse: HouseName, birthTime: Time) -> ZodiacSign:
-        """
-        Empty sample text
-        :return: ZodiacSign
-         """
-        ...
-    def PlanetHouseKundali(inputPlanet: PlanetName, birthTime: Time) -> HouseName:
-        """
-        Empty sample text
-        :return: HouseName
-         """
-        ...
-    def PlanetLordOfConstellation(inputPlanet: PlanetName, birthTime: Time) -> PlanetName:
-        """
-        Empty sample text
+         Given a list of planets will pick out the strongest planet based on Shadbala 
         :return: PlanetName
          """
         ...
-    def PlanetConstellation(inputPlanet: PlanetName, birthTime: Time) -> Constellation:
+    def SignProperties(inputSign: ZodiacName) -> SignProperties:
         """
-        Empty sample text
-        :return: Constellation
-         """
-        ...
-    def PlanetLordOfZodiacSign(inputPlanet: PlanetName, birthTime: Time) -> PlanetName:
-        """
-        Empty sample text
-        :return: PlanetName
-         """
-        ...
-    def IsPlanetInHouseKP(cusps: Any, planetNirayanaDegrees: Angle, house: HouseName) -> Boolean:
-        """
-        Empty sample text
-        :return: Boolean
-         """
-        ...
-    def AllHouseCuspLongitudesHorary(time: Time, horaryNumber: Int32) -> Any:
-        """
-         Calculates the astrological house cusps for a given time and horary number. It uses the Swiss Ephemeris to compute high precision astronomical data. The method converts the horary number to Tropical Ascendant degrees then to ARMC Sidereal Time which is used to calculate house cusps. The house system is calculated using the ARMC latitude and obliquity of the ecliptic. The results are packaged into a dictionary mapping each house to its corresponding angle 
-        :return: Dictionary`2
-         """
-        ...
-    def AllHouseCuspLongitudesKundali(time: Time) -> Any:
-        """
-         Calculates the astrological house cusps for a specific time and location which is a key aspect in the creation of a Kundali astrological chart. The function swe_houses_ex from the Swiss Ephemeris library is used to calculate the house cusps and the ascmc values which include the Ascendant Midheaven etc.. The house system used is P Placidus. The longitudes of the house cusps are then stored in a dictionary with the house names as keys and the longitudes as values converted to degrees. This dictionary is returned by the function providing the longitudes of all houses in the Kundali. 
-        :return: Dictionary`2
-         """
-        ...
-    def ConvertTropicalAscToARMC(tropicalAscendant: Double, obliquityOfEcliptic: Double, geographicLatitude: Double, time: Time) -> Double:
-        """
-         This method is used to convert the tropical ascendant to the ARMC Ascendant Right Meridian Circle. It first calculates the right ascension and declination using the provided tropical ascendant and obliquity of the ecliptic. Then it calculates the oblique ascension by subtracting a value derived from the declination and geographic latitude from the right ascension. Finally it calculates the ARMC based on the value of the tropical ascendant and the oblique ascension. 
-        :return: Double
-         """
-        ...
-    def HoraryNumberTropicalAsc(horaryNumber: Int32) -> Double:
-        """
-         This method calculates the tropical ascendant for a given horary number. It does this by iterating over all constellations and planets calculating various parameters before and after adding a certain degree to the tropical ascendant tropAsc and handling special cases such as when tropAsc is 0 or when there are overlapping signs. The tropical ascendant corresponding to the given horary number is then returned. 
-        :return: Double
+         Gets the characteristic of signs 
+        :return: SignProperties
          """
         ...
 
