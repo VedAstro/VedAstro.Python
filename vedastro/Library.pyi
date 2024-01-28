@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 10:58 17/01/2024 +08:00
+# AUTO GENERATED ON 16:59 28/01/2024 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -80,6 +80,66 @@ class LunarDay:
 
 
 class Calculate:
+    def AbstractActivity(checkTime: Time) -> BirdActivity:
+        """
+         In each of the main activities the other four activities also occur as abstract subactivity for short duration of time gaps covering the complete duration of the main activity the period being 2 hrs. 24 min for Pancha Pakshi 
+        :return: BirdActivity
+         """
+        ...
+    def MainActivity(birthTime: Time, checkTime: Time) -> BirdActivity:
+        """
+         Each bird performs these five activities during each day and in night over the week days and during waxing and waning Moon cycles during the 5 YAMAS in day and 5 YAMAS in night in a stipulated order for Pancha Pakshi 
+        :return: BirdActivity
+         """
+        ...
+    def IsBirthTimeInVedicDay(birthTime: Time) -> BirthTimeInVedicDay:
+        """
+         Checks if a given birth time is within that days sunrise and sunset aka vedic day 
+        :return: BirthTimeInVedicDay
+         """
+        ...
+    def BirthYama(birthTime: Time) -> BirthYama:
+        """
+         yama works out to 2 hrs. 24 mts. of our modern time. It is to be noted that the beginning of the day is reckoned from Sun rise to Sun set in Hindu system. Similarly night is reckoned from Sun set to Sun rise on the following day thus consisting of 24 hours for one day. The timings of the five Yamas are the same during day and night for Pancha Pakshi 
+        :return: BirthYama
+         """
+        ...
+    def AbstractActivityStrength(birthTime: Time, checkTime: Time) -> Double:
+        """
+         Calculates the strength of a birds Abstract activity sub activity based on its birth time. for pancha pakshi bird 
+        :return: Double
+         """
+        ...
+    def PanchaPakshiBirthBird(birthTime: Time) -> BirdName:
+        """
+         Gets birth bird for a birth time. Sidhas have personified the elements as birds identifying each element under which an individual is born when these elements are all functioning differentially during each time gap. These 5 elemental vibrations are personified as PAKSHIS or BIRDS and the gradations of their faculities are named as 5 activities. This bird is called his birth Stellar Lunar bird. 
+        :return: BirdName
+         """
+        ...
+    def PanchaPakshiBirthBirdFromName(name: String) -> BirdName:
+        """
+         Ancients have evolved a method of identifying the birth bird of other individuals by recognising the first vowel sound that shoots out while uttering the name of such individual. Here we have to be very careful in identifying the first vowel sound and not the first vowel letter ofthe other mans name. In this system the vowels referred to are ofthe Dravidian Origin TAMIL and do not indicate the English vowel sounds. This should always be borne in mind. It should be remembered that the eleven vowels of Dravidian Tamil language are distributed among the 5 birds. These vowels and consonants which contain them are to be identified from the first sound of the name. Virtually these eleven vowel sounds are to be equated and sounded by the five English vowels A E I O and U. In this language U is uttered as V U VU to project the Dravidian sound. Except the sound I all other sounds have short and long vowels. From what has been explained so far it can be understood that for the same name the birds are different during bright half and dark halfperiods of Moon where we do not know the birth data of the other person and for such persons only we should use this system 
+        :return: BirdName
+         """
+        ...
+    def IsWaxingMoon(birthTime: Time) -> Boolean:
+        """
+         Given a time will return true if it is on Waxing moon or Shukla Paksha or Bright half 
+        :return: Boolean
+         """
+        ...
+    def IsWaningMoon(birthTime: Time) -> Boolean:
+        """
+         Given a time will return true if it is on Waning moon or Krishna Paksha or Dark half 
+        :return: Boolean
+         """
+        ...
+    def FirstVowelSound(word: String) -> String:
+        """
+         Given a name will extract out the 1st vowel sound. Used to get Pancha Pakshi bird when birth date not known 
+        :return: String
+         """
+        ...
     def PanchangaTable(inputTime: Time) -> PanchangaTable:
         """
          Its used to determine auspicious times and rituals. It includes multiple attributes such as Tithi lunar day Lunar Month Vara weekday Nakshatra constellation Yoga lunisolar day and Karana half of a Tithi. Disha Shool 
@@ -224,16 +284,34 @@ class Calculate:
         :return: List`1
          """
         ...
+    def DayDurationHours(time: Time) -> Double:
+        """
+         Gets total hours in a vedic day that is duration from sunset to sunrise NOTE does not account if birth time is outside sunrise sunset range 
+        :return: Double
+         """
+        ...
+    def IsNightBirth(birthTime: Time) -> Boolean:
+        """
+         A day starts at the time of sunrise and ends at the time of sunset. A night starts at the time of sunset and ends at the time of next days sunrise. 
+        :return: Boolean
+         """
+        ...
+    def IsDayBirth(birthTime: Time) -> Boolean:
+        """
+         A day starts at the time of sunrise and ends at the time of sunset. A night starts at the time of sunset and ends at the time of next days sunrise. 
+        :return: Boolean
+         """
+        ...
     def LocationGeoCoordinates(locationName: String) -> Any:
         """
          Given a time and location will return the coordinates at that location Longitude and latitude at a location from Google Maps API 
         :return: Task`1
          """
         ...
-    def ParseJHDFiles(cls) -> String:
+    def ParseJHDFiles(personName: String, rawTextData: String) -> Person:
         """
-         Easyly import Jaganath Hora files into VedAstro. Yeah Competitions 
-        :return: String
+         Easyly import Jaganath Hora .jhd files into VedAstro. Yeah Competition drives growth 
+        :return: Person
          """
         ...
     def HousesOwnedByPlanetKP(inputPlanet: PlanetName, time: Time, horaryNumber: Int32) -> Any:
@@ -260,9 +338,9 @@ class Calculate:
         :return: Task`1
          """
         ...
-    def HoroscopePredictions(birthTime: Time) -> Any:
+    def HoroscopePredictions(birthTime: Time, filterTag: EventTag) -> Any:
         """
-         Given a birth time will calculate all predictions that match for given birth time and return the data 
+         Given a birth time will calculate all predictions that match for given birth time. Default includes all predictions ie Yoga Planets in Sign AshtakavargaYoga Can be filtered. 
         :return: Task`1
          """
         ...
@@ -326,13 +404,13 @@ class Calculate:
         :return: Int32
          """
         ...
-    def YoniKutaAnimal(person: Person) -> String:
+    def YoniKutaAnimalFromPerson(person: Person) -> String:
         """
          Given a person will give yoni kuta animal with sex 
         :return: String
          """
         ...
-    def YoniKutaAnimal(sign: ConstellationName) -> ConstellationAnimal:
+    def YoniKutaAnimalFromConstellation(sign: ConstellationName) -> ConstellationAnimal:
         """
          Given a constellation will give animal with sex used for yoni kuta calculations and body appearance prediction 
         :return: ConstellationAnimal
@@ -436,7 +514,7 @@ class Calculate:
         ...
     def Karana(time: Time) -> Karana:
         """
-         Used for auspicious activities part Panchang like Tithi Nakshatra Yoga etc. 
+         Used for muhurtha of auspicious activities part of Panchang like Tithi Nakshatra Yoga etc. Each tithi is divided into 2 karanas. There are 11 karanas 1 Bava 2 Balava 3 Kaulava 4 Taitula 5 Garija 6 Vanija 7 Vishti 8 Sakuna 9 Chatushpada 10 Naga and 11 Kimstughna. The first 7 karanas repeat 8 times starting from the 2nd half of the first lunar day of a month. The last 4 karanas come just once in a month starting from the 2nd half of the 29th lunar day and ending at the 1st half of the first lunar day. 
         :return: Karana
          """
         ...
@@ -888,6 +966,18 @@ class Calculate:
         """
          Convert Local Mean Time LMT to Standard Time STD 
         :return: DateTimeOffset
+         """
+        ...
+    def IshtaKaala(birthTime: Time) -> Angle:
+        """
+         Also know as Suryodayadi Jananakala Ghatikah. It is customary among the Hindus to mention the time of birth as Suryodayadi Jananakala Ghatikaha i.e. the number of ghatis passed from sunrise up to the moment of birth. 
+        :return: Angle
+         """
+        ...
+    def IsBeforeSunrise(birthTime: Time) -> Boolean:
+        """
+         Given a time will check if it occured before or after sunrise for that given day. Returns true if given time is before sunrise 
+        :return: Boolean
          """
         ...
     def HoraAtBirth(time: Time) -> Int32:
@@ -1352,6 +1442,90 @@ class Calculate:
         :return: Boolean
          """
         ...
+    def DhumaLongitude(time: Time) -> Angle:
+        """
+         Dhuma Sun s longitude 13320 
+        :return: Angle
+         """
+        ...
+    def VyatipaataLongitude(time: Time) -> Angle:
+        """
+         360Dhumas longitude 
+        :return: Angle
+         """
+        ...
+    def PariveshaLongitude(time: Time) -> Angle:
+        """
+         Vyatipaatas longitude 180 
+        :return: Angle
+         """
+        ...
+    def IndrachaapaLongitude(time: Time) -> Angle:
+        """
+         360 Pariveshas longitude 
+        :return: Angle
+         """
+        ...
+    def UpaketuLongitude(time: Time) -> Angle:
+        """
+         Indrachaapas longitude 1640 
+        :return: Angle
+         """
+        ...
+    def KaalaLongitude(time: Time) -> Angle:
+        """
+         Kaala rises at the middle of Suns part. In other words we find the time at the middle of Suns part and find lagna rising then. That gives Kaalas longitude. 
+        :return: Angle
+         """
+        ...
+    def MrityuLongitude(time: Time) -> Angle:
+        """
+         Mrityu rises at the middle of Marss part. 
+        :return: Angle
+         """
+        ...
+    def ArthaprahaaraLongitude(time: Time) -> Angle:
+        """
+         Artha Praharaka rises at the middle of Mercurys part. 
+        :return: Angle
+         """
+        ...
+    def YamaghantakaLongitude(time: Time) -> Angle:
+        """
+         Yama ghantaka rises at the middle of Jupiters part 
+        :return: Angle
+         """
+        ...
+    def GulikaLongitude(time: Time) -> Angle:
+        """
+         Gulika rises at the middle of Saturns part. 
+        :return: Angle
+         """
+        ...
+    def MaandiLongitude(time: Time) -> Angle:
+        """
+         Maandi rises at the beginning of Saturns part. 
+        :return: Angle
+         """
+        ...
+    def UpagrahaLongitude(time: Time, relatedPlanet: PlanetNameEnum, upagrahaPart: String) -> Angle:
+        """
+         Calculates longitudes for the non sun based Upagrahas subplanets 
+        :return: Angle
+         """
+        ...
+    def UpagrahaPartNumber(inputTime: Time, inputPlanet: PlanetNameEnum) -> Int32:
+        """
+         Depending on whether one is born during the day or the night we divide the length of the daynight into 8 equal parts. Each part is assigned a planet. Given a planet and time the part number will be returned. Each part is 128 1.5 hours. 
+        :return: Int32
+         """
+        ...
+    def IsUpagraha(planet: PlanetName) -> Boolean:
+        """
+         Given a planet name will tell if it is an Upagraha planet 
+        :return: Boolean
+         """
+        ...
     def Nutation(time: Time) -> Double:
         """
          Gets nutation from Swiss Ephemeris
@@ -1436,9 +1610,15 @@ class Calculate:
         :return: DayOfWeek
          """
         ...
-    def LordOfHora(hora: Int32, day: DayOfWeek) -> PlanetName:
+    def LordOfHoraFromWeekday(hora: Int32, day: DayOfWeek) -> PlanetName:
         """
          Gets hora lord based on hora number week day 
+        :return: PlanetName
+         """
+        ...
+    def LordOfHoraFromTime(time: Time) -> PlanetName:
+        """
+         Each day starts at sunrise and ends at next days sunrise. This period is divided into 24 equal parts and they are called horas. A hora is almost equal to an hour. These horas are ruled by different planets. The lords of hora come in the order of decreasing speed with respect to earth Saturn Jupiter Mars Sun Venus Mercury and Moon. After Moon we go back to Saturn and repeat the 7 planets. 
         :return: PlanetName
          """
         ...
@@ -1474,13 +1654,13 @@ class Calculate:
         ...
     def PlanetExaltationPoint(planetName: PlanetName) -> ZodiacSign:
         """
-         Gets the exact longitude where planet is ExaltedExaltation NOTE Rahu ketu have exaltation points ref Astroloy for Beginners pg. 12 Exaltation Each planet is held to be exalted when it is in a particular sign. The power to do good when in exaltation is greater than when in its own sign. Throughout the sign ascribed the planet is exalted but in a particular degree its exaltation is at the maximum level. 
+         Gets the exact longitude where planet is ExaltedExaltation Exaltation Each planet is held to be exalted when it is in a particular sign. The power to do good when in exaltation is greater than when in its own sign. Throughout the sign ascribed the planet is exalted but in a particular degree its exaltation is at the maximum level. NOTE For Upagrahas no exact degree for exaltation the whole sign is counted as such exalatiotn set at degree 1 Rahu ketu have exaltation points ref Astroloy for Beginners pg. 12 
         :return: ZodiacSign
          """
         ...
     def PlanetDebilitationPoint(planetName: PlanetName) -> ZodiacSign:
         """
-         Gets the exact longitude where planet is DebilitatedDebility TODO method needs testing Note Rahu ketu have debilitation points ref Astroloy for Beginners pg. 12 planet to sign relationship is the whole sign this is just a point The 7th house or the 180th degree from the place of exaltation is the place of debilitation or fall. The Sun is debilitated in the 10th degree of Libra the Moon 3rd of Scorpio and so on. The debilitation or depression points are found by adding 180 to the maximum points given above. While in a state of fall planets give results contrary to those when in exaltation. ref Astroloy for Beginners pg. 11 
+         Gets the exact sign longitude where planet is DebilitatedDebility TODO method needs testing Note Rahu ketu have debilitation points ref Astroloy for Beginners pg. 12 planet to sign relationship is the whole sign this is just a point The 7th house or the 180th degree from the place of exaltation is the place of debilitation or fall. The Sun is debilitated in the 10th degree of Libra the Moon 3rd of Scorpio and so on. For Upagrahas no exact degree for exaltation the whole sign is counted as such exalatiotn set at degree 1 The debilitation or depression points are found by adding 180 to the maximum points given above. While in a state of fall planets give results contrary to those when in exaltation. ref Astroloy for Beginners pg. 11 
         :return: ZodiacSign
          """
         ...
@@ -1938,12 +2118,6 @@ class Calculate:
         """
          Oochchabala The distance between the planets longitude and its debilitation point divided by 3 gives its exaltation strength or oochchabaJa. 
         :return: Shashtiamsa
-         """
-        ...
-    def IsDayBirth(time: Time) -> Boolean:
-        """
-         Determines if the input time is day during day used for birth times if day returns true 
-        :return: Boolean
          """
         ...
     def PlanetPakshaBala(planetName: PlanetName, time: Time) -> Shashtiamsa:
