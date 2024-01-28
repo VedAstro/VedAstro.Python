@@ -13,7 +13,15 @@ This is a Python wrapper VedAstro for [VedAstro](https://github.com/VedAstro/Ved
 
 
 ## Install
-Step 1: [Download .NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.400-windows-x64-installer)
+Step 1: 
+
+[Download .NET 7 for Windows](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.400-windows-x64-installer)
+
+Download .NET 7 for Ubuntu
+```
+sudo apt-get update && \
+sudo apt-get install -y dotnet-sdk-7.0
+```
 
 Step 2: Install VedAstro using pip:
 
