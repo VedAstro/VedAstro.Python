@@ -11,6 +11,6 @@ class ZodiacName:
     Libra = VedAstro.ZodiacName.Libra,
     Scorpio = VedAstro.ZodiacName.Scorpio,
     Sagittarius = VedAstro.ZodiacName.Sagittarius,
-    Capricornus = VedAstro.ZodiacName.Capricornus,
+    Capricorn = VedAstro.ZodiacName.Capricorn,
     Aquarius = VedAstro.ZodiacName.Aquarius,
     Pisces = VedAstro.ZodiacName.Pisces
