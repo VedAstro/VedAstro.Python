@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 16:59 28/01/2024 +08:00
+# AUTO GENERATED ON 03:06 12/02/2024 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -80,6 +80,372 @@ class LunarDay:
 
 
 class Calculate:
+    def PunyaSahamLongitude(birthTime: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def VidyaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def YasasSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def MitraSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def MahatmyaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def AshaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def SamarthaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def BhratruSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def GauravaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def PitruSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def RajyaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def MatruSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def PutraSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def JeevastambaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def KarmaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def RogaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def KalaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def ShashtrasthanaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def BandhuSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def MrityuSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def ParadeshSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def ArthastambaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def ParameshthisthanaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def VanijSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def KaryasiddhiSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def VivahaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def SanthanasthanaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def SradhdhasthanamSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def PreethistambhaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def JadysthanamSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def VyanjansthanaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def SathruSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def JaladoshamSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def BandhanasthanaSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def ApamrithyusthanamSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def LabhesthanamSahamLongitude(standardHoroscope: Time) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def PlanetDivisionalLongitude(planetName: PlanetName, inputTime: Time, divisionalNo: Int32) -> Angle:
+        """
+         Calculates the divisional longitude of a planet in a Dchart divisional chart in Vedic Astrology. written by AI Human 
+        :return: Angle
+         """
+        ...
+    def DivisionalLongitude(totalDegrees: Double, divisionalNo: Int32) -> Angle:
+        """
+        Empty sample text
+        :return: Angle
+         """
+        ...
+    def PlanetZodiacSign(planetName: PlanetName, time: Time) -> ZodiacSign:
+        """
+         Get zodiac sign planet is in. D1 
+        :return: ZodiacSign
+         """
+        ...
+    def PlanetHoraSigns(planetName: PlanetName, time: Time) -> ZodiacSign:
+        """
+         Gets hora zodiac sign of a planet D2 
+        :return: ZodiacSign
+         """
+        ...
+    def HoraSignName(zodiacSign: ZodiacSign) -> ZodiacSign:
+        """
+         D2 chart 
+        :return: ZodiacSign
+         """
+        ...
+    def HoraSignAtLongitude(longitude: Angle) -> ZodiacSign:
+        """
+         given a longitude will return hora sign at that 
+        :return: ZodiacSign
+         """
+        ...
+    def HouseHoraSign(houseNumber: HouseName, time: Time) -> ZodiacSign:
+        """
+         Gets the zodiac sign at middle longitude of the house with degrees data 
+        :return: ZodiacSign
+         """
+        ...
+    def PlanetDrekkanaSign(planetName: PlanetName, time: Time) -> ZodiacSign:
+        """
+         Gets the Drekkana sign the planet is in D3 
+        :return: ZodiacSign
+         """
+        ...
+    def DrekkanaSignName(zodiacSign: ZodiacSign) -> ZodiacSign:
+        """
+         Given a zodiac sign will convert to drekkana D3 
+        :return: ZodiacSign
+         """
+        ...
+    def PlanetChaturthamshaSign(planetName: PlanetName, time: Time) -> ZodiacSign:
+        """
+         D4 chart 
+        :return: ZodiacSign
+         """
+        ...
+    def ChaturthamshaSignName(zodiacSign: ZodiacSign) -> ZodiacSign:
+        """
+         D4 chart 
+        :return: ZodiacSign
+         """
+        ...
+    def AllPlanetSigns(time: Time) -> Any:
+        """
+         Gets list of all planets and the zodiac signs they are in 
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetHoraSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetDrekkanaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetChaturthamsaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetPanchamsaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def PlanetTajikaLongitude(planetName: PlanetName, birthTime: Time, scanYear: Int32) -> Angle:
+        """
+         Gets a given planets Tajika Longitude 
+        :return: Angle
+         """
+        ...
+    def PlanetTajikaConstellation(planetName: PlanetName, birthTime: Time, scanYear: Int32) -> Constellation:
+        """
+         Gets a given planets Tajika constellation 
+        :return: Constellation
+         """
+        ...
+    def PlanetTajikaZodiacSign(planetName: PlanetName, birthTime: Time, scanYear: Int32) -> ZodiacSign:
+        """
+         Gets a given planets Tajika zodiac sign 
+        :return: ZodiacSign
+         """
+        ...
+    def TajikaDateForYear(birthTime: Time, scanYear: Int32) -> Time:
+        """
+         Given a birth time and scan year will return exact time for tajika chart The tjika system attempts to predict in detail the likely happenings in one year of an individuals life. The system goes to such details as to predict events even on a daybyday basis or even halfaday. On account of this this system is also called the varaphala system. 
+        :return: Time
+         """
+        ...
+    def TransitHouseFromLagna(transitPlanet: PlanetName, checkTime: Time, birthTime: Time) -> HouseName:
+        """
+        Empty sample text
+        :return: HouseName
+         """
+        ...
+    def TransitHouseFromNavamsaLagna(transitPlanet: PlanetName, checkTime: Time, birthTime: Time) -> HouseName:
+        """
+        Empty sample text
+        :return: HouseName
+         """
+        ...
+    def TransitHouseFromMoon(transitPlanet: PlanetName, checkTime: Time, birthTime: Time) -> HouseName:
+        """
+        Empty sample text
+        :return: HouseName
+         """
+        ...
+    def TransitHouseFromNavamsaMoon(transitPlanet: PlanetName, checkTime: Time, birthTime: Time) -> HouseName:
+        """
+        Empty sample text
+        :return: HouseName
+         """
+        ...
+    def Murthi(transitPlanet: PlanetName, checkTime: Time, birthTime: Time) -> String:
+        """
+        Empty sample text
+        :return: String
+         """
+        ...
     def AbstractActivity(checkTime: Time) -> BirdActivity:
         """
          In each of the main activities the other four activities also occur as abstract subactivity for short duration of time gaps covering the complete duration of the main activity the period being 2 hrs. 24 min for Pancha Pakshi 
@@ -92,21 +458,21 @@ class Calculate:
         :return: BirdActivity
          """
         ...
-    def IsBirthTimeInVedicDay(birthTime: Time) -> BirthTimeInVedicDay:
+    def BirthYama(inputTime: Time) -> BirthYama:
         """
-         Checks if a given birth time is within that days sunrise and sunset aka vedic day 
-        :return: BirthTimeInVedicDay
+         These 5 elemental vibrations act in 5 gradations offaculties for stipulated time intervals called YAMAS consisting of 2 hrs. 24 mits. each 6 Ghatikas each over the 5 YAMAS in the day and 5 YAMAS in the night thus spread over evenly in 24 hours. 
+        :return: BirthYama
          """
         ...
-    def BirthYama(birthTime: Time) -> BirthYama:
+    def VedicDayStartTime(inputTime: Time) -> Time:
         """
-         yama works out to 2 hrs. 24 mts. of our modern time. It is to be noted that the beginning of the day is reckoned from Sun rise to Sun set in Hindu system. Similarly night is reckoned from Sun set to Sun rise on the following day thus consisting of 24 hours for one day. The timings of the five Yamas are the same during day and night for Pancha Pakshi 
-        :return: BirthYama
+         Given a time it will find out the start time of for that vedic day If time is before sunrise the previous day 
+        :return: Time
          """
         ...
     def AbstractActivityStrength(birthTime: Time, checkTime: Time) -> Double:
         """
-         Calculates the strength of a birds Abstract activity sub activity based on its birth time. for pancha pakshi bird 
+         yama works out to 2 hrs. 24 mts. of our modern time. It is to be noted that the beginning of the day is reckoned from Sun rise to Sun set in Hindu system. Similarly night is reckoned from Sun set to Sun rise on the following day thus consisting of 24 hours for one day. The timings of the five Yamas are the same during day and night for Pancha Pakshi 
         :return: Double
          """
         ...
@@ -252,6 +618,12 @@ class Calculate:
         """
          Gets all the constellation start time for a given planet Set to an accuracy of 1 minute 
         :return: List`1
+         """
+        ...
+    def AllPlanetConstellation(time: Time) -> Any:
+        """
+         Niryana Constellation of all 9 planets 
+        :return: Dictionary`2
          """
         ...
     def AllTimeData(time: Time) -> Any:
@@ -596,48 +968,6 @@ class Calculate:
         :return: List`1
          """
         ...
-    def AllPlanetSigns(time: Time) -> Any:
-        """
-         Gets list of all planets and the zodiac signs they are in 
-        :return: Dictionary`2
-         """
-        ...
-    def AllPlanetHoraSign(time: Time) -> Any:
-        """
-        Empty sample text
-        :return: Dictionary`2
-         """
-        ...
-    def AllPlanetDrekkanaSign(time: Time) -> Any:
-        """
-        Empty sample text
-        :return: Dictionary`2
-         """
-        ...
-    def AllPlanetChaturthamsaSign(time: Time) -> Any:
-        """
-        Empty sample text
-        :return: Dictionary`2
-         """
-        ...
-    def AllPlanetPanchamsaSign(time: Time) -> Any:
-        """
-        Empty sample text
-        :return: Dictionary`2
-         """
-        ...
-    def DrekkanaSignName(zodiacSign: ZodiacSign) -> ZodiacName:
-        """
-         Given a zodiac sign will convert to drekkana 
-        :return: ZodiacName
-         """
-        ...
-    def HoraSignName(zodiacSign: ZodiacSign) -> ZodiacName:
-        """
-        Empty sample text
-        :return: ZodiacName
-         """
-        ...
     def AllPlanetLongitude(time: Time) -> Any:
         """
          Gets the Nirayana longitude of all 9 planets 
@@ -806,12 +1136,6 @@ class Calculate:
         :return: PlanetName
          """
         ...
-    def PlanetZodiacSign(planetName: PlanetName, time: Time) -> ZodiacSign:
-        """
-         Get zodiac sign planet is in. 
-        :return: ZodiacSign
-         """
-        ...
     def IsPlanetInSign(planetName: PlanetName, signInput: ZodiacName, time: Time) -> Boolean:
         """
          Checks if a given planet is in a given sign at a given time 
@@ -854,34 +1178,28 @@ class Calculate:
         :return: ZodiacName
          """
         ...
-    def PlanetDrekkanaSign(planetName: PlanetName, time: Time) -> ZodiacName:
-        """
-         Gets the Drekkana sign the planet is in 
-        :return: ZodiacName
-         """
-        ...
-    def PlanetChaturthamsaSign(planetName: PlanetName, time: Time) -> ZodiacName:
+    def PlanetChaturthamsaSign(planetName: PlanetName, time: Time) -> ZodiacSign:
         """
         Empty sample text
-        :return: ZodiacName
+        :return: ZodiacSign
          """
         ...
-    def PlanetPanchamsaSign(planetName: PlanetName, time: Time) -> ZodiacName:
+    def PlanetPanchamsaSign(planetName: PlanetName, time: Time) -> ZodiacSign:
         """
         Empty sample text
-        :return: ZodiacName
+        :return: ZodiacSign
          """
         ...
-    def ChaturthamsaSignName(zodiacSign: ZodiacSign) -> ZodiacName:
+    def ChaturthamsaSignName(zodiacSign: ZodiacSign) -> ZodiacSign:
         """
         Empty sample text
-        :return: ZodiacName
+        :return: ZodiacSign
          """
         ...
-    def PanchamsaSignName(zodiacSign: ZodiacSign) -> ZodiacName:
+    def PanchamsaSignName(zodiacSign: ZodiacSign) -> ZodiacSign:
         """
         Empty sample text
-        :return: ZodiacName
+        :return: ZodiacSign
          """
         ...
     def IsPlanetInMoolatrikona(planetName: PlanetName, time: Time) -> Boolean:
@@ -984,12 +1302,6 @@ class Calculate:
         """
          A hora is equal to 124th part of a day. The Hindu day begins with sunrise and continues till next sunrise. The first hora on any day will be the first hour after sunrise and the last hora the hour before sunrise the next day. 
         :return: Int32
-         """
-        ...
-    def PlanetHoraSigns(planetName: PlanetName, time: Time) -> ZodiacName:
-        """
-         Gets hora zodiac sign of a planet 
-        :return: ZodiacName
          """
         ...
     def SunriseTime(time: Time) -> Time:
@@ -2010,6 +2322,18 @@ class Calculate:
         """
          Gets the planets motion name can be Retrograde Direct Stationary a name version of Chesta Bala 
         :return: PlanetMotion
+         """
+        ...
+    def IsPlanetRetrograde(planetName: PlanetName, time: Time) -> Boolean:
+        """
+         A retrograde planet moves in the reverse direction and instead of increasing its longitude decreases as the time elapses. Rahu and Ketu often move in retrograde direction only. Other planets except the Sun and the Moon are subject to retrogression from time to time. 
+        :return: Boolean
+         """
+        ...
+    def IsPlanetCombust(cls) -> Boolean:
+        """
+         Combustion of planets Planets when too close to the Sun become invisible and are labelled as combust. A combust planet loses its strength and tends to behave adversely according to predictive astrology. Aryabhata has the following to say about combustion When the Moon has no latitude i.e. when it is at zero degree of latitude it is visible when situated at a distance of 12 degrees from the Sun. Venus is visible when 9 degrees distant from the Sun. The other planets taken in the order of decreasing sizes viz. Jupiter Mercury Saturn and Mars are visible when they are 9 degrees increased by twos i.e. when they are 11 13 15 and 17 degrees distant from the Sun. The degrees as mentioned above are generally taken as the limits within which the respective planets are said to be combust. 
+        :return: Boolean
          """
         ...
     def PlanetCirculationTime(planetName: PlanetName) -> Double:
