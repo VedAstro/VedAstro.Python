@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "VedAstro"
-version = "1.12.0"
+version = "1.13.0"
 description = "An open source Python library for advanced astronomical calculations like planet longitude, house sign, shadbala, etc..."
 authors = ["Tharaka Umayanga <tharakau@gmail.com>"]
 readme = "README.md"
