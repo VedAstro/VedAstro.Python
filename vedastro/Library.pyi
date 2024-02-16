@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 03:06 12/02/2024 +08:00
+# AUTO GENERATED ON 20:24 16/02/2024 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -80,6 +80,18 @@ class LunarDay:
 
 
 class Calculate:
+    def HoroscopeLLMSearch(birthTime: Time, textInput: String) -> Any:
+        """
+         Searches all horoscopes predictions with LLM 
+        :return: List`1
+         """
+        ...
+    def GenerateTimeListCSV(startTime: Time, endTime: Time, hoursBetween: Double) -> String:
+        """
+         Given a start time end time and space in hours between. Will generate massive CSV tables for ML Data Science Will contain 3 columns NameTimeLocation this can then be fed into ML Table Generator 
+        :return: String
+         """
+        ...
     def PunyaSahamLongitude(birthTime: Time) -> Angle:
         """
         Empty sample text
@@ -656,6 +668,12 @@ class Calculate:
         :return: List`1
          """
         ...
+    def GhatakaChakra(time: Time, birthTime: Time) -> Any:
+        """
+         As the name suggests Ghataka chakra is seen for any kind of injuries may it be Physical or Mental. The injuries can be inflicted at an inopportune moment or by an inimical person. Both of these can be seen from the Ghataka Chakra. For the first instance the inopportune time can be seen from the horoscope of the moment of occurance of the event and for the latter case the same can be seen from the horoscope of the person inflicting pain and injury. 
+        :return: List`1
+         """
+        ...
     def DayDurationHours(time: Time) -> Double:
         """
          Gets total hours in a vedic day that is duration from sunset to sunrise NOTE does not account if birth time is outside sunrise sunset range 
@@ -713,19 +731,19 @@ class Calculate:
     def HoroscopePredictions(birthTime: Time, filterTag: EventTag) -> Any:
         """
          Given a birth time will calculate all predictions that match for given birth time. Default includes all predictions ie Yoga Planets in Sign AshtakavargaYoga Can be filtered. 
-        :return: Task`1
+        :return: List`1
          """
         ...
     def HoroscopePredictionNames(birthTime: Time) -> Any:
         """
          Given a birth time will calculate all prediction names that match for given birth time example Moon House 8 10th Lord in 8th House note used by AI Chat when talking to Astro tuned LLM server 
-        :return: Task`1
+        :return: List`1
          """
         ...
-    def EventDataAtTime(birthTime: Time, checkTime: Time, nameOfEvent: EventName) -> Any:
+    def EventDataAtTime(birthTime: Time, checkTime: Time, nameOfEvent: EventName) -> Event:
         """
          Given a birth time current time and event name gets the event data occuring at current time Easy way to check if Gochara is occuring at given time with start and end time calculated Precision hard set to 1 hour TODO 
-        :return: Task`1
+        :return: Event
          """
         ...
     def EventStartTime(birthTime: Time, checkTime: Time, eventData: EventData, precisionInHours: Int32) -> Time:
@@ -2102,28 +2120,28 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def DasaForLife(birthTime: Time, levels: Int32, precisionHours: Int32, scanYears: Int32) -> Any:
+    def DasaForLife(birthTime: Time, levels: Int32, precisionHours: Int32, scanYears: Int32) -> JObject:
         """
          Given a start time and end time and birth time will calculate all dasa periods in nice JSON table format You can also set how many levels of dasa you want to calculate default is 4 7 Levels Dasa Bhukti Antaram Sukshma Prana Avi Prana Viprana 
-        :return: Task`1
+        :return: JObject
          """
         ...
-    def DasaAtRange(birthTime: Time, startTime: Time, endTime: Time, levels: Int32, precisionHours: Int32) -> Any:
+    def DasaAtRange(birthTime: Time, startTime: Time, endTime: Time, levels: Int32, precisionHours: Int32) -> JObject:
         """
          Calculates dasa for a specific time frame 
-        :return: Task`1
+        :return: JObject
          """
         ...
-    def DasaAtTime(birthTime: Time, checkTime: Time, levels: Int32) -> Any:
+    def DasaAtTime(birthTime: Time, checkTime: Time, levels: Int32) -> JObject:
         """
         Empty sample text
-        :return: Task`1
+        :return: JObject
          """
         ...
-    def DasaForNow(birthTime: Time, levels: Int32) -> Any:
+    def DasaForNow(birthTime: Time, levels: Int32) -> JObject:
         """
         Empty sample text
-        :return: Task`1
+        :return: JObject
          """
         ...
     def IsMercuryAfflicted(time: Time) -> Boolean:
