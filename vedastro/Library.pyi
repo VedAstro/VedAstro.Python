@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 20:24 16/02/2024 +08:00
+# AUTO GENERATED ON 08:11 06/03/2024 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -80,15 +80,39 @@ class LunarDay:
 
 
 class Calculate:
+    def EventsAtTime(birthTime: Time, checkTime: Time, eventTagList: Any) -> Any:
+        """
+         Gets all events occuring at given time. Basically a slice from Events Chart Can be used by LLM to interprate final prediction 
+        :return: List`1
+         """
+        ...
+    def EventStartEndTime(birthTime: Time, checkTime: Time, nameOfEvent: EventName) -> Event:
+        """
+         Given a birth time current time and event name gets the event data occuring at current time Easy way to check if Gochara is occuring at given time with start and end time calculated Precision hard set to 1 hour TODO 
+        :return: Event
+         """
+        ...
+    def EventStartTime(birthTime: Time, checkTime: Time, eventData: EventData, precisionInHours: Int32) -> Time:
+        """
+        Empty sample text
+        :return: Time
+         """
+        ...
+    def EventEndTime(birthTime: Time, checkTime: Time, eventData: EventData, precisionInHours: Int32) -> Time:
+        """
+        Empty sample text
+        :return: Time
+         """
+        ...
     def HoroscopeLLMSearch(birthTime: Time, textInput: String) -> Any:
         """
          Searches all horoscopes predictions with LLM 
-        :return: List`1
+        :return: Task`1
          """
         ...
     def GenerateTimeListCSV(startTime: Time, endTime: Time, hoursBetween: Double) -> String:
         """
-         Given a start time end time and space in hours between. Will generate massive CSV tables for ML Data Science Will contain 3 columns NameTimeLocation this can then be fed into ML Table Generator 
+         Given a start time end time and space in hours between. Will generate massive CSV tables for ML Data Science Will contain 3 columns NameTimeLocation this can then be fed into ML Table Generator to make datasets worthy of HuggingFace 
         :return: String
          """
         ...
@@ -422,9 +446,15 @@ class Calculate:
         :return: ZodiacSign
          """
         ...
+    def TajikaDateForYear2(birthTime: Time, scanYear: Int32) -> Time:
+        """
+         Annual or Progressed Horoscope The annual or progressed horoscope sidereal solar return according to Western astrology is cast the same way as the birth horoscope. The time of the commencement of the anniversary known as Varsharambha is said to begin at the exact moment when the Sun comes to the same position he was in at the time of birth. In other words the individuals New Year begins when the Sun comes back to the same point he heJd at the time of birth. Given a birth time and scan year will return exact time for tajika chart The tjika system attempts to predict in detail the likely happenings in one year of an individuals life. The system goes to such details as to predict events even on a daybyday basis or even halfaday. On account of this this system is also called the varaphala system. 
+        :return: Time
+         """
+        ...
     def TajikaDateForYear(birthTime: Time, scanYear: Int32) -> Time:
         """
-         Given a birth time and scan year will return exact time for tajika chart The tjika system attempts to predict in detail the likely happenings in one year of an individuals life. The system goes to such details as to predict events even on a daybyday basis or even halfaday. On account of this this system is also called the varaphala system. 
+         Annual or Progressed Horoscope The annual or progressed horoscope sidereal solar return according to Western astrology is cast the same way as the birth horoscope. The time of the commencement of the anniversary known as Varsharambha is said to begin at the exact moment when the Sun comes to the same position he was in at the time of birth. In other words the individuals New Year begins when the Sun comes back to the same point he heJd at the time of birth. Calculated based on method in BV Raman book Varshaphala 
         :return: Time
          """
         ...
@@ -738,24 +768,6 @@ class Calculate:
         """
          Given a birth time will calculate all prediction names that match for given birth time example Moon House 8 10th Lord in 8th House note used by AI Chat when talking to Astro tuned LLM server 
         :return: List`1
-         """
-        ...
-    def EventDataAtTime(birthTime: Time, checkTime: Time, nameOfEvent: EventName) -> Event:
-        """
-         Given a birth time current time and event name gets the event data occuring at current time Easy way to check if Gochara is occuring at given time with start and end time calculated Precision hard set to 1 hour TODO 
-        :return: Event
-         """
-        ...
-    def EventStartTime(birthTime: Time, checkTime: Time, eventData: EventData, precisionInHours: Int32) -> Time:
-        """
-        Empty sample text
-        :return: Time
-         """
-        ...
-    def EventEndTime(birthTime: Time, checkTime: Time, eventData: EventData, precisionInHours: Int32) -> Time:
-        """
-        Empty sample text
-        :return: Time
          """
         ...
     def LocalMeanTime(time: Time) -> String:
@@ -1076,6 +1088,12 @@ class Calculate:
         :return: ZodiacSign
          """
         ...
+    def HouseLongitudeKP(inputHouse: HouseName, time: Time, horaryNumber: Int32, rotateDegrees: Double) -> Angle:
+        """
+         Gets the longitude of a KP house according to placidus house division 
+        :return: Angle
+         """
+        ...
     def AllHouseSign(time: Time) -> Any:
         """
          Gets the zodiac sign at middle longitude of the house. 
@@ -1274,7 +1292,7 @@ class Calculate:
         :return: DateTime
          """
         ...
-    def HouseDegrees(houseNumber: HouseName, time: Time) -> House:
+    def HouseLongitude(houseNumber: HouseName, time: Time) -> House:
         """
          House start middle and end longitudes 
         :return: House
@@ -1306,7 +1324,7 @@ class Calculate:
         ...
     def IshtaKaala(birthTime: Time) -> Angle:
         """
-         Also know as Suryodayadi Jananakala Ghatikah. It is customary among the Hindus to mention the time of birth as Suryodayadi Jananakala Ghatikaha i.e. the number of ghatis passed from sunrise up to the moment of birth. 
+         Birth Time In Ghatis Also know as Suryodayadi Jananakala Ghatikah. It is customary among the Hindus to mention the time of birth as Suryodayadi Jananakala Ghatikaha i.e. the number of ghatis passed from sunrise up to the moment of birth. sunrise to sunrise and consists of 60 Ghatis 
         :return: Angle
          """
         ...
