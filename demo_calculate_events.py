@@ -8,7 +8,7 @@ import VedAstro.Library as VedAstro
 ################################################################
 ## WARNING !!!!!!! OUTDATED CODE!!!! (MARCH 2024)
 ## BELOW FUNCTIONALITY STILL WORKS IN NEW CODE
-## BUT SOMEBODY HAS TO CONVERT BELOW CODE, WILL THAT BE YOU?
+## BUT SOMEBODY HAS TO CONVERT BELOW CODE, WILL THAT BE YOU? 
 #################################################################
 
 # Create a GeoLocation object for Tokyo, Japan
