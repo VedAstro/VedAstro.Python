@@ -1,20 +1,49 @@
-# VedAstro Python
+<h1> ✨ Vedic Astrology in Python</h1>
 [![License](https://img.shields.io/github/license/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/blob/main/LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/issues)
 
-This is a Python wrapper VedAstro for [VedAstro](https://github.com/VedAstro/VedAstro). A powerful tool for astronomical calculations and data analysis. It provides a collection of functions and classes to perform various astronomical calculations, such as celestial object positions, time conversions, coordinate transformations, and more.
+
+# 🗺️ What can this do?
+Easily code complex vedic astrology math and logic.
+A powerful tool for astronomical calculations and data analysis. It provides a collection of functions and classes to perform various astronomical calculations, such as celestial object positions, time conversions, coordinate transformations, and more.
 
 
-## Features
-- Calculate the position of celestial objects (planets, stars, etc.) at a given date and time.
-- Calculate Dasas
-- Calculate Charts ( Rasi , Dasa .. etc)
-- Many more ...
+# 🏎️ Quick Start
+**Step 1:** Download and install .NET 7 Runtime ([How?](#net-7-download--install))
 
+**Step 2:** Run `pip install vedastro`
 
-## Install
-Step 1: 
+**Step 3:** Do astro calculation in less than 10 lines
+```python
+from vedastro import * 
 
+#PART 1 : PREPARE NEEDED DATA
+#-----------------------------------
+
+# set birth location
+geolocation = GeoLocation("Tokyo, Japan", 139.83, 35.65)
+
+# group all birth time data together (day/month/year)
+birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
+
+#PART 2 : CALCULATE ALL DATA
+#-----------------------------------
+
+#PLANETS
+allPlanetDataList = Calculate.AllPlanetData(PlanetName.Sun, birth_time)
+Tools.Print(allPlanetDataList)
+
+#HOUSES
+allHouseDataList = Calculate.AllHouseData(HouseName.House1, birth_time)
+Tools.Print(allHouseDataList)
+
+#ZODIAC SIGNS
+allZodiacDataList = Calculate.AllZodiacSignData(ZodiacName.Gemini, birth_time)
+Tools.Print(allZodiacDataList)
+```
+
+# .NET 7 Download & Install
+<a name="net7"></a>
 [Download .NET 7 for Windows](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.400-windows-x64-installer)
 
 Download .NET 7 for Ubuntu
@@ -23,62 +52,10 @@ sudo apt-get update && \
 sudo apt-get install -y dotnet-sdk-7.0
 ```
 
-Step 2: Install VedAstro using pip:
-
-```shell
-pip install vedastro
-```
-
-[Watch Video Guide](https://youtu.be/chEeF-xEQ48?si=KBaLD-8dX1_NGr67)
-
-## Demo Usage
-
-Here's a simple example.
-```python
-from vedastro.calculators import SaturnInAries
-from vedastro.objects import GeoLocation, Time, Person, Gender
-import VedAstro.Library as VedAstro
-
-# Create a GeoLocation object for Tokyo, Japan
-geolocation = GeoLocation(location="Tokyo", latitude=35.6895, longitude=139.6917).geolocation
-
-# Define the birth date, time, and time offset
-date = "07/05/2010"
-time = "06:42"
-time_offset = "+09:00"
-
-# Create a Time object for the birth date, time, and time offset
-time_ob = Time(date, time, time_offset, geolocation).time_object
-
-# Define the person's ID, user ID, notes, name, and gender
-id = "1234"
-user_id = "123"
-notes = ""
-name = "John Doe"
-gender = Gender.Male
-
-# Create a Person object for John Doe with the provided details
-john_doe = Person(id=id, user_id=user_id, name=name, gender=gender, birth_time=time_ob, notes=notes).person
-
-# do calculation to check if saturn is in aries at a given time
-saturn_aries = VedAstro.HoroscopeCalculatorMethods.SaturnInAries(time_ob)
-
-# data if the astro event occured
-occurrence = saturn_aries.Occuring
-
-# get the planets or houses related to this astro event
-related_body = saturn_aries.RelatedBody
-
-# Print the results
-print("Occurrence of Saturn in Aries:", occurrence)
-print("Related celestial body:", related_body)
-```
-
-Other Example/Demo Code
+# Other Example/Demo Code
 - [Calculate Events](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-calculate-events.py) calculate Muhurtha events for a person in a time range
 - [Set Custom Ayanamsa](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-custom-ayanamsa.py) change Ayanamsa to Lahiri, Krishnamurti or Yukteswar
 - [Planet & House Data](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-general-calculators.py) calculate astrological data for a house or planet, exp: House Strenght, Planet Longitude, House Sign, etc.. 
-
 
 ## DESIGN NOTES
 - Vedastro Lib code is compiled into VedAstro.dll (Release always) and injected into this python code base
