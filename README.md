@@ -80,6 +80,11 @@ Other Example/Demo Code
 - [Planet & House Data](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-general-calculators.py) calculate astrological data for a house or planet, exp: House Strenght, Planet Longitude, House Sign, etc.. 
 
 
+## DESIGN NOTES
+- Vedastro Lib code is compiled into VedAstro.dll (Release always) and injected into this python code base
+- All calls needing location data both local or production python server, will contact Live vedastro API server
+- custom 3rd party API keys not supported as in C# version
+
 ## Contributing
 
 Contributions to VedAstro Python are welcome! If you find a bug, have a feature request, or want to contribute code, please open an issue or submit a pull request. Make sure to read our [contribution guidelines](https://github.com/VedAstro/VedAstro.Python/CONTRIBUTING.md) before getting started.
