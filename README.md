@@ -48,7 +48,9 @@ Coded & compiled [in C#](https://github.com/VedAstro/VedAstro) for **maximum CPU
 then wrapped in Python .NET Core CLR wrapper. Can be run in Linux, Windows & Mac OS.
 
 
-# 💽 .NET 7 Download & Install
+-------------------
+
+## .NET 7 Download & Install
 <a name="net7"></a>
 [Download .NET 7 for Windows](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.400-windows-x64-installer)
 
@@ -57,8 +59,6 @@ Download .NET 7 for Ubuntu
 sudo apt-get update && \
 sudo apt-get install -y dotnet-sdk-7.0
 ```
--------------------
-
 
 ## DESIGN NOTES
 - Vedastro Lib code is compiled into VedAstro.dll (Release always) and injected into this python code base
