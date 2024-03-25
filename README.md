@@ -55,10 +55,6 @@ sudo apt-get install -y dotnet-sdk-7.0
 
 -------------------
 
-## Other Example/Demo Code
-- [Calculate Events](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-calculate-events.py) calculate Muhurtha events for a person in a time range
-- [Set Custom Ayanamsa](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-custom-ayanamsa.py) change Ayanamsa to Lahiri, Krishnamurti or Yukteswar
-- [Planet & House Data](https://github.com/VedAstro/VedAstro.Python/blob/main/demo-general-calculators.py) calculate astrological data for a house or planet, exp: House Strenght, Planet Longitude, House Sign, etc.. 
 
 ## DESIGN NOTES
 - Vedastro Lib code is compiled into VedAstro.dll (Release always) and injected into this python code base
