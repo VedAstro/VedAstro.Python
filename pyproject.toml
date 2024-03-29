@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "VedAstro"
-version = "1.21.0"
+version = "1.22.0"
 description = "An open source Python library for advanced astronomical calculations like planet longitude, house sign, shadbala, etc..."
 authors = ["Tharaka Umayanga <tharakau@gmail.com>"]
 readme = "README.md"
 packages = [{include = "vedastro"}]
 [tool.poetry.dependencies]
-python = ">=3.9,<3.12"
+python = ">=3.9,<3.13"
 colorama = "*"
 packaging = "*"
 requests = "*"
