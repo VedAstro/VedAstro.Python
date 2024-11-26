@@ -1,9 +1,7 @@
 name: Auto Bump Version
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   bump-version:

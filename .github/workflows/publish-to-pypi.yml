@@ -4,11 +4,6 @@
 
 name: Publish to PyPI
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md' # Ignore changes to Markdown files to prevent infinite loop
   workflow_dispatch:
 jobs:
   deploy:
