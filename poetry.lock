@@ -231,13 +231,13 @@ files = [
 
 [[package]]
 name = "pythonnet"
-version = "3.0.2"
+version = "3.0.4"
 description = ".NET and Mono integration for Python"
 optional = false
-python-versions = "<3.12,>=3.7"
+python-versions = "<3.13,>=3.7"
 files = [
-    {file = "pythonnet-3.0.2-py3-none-any.whl", hash = "sha256:e048c5b3eba9bea56a1e28053956dcc566b77dab69caa73a641f881812712b64"},
-    {file = "pythonnet-3.0.2.tar.gz", hash = "sha256:2cdd1ccedc64a7c9bd711be3d0fd0c4a78932474139dc54aa697bedde741c746"},
+    {file = "pythonnet-3.0.4-py3-none-any.whl", hash = "sha256:a63979eb66293368659849e0a7e0c55cc064c153b62cd540b614ac36895cc598"},
+    {file = "pythonnet-3.0.4.tar.gz", hash = "sha256:c92fbcfddd16575f7e75a643302271658b606d8557df7f0132ac240e03cc3a8f"},
 ]
 
 [package.dependencies]
@@ -283,5 +283,5 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.9,<3.12"
-content-hash = "147d6bb9f7bbc8f0f5b5933a2edbc8ef2aef167c50b9a9c1e2e4030c05295a98"
+python-versions = ">=3.9,<3.13"
+content-hash = "ac0094cd74ae2e1922176bcd7cf6297e19843e0608c84d0efd55eea0a473e363"
