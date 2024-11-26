@@ -23,7 +23,7 @@ jobs:
       - name: Bump version
         run: |
           IFS=. read -r major minor patch <<< "${CURRENT_VERSION}"
-          ((patch++))
+          patch=$((patch + 1))
           new_version="${major}.${minor}.${patch}"
           echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
 
