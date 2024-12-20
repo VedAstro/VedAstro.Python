@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 22:06 26/11/2024 +08:00
+# AUTO GENERATED ON 23:48 09/12/2024 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -302,9 +302,99 @@ class Calculate:
         :return: ZodiacSign
          """
         ...
-    def AllHouseSign(time: Time) -> Any:
+    def AllHouseZodiacSigns(time: Time) -> Any:
         """
          Gets the zodiac sign at middle longitude of the house. 
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseHoraSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseDrekkanaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseChaturthamsaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseSaptamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseNavamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseDashamamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseDwadashamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseShodashamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseVimshamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseChaturvimshamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseBhamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseTrimshamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseKhavedamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseAkshavedamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
+        :return: Dictionary`2
+         """
+        ...
+    def AllHouseShashtyamshaSign(time: Time) -> Any:
+        """
+        Empty sample text
         :return: Dictionary`2
          """
         ...
@@ -318,6 +408,12 @@ class Calculate:
         """
         Empty sample text
         :return: Angle
+         """
+        ...
+    def PlanetZodiacSignBasedOnHouseLongitudes(planetName: PlanetName, time: Time) -> ZodiacSign:
+        """
+         Get zodiac sign planet is in based on house longitudes basically the sign of the house the planet is in based on longitudes D0 Bhava chart 
+        :return: ZodiacSign
          """
         ...
     def PlanetZodiacSign(planetName: PlanetName, time: Time) -> ZodiacSign:
@@ -704,7 +800,13 @@ class Calculate:
         :return: ZodiacSign
          """
         ...
-    def AllPlanetSigns(time: Time) -> Any:
+    def AllPlanetSignsBasedOnHouseLongitudes(time: Time) -> Any:
+        """
+         Gets list of all planets and the zodiac signs they are in based on house longitudes 
+        :return: Dictionary`2
+         """
+        ...
+    def AllPlanetZodiacSigns(time: Time) -> Any:
         """
          Gets list of all planets and the zodiac signs they are in 
         :return: Dictionary`2
@@ -1076,9 +1178,15 @@ class Calculate:
         :return: Angle
          """
         ...
-    def TimeToEphemerisTime(time: Time) -> Double:
+    def TimeToJulianEphemerisTime(time: Time) -> Double:
         """
          Gets the ephemris time that is consumed by Swiss Ephemeris Converts normal time to Ephemeris time shown as a number 
+        :return: Double
+         """
+        ...
+    def TimeToJulianUniversalTime(time: Time) -> Double:
+        """
+        Empty sample text
         :return: Double
          """
         ...
@@ -1226,7 +1334,7 @@ class Calculate:
         :return: String
          """
         ...
-    def NorthIndianChart(time: Time) -> String:
+    def NorthIndianChart(time: Time, chartType: ChartType) -> String:
         """
          Creates a kundali chart from D1 to D20. In north indian style. URL can be used like a SVG image source link 
         :return: String
@@ -1322,7 +1430,13 @@ class Calculate:
         :return: Double
          """
         ...
-    def AllHouseMiddleLongitudes(time: Time) -> Any:
+    def GetAllHouseNirayanaMiddleLongitudes(time: Time) -> Double:
+        """
+         Gets the middle longitude of house 1 to house 12 using Swiss Epehemris swe_houses 
+        :return: Double[]
+         """
+        ...
+    def AllHouseLongitudes(time: Time) -> Any:
         """
          Gives the middle longitude of all houses at a give time 
         :return: List`1
@@ -1382,7 +1496,7 @@ class Calculate:
         :return: List`1
          """
         ...
-    def HousePlanetOccupies(planetName: PlanetName, time: Time) -> HouseName:
+    def HousePlanetOccupiesBasedOnLongitudes(planetName: PlanetName, time: Time) -> HouseName:
         """
          Gets the House number a given planet is in at a time based on house longitudes NOT sign 
         :return: HouseName
@@ -1394,13 +1508,7 @@ class Calculate:
         :return: HouseName
          """
         ...
-    def HouseAllPlanetOccupiesBasedOnSign(time: Time) -> Any:
-        """
-         List of all planets and the houses they are located in at a given time based on zodiac sign. 
-        :return: Dictionary`2
-         """
-        ...
-    def HouseAllPlanetOccupies(time: Time) -> Any:
+    def HouseAllPlanetOccupiesBasedOnLongitudes(time: Time) -> Any:
         """
          List of all planets and the houses they are located in at a given time 
         :return: Dictionary`2
@@ -1463,12 +1571,6 @@ class Calculate:
     def SignCountedFromPlanetSign(countToNextSign: Int32, startPlanet: PlanetName, inputTime: Time) -> ZodiacName:
         """
          Exp Get 4th sign from Moon 
-        :return: ZodiacName
-         """
-        ...
-    def SignCountedFromPlanetSign(countToNextSign: Int32, inputTime: Time, startPlanet: PlanetName) -> ZodiacName:
-        """
-         Exp Get 4th sign from Saturn 
         :return: ZodiacName
          """
         ...
@@ -1636,7 +1738,7 @@ class Calculate:
         ...
     def IsPlanetInKendra(planet: PlanetName, time: Time) -> Boolean:
         """
-         Checks if a planet is in a kendra house 14710 Equals to Is Jupiter in Kendra from Lagna Also know as quadrant houses 
+         Checks if a planet is in a kendra house 4710 Equals to Is Jupiter in Kendra from Lagna Also know as quadrants or angles NOTE House 1 not included because follow bv ramans book pg 16 Astrology for Beginners 
         :return: Boolean
          """
         ...
@@ -1648,7 +1750,7 @@ class Calculate:
         ...
     def IsPlanetInKendra(planetList: PlanetName, time: Time) -> Boolean:
         """
-         Checks if any 1 given planet is in a kendra house 14710 Equals to Is Jupiter or Venus in Kendra from Lagna Also know as quadrant houses 
+         Checks if any 1 given planet is in a kendra house 4710 Equals to Is Jupiter or Venus in Kendra from Lagna Also know as quadrants or angles NOTE House 1 not included because follow bv ramans book pg 16 Astrology for Beginners 
         :return: Boolean
          """
         ...
@@ -1748,10 +1850,16 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def IsPlanetAspectedByMaleficPlanets(lord: PlanetName, time: Time) -> Boolean:
+    def IsPlanetAspectedByMaleficPlanets(planetReceivingAspect: PlanetName, time: Time) -> Boolean:
         """
          Checks if a planet is receiving aspects from an evil planet 
         :return: Boolean
+         """
+        ...
+    def GetAllMaleficPlanetsAspecting(planetReceivingAspect: PlanetName, time: Time) -> Any:
+        """
+         Returns a list of all malefic planets aspecting the specified receiving planet. 
+        :return: List`1
          """
         ...
     def IsPlanetAspectedByBeneficPlanets(lord: PlanetName, time: Time) -> Boolean:
@@ -1792,7 +1900,7 @@ class Calculate:
         ...
     def IsPlanetInHouse(planet: PlanetName, houseNumber: HouseName, time: Time) -> Boolean:
         """
-         Checks if a planet is in a given house at a specified time 
+         Checks if a planet is in a given house at a specified time based on longittudes Note use longitudes as specified in BV Ramans ashtakvarga book 
         :return: Boolean
          """
         ...
@@ -1802,15 +1910,15 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def IsAllPlanetInHouse(planetList: Any, houseNumber: HouseName, time: Time) -> Boolean:
+    def IsAllPlanetsInHouse(planetList: Any, houseNumber: HouseName, time: Time) -> Boolean:
         """
          Checks if a planet is in a given house at a specified time 
         :return: Boolean
          """
         ...
-    def IsAnyPlanetInHouse(planetList: Any, houseNumber: HouseName, time: Time) -> Boolean:
+    def IsAnyPlanetsInHouse(planetList: Any, houseNumber: HouseName, time: Time) -> Boolean:
         """
-         Checks if any planet in list is at a given house at a specified time 
+         Checks if any one planet in list of planets is in a given house at a specified time based on sign 
         :return: Boolean
          """
         ...
@@ -1820,9 +1928,15 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def IsPlanetExalted(planet: PlanetName, time: Time) -> Boolean:
+    def IsPlanetExaltedDegree(planet: PlanetName, time: Time) -> Boolean:
         """
          Checks if a planet is in a longitude where its in Exaltation NOTE Rahu ketu accounted for Exaltation Each planet is held to be exalted when it is in a particular sign. The power to do good when in exaltation is greater than when in its own sign. Throughout the sign ascribed the planet is exalted but in a particular degree its exaltation is at the maximum level. 
+        :return: Boolean
+         """
+        ...
+    def IsPlanetExaltedSign(planet: PlanetName, time: Time) -> Boolean:
+        """
+         Checks if a planet is in Exaltation sign NOTE Rahu ketu accounted for Exaltation Each planet is held to be exalted when it is in a particular sign. The power to do good when in exaltation is greater than when in its own sign. Throughout the sign ascribed the planet is exalted but in a particular degree its exaltation is at the maximum level. 
         :return: Boolean
          """
         ...
@@ -1894,7 +2008,25 @@ class Calculate:
         ...
     def IsPlanetInOwnHouse(planetName: PlanetName, time: Time) -> Boolean:
         """
-         Checks if planet is placed in own house meaning house sign owned by planet note rahu and ketu return false always 
+         Checks if planet is placed in own house meaning house sign owned by planet planet position determined by longitude note rahu and ketu return false always 
+        :return: Boolean
+         """
+        ...
+    def IsPlanetInOwnSign(planetName: PlanetName, time: Time) -> Boolean:
+        """
+         Checks if planet is placed in own sign planet position determined by sign NOT longitude note rahu and ketu return false always 
+        :return: Boolean
+         """
+        ...
+    def IsPlanetInFriendSign(planetName: PlanetName, time: Time) -> Boolean:
+        """
+         Returns true if planet is in friendly sign 
+        :return: Boolean
+         """
+        ...
+    def IsPlanetInEnemySign(planetName: PlanetName, time: Time) -> Boolean:
+        """
+         Returns true if planet is in enemy sign 
         :return: Boolean
          """
         ...
@@ -1940,12 +2072,6 @@ class Calculate:
         :return: Double
          """
         ...
-    def PlanetNatureScoreMK4(personBirthTime: Time, inputPlanet: PlanetName) -> Double:
-        """
-         Experimental Code stand back 
-        :return: Double
-         """
-        ...
     def PlanetNatureScore(personBirthTime: Time, inputPlanet: PlanetName) -> Int32:
         """
          Based on Shadvarga get nature of planet for a person nature in number form to for easy calculation into summary good 1 bad 1 neutral 0 specially made method for life chart summary 
@@ -1956,12 +2082,6 @@ class Calculate:
         """
          Get a persons varna or color character A persons varna can be observed in real life 
         :return: Varna
-         """
-        ...
-    def PlanetIshtaKashtaScore(planet: PlanetName, birthTime: Time) -> Double:
-        """
-         Used for judging dasa good or bad Bala book pg 110 if planet has more Ishta than good 1 else if more Kashta than bad 1 
-        :return: Double
          """
         ...
     def PlanetIshtaKashtaScoreDegree(planet: PlanetName, birthTime: Time) -> Double:
@@ -2318,12 +2438,6 @@ class Calculate:
         :return: Double
          """
         ...
-    def GetAllHouseSayanaLongitudes(time: Time) -> Double:
-        """
-         Gets the middle longitude of house 1 to house 12 using Swiss Epehemris swe_houses 
-        :return: Double[]
-         """
-        ...
     def LmtToUtc(time: Time) -> DateTimeOffset:
         """
          Converts Local Mean Time LMT to Universal Time UTC 
@@ -2344,19 +2458,31 @@ class Calculate:
         ...
     def PlanetAshtakvargaBindu(planet: PlanetName, signToCheck: ZodiacName, time: Time) -> Int32:
         """
-         Give a planet and sign and ashtakvarga bindu can be calculated EXP In the Suns own Ashtakvarga there are 5 bindus in Aries NOTE ON USE Ashtakvarga System pg.128 For example in the Standard Horoscope the Suns transit of Aries 3rd from Moon should prove favorable. In the Suns own Ashtakvarga there are 5 bindus in Aries. Therefore the good effects produced should be to the extent of 62. The Suns transit of Capricorn 12th from the Moon should prove adverse. Capricorn has no bindus.Therefore the evil results to be produced by this transit are to the brim. 
+         Give a planet and sign and ashtakvarga bindu can be calculated uses Bhinnashtakavarga EXP In the Suns own Ashtakvarga there are 5 bindus in Aries NOTE ON USE Ashtakvarga System pg.128 For example in the Standard Horoscope the Suns transit of Aries 3rd from Moon should prove favorable. In the Suns own Ashtakvarga there are 5 bindus in Aries. Therefore the good effects produced should be to the extent of 62. The Suns transit of Capricorn 12th from the Moon should prove adverse. Capricorn has no bindus.Therefore the evil results to be produced by this transit are to the brim. 
+        :return: Int32
+         """
+        ...
+    def PlanetAshtakvargaBinduByPlanet(mainAshtakvargaPlanet: PlanetName, planetToCheck: PlanetName, time: Time) -> Int32:
+        """
+         Example Get Venus bindu in Mercurys Ashtakvarga main planet 
+        :return: Int32
+         """
+        ...
+    def PlanetOwnAshtakvargaBindu(planet: PlanetName, time: Time) -> Int32:
+        """
+         Gets bindus for planet in its own Ashtakavarga in the sign it is in 
         :return: Int32
          """
         ...
     def GocharaKakshas(checkTime: Time, birthTime: Time) -> GocharaKakshas:
         """
-         Kakshyas for daily use The concept of Kakshyas can be employed for daily use. The method of this application is simple. Prepare the Prastaraka charts for the seven planets. Then find out the longitudes of each of the seven planets on a given day. In the Prastaraka of the Sun see if the transiting Sun is passing through a Kakshya with a benefic point. For the Moons transit consider the Prastaraka of the Moon. See for all the planets. When several planets are transiting the Kakshyas where the natal planets have contributed benefic points that day is auspicious. When several planets transit the Kakshyas where there are no benefic points it is adverse time for the native The Concept of Kakshya The Prastaraka charts for different planets can be represented in a different manner to make use of the concept of Kakshyas. Each rashi or sign is divided into eight equal parts or Kakshyas The Prastaraka chart for each planet can thus be readjusted to bring in the concept of the Kakshyas. A planet is considered to be productive ofbenefic results when it transits a Kakshya where there is a benefic point 
+         Kakshyas for daily use The concept of Kakshyas can be employed for daily use. The method of this application is simple. Prepare the Prastaraka charts for the seven planets. Then find out the longitudes of each of the seven planets on a given day. In the Prastaraka of the Sun see if the transiting Sun is passing through a Kakshya with a benefic point. For the Moons transit consider the Prastaraka of the Moon. See for all the planets. When several planets are transiting the Kakshyas where the natal planets have contributed benefic points that day is auspicious. When several planets transit the Kakshyas where there are no benefic points it is adverse time for the native The Concept of Kakshya The Prastaraka charts for different planets can be represented in a different manner to make use of the concept of Kakshyas. Each rashi or sign is divided into eight equal parts or Kakshyas The Prastaraka chart for each planet can thus be readjusted to bring in the concept of the Kakshyas. A planet is considered to be productive of benefic results when it transits a Kakshya where there is a benefic point 
         :return: GocharaKakshas
          """
         ...
     def GocharaZodiacSignCountFromMoon(birthTime: Time, currentTime: Time, planet: PlanetName) -> Int32:
         """
-         Gets the Gochara House number which is the count from birth Moon sign janma rasi to the sign the planet is at the current time. Gochara Transits 
+         Gets the Gochara sign number which is the count from birth Moon sign janma rasi to the sign the planet is at the current time. Gochara Transits 
         :return: Int32
          """
         ...
@@ -2500,7 +2626,13 @@ class Calculate:
         ...
     def IsPlanetConjunctWithPlanet(planetA: PlanetName, planetB: PlanetName, time: Time) -> Boolean:
         """
-         Checks if the a planet is conjunct with another planet Note Both planets A B are checked if they are in conjunct with each other performance might be effected mildly but errors in conjunction calculation would be caught here. Can be removed once conjunction calculator is confirmed accurate. 
+         Checks if the a planet is conjunct with another planet Based on longitudes Note Both planets A B are checked if they are in conjunct with each other performance might be effected mildly but errors in conjunction calculation would be caught here. Can be removed once conjunction calculator is confirmed accurate. 
+        :return: Boolean
+         """
+        ...
+    def IsPlanetConjunctWithBeneficPlanets(inputPlanet: PlanetName, time: Time) -> Boolean:
+        """
+         Check if benefic planets are conjunct with specified planet 
         :return: Boolean
          """
         ...
@@ -2624,9 +2756,9 @@ class Calculate:
         :return: Boolean
          """
         ...
-    def IsPlanetCombust(cls) -> Boolean:
+    def IsPlanetCombust(planetName: PlanetName, time: Time) -> Boolean:
         """
-         Combustion of planets Planets when too close to the Sun become invisible and are labelled as combust. A combust planet loses its strength and tends to behave adversely according to predictive astrology. Aryabhata has the following to say about combustion When the Moon has no latitude i.e. when it is at zero degree of latitude it is visible when situated at a distance of 12 degrees from the Sun. Venus is visible when 9 degrees distant from the Sun. The other planets taken in the order of decreasing sizes viz. Jupiter Mercury Saturn and Mars are visible when they are 9 degrees increased by twos i.e. when they are 11 13 15 and 17 degrees distant from the Sun. The degrees as mentioned above are generally taken as the limits within which the respective planets are said to be combust. 
+         Determines if a given planet is combust at a specific time. Combustion of planets Planets when too close to the Sun become invisible and are labelled as combust. A combust planet loses its strength and tends to behave adversely according to predictive astrology. Aryabhata has the following to say about combustion When the Moon has no latitude i.e. when it is at zero degree of latitude it is visible when situated at a distance of 12 degrees from the Sun. Venus is visible when 9 degrees distant from the Sun. The other planets taken in the order of decreasing sizes viz. Jupiter Mercury Saturn and Mars are visible when they are 9 degrees increased by twos i.e. when they are 11 13 15 and 17 degrees distant from the Sun. The degrees as mentioned above are generally taken as the limits within which the respective planets are said to be combust. 
         :return: Boolean
          """
         ...
