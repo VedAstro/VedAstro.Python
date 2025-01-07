@@ -1,8 +1,5 @@
 from vedastro import *  # install via pip
 
-# BELOW DEMO FILE MADE FOR @itz-shubham & Maha Arjun
-# IN HOPES THAT THEY WILL CONTRIBUTE BACK TO REPO
-
 # THIS DEMO CALCULATES DATA NEEDED TO MAKE BHAVA CHART
 
 #PART 1 : PREPARE NEEDED DATA
@@ -22,11 +19,14 @@ birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
 house1ZodiacSign = Calculate.HouseZodiacSign(HouseName.House1, birth_time)
 Tools.Print(house1ZodiacSign)
 
-# Get Planets in House 1
+# Get Planets in House 1 (Bhava Chart)
 planetsInHouse1 = Calculate.PlanetsInHouse(HouseName.House1, birth_time)
 Tools.Print(planetsInHouse1)
 
+# Get Planets in House 1 (Rasi Chart)
+planetsInHouse1 = Calculate.PlanetsInHouseBasedOnSign(HouseName.House1, birth_time)
+Tools.Print(planetsInHouse1)
+
+
 # Get the sign for House 2
 # ......
-
-# Please Please @itz-shubham & Maha Arjun do the rest of the code or at least PSUDO CODE! (HELP OTHER BEGINNERS ASWELL)
