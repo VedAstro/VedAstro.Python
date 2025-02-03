@@ -14,13 +14,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.12'  # Specify a compatible Python version
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install poetry
-    - name: re run poetry lockfile
-      run: poetry lock --no-update
+    - name: Re-run poetry lockfile
+      run: poetry lock  # Removed the --no-update option
     - name: Install project dependencies
       run: poetry install
     - name: Build package
