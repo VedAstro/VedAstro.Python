@@ -1,5 +1,7 @@
 import requests
 import json
+from enum import Enum
+
 
 class GeoLocation:
     def __init__(self, location_name, longitude, latitude):
@@ -21,7 +23,6 @@ class GeoLocation:
         """
         return f"{self.location_name} ({self.longitude}, {self.latitude})"
 
-
 class Time:
     def __init__(self, time_string, geolocation):
         """
@@ -39,6 +40,46 @@ class Time:
         Return a string representation of the Time object.
         """
         return f"{self.time_string} at {self.geolocation}"
+
+class PlanetName(Enum):
+    Sun = "Sun"
+    Moon = "Moon"
+    Mars = "Mars"
+    Mercury = "Mercury"
+    Jupiter = "Jupiter"
+    Venus = "Venus"
+    Saturn = "Saturn"
+    Uranus = "Uranus"
+    Neptune = "Neptune"
+    Ascendant = "Ascendant"
+
+class HouseName(Enum):
+    House1 = "House1"
+    House2 = "House2"
+    House3 = "House3"
+    House4 = "House4"
+    House5 = "House5"
+    House6 = "House6"
+    House7 = "House7"
+    House8 = "House8"
+    House9 = "House9"
+    House10 = "House10"
+    House11 = "House11"
+    House12 = "House12"
+
+class ZodiacName(Enum):
+    Aries = "Aries"
+    Taurus = "Taurus"
+    Gemini = "Gemini"
+    Cancer = "Cancer"
+    Leo = "Leo"
+    Virgo = "Virgo"
+    Libra = "Libra"
+    Scorpio = "Scorpio"
+    Sagittarius = "Sagittarius"
+    Capricorn = "Capricorn"
+    Aquarius = "Aquarius"
+    Pisces = "Pisces"
 
 
 class Calculate:
@@ -62,6 +103,93 @@ class Calculate:
         """
         # Format the API URL with the provided parameters
         url = f"https://api.vedastro.org/api/Calculate/MatchReport/Location/{male_birth_time.geolocation.location_name}/Time/{male_birth_time.time_string}/Location/{female_birth_time.geolocation.location_name}/Time/{female_birth_time.time_string}/APIKey/{cls.api_key}"
+
+        # Make the API request
+        response = requests.get(url)
+
+        # Check if the response was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = json.loads(response.text)
+
+            # Return the parsed payload
+            return data["Payload"]
+        else:
+            # Return an error message if the response was not successful
+            return "Error: API request failed with status code {}".format(response.status_code)
+
+    @classmethod
+    def AllPlanetData(cls, planet_name, birth_time):
+        """
+        Calculate the planet data for an individual.
+
+        Args:
+        planet_name (PlanetName): The name of the planet.
+        birth_time (Time): The birth time of the individual.
+
+        Returns:
+        dict: The planet data.
+        """
+        # Format the API URL with the provided parameters
+        url = f"https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/{planet_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.time_string}/APIKey/{cls.api_key}"
+
+        # Make the API request
+        response = requests.get(url)
+
+        # Check if the response was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = json.loads(response.text)
+
+            # Return the parsed payload
+            return data["Payload"]
+        else:
+            # Return an error message if the response was not successful
+            return "Error: API request failed with status code {}".format(response.status_code)
+
+    @classmethod
+    def AllHouseData(cls, house_name, birth_time):
+        """
+        Calculate the house data for an individual.
+
+        Args:
+        house_name (HouseName): The name of the house.
+        birth_time (Time): The birth time of the individual.
+
+        Returns:
+        dict: The house data.
+        """
+        # Format the API URL with the provided parameters
+        url = f"https://api.vedastro.org/api/Calculate/AllHouseData/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.time_string}/APIKey/{cls.api_key}"
+
+        # Make the API request
+        response = requests.get(url)
+
+        # Check if the response was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = json.loads(response.text)
+
+            # Return the parsed payload
+            return data["Payload"]
+        else:
+            # Return an error message if the response was not successful
+            return "Error: API request failed with status code {}".format(response.status_code)
+
+    @classmethod
+    def AllZodiacSignData(cls, zodiac_name, birth_time):
+        """
+        Calculate the zodiac sign data for an individual.
+
+        Args:
+        zodiac_name (ZodiacName): The name of the zodiac sign.
+        birth_time (Time): The birth time of the individual.
+
+        Returns:
+        dict: The zodiac sign data.
+        """
+        # Format the API URL with the provided parameters
+        url = f"https://api.vedastro.org/api/Calculate/AllZodiacSignData/ZodiacName/{zodiac_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.time_string}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
