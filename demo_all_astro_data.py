@@ -1,5 +1,7 @@
 from vedastro import *  # install via pip
 
+# PART 0 : Set API key
+Calculate.SetAPIKey('xxxxxxxxxxxxxxxxxx')  # free API key from "vedastro.org/Account"
 
 #PART 1 : PREPARE NEEDED DATA
 #-----------------------------------
@@ -16,13 +18,13 @@ birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
 
 #PLANETS
 allPlanetDataList = Calculate.AllPlanetData(PlanetName.Sun, birth_time)
-Tools.Print(allPlanetDataList)
+print(json.dumps(allPlanetDataList, indent=4))
 
 #HOUSES
 allHouseDataList = Calculate.AllHouseData(HouseName.House1, birth_time)
-Tools.Print(allHouseDataList)
+print(json.dumps(allHouseDataList, indent=4))
 
 #ZODIAC SIGNS
 allZodiacDataList = Calculate.AllZodiacSignData(ZodiacName.Gemini, birth_time)
-Tools.Print(allZodiacDataList)
+print(json.dumps(allZodiacDataList, indent=4))
 
