@@ -144,7 +144,7 @@ class Calculate:
         dict: The planet data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/{planet_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/{planet_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string()}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -178,7 +178,7 @@ class Calculate:
         dict: The house data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/AllHouseData/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/AllHouseData/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string()}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -212,7 +212,7 @@ class Calculate:
         dict: The zodiac sign data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/HoroscopePredictionNames/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/HoroscopePredictionNames/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string()}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -246,7 +246,7 @@ class Calculate:
         dict: The zodiac sign data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/HouseZodiacSign/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/HouseZodiacSign/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string()}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -280,7 +280,7 @@ class Calculate:
         dict: The planet data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/PlanetsInHouse/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/PlanetsInHouse/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string()}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -314,7 +314,7 @@ class Calculate:
         dict: The planet data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/PlanetsInHouseBasedOnSign/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/PlanetsInHouseBasedOnSign/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string()}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
