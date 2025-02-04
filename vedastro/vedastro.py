@@ -2,7 +2,6 @@ import requests
 import json
 from enum import Enum
 
-
 class GeoLocation:
     def __init__(self, location_name, longitude, latitude):
         """
@@ -40,6 +39,16 @@ class Time:
         Return a string representation of the Time object.
         """
         return f"{self.time_string} at {self.geolocation}"
+
+    def url_time_string(self):
+        """
+        Return the time string formatted as "HH:MM/DD/MM/YYYY/+HH:MM"
+        """
+        time_parts = self.time_string.split()
+        time = time_parts[0]
+        date = time_parts[1].split('/')
+        offset = time_parts[2]
+        return f"{time}/{date[0]}/{date[1]}/{date[2]}/{offset}"
 
 class PlanetName(Enum):
     Sun = "Sun"
@@ -81,7 +90,6 @@ class ZodiacName(Enum):
     Aquarius = "Aquarius"
     Pisces = "Pisces"
 
-
 class Calculate:
     api_key = None
 
@@ -102,7 +110,7 @@ class Calculate:
         dict: The match report.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/MatchReport/Location/{male_birth_time.geolocation.location_name}/Time/{male_birth_time.time_string}/Location/{female_birth_time.geolocation.location_name}/Time/{female_birth_time.time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/MatchReport/Location/{male_birth_time.geolocation.location_name}/Time/{male_birth_time.time_string}/Location/{female_birth_time.geolocation.location_name}/Time/{female_birth_time.url_time_string}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -112,8 +120,13 @@ class Calculate:
             # Parse the JSON response
             data = json.loads(response.text)
 
-            # Return the parsed payload
-            return data["Payload"]
+            # Check if the payload exists and is not empty
+            if "Payload" in data and data["Payload"]:
+                # Return the values in the payload as a list
+                return list(data["Payload"].values())[0]
+            else:
+                # Raise an exception if the payload is missing or empty
+                raise ValueError("Payload is missing or empty")
         else:
             # Return an error message if the response was not successful
             return "Error: API request failed with status code {}".format(response.status_code)
@@ -131,7 +144,7 @@ class Calculate:
         dict: The planet data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/{planet_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/AllPlanetData/PlanetName/{planet_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -141,8 +154,13 @@ class Calculate:
             # Parse the JSON response
             data = json.loads(response.text)
 
-            # Return the parsed payload
-            return data["Payload"]
+            # Check if the payload exists and is not empty
+            if "Payload" in data and data["Payload"]:
+                # Return the values in the payload as a list
+                return list(data["Payload"].values())[0]
+            else:
+                # Raise an exception if the payload is missing or empty
+                raise ValueError("Payload is missing or empty")
         else:
             # Return an error message if the response was not successful
             return "Error: API request failed with status code {}".format(response.status_code)
@@ -160,7 +178,7 @@ class Calculate:
         dict: The house data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/AllHouseData/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/AllHouseData/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -170,14 +188,19 @@ class Calculate:
             # Parse the JSON response
             data = json.loads(response.text)
 
-            # Return the parsed payload
-            return data["Payload"]
+            # Check if the payload exists and is not empty
+            if "Payload" in data and data["Payload"]:
+                # Return the values in the payload as a list
+                return list(data["Payload"].values())[0]
+            else:
+                # Raise an exception if the payload is missing or empty
+                raise ValueError("Payload is missing or empty")
         else:
             # Return an error message if the response was not successful
             return "Error: API request failed with status code {}".format(response.status_code)
 
     @classmethod
-    def AllZodiacSignData(cls, zodiac_name, birth_time):
+    def HoroscopePredictionNames(cls, birth_time):
         """
         Calculate the zodiac sign data for an individual.
 
@@ -189,7 +212,7 @@ class Calculate:
         dict: The zodiac sign data.
         """
         # Format the API URL with the provided parameters
-        url = f"https://api.vedastro.org/api/Calculate/AllZodiacSignData/ZodiacName/{zodiac_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.time_string}/APIKey/{cls.api_key}"
+        url = f"https://api.vedastro.org/api/Calculate/HoroscopePredictionNames/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
 
         # Make the API request
         response = requests.get(url)
@@ -199,8 +222,115 @@ class Calculate:
             # Parse the JSON response
             data = json.loads(response.text)
 
-            # Return the parsed payload
-            return data["Payload"]
+            # Check if the payload exists and is not empty
+            if "Payload" in data and data["Payload"]:
+                # Return the values in the payload as a list
+                return list(data["Payload"].values())[0]
+            else:
+                # Raise an exception if the payload is missing or empty
+                raise ValueError("Payload is missing or empty")
+        else:
+            # Return an error message if the response was not successful
+            return "Error: API request failed with status code {}".format(response.status_code)
+
+    @classmethod
+    def HouseZodiacSign(cls, house_name, birth_time):
+        """
+        Calculate the zodiac sign for a house.
+
+        Args:
+        house_name (HouseName): The name of the house.
+        birth_time (Time): The birth time of the individual.
+
+        Returns:
+        dict: The zodiac sign data.
+        """
+        # Format the API URL with the provided parameters
+        url = f"https://api.vedastro.org/api/Calculate/HouseZodiacSign/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+
+        # Make the API request
+        response = requests.get(url)
+
+        # Check if the response was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = json.loads(response.text)
+
+            # Check if the payload exists and is not empty
+            if "Payload" in data and data["Payload"]:
+                # Return the values in the payload as a list
+                return list(data["Payload"].values())[0]
+            else:
+                # Raise an exception if the payload is missing or empty
+                raise ValueError("Payload is missing or empty")
+        else:
+            # Return an error message if the response was not successful
+            return "Error: API request failed with status code {}".format(response.status_code)
+
+    @classmethod
+    def PlanetsInHouse(cls, house_name, birth_time):
+        """
+        Calculate the planets in a house.
+
+        Args:
+        house_name (HouseName): The name of the house.
+        birth_time (Time): The birth time of the individual.
+
+        Returns:
+        dict: The planet data.
+        """
+        # Format the API URL with the provided parameters
+        url = f"https://api.vedastro.org/api/Calculate/PlanetsInHouse/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+
+        # Make the API request
+        response = requests.get(url)
+
+        # Check if the response was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = json.loads(response.text)
+
+            # Check if the payload exists and is not empty
+            if "Payload" in data and data["Payload"]:
+                # Return the values in the payload as a list
+                return list(data["Payload"].values())[0]
+            else:
+                # Raise an exception if the payload is missing or empty
+                raise ValueError("Payload is missing or empty")
+        else:
+            # Return an error message if the response was not successful
+            return "Error: API request failed with status code {}".format(response.status_code)
+
+    @classmethod
+    def PlanetsInHouseBasedOnSign(cls, house_name, birth_time):
+        """
+        Calculate the planets in a house based on sign.
+
+        Args:
+        house_name (HouseName): The name of the house.
+        birth_time (Time): The birth time of the individual.
+
+        Returns:
+        dict: The planet data.
+        """
+        # Format the API URL with the provided parameters
+        url = f"https://api.vedastro.org/api/Calculate/PlanetsInHouseBasedOnSign/HouseName/{house_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string}/APIKey/{cls.api_key}"
+
+        # Make the API request
+        response = requests.get(url)
+
+        # Check if the response was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = json.loads(response.text)
+
+            # Check if the payload exists and is not empty
+            if "Payload" in data and data["Payload"]:
+                # Return the values in the payload as a list
+                return list(data["Payload"].values())[0]
+            else:
+                # Raise an exception if the payload is missing or empty
+                raise ValueError("Payload is missing or empty")
         else:
             # Return an error message if the response was not successful
             return "Error: API request failed with status code {}".format(response.status_code)
