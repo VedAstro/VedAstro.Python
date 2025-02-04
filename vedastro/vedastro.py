@@ -198,6 +198,40 @@ class Calculate:
         else:
             # Return an error message if the response was not successful
             return "Error: API request failed with status code {}".format(response.status_code)
+    
+    @classmethod
+    def AllZodiacSignData(cls, zodiac_name, birth_time):
+        """
+        Calculate the house data for an individual.
+
+        Args:
+        house_name (HouseName): The name of the house.
+        birth_time (Time): The birth time of the individual.
+
+        Returns:
+        dict: The house data.
+        """
+        # Format the API URL with the provided parameters
+        url = f"https://api.vedastro.org/api/Calculate/AllZodiacSignData/ZodiacName/{zodiac_name.value}/Location/{birth_time.geolocation.location_name}/Time/{birth_time.url_time_string()}/APIKey/{cls.api_key}"
+
+        # Make the API request
+        response = requests.get(url)
+
+        # Check if the response was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = json.loads(response.text)
+
+            # Check if the payload exists and is not empty
+            if "Payload" in data and data["Payload"]:
+                # Return the values in the payload as a list
+                return list(data["Payload"].values())[0]
+            else:
+                # Raise an exception if the payload is missing or empty
+                raise ValueError("Payload is missing or empty")
+        else:
+            # Return an error message if the response was not successful
+            return "Error: API request failed with status code {}".format(response.status_code)
 
     @classmethod
     def HoroscopePredictionNames(cls, birth_time):
