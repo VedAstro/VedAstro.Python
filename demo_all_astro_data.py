@@ -28,3 +28,22 @@ print(json.dumps(allHouseDataList, indent=4))
 allZodiacDataList = Calculate.AllZodiacSignData(ZodiacName.Gemini, birth_time)
 print(json.dumps(allZodiacDataList, indent=4))
 
+#SUNRISE TIME
+sunriseTime = Calculate.SunriseTime(birth_time)
+print(json.dumps(sunriseTime, indent=4))
+
+#SUNSET TIME
+sunsetTime = Calculate.SunsetTime(birth_time)
+print(json.dumps(sunriseTime, indent=4))
+
+#Panchanga Table
+panchangaTable = Calculate.PanchangaTable(birth_time)
+print(json.dumps(panchangaTable, indent=4))
+
+#Lagna Sign Name
+panchangaTable = Calculate.LagnaSignName(birth_time)
+print(json.dumps(panchangaTable, indent=4))
+
+#Bhinnashtakavarga Chart
+bhinnashtakavarga = Calculate.BhinnashtakavargaChart(birth_time)
+print(json.dumps(bhinnashtakavarga, indent=4))
