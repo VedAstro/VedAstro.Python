@@ -1,6 +1,6 @@
 package:
   name: vedastro
-  version: 1.23.14
+  version: 1.23.15
 source:
   git_rev:0.1
   git_url:https://github.com/VedAstro/VedAstro.Python.git
