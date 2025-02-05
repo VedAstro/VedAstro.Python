@@ -51,6 +51,7 @@ class Time:
         return f"{time}/{date[0]}/{date[1]}/{date[2]}/{offset}"
 
 class PlanetName(Enum):
+    All = "All"
     Sun = "Sun"
     Moon = "Moon"
     Mars = "Mars"
@@ -58,9 +59,8 @@ class PlanetName(Enum):
     Jupiter = "Jupiter"
     Venus = "Venus"
     Saturn = "Saturn"
-    Uranus = "Uranus"
-    Neptune = "Neptune"
-    Ascendant = "Ascendant"
+    Rahu = "Rahu"
+    Ketu = "Ketu"
 
 class HouseName(Enum):
     House1 = "House1"
