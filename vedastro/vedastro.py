@@ -253,3 +253,12 @@ class Calculate:
             "Time": birth_time.url_time_string(),
         }
         return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GulikaLongitude(cls, birth_time):
+        endpoint = "GulikaLongitude"
+        params = {
+            "Location": birth_time.geolocation.location_name,
+            "Time": birth_time.url_time_string(),
+        }
+        return cls._make_request(endpoint, params)

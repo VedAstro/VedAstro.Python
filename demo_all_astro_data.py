@@ -47,3 +47,7 @@ print(json.dumps(panchangaTable, indent=4))
 #Bhinnashtakavarga Chart
 bhinnashtakavarga = Calculate.BhinnashtakavargaChart(birth_time)
 print(json.dumps(bhinnashtakavarga, indent=4))
+
+#Gulika Longitude
+gulikaLongitude = Calculate.GulikaLongitude(birth_time)
+print(json.dumps(gulikaLongitude, indent=4))
