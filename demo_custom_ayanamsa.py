@@ -18,7 +18,7 @@ birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
 #-----------------------------------
 
 print(f"LAHIRI AYANAMSA : 285 AD") 
-Calculate.Ayanamsa = Ayanamsa.Lahiri;
+Calculate.Ayanamsa = Ayanamsa.Lahiri
 
 #PART 3 : MAKE CALCULATION
 #-----------------------------------
@@ -33,7 +33,7 @@ print(f"Nirayana Longitude : {planet_longitude}")
 #-----------------------------------
 
 print(f"\nRAMAN AYANAMSA : 397 AD")  
-Calculate.Ayanamsa = Ayanamsa.Raman;
+Calculate.Ayanamsa = Ayanamsa.Raman
 
 #PART 5 : MAKE CALCULATION
 #-----------------------------------
