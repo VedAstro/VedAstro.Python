@@ -1,5 +1,7 @@
-import VedAstro # install via pip
-from VedAstro.Library import * # reference full library
+from vedastro import *  # install via pip
+
+# PART 0 : Set API key
+Calculate.SetAPIKey('FreeAPIUser')  # unlimited use API key from "vedastro.org/Account"
 
 #PART 1 : PREPARE NEEDED DATA
 #-----------------------------------
@@ -16,7 +18,7 @@ birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
 #-----------------------------------
 
 print(f"LAHIRI AYANAMSA : 285 AD") 
-Calculate.YearOfCoincidence = int(Ayanamsa.Lahiri);
+Calculate.Ayanamsa = Ayanamsa.Lahiri;
 
 #PART 3 : MAKE CALCULATION
 #-----------------------------------
@@ -31,7 +33,7 @@ print(f"Nirayana Longitude : {planet_longitude}")
 #-----------------------------------
 
 print(f"\nRAMAN AYANAMSA : 397 AD")  
-Calculate.YearOfCoincidence = int(Ayanamsa.Raman);
+Calculate.Ayanamsa = Ayanamsa.Raman;
 
 #PART 5 : MAKE CALCULATION
 #-----------------------------------
