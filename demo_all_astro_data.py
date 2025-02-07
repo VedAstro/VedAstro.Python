@@ -1,7 +1,7 @@
 from vedastro import *  # install via pip
 
 # PART 0 : Set API key
-Calculate.SetAPIKey('xxxxxxxxxxxxxxxxxx')  # free API key from "vedastro.org/Account"
+Calculate.SetAPIKey('FreeAPIUser')  # unlimited use API key from "vedastro.org/Account"
 
 #PART 1 : PREPARE NEEDED DATA
 #-----------------------------------
@@ -51,3 +51,7 @@ print(json.dumps(bhinnashtakavarga, indent=4))
 #Gulika Longitude
 gulikaLongitude = Calculate.GulikaLongitude(birth_time)
 print(json.dumps(gulikaLongitude, indent=4))
+
+#Day of week
+dayOfWeek = Calculate.DayOfWeek(birth_time)
+print(json.dumps(dayOfWeek, indent=4))
