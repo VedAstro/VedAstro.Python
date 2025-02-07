@@ -90,175 +90,179 @@ class ZodiacName(Enum):
     Aquarius = "Aquarius"
     Pisces = "Pisces"
 
-class Calculate:
-    api_key = None
-    base_url = "https://api.vedastro.org/api/Calculate"
+class ChartType(Enum):
+    """Enum for various chart types based on house longitudes."""
+    BhavaChalit = 1
+    RasiD1 = 2
+    HoraD2 = 3
+    DrekkanaD3 = 4
+    ChaturthamshaD4 = 5
+    SaptamshaD7 = 6
+    NavamshaD9 = 7
+    DashamamshaD10 = 8
+    DwadashamshaD12 = 9
+    ShodashamshaD16 = 10
+    VimshamshaD20 = 11
+    ChaturvimshamshaD24 = 12
+    BhamshaD27 = 13
+    TrimshamshaD30 = 14
+    KhavedamshaD40 = 15
+    AkshavedamshaD45 = 16
+    ShashtyamshaD60 = 17
 
-    @classmethod
-    def SetAPIKey(cls, api_key):
-        cls.api_key = api_key
+class DayOfWeek(Enum):
+    Sunday = 1
+    Monday = 2
+    Tuesday = 3
+    Wednesday = 4
+    Thursday = 5
+    Friday = 6
+    Saturday = 7
 
-    @classmethod
-    def _make_request(cls, endpoint, params):
-        url = f"{cls.base_url}/{endpoint}"
-        params["APIKey"] = cls.api_key
-        query_string = "/".join(f"{key}/{value}" for key, value in params.items())
-        full_url = f"{url}/{query_string}"
-        response = requests.get(full_url)
-        if response.status_code == 200:
-            data = json.loads(response.text)
-            if "Payload" in data and data["Payload"]:
-                return list(data["Payload"].values())[0]
-            else:
-                raise ValueError("Payload is missing or empty")
-        else:
-            return f"Error: API request failed with status code {response.status_code}"
+class ConstellationName(Enum):
+    Empty = 0
+    Aswini = 1
+    Bharani = 2
+    Krithika = 3
+    Rohini = 4
+    Mrigasira = 5
+    Aridra = 6
+    Punarvasu = 7
+    Pushyami = 8
+    Aslesha = 9
+    Makha = 10
+    Pubba = 11
+    Uttara = 12  # Uttara Phalguni
+    Hasta = 13
+    Chitta = 14
+    Swathi = 15
+    Vishhaka = 16
+    Anuradha = 17
+    Jyesta = 18
+    Moola = 19
+    Poorvashada = 20
+    Uttarashada = 21
+    Sravana = 22
+    Dhanishta = 23
+    Satabhisha = 24
+    Poorvabhadra = 25
+    Uttarabhadra = 26
+    Revathi = 27
+    # Abhijit = 28  # Uncomment if needed
 
-    @classmethod
-    def MatchReport(cls, male_birth_time, female_birth_time):
-        endpoint = "MatchReport"
-        params = {
-            "Location": male_birth_time.geolocation.location_name,
-            "Time": male_birth_time.time_string,
-            "Location2": female_birth_time.geolocation.location_name,
-            "Time2": female_birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
+class Avasta(Enum):
+    """Represents different emotional states."""
+    
+    # Kshudita/hungry
+    KshuditaStarved = 1
+    
+    # Trashita/thirsty
+    TrishitaThirst = 2
+    
+    # Lajjita/humiliated
+    LajjitaShamed = 3
+    
+    # Garvita/proud
+    GarvitaProud = 4
+    
+    # Mudita/sated/happy
+    MuditaDelighted = 5
+    
+    # Kshobhita/guilty/repentant
+    KshobitaAgitated = 6
 
-    @classmethod
-    def AllPlanetData(cls, planet_name, birth_time):
-        endpoint = "AllPlanetData"
-        params = {
-            "PlanetName": planet_name.value,
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
+class Ayanamsa(Enum):
+    Fagan_Bradley = 0
+    Lahiri = 1
+    Deluce = 2
+    Raman = 3
+    Ushashashi = 4
+    Krishnamurti = 5
+    Djwhal_Khul = 6
+    Yukteshwar = 7
+    Jn_Bhasin = 8
+    Babyl_Kugler1 = 9
+    Babyl_Kugler2 = 10
+    Babyl_Kugler3 = 11
+    Babyl_Huber = 12
+    Babyl_Etpsc = 13
+    Aldebaran_15Tau = 14
+    Hipparchos = 15
+    Sassanian = 16
+    Galcent_0Sag = 17
+    J2000 = 18
+    J1900 = 19
+    B1950 = 20
+    Suryasiddhanta = 21
+    Suryasiddhanta_MSun = 22
+    Aryabhata = 23
+    Aryabhata_MSun = 24
+    Ss_Revati = 25
+    Ss_Citra = 26
+    True_Citra = 27
+    True_Revati = 28
+    True_Pushya = 29
+    Galcent_Rgbrand = 30
+    Galequ_Iau1958 = 31
+    Galequ_True = 32
+    Galequ_Mula = 33
+    Galalign_Mardyks = 34
+    True_Mula = 35
+    Galcent_Mula_Wilhelm = 36
+    Aryabhata_522 = 37
+    Babyl_Britton = 38
+    True_Sheoran = 39
+    Galcent_Cochrane = 40
+    Galequ_Fiorenza = 41
+    Valens_Moon = 42
+    Lahiri_1940 = 43
+    Lahiri_VP285 = 44
+    Krishnamurti_VP291 = 45
+    Lahiri_ICRC = 46
 
-    @classmethod
-    def AllHouseData(cls, house_name, birth_time):
-        endpoint = "AllHouseData"
-        params = {
-            "HouseName": house_name.value,
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
+class Karana(Enum):
+    Bava = 1
+    Balava = 2
+    Kaulava = 3
+    Taitula = 4
+    Garija = 5
+    Vanija = 6
+    Visti = 7  # AKA Bhadra
+    Sakuna = 8  # AKA Sakuni
+    Chatushpada = 9
+    Naga = 10
+    Kimstughna = 11
 
-    @classmethod
-    def AllZodiacSignData(cls, zodiac_name, birth_time):
-        endpoint = "AllZodiacSignData"
-        params = {
-            "ZodiacName": zodiac_name.value,
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
+class LunarDayGroup(Enum):
+    Nanda = 1
+    Bhadra = 2
+    Jaya = 3
+    Rikta = 4
+    Purna = 5
 
-    @classmethod
-    def HoroscopePredictionNames(cls, birth_time):
-        endpoint = "HoroscopePredictionNames"
-        params = {
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HouseZodiacSign(cls, house_name, birth_time):
-        endpoint = "HouseZodiacSign"
-        params = {
-            "HouseName": house_name.value,
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetsInHouse(cls, house_name, birth_time):
-        endpoint = "PlanetsInHouse"
-        params = {
-            "HouseName": house_name.value,
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetsInHouseBasedOnSign(cls, house_name, birth_time):
-        endpoint = "PlanetsInHouseBasedOnSign"
-        params = {
-            "HouseName": house_name.value,
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DasaAtRange(cls, birth_time, start_time, end_time, levels, precision_hours):
-        endpoint = "DasaAtRange"
-        params = {
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-            "Location2": start_time.geolocation.location_name,
-            "Time2": start_time.url_time_string(),
-            "Location3": end_time.geolocation.location_name,
-            "Time3": end_time.url_time_string(),
-            "Levels": levels,
-            "PrecisionHours": precision_hours,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SunriseTime(cls, birth_time):
-        endpoint = "SunriseTime"
-        params = {
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SunsetTime(cls, birth_time):
-        endpoint = "SunsetTime"
-        params = {
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PanchangaTable(cls, birth_time):
-        endpoint = "PanchangaTable"
-        params = {
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def LagnaSignName(cls, birth_time):
-        endpoint = "LagnaSignName"
-        params = {
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BhinnashtakavargaChart(cls, birth_time):
-        endpoint = "BhinnashtakavargaChart"
-        params = {
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def GulikaLongitude(cls, birth_time):
-        endpoint = "GulikaLongitude"
-        params = {
-            "Location": birth_time.geolocation.location_name,
-            "Time": birth_time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
+class LunarMonth(Enum):
+    Empty = 0
+    Chaitra = 1
+    Vaisaakha = 2
+    Jyeshtha = 3
+    Aashaadha = 4
+    Sraavana = 5
+    Bhaadrapada = 6
+    Aaswayuja = 7
+    Kaarteeka = 8
+    Maargasira = 9
+    Pushya = 10
+    Maagha = 11
+    Phaalguna = 12
+    ChaitraAdhika = 13
+    VaisaakhaAdhika = 14
+    JyeshthaAdhika = 15
+    AashaadhaAdhika = 16
+    SraavanaAdhika = 17
+    BhaadrapadaAdhika = 18
+    AaswayujaAdhika = 19
+    KaarteekaAdhika = 20
+    MaargasiraAdhika = 21
+    PushyaAdhika = 22
+    MaaghaAdhika = 23
+    PhaalgunaAdhika = 24
