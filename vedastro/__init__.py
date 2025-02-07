@@ -8,6 +8,6 @@ from.update_check import check_for_update
 check_for_update("vedastro")
 
 from.vedastro import *
-
+from.calculate import *
 
 
