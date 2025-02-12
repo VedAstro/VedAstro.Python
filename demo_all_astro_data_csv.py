@@ -4,7 +4,7 @@ import pandas as pd  # Install via pip if not already installed
 import json
 
 # PART 0 : Set API key
-Calculate.SetAPIKey('FreeAPIUser')  # unlimited use API key from "vedastro.org/Account"
+Calculate.SetAPIKey('FreeAPIUser')  # ⚡ unlimited speed API key from "vedastro.org/Account"
 
 # PART 1 : PREPARE NEEDED DATA
 # -----------------------------------

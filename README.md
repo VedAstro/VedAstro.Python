@@ -45,7 +45,7 @@ print(json.dumps(allZodiacDataList, indent=4))
 **Step 3:** Done ✅
 
 # 🧮 +400 Calculations
-![400-plus-calculation-python](https://github.com/user-attachments/assets/00ceda1c-df66-4877-a476-70a749953108)
+![400-plus-calculation-python](https://vedastro.org/images/400-plus-calculation-python.gif)
 
 
 
