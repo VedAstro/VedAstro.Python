@@ -9,7 +9,7 @@ from enum import Enum
 
 class Calculate:
     api_key = None
-    base_url = "https://api.vedastro.org/api/Calculate"
+    base_url = "http://vedastro.azurewebsites.net/api/Calculate"
     
     @classmethod
     def SetAPIKey(cls, api_key):
@@ -24,6 +24,8 @@ class Calculate:
         response = requests.get(full_url)
         if response.status_code == 200:
             data = json.loads(response.text)
+            if "Status" in data and data["Status"] == "Fail":
+                print(data["Payload"])
             if "Payload" in data and data["Payload"]:
                 return list(data["Payload"].values())[0]
             else:
