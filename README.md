@@ -4,6 +4,13 @@
 [![GitHub Issues](https://img.shields.io/github/issues/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/issues)
 
 
+# 🙏 How VedAstro can help you...
+
+- [Website](https://vedastro.org) --> easy & fast astrology data for **normal users**
+- [AI Astrologer](https://vedastro.org/AIAstrologer.html) --> 🤖 World's 1st open source **Vedic AI astrologer**
+- [Numerology](https://vedastro.org/Numerology.html) --> Accurate Name Numerology using **Mantra Shastra**
+
+
 # 🗺️ What can this do?
 Easily code complex vedic astrology math and logic.
 A powerful tool for astronomical calculations and data analysis. It provides a collection of functions and classes to perform various astronomical calculations, such as celestial object positions, time conversions, coordinate transformations, and more.
