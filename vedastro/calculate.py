@@ -27,7 +27,10 @@ class Calculate:
             if "Status" in data and data["Status"] == "Fail":
                 print(data["Payload"])
             if "Payload" in data and data["Payload"]:
-                return list(data["Payload"].values())[0]
+                if isinstance(data["Payload"], list):
+                    return data["Payload"]
+                else:
+                    return list(data["Payload"].values())[0]
             else:
                 raise ValueError("Payload is missing or empty")
         else:

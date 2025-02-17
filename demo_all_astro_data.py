@@ -16,6 +16,10 @@ birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
 #PART 2 : CALCULATE ALL DATA
 #-----------------------------------
 
+#HOROSCOPE PREDICTIONS
+horoscopePredictions = Calculate.HoroscopePredictions(birth_time, "Empty")
+print(json.dumps(horoscopePredictions, indent=4))
+
 #PLANETS
 allPlanetDataList = Calculate.AllPlanetData(PlanetName.Sun, birth_time)
 print(json.dumps(allPlanetDataList, indent=4))
