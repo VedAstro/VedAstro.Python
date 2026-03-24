@@ -4,6 +4,11 @@
 
 name: Publish to PyPI
 on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md' # Ignore changes to Markdown files to prevent infinite loop
   workflow_dispatch:
 jobs:
   deploy:
@@ -14,13 +19,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.12'  # Specify a compatible Python version
+        python-version: '3.x'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install poetry
-    - name: Re-run poetry lockfile
-      run: poetry lock  # Removed the --no-update option
+    - name: re run poetry lockfile
+      run: poetry lock --no-update
     - name: Install project dependencies
       run: poetry install
     - name: Build package

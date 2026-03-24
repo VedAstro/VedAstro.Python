@@ -22,17 +22,28 @@ class GeoLocation:
         """
         return f"{self.location_name} ({self.longitude}, {self.latitude})"
 
+    def to_json(self):
+        """Return dict matching C# GeoLocation.ToJson() format for POST API calls."""
+        return {"Name": self.location_name, "Longitude": self.longitude, "Latitude": self.latitude}
+
 class Time:
-    def __init__(self, time_string, geolocation):
+    def __init__(self, time_string=None, geolocation=None, *,
+                 hour=None, minute=None, day=None, month=None, year=None, offset=None):
         """
         Initialize a Time object.
 
-        Args:
-        time_string (str): A string representing the time in the format "HH:MM DD/MM/YYYY +HH:MM".
-        geolocation (GeoLocation): The geolocation associated with the time.
+        Two ways to create:
+            Time("23:40 31/12/2010 +08:00", geolocation)
+            Time(hour=23, minute=40, day=31, month=12, year=2010, offset="+08:00", geolocation=geo)
         """
-        self.time_string = time_string
-        self.geolocation = geolocation
+        if time_string is not None and isinstance(time_string, str):
+            self.time_string = time_string
+            self.geolocation = geolocation
+        elif hour is not None:
+            self.time_string = f"{hour:02d}:{minute:02d} {day:02d}/{month:02d}/{year} {offset}"
+            self.geolocation = geolocation
+        else:
+            raise ValueError("Provide either a time_string or hour/minute/day/month/year/offset parameters")
 
     def __str__(self):
         """
@@ -49,6 +60,10 @@ class Time:
         date = time_parts[1].split('/')
         offset = time_parts[2]
         return f"{time}/{date[0]}/{date[1]}/{date[2]}/{offset}"
+
+    def to_json(self):
+        """Return dict matching C# Time.ToJson() format for POST API calls."""
+        return {"StdTime": self.time_string, "Location": self.geolocation.to_json()}
 
 class PlanetName(Enum):
     All = "All"

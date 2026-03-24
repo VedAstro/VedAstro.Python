@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 10:37 07/02/2025 +08:00
+# AUTO GENERATED ON 20:04 22/03/2026 +07:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -9,43 +9,41 @@ from enum import Enum
 
 class Calculate:
     api_key = None
-    base_url = "http://api.vedastro.org/api/Calculate"
-    
+    base_url = "https://vedastro.azurewebsites.net/api/Calculate"
+
     @classmethod
     def SetAPIKey(cls, api_key):
         cls.api_key = api_key
-    
+
     @classmethod
     def _make_request(cls, endpoint, params):
         url = f"{cls.base_url}/{endpoint}"
-        params["APIKey"] = cls.api_key
-        query_string = "/".join(f"{key}/{value}" for key, value in params.items())
-        full_url = f"{url}/{query_string}"
-        response = requests.get(full_url)
-        if response.status_code == 200:
-            data = json.loads(response.text)
-            if "Status" in data and data["Status"] == "Fail":
-                print(data["Payload"])
-            if "Payload" in data and data["Payload"]:
-                if isinstance(data["Payload"], list):
-                    return data["Payload"]
-                else:
-                    return list(data["Payload"].values())[0]
-            else:
-                raise ValueError("Payload is missing or empty")
-        else:
-            return f"Error: API request failed with status code {response.status_code}"
+        if cls.api_key:
+            params["APIKey"] = cls.api_key
+        response = requests.post(url, json=params, timeout=120)
+        response.raise_for_status()
+        data = response.json()
+        if data.get("Status") == "Fail":
+            raise RuntimeError(f"VedAstro API error: {data.get('Payload', 'Unknown error')}")
+        payload = data.get("Payload")
+        if not payload:
+            raise ValueError("Payload is missing or empty in API response")
+        if isinstance(payload, list):
+            return payload
+        if isinstance(payload, dict):
+            values = list(payload.values())
+            return values[0] if len(values) == 1 else payload
+        return payload
 
     @classmethod
     def FindBirthTimeByAnimal(cls, possibleBirthTime, precisionHours):
         """
-        Empty sample text
+         Finds possible birth time based on matching animal prediction Yoni Kuta 
         :return: JObject
          """
         endpoint = "FindBirthTimeByAnimal"
         params = {
-            "Location": possibleBirthTime.geolocation.location_name,
-            "Time": possibleBirthTime.url_time_string(),
+            "possibleBirthTime": possibleBirthTime.to_json(),
             "precisionHours": precisionHours,
         }
         return cls._make_request(endpoint, params)
@@ -53,13 +51,12 @@ class Calculate:
     @classmethod
     def FindBirthTimeByRisingSign(cls, possibleBirthTime, precisionHours):
         """
-        Empty sample text
+         Finds possible birth time based on matching rising sign Lagna 
         :return: JObject
          """
         endpoint = "FindBirthTimeByRisingSign"
         params = {
-            "Location": possibleBirthTime.geolocation.location_name,
-            "Time": possibleBirthTime.url_time_string(),
+            "possibleBirthTime": possibleBirthTime.to_json(),
             "precisionHours": precisionHours,
         }
         return cls._make_request(endpoint, params)
@@ -67,54 +64,28 @@ class Calculate:
     @classmethod
     def FindBirthTimeHouseStrengthPerson(cls, possibleBirthTime, precisionHours):
         """
-        Empty sample text
+         Finds possible birth time by calculating house strength for each time slice 
         :return: JObject
          """
         endpoint = "FindBirthTimeHouseStrengthPerson"
         params = {
-            "Location": possibleBirthTime.geolocation.location_name,
-            "Time": possibleBirthTime.url_time_string(),
+            "possibleBirthTime": possibleBirthTime.to_json(),
             "precisionHours": precisionHours,
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def BouncBackInputPlanet(cls, planetName, time):
+    def FindBirthTimeByMachineLearning(cls, possibleBirthTime, bodyHeight, bodyShape, precisionHours):
         """
-         Special debug function 
-        :return: String
+         Finds the possible birth time based on machine learning predictions of body attributes. 
+        :return: TimeRange
          """
-        endpoint = "BouncBackInputPlanet"
+        endpoint = "FindBirthTimeByMachineLearning"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BouncBackInputGeoLocation(cls, time):
-        """
-         Basic bounce back data to confirm validity or ML table needs 
-        :return: GeoLocation
-         """
-        endpoint = "BouncBackInputGeoLocation"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BouncBackInputTime(cls, time):
-        """
-         Basic bounce back data to confirm validity or ML table needs 
-        :return: String
-         """
-        endpoint = "BouncBackInputTime"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "possibleBirthTime": possibleBirthTime.to_json(),
+            "bodyHeight": bodyHeight,
+            "bodyShape": bodyShape,
+            "precisionHours": precisionHours,
         }
         return cls._make_request(endpoint, params)
 
@@ -133,7 +104,7 @@ class Calculate:
     def AddressToGeoLocation(cls, address):
         """
          Given an address will convert to its geo location equivelant httplocalhost7071apiCalculateAddressToGeoLocationAddressGaithersburg 
-        :return: GeoLocation
+        :return: Task`1
          """
         endpoint = "AddressToGeoLocation"
         params = {
@@ -144,7 +115,7 @@ class Calculate:
     @classmethod
     def SearchLocation(cls, address):
         """
-        Empty sample text
+         Searches for a location by name using the Google Maps API or configured provider. 
         :return: Task`1
          """
         endpoint = "SearchLocation"
@@ -192,6 +163,18 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
+    def StandardTimeNowAtLocation(cls, locationName):
+        """
+         Gets the current standard time at the specified location. 
+        :return: Task`1
+         """
+        endpoint = "StandardTimeNowAtLocation"
+        params = {
+            "locationName": locationName,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
     def EventsAtTime(cls, birthTime, checkTime, eventTagList):
         """
          Gets all events occuring at given time. Basically a slice from Events Chart Can be used by LLM to interprate final prediction. Also known as Muhurtha 
@@ -199,10 +182,8 @@ class Calculate:
          """
         endpoint = "EventsAtTime"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
             "eventTagList": eventTagList,
         }
         return cls._make_request(endpoint, params)
@@ -210,17 +191,14 @@ class Calculate:
     @classmethod
     def EventsAtRange(cls, birthTime, startTime, endTime, eventTagList, precisionHours):
         """
-        Empty sample text
+         Calculates all events occurring within a specified time range. 
         :return: List`1
          """
         endpoint = "EventsAtRange"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": startTime.geolocation.location_name,
-            "Time": startTime.url_time_string(),
-            "Location": endTime.geolocation.location_name,
-            "Time": endTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "startTime": startTime.to_json(),
+            "endTime": endTime.to_json(),
             "eventTagList": eventTagList,
             "precisionHours": precisionHours,
         }
@@ -234,10 +212,8 @@ class Calculate:
          """
         endpoint = "EventStartEndTime"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
             "nameOfEvent": nameOfEvent,
         }
         return cls._make_request(endpoint, params)
@@ -245,15 +221,13 @@ class Calculate:
     @classmethod
     def EventStartTime(cls, birthTime, checkTime, eventData, precisionInHours):
         """
-        Empty sample text
+         Finds the start time of a specific event given a check time where the event is occurring. Scans backwards from check time. 
         :return: Time
          """
         endpoint = "EventStartTime"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
             "eventData": eventData,
             "precisionInHours": precisionInHours,
         }
@@ -262,15 +236,13 @@ class Calculate:
     @classmethod
     def EventEndTime(cls, birthTime, checkTime, eventData, precisionInHours):
         """
-        Empty sample text
+         Finds the end time of a specific event given a check time where the event is occurring. Scans forwards from check time. 
         :return: Time
          """
         endpoint = "EventEndTime"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
             "eventData": eventData,
             "precisionInHours": precisionInHours,
         }
@@ -284,17 +256,28 @@ class Calculate:
          """
         endpoint = "MatchReport"
         params = {
-            "Location": maleBirthTime.geolocation.location_name,
-            "Time": maleBirthTime.url_time_string(),
-            "Location": femaleBirthTime.geolocation.location_name,
-            "Time": femaleBirthTime.url_time_string(),
+            "maleBirthTime": maleBirthTime.to_json(),
+            "femaleBirthTime": femaleBirthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MatchReportWithBazi(cls, maleBirthTime, femaleBirthTime):
+        """
+         Generates a compatibility report including both Vedic and Bazi analysis. 
+        :return: Task`1
+         """
+        endpoint = "MatchReportWithBazi"
+        params = {
+            "maleBirthTime": maleBirthTime.to_json(),
+            "femaleBirthTime": femaleBirthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
     def BirthTimeLocationAutoAIFill(cls, personFullName):
         """
-        Empty sample text
+         Automatically fills birth time and location using AI for a given famous persons name. 
         :return: Task`1
          """
         endpoint = "BirthTimeLocationAutoAIFill"
@@ -318,7 +301,7 @@ class Calculate:
     @classmethod
     def MarriageTagsAutoAIFill(cls, personA, personB):
         """
-        Empty sample text
+         Uses AI to find marriage related tagsinfo for a couple. 
         :return: Task`1
          """
         endpoint = "MarriageTagsAutoAIFill"
@@ -353,68 +336,6 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def HoroscopeChat(cls, birthTime, userQuestion, userId, sessionId):
-        """
-         Ask questions to AI astrologer about life horoscope predictions 
-        :return: Task`1
-         """
-        endpoint = "HoroscopeChat"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "userQuestion": userQuestion,
-            "userId": userId,
-            "sessionId": sessionId,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HoroscopeChat2(cls, birthTime, userQuestion, userId, sessionId):
-        """
-        Empty sample text
-        :return: Task
-         """
-        endpoint = "HoroscopeChat2"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "userQuestion": userQuestion,
-            "userId": userId,
-            "sessionId": sessionId,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HoroscopeChatFeedback(cls, answerHash, feedbackScore):
-        """
-        Empty sample text
-        :return: Task`1
-         """
-        endpoint = "HoroscopeChatFeedback"
-        params = {
-            "answerHash": answerHash,
-            "feedbackScore": feedbackScore,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HoroscopeFollowUpChat(cls, birthTime, followUpQuestion, primaryAnswerHash, userId, sessionId):
-        """
-        Empty sample text
-        :return: Task`1
-         """
-        endpoint = "HoroscopeFollowUpChat"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "followUpQuestion": followUpQuestion,
-            "primaryAnswerHash": primaryAnswerHash,
-            "userId": userId,
-            "sessionId": sessionId,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
     def MatchChat(cls, maleBirthTime, femaleBirthTime, userQuestion, chatSession):
         """
          Ask questions to AI astrologer about life horoscope predictions 
@@ -422,10 +343,8 @@ class Calculate:
          """
         endpoint = "MatchChat"
         params = {
-            "Location": maleBirthTime.geolocation.location_name,
-            "Time": maleBirthTime.url_time_string(),
-            "Location": femaleBirthTime.geolocation.location_name,
-            "Time": femaleBirthTime.url_time_string(),
+            "maleBirthTime": maleBirthTime.to_json(),
+            "femaleBirthTime": femaleBirthTime.to_json(),
             "userQuestion": userQuestion,
             "chatSession": chatSession,
         }
@@ -439,8 +358,7 @@ class Calculate:
          """
         endpoint = "HoroscopeLLMSearch"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
             "textInput": textInput,
         }
         return cls._make_request(endpoint, params)
@@ -453,10 +371,8 @@ class Calculate:
          """
         endpoint = "GenerateTimeListCSV"
         params = {
-            "Location": startTime.geolocation.location_name,
-            "Time": startTime.url_time_string(),
-            "Location": endTime.geolocation.location_name,
-            "Time": endTime.url_time_string(),
+            "startTime": startTime.to_json(),
+            "endTime": endTime.to_json(),
             "hoursBetween": hoursBetween,
         }
         return cls._make_request(endpoint, params)
@@ -469,10 +385,9 @@ class Calculate:
          """
         endpoint = "IsHouseSignName"
         params = {
-            "HouseName": house.value,
-            "ZodiacName": sign.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "house": house.value,
+            "sign": sign.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -484,23 +399,21 @@ class Calculate:
          """
         endpoint = "HouseSignName"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def HouseZodiacSign(cls, houseNumber, time):
+    def HouseBhavaChalitSign(cls, houseNumber, time):
         """
          Gets the zodiac sign at middle longitude of the house with degrees data Bhava Chalit 
         :return: ZodiacSign
          """
-        endpoint = "HouseZodiacSign"
+        endpoint = "HouseBhavaChalitSign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -512,35 +425,32 @@ class Calculate:
          """
         endpoint = "HouseRasiSign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def AllHouseZodiacSigns(cls, time):
+    def AllHouseBhavaChalitSigns(cls, time):
         """
          Gets the zodiac sign at middle longitude of the house. 
         :return: Dictionary`2
          """
-        endpoint = "AllHouseZodiacSigns"
+        endpoint = "AllHouseBhavaChalitSigns"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
     def AllHouseRasiSigns(cls, time):
         """
-        Empty sample text
+         Gets signs for all houses in respective Vargas Divisional Charts 
         :return: Dictionary`2
          """
         endpoint = "AllHouseRasiSigns"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -552,8 +462,7 @@ class Calculate:
          """
         endpoint = "AllHouseHoraSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -565,8 +474,7 @@ class Calculate:
          """
         endpoint = "AllHouseDrekkanaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -578,8 +486,7 @@ class Calculate:
          """
         endpoint = "AllHouseChaturthamsaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -591,8 +498,7 @@ class Calculate:
          """
         endpoint = "AllHouseSaptamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -604,8 +510,7 @@ class Calculate:
          """
         endpoint = "AllHouseNavamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -617,8 +522,7 @@ class Calculate:
          """
         endpoint = "AllHouseDashamamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -630,8 +534,7 @@ class Calculate:
          """
         endpoint = "AllHouseDwadashamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -643,8 +546,7 @@ class Calculate:
          """
         endpoint = "AllHouseShodashamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -656,8 +558,7 @@ class Calculate:
          """
         endpoint = "AllHouseVimshamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -669,8 +570,7 @@ class Calculate:
          """
         endpoint = "AllHouseChaturvimshamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -682,8 +582,7 @@ class Calculate:
          """
         endpoint = "AllHouseBhamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -695,8 +594,7 @@ class Calculate:
          """
         endpoint = "AllHouseTrimshamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -708,8 +606,7 @@ class Calculate:
          """
         endpoint = "AllHouseKhavedamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -721,8 +618,7 @@ class Calculate:
          """
         endpoint = "AllHouseAkshavedamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -734,8 +630,7 @@ class Calculate:
          """
         endpoint = "AllHouseShashtyamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -747,9 +642,8 @@ class Calculate:
          """
         endpoint = "PlanetDivisionalLongitude"
         params = {
-            "PlanetName": planetName.value,
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "planetName": planetName.value,
+            "inputTime": inputTime.to_json(),
             "divisionalNo": divisionalNo,
         }
         return cls._make_request(endpoint, params)
@@ -757,7 +651,7 @@ class Calculate:
     @classmethod
     def DivisionalLongitude(cls, totalDegrees, divisionalNo):
         """
-        Empty sample text
+         General calculator for divisional longitude. 
         :return: Angle
          """
         endpoint = "DivisionalLongitude"
@@ -775,9 +669,8 @@ class Calculate:
          """
         endpoint = "PlanetZodiacSignBasedOnHouseLongitudes"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -789,9 +682,8 @@ class Calculate:
          """
         endpoint = "PlanetRasiD1Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -803,9 +695,8 @@ class Calculate:
          """
         endpoint = "PlanetHoraD2Signs"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -841,9 +732,8 @@ class Calculate:
          """
         endpoint = "HouseHoraD2Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -855,9 +745,8 @@ class Calculate:
          """
         endpoint = "PlanetDrekkanaD3Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -893,9 +782,8 @@ class Calculate:
          """
         endpoint = "HouseDrekkanaD3Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -907,9 +795,8 @@ class Calculate:
          """
         endpoint = "PlanetChaturthamshaD4Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -945,9 +832,8 @@ class Calculate:
          """
         endpoint = "HouseChaturthamshaD4Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -959,9 +845,8 @@ class Calculate:
          """
         endpoint = "PlanetSaptamshaD7Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -997,9 +882,8 @@ class Calculate:
          """
         endpoint = "HouseSaptamshaD7Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1011,9 +895,8 @@ class Calculate:
          """
         endpoint = "PlanetSaptamshaSignOLD"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1025,9 +908,8 @@ class Calculate:
          """
         endpoint = "PlanetNavamshaD9Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1063,9 +945,8 @@ class Calculate:
          """
         endpoint = "HouseNavamshaD9Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1089,9 +970,8 @@ class Calculate:
          """
         endpoint = "PlanetDashamamshaD10Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1127,9 +1007,8 @@ class Calculate:
          """
         endpoint = "HouseDashamamshaD10Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1141,9 +1020,8 @@ class Calculate:
          """
         endpoint = "PlanetDwadashamshaD12Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1179,9 +1057,8 @@ class Calculate:
          """
         endpoint = "HouseDwadashamshaD12Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1193,9 +1070,8 @@ class Calculate:
          """
         endpoint = "PlanetDwadashamshaSignOLD"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1207,9 +1083,8 @@ class Calculate:
          """
         endpoint = "PlanetShodashamshaD16Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1245,9 +1120,8 @@ class Calculate:
          """
         endpoint = "HouseShodashamshaD16Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1259,9 +1133,8 @@ class Calculate:
          """
         endpoint = "PlanetVimshamshaD20Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1297,9 +1170,8 @@ class Calculate:
          """
         endpoint = "HouseVimshamshaD20Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1311,9 +1183,8 @@ class Calculate:
          """
         endpoint = "PlanetChaturvimshamshaD24Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1349,9 +1220,8 @@ class Calculate:
          """
         endpoint = "HouseChaturvimshamshaD24Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1363,9 +1233,8 @@ class Calculate:
          """
         endpoint = "PlanetBhamshaD27Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1401,9 +1270,8 @@ class Calculate:
          """
         endpoint = "HouseBhamshaD27Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1415,9 +1283,8 @@ class Calculate:
          """
         endpoint = "PlanetTrimshamshaD30Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1453,9 +1320,8 @@ class Calculate:
          """
         endpoint = "HouseTrimshamshaD30Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1467,9 +1333,8 @@ class Calculate:
          """
         endpoint = "PlanetKhavedamshaD40Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1505,9 +1370,8 @@ class Calculate:
          """
         endpoint = "HouseKhavedamshaD40Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1519,9 +1383,8 @@ class Calculate:
          """
         endpoint = "PlanetAkshavedamshaD45Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1557,9 +1420,8 @@ class Calculate:
          """
         endpoint = "HouseAkshavedamshaD45Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1571,9 +1433,8 @@ class Calculate:
          """
         endpoint = "PlanetShashtyamshaD60Sign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1609,9 +1470,8 @@ class Calculate:
          """
         endpoint = "HouseShashtyamshaD60Sign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1623,8 +1483,7 @@ class Calculate:
          """
         endpoint = "AllPlanetSignsBasedOnHouseLongitudes"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1636,8 +1495,7 @@ class Calculate:
          """
         endpoint = "AllPlanetRasiSigns"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1649,8 +1507,7 @@ class Calculate:
          """
         endpoint = "AllPlanetHoraSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1662,8 +1519,7 @@ class Calculate:
          """
         endpoint = "AllPlanetDrekkanaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1675,8 +1531,7 @@ class Calculate:
          """
         endpoint = "AllPlanetChaturthamsaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1688,8 +1543,7 @@ class Calculate:
          """
         endpoint = "AllPlanetSaptamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1701,8 +1555,7 @@ class Calculate:
          """
         endpoint = "AllPlanetNavamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1714,8 +1567,7 @@ class Calculate:
          """
         endpoint = "AllPlanetDashamamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1727,8 +1579,7 @@ class Calculate:
          """
         endpoint = "AllPlanetDwadashamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1740,8 +1591,7 @@ class Calculate:
          """
         endpoint = "AllPlanetShodashamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1753,8 +1603,7 @@ class Calculate:
          """
         endpoint = "AllPlanetVimshamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1766,8 +1615,7 @@ class Calculate:
          """
         endpoint = "AllPlanetChaturvimshamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1779,8 +1627,7 @@ class Calculate:
          """
         endpoint = "AllPlanetBhamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1792,8 +1639,7 @@ class Calculate:
          """
         endpoint = "AllPlanetTrimshamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1805,8 +1651,7 @@ class Calculate:
          """
         endpoint = "AllPlanetKhavedamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1818,8 +1663,7 @@ class Calculate:
          """
         endpoint = "AllPlanetAkshavedamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1831,8 +1675,7 @@ class Calculate:
          """
         endpoint = "AllPlanetShashtyamshaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -1844,9 +1687,8 @@ class Calculate:
          """
         endpoint = "PlanetTajikaLongitude"
         params = {
-            "PlanetName": planetName.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
             "scanYear": scanYear,
         }
         return cls._make_request(endpoint, params)
@@ -1859,9 +1701,8 @@ class Calculate:
          """
         endpoint = "PlanetTajikaConstellation"
         params = {
-            "PlanetName": planetName.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
             "scanYear": scanYear,
         }
         return cls._make_request(endpoint, params)
@@ -1874,9 +1715,8 @@ class Calculate:
          """
         endpoint = "PlanetTajikaZodiacSign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
             "scanYear": scanYear,
         }
         return cls._make_request(endpoint, params)
@@ -1889,8 +1729,7 @@ class Calculate:
          """
         endpoint = "TajikaDateForYear2"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
             "scanYear": scanYear,
         }
         return cls._make_request(endpoint, params)
@@ -1903,8 +1742,7 @@ class Calculate:
          """
         endpoint = "TajikaDateForYear"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
             "scanYear": scanYear,
         }
         return cls._make_request(endpoint, params)
@@ -1912,212 +1750,70 @@ class Calculate:
     @classmethod
     def TransitHouseFromLagna(cls, transitPlanet, checkTime, birthTime):
         """
-        Empty sample text
+         Calculates the house a transiting planet is in relative to natal Lagna 
         :return: HouseName
          """
         endpoint = "TransitHouseFromLagna"
         params = {
-            "PlanetName": transitPlanet.value,
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "transitPlanet": transitPlanet.value,
+            "checkTime": checkTime.to_json(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
     def TransitHouseFromNavamsaLagna(cls, transitPlanet, checkTime, birthTime):
         """
-        Empty sample text
+         Calculates the house a transiting planet is in relative to natal Navamsa Lagna 
         :return: HouseName
          """
         endpoint = "TransitHouseFromNavamsaLagna"
         params = {
-            "PlanetName": transitPlanet.value,
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "transitPlanet": transitPlanet.value,
+            "checkTime": checkTime.to_json(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
     def TransitHouseFromMoon(cls, transitPlanet, checkTime, birthTime):
         """
-        Empty sample text
+         Calculates the house a transiting planet is in relative to natal Moon 
         :return: HouseName
          """
         endpoint = "TransitHouseFromMoon"
         params = {
-            "PlanetName": transitPlanet.value,
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "transitPlanet": transitPlanet.value,
+            "checkTime": checkTime.to_json(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
     def TransitHouseFromNavamsaMoon(cls, transitPlanet, checkTime, birthTime):
         """
-        Empty sample text
+         Calculates the house a transiting planet is in relative to natal Navamsa Moon 
         :return: HouseName
          """
         endpoint = "TransitHouseFromNavamsaMoon"
         params = {
-            "PlanetName": transitPlanet.value,
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "transitPlanet": transitPlanet.value,
+            "checkTime": checkTime.to_json(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
     def Murthi(cls, transitPlanet, checkTime, birthTime):
         """
-        Empty sample text
+         Calculates the Murthi form of a planet during transit. Swarna Gold Rajata Silver Tamra Copper Loha Iron. 
         :return: String
          """
         endpoint = "Murthi"
         params = {
-            "PlanetName": transitPlanet.value,
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AbstractActivity(cls, checkTime):
-        """
-         In each of the main activities the other four activities also occur as abstract subactivity for short duration of time gaps covering the complete duration of the main activity the period being 2 hrs. 24 min for Pancha Pakshi 
-        :return: BirdActivity
-         """
-        endpoint = "AbstractActivity"
-        params = {
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MainActivity(cls, birthTime, checkTime):
-        """
-         Each bird performs these five activities during each day and in night over the week days and during waxing and waning Moon cycles during the 5 YAMAS in day and 5 YAMAS in night in a stipulated order for Pancha Pakshi 
-        :return: BirdActivity
-         """
-        endpoint = "MainActivity"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BirthYama(cls, inputTime):
-        """
-         These 5 elemental vibrations act in 5 gradations offaculties for stipulated time intervals called YAMAS consisting of 2 hrs. 24 mits. each 6 Ghatikas each over the 5 YAMAS in the day and 5 YAMAS in the night thus spread over evenly in 24 hours. 
-        :return: BirthYama
-         """
-        endpoint = "BirthYama"
-        params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def VedicDayStartTime(cls, inputTime):
-        """
-         Given a time it will find out the start time of for that vedic day If time is before sunrise the previous day 
-        :return: Time
-         """
-        endpoint = "VedicDayStartTime"
-        params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AbstractActivityStrength(cls, birthTime, checkTime):
-        """
-         yama works out to 2 hrs. 24 mts. of our modern time. It is to be noted that the beginning of the day is reckoned from Sun rise to Sun set in Hindu system. Similarly night is reckoned from Sun set to Sun rise on the following day thus consisting of 24 hours for one day. The timings of the five Yamas are the same during day and night for Pancha Pakshi 
-        :return: Double
-         """
-        endpoint = "AbstractActivityStrength"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PanchaPakshiBirthBird(cls, birthTime):
-        """
-         Gets birth bird for a birth time. Sidhas have personified the elements as birds identifying each element under which an individual is born when these elements are all functioning differentially during each time gap. These 5 elemental vibrations are personified as PAKSHIS or BIRDS and the gradations of their faculities are named as 5 activities. This bird is called his birth Stellar Lunar bird. 
-        :return: BirdName
-         """
-        endpoint = "PanchaPakshiBirthBird"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PanchaPakshiBirthBirdFromName(cls, name):
-        """
-         Ancients have evolved a method of identifying the birth bird of other individuals by recognising the first vowel sound that shoots out while uttering the name of such individual. Here we have to be very careful in identifying the first vowel sound and not the first vowel letter ofthe other mans name. In this system the vowels referred to are ofthe Dravidian Origin TAMIL and do not indicate the English vowel sounds. This should always be borne in mind. It should be remembered that the eleven vowels of Dravidian Tamil language are distributed among the 5 birds. These vowels and consonants which contain them are to be identified from the first sound of the name. Virtually these eleven vowel sounds are to be equated and sounded by the five English vowels A E I O and U. In this language U is uttered as V U VU to project the Dravidian sound. Except the sound I all other sounds have short and long vowels. From what has been explained so far it can be understood that for the same name the birds are different during bright half and dark halfperiods of Moon where we do not know the birth data of the other person and for such persons only we should use this system 
-        :return: BirdName
-         """
-        endpoint = "PanchaPakshiBirthBirdFromName"
-        params = {
-            "name": name,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsWaxingMoon(cls, birthTime):
-        """
-         Given a time will return true if it is on Waxing moon or Shukla Paksha or Bright half 
-        :return: Boolean
-         """
-        endpoint = "IsWaxingMoon"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsWaningMoon(cls, birthTime):
-        """
-         Given a time will return true if it is on Waning moon or Krishna Paksha or Dark half 
-        :return: Boolean
-         """
-        endpoint = "IsWaningMoon"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def FirstVowelSound(cls, word):
-        """
-         Given a name will extract out the 1st vowel sound. Used to get Pancha Pakshi bird when birth date not known 
-        :return: String
-         """
-        endpoint = "FirstVowelSound"
-        params = {
-            "word": word,
+            "transitPlanet": transitPlanet.value,
+            "checkTime": checkTime.to_json(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2129,8 +1825,7 @@ class Calculate:
          """
         endpoint = "PanchangaTable"
         params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "inputTime": inputTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2142,8 +1837,7 @@ class Calculate:
          """
         endpoint = "DishaShool"
         params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "inputTime": inputTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2155,8 +1849,7 @@ class Calculate:
          """
         endpoint = "LunarMonth"
         params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "inputTime": inputTime.to_json(),
             "ignoreLeapMonth": ignoreLeapMonth,
         }
         return cls._make_request(endpoint, params)
@@ -2169,8 +1862,7 @@ class Calculate:
          """
         endpoint = "NextNewMoon"
         params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "inputTime": inputTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2182,8 +1874,7 @@ class Calculate:
          """
         endpoint = "PreviousNewMoon"
         params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "inputTime": inputTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2195,8 +1886,7 @@ class Calculate:
          """
         endpoint = "SunMoonConjunctionAngle"
         params = {
-            "Location": ccc.geolocation.location_name,
-            "Time": ccc.url_time_string(),
+            "ccc": ccc.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2208,9 +1898,8 @@ class Calculate:
          """
         endpoint = "PlanetAvasta"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2222,9 +1911,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInLajjitaAvasta"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2236,9 +1924,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInGarvitaAvasta"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2250,9 +1937,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInKshuditaAvasta"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2264,9 +1950,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInTrashitaAvasta"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2278,9 +1963,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInMuditaAvasta"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2292,25 +1976,22 @@ class Calculate:
          """
         endpoint = "IsPlanetInKshobhitaAvasta"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
     def PlanetSignTransit(cls, startTime, endTime, planetName):
         """
-        Empty sample text
+         Calculates the sign transits of a planet between a start and end time. Returns a list of tuples containing start time end time sign name and planet name. 
         :return: List`1
          """
         endpoint = "PlanetSignTransit"
         params = {
-            "Location": startTime.geolocation.location_name,
-            "Time": startTime.url_time_string(),
-            "Location": endTime.geolocation.location_name,
-            "Time": endTime.url_time_string(),
-            "PlanetName": planetName.value,
+            "startTime": startTime.to_json(),
+            "endTime": endTime.to_json(),
+            "planetName": planetName.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -2322,11 +2003,9 @@ class Calculate:
          """
         endpoint = "GetConstellationTransitStartTime"
         params = {
-            "Location": startTime.geolocation.location_name,
-            "Time": startTime.url_time_string(),
-            "Location": endTime.geolocation.location_name,
-            "Time": endTime.url_time_string(),
-            "PlanetName": planetName.value,
+            "startTime": startTime.to_json(),
+            "endTime": endTime.to_json(),
+            "planetName": planetName.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -2338,8 +2017,7 @@ class Calculate:
          """
         endpoint = "AllPlanetConstellation"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2351,8 +2029,7 @@ class Calculate:
          """
         endpoint = "AllTimeData"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2364,9 +2041,8 @@ class Calculate:
          """
         endpoint = "AllPlanetData"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2378,9 +2054,8 @@ class Calculate:
          """
         endpoint = "AllHouseData"
         params = {
-            "HouseName": houseName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseName": houseName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2392,10 +2067,9 @@ class Calculate:
          """
         endpoint = "AllPlanetHouseData"
         params = {
-            "PlanetName": planetName.value,
-            "HouseName": houseName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "houseName": houseName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2407,9 +2081,8 @@ class Calculate:
          """
         endpoint = "AllZodiacSignData"
         params = {
-            "ZodiacName": zodiacName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "zodiacName": zodiacName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2433,21 +2106,19 @@ class Calculate:
          """
         endpoint = "TimeToJulianEphemerisTime"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
     def TimeToJulianUniversalTime(cls, time):
         """
-        Empty sample text
+         Converts Time to Julian Day in Universal Time UT 
         :return: Double
          """
         endpoint = "TimeToJulianUniversalTime"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2484,8 +2155,7 @@ class Calculate:
          """
         endpoint = "LocalMeanTime"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2497,8 +2167,7 @@ class Calculate:
          """
         endpoint = "LocalStandardTime"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2510,8 +2179,7 @@ class Calculate:
          """
         endpoint = "AutoCalculateTimeRange"
         params = {
-            "Location": inputBirthTime.geolocation.location_name,
-            "Time": inputBirthTime.url_time_string(),
+            "inputBirthTime": inputBirthTime.to_json(),
             "timePreset": timePreset,
             "outputTimezone": outputTimezone,
         }
@@ -2525,8 +2193,7 @@ class Calculate:
          """
         endpoint = "DaysBetweenTimeRangePreset"
         params = {
-            "Location": inputBirthTime.geolocation.location_name,
-            "Time": inputBirthTime.url_time_string(),
+            "inputBirthTime": inputBirthTime.to_json(),
             "timePreset": timePreset,
             "outputTimezone": outputTimezone,
         }
@@ -2553,35 +2220,46 @@ class Calculate:
          """
         endpoint = "HoroscopePredictionAlpacaTemplateLoRA"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def HoroscopePredictions(cls, birthTime, filterTag):
+    def HoroscopePredictionsForLargeAstrologyModelTrainingData(cls, birthTime):
         """
-         Given a birth time will calculate all predictions that match for given birth time. Default includes all predictions ie Yoga Planets in Sign AshtakavargaYoga Can be filtered. 
+         Generates horoscope predictions formatted for training large astrology models. 
+        :return: Task`1
+         """
+        endpoint = "HoroscopePredictionsForLargeAstrologyModelTrainingData"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HoroscopePredictionsWithBazi(cls, birthTime, sortByWeight):
+        """
+         Generates horoscope predictions including Bazi data. 
+        :return: Task`1
+         """
+        endpoint = "HoroscopePredictionsWithBazi"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "sortByWeight": sortByWeight,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HoroscopePredictions(cls, birthTime, filterTags, sortByWeight):
+        """
+         Given a birth time will calculate all predictions that match for given birth time. Default includes all predictions ie Yoga Planets in Sign AshtakavargaYoga Can be filtered. If sortByWeight is true the returned list will be ordered descending by Weight. 
         :return: List`1
          """
         endpoint = "HoroscopePredictions"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "filterTag": filterTag,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HoroscopePredictionNames(cls, birthTime):
-        """
-         Given a birth time will calculate all prediction names that match for given birth time example Moon House 8 10th Lord in 8th House note used by AI Chat when talking to Astro tuned LLM server 
-        :return: List`1
-         """
-        endpoint = "HoroscopePredictionNames"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "filterTags": filterTags,
+            "sortByWeight": sortByWeight,
         }
         return cls._make_request(endpoint, params)
 
@@ -2593,9 +2271,8 @@ class Calculate:
          """
         endpoint = "FortunaPoint"
         params = {
-            "ZodiacName": ascZodiacSignName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "ascZodiacSignName": ascZodiacSignName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2607,9 +2284,8 @@ class Calculate:
          """
         endpoint = "DestinyPoint"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-            "ZodiacName": ascZodiacSignName.value,
+            "time": time.to_json(),
+            "ascZodiacSignName": ascZodiacSignName.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -2621,8 +2297,7 @@ class Calculate:
          """
         endpoint = "YoniKutaAnimal"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2639,19 +2314,6 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def SkyChartGIF(cls, time):
-        """
-         Get sky chart as animated GIF. URL can be used like a image source link 
-        :return: Task`1
-         """
-        endpoint = "SkyChartGIF"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
     def SkyChart(cls, time):
         """
          Get sky chart at a given time. SVG image file. URL can be used like a image source link 
@@ -2659,8 +2321,7 @@ class Calculate:
          """
         endpoint = "SkyChart"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2672,8 +2333,7 @@ class Calculate:
          """
         endpoint = "SouthIndianChart"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
             "chartType": chartType,
         }
         return cls._make_request(endpoint, params)
@@ -2686,8 +2346,7 @@ class Calculate:
          """
         endpoint = "NorthIndianChart"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
             "chartType": chartType,
         }
         return cls._make_request(endpoint, params)
@@ -2700,8 +2359,7 @@ class Calculate:
          """
         endpoint = "TimeToJulianDay"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2713,8 +2371,7 @@ class Calculate:
          """
         endpoint = "ConvertLmtToJulian"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2726,23 +2383,9 @@ class Calculate:
          """
         endpoint = "DistanceBetweenPlanets"
         params = {
-            "PlanetName": planet1.value,
-            "PlanetName": planet2.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DistanceBetweenPlanets(cls, planet1, planet2):
-        """
-         Gets longitudinal space between 2 planets Note Longitude of planet after 360 is 0 degrees when calculating difference this needs to be accounted for Expects you to calculate longitude 
-        :return: Angle
-         """
-        endpoint = "DistanceBetweenPlanets"
-        params = {
-            "planet1": planet1,
-            "planet2": planet2,
+            "planet1": planet1.value,
+            "planet2": planet2.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2754,8 +2397,7 @@ class Calculate:
          """
         endpoint = "GreenwichApparentInJulianDays"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2767,22 +2409,7 @@ class Calculate:
          """
         endpoint = "LocalApparentTime"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetDasaNature(cls, birthTime, planet):
-        """
-         WARNING MARKED FOR DELETION ERONEOUS RESULTS NOT SUITED FOR INTENDED PURPOSE METHOD NOT VERIFIED This methods perpose is to define the final good or bad nature of planet in antaram. For now only data from chapter Keyplanets for Each Sign If this proves to be inacurate add more checks in this method. bindu points Similar to method GetDasaInfoForAscendant Data from pg 80 of Keyplanets for Each Sign in Hindu Predictive Astrology TODO meant to determine nature of antram 
-        :return: EventNature
-         """
-        endpoint = "PlanetDasaNature"
-        params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "PlanetName": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2794,9 +2421,8 @@ class Calculate:
          """
         endpoint = "SwissEphemeris"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2804,12 +2430,11 @@ class Calculate:
     def SwissEphemerisAll(cls, time):
         """
          For all planets including Pluto Neptune Uranus Get planets Longitude Latitude DistanceAU SpeedLongitude SpeedLatitude... Uses Swiss Ephemeris directly to get values 
-        :return: List`1
+        :return: Dictionary`2
          """
         endpoint = "SwissEphemerisAll"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2822,9 +2447,8 @@ class Calculate:
         endpoint = "IsPlanetSameHouseWithHouseLord"
         params = {
             "houseNumber": houseNumber,
-            "PlanetName": planet.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2836,9 +2460,8 @@ class Calculate:
          """
         endpoint = "HouseNatureScore"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "HouseName": inputHouse.value,
+            "birthTime": birthTime.to_json(),
+            "inputHouse": inputHouse.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -2850,51 +2473,8 @@ class Calculate:
          """
         endpoint = "PlanetNatureScore"
         params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
-            "PlanetName": inputPlanet.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetIshtaKashtaScoreDegree(cls, planet, birthTime):
-        """
-         Used for judging dasa good or bad Bala book pg 110 output range 5 to 5 
-        :return: Double
-         """
-        endpoint = "PlanetIshtaKashtaScoreDegree"
-        params = {
-            "PlanetName": planet.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetKashtaScore(cls, planet, birthTime):
-        """
-         Kashta Phala Bad Strength of a Planet 
-        :return: Double
-         """
-        endpoint = "PlanetKashtaScore"
-        params = {
-            "PlanetName": planet.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetIshtaScore(cls, planet, birthTime):
-        """
-         Ishta Phala Good Strength of a Planet 
-        :return: Double
-         """
-        endpoint = "PlanetIshtaScore"
-        params = {
-            "PlanetName": planet.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "personBirthTime": personBirthTime.to_json(),
+            "inputPlanet": inputPlanet.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -2906,8 +2486,7 @@ class Calculate:
          """
         endpoint = "DhumaLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2919,8 +2498,7 @@ class Calculate:
          """
         endpoint = "VyatipaataLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2932,8 +2510,7 @@ class Calculate:
          """
         endpoint = "PariveshaLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2945,8 +2522,7 @@ class Calculate:
          """
         endpoint = "IndrachaapaLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2958,8 +2534,7 @@ class Calculate:
          """
         endpoint = "UpaketuLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2971,8 +2546,7 @@ class Calculate:
          """
         endpoint = "KaalaLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2984,8 +2558,7 @@ class Calculate:
          """
         endpoint = "MrityuLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -2997,8 +2570,7 @@ class Calculate:
          """
         endpoint = "ArthaprahaaraLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3010,8 +2582,7 @@ class Calculate:
          """
         endpoint = "YamaghantakaLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3023,8 +2594,7 @@ class Calculate:
          """
         endpoint = "GulikaLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3036,8 +2606,7 @@ class Calculate:
          """
         endpoint = "MaandiLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3049,8 +2618,7 @@ class Calculate:
          """
         endpoint = "UpagrahaLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
             "relatedPlanet": relatedPlanet,
             "upagrahaPart": upagrahaPart,
         }
@@ -3064,8 +2632,7 @@ class Calculate:
          """
         endpoint = "UpagrahaPartNumber"
         params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "inputTime": inputTime.to_json(),
             "inputPlanet": inputPlanet,
         }
         return cls._make_request(endpoint, params)
@@ -3078,428 +2645,7 @@ class Calculate:
          """
         endpoint = "IsUpagraha"
         params = {
-            "PlanetName": planet.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def Nutation(cls, time):
-        """
-         Gets nutation from Swiss Ephemeris
-        :return: Double
-         """
-        endpoint = "Nutation"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AscendantDegreesToARMC(cls, ascendant, obliquityOfEcliptic, geographicLatitude, time):
-        """
-         This method is used to convert the tropical ascendant to the ARMC Ascendant Right Meridian Circle. It first calculates the right ascension and declination using the provided tropical ascendant and obliquity of the ecliptic. Then it calculates the oblique ascension by subtracting a value derived from the declination and geographic latitude from the right ascension. Finally it calculates the ARMC based on the value of the tropical ascendant and the oblique ascension. 
-        :return: Double
-         """
-        endpoint = "AscendantDegreesToARMC"
-        params = {
-            "ascendant": ascendant,
-            "obliquityOfEcliptic": obliquityOfEcliptic,
-            "geographicLatitude": geographicLatitude,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AyanamsaDegree(cls, time):
-        """
-         The distance between the Hindu First Point and the Vernal Equinox measured at an epoch is known as the Ayanamsa in Varahamihiras time the summer solistice coincided with the first degree of Cancer and the winter solistice with the first degree of Capricorn whereas at one time the summer solistice coincided with the middle of the Aslesha 
-        :return: Angle
-         """
-        endpoint = "AyanamsaDegree"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetSayanaLongitude(cls, planetName, time):
-        """
-         Get fixed longitude used in western systems connects SwissEph Library with VedAstro NOTE This method connects SwissEph Library with VedAstro Library 
-        :return: Angle
-         """
-        endpoint = "PlanetSayanaLongitude"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetNirayanaLongitude(cls, planetName, time):
-        """
-         Planet longitude that has been corrected with Ayanamsa Gets planet longitude used vedic astrology Nirayana Longitude Sayana Longitude corrected to Ayanamsa Number from 0 to 360 represent the degrees in the zodiac as viewed from earth Note Since Nirayana is corrected in actuality 0 degrees will start at Taurus not Aries 
-        :return: Angle
-         """
-        endpoint = "PlanetNirayanaLongitude"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def NextLunarEclipse(cls, time):
-        """
-         find time of next lunar eclipse UTC time 
-        :return: DateTime
-         """
-        endpoint = "NextLunarEclipse"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def NextSolarEclipse(cls, time):
-        """
-         finds the next solar eclipse globally UTC time 
-        :return: DateTime
-         """
-        endpoint = "NextSolarEclipse"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetEphemerisLongitude(cls, planetName, time):
-        """
-         Get fixed longitude used in western systems aka Sayana longitude NOTE This method connects SwissEph Library with VedAstro Library 
-        :return: Angle
-         """
-        endpoint = "PlanetEphemerisLongitude"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetSayanaLatitude(cls, planetName, time):
-        """
-         Gets Swiss Ephemeris longitude for a planet 
-        :return: Angle
-         """
-        endpoint = "PlanetSayanaLatitude"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetSpeed(cls, planetName, time):
-        """
-         Speed of planet from Swiss eph 
-        :return: Double
-         """
-        endpoint = "PlanetSpeed"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def ConstellationAtLongitude(cls, planetLongitude):
-        """
-         Converts Planet Longitude to Constellation equivelant Gets info about the constellation at a given longitude ie. Constellation Name Quarter Degrees in constellation etc. 
-        :return: Constellation
-         """
-        endpoint = "ConstellationAtLongitude"
-        params = {
-            "planetLongitude": planetLongitude,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def ZodiacSignAtLongitude(cls, longitude):
-        """
-         Converts Planet Longitude to Zodiac Sign equivalent 
-        :return: ZodiacSign
-         """
-        endpoint = "ZodiacSignAtLongitude"
-        params = {
-            "longitude": longitude,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def LongitudeAtZodiacSign(cls, zodiacSign):
-        """
-         Converts Zodiac Sign to Planet Longitude equivalent 
-        :return: Angle
-         """
-        endpoint = "LongitudeAtZodiacSign"
-        params = {
-            "zodiacSign": zodiacSign,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DayOfWeek(cls, time):
-        """
-         Get Vedic Day Of Week The Hindu day begins with sunrise and continues till next sunrise.The first hora on any day will be the first hour after sunrise and the last hora the hour before sunrise the next day. 
-        :return: DayOfWeek
-         """
-        endpoint = "DayOfWeek"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def LordOfHoraFromWeekday(cls, hora, day):
-        """
-         Gets hora lord based on hora number week day 
-        :return: PlanetName
-         """
-        endpoint = "LordOfHoraFromWeekday"
-        params = {
-            "hora": hora,
-            "day": day,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def LordOfHoraFromTime(cls, time):
-        """
-         Each day starts at sunrise and ends at next days sunrise. This period is divided into 24 equal parts and they are called horas. A hora is almost equal to an hour. These horas are ruled by different planets. The lords of hora come in the order of decreasing speed with respect to earth Saturn Jupiter Mars Sun Venus Mercury and Moon. After Moon we go back to Saturn and repeat the 7 planets. 
-        :return: PlanetName
-         """
-        endpoint = "LordOfHoraFromTime"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HouseJunctionPoint(cls, previousHouse, nextHouse):
-        """
-         Gets the junction point sandhi between 2 consecutive houses where one house begins and the other ends. 
-        :return: Angle
-         """
-        endpoint = "HouseJunctionPoint"
-        params = {
-            "previousHouse": previousHouse,
-            "nextHouse": nextHouse,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def LordOfZodiacSign(cls, signName):
-        """
-         Gets planet which is the lord of a given sign 
-        :return: PlanetName
-         """
-        endpoint = "LordOfZodiacSign"
-        params = {
-            "ZodiacName": signName.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def ZodiacSignsOwnedByPlanet(cls, planetName):
-        """
-         Given a planet name will return list of signs that the planet rules 
-        :return: List`1
-         """
-        endpoint = "ZodiacSignsOwnedByPlanet"
-        params = {
-            "PlanetName": planetName.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def NextZodiacSign(cls, inputSign):
-        """
-         Gets next zodiac sign after input sign 
-        :return: ZodiacName
-         """
-        endpoint = "NextZodiacSign"
-        params = {
-            "ZodiacName": inputSign.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def NextHouseNumber(cls, inputHouseNumber):
-        """
-         Gets next house number after input house number goes to 1 after 12 
-        :return: Int32
-         """
-        endpoint = "NextHouseNumber"
-        params = {
-            "inputHouseNumber": inputHouseNumber,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetExaltationPoint(cls, planetName):
-        """
-         Gets the exact longitude where planet is ExaltedExaltation Exaltation Each planet is held to be exalted when it is in a particular sign. The power to do good when in exaltation is greater than when in its own sign. Throughout the sign ascribed the planet is exalted but in a particular degree its exaltation is at the maximum level. NOTE For Upagrahas no exact degree for exaltation the whole sign is counted as such exalatiotn set at degree 1 Rahu ketu have exaltation points ref Astroloy for Beginners pg. 12 
-        :return: ZodiacSign
-         """
-        endpoint = "PlanetExaltationPoint"
-        params = {
-            "PlanetName": planetName.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetDebilitationPoint(cls, planetName):
-        """
-         Gets the exact sign longitude where planet is DebilitatedDebility TODO method needs testing Note Rahu ketu have debilitation points ref Astroloy for Beginners pg. 12 planet to sign relationship is the whole sign this is just a point The 7th house or the 180th degree from the place of exaltation is the place of debilitation or fall. The Sun is debilitated in the 10th degree of Libra the Moon 3rd of Scorpio and so on. For Upagrahas no exact degree for exaltation the whole sign is counted as such exalatiotn set at degree 1 The debilitation or depression points are found by adding 180 to the maximum points given above. While in a state of fall planets give results contrary to those when in exaltation. ref Astroloy for Beginners pg. 11 
-        :return: ZodiacSign
-         """
-        endpoint = "PlanetDebilitationPoint"
-        params = {
-            "PlanetName": planetName.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsEvenSign(cls, planetSignName):
-        """
-         Returns true if zodiac sign is an Even sign Yugma Rasis 
-        :return: Boolean
-         """
-        endpoint = "IsEvenSign"
-        params = {
-            "ZodiacName": planetSignName.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsOddSign(cls, planetSignName):
-        """
-         Returns true if zodiac sign is an Odd sign Oja Rasis 
-        :return: Boolean
-         """
-        endpoint = "IsOddSign"
-        params = {
-            "ZodiacName": planetSignName.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsFixedSign(cls, sunSign):
-        """
-         Fixed signs Taurus Leo Scropio Aquarius. 
-        :return: Boolean
-         """
-        endpoint = "IsFixedSign"
-        params = {
-            "ZodiacName": sunSign.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsMovableSign(cls, sunSign):
-        """
-         Movable signs Aries Cancer Libra Capricorn. 
-        :return: Boolean
-         """
-        endpoint = "IsMovableSign"
-        params = {
-            "ZodiacName": sunSign.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsCommonSign(cls, sunSign):
-        """
-         Common signs Gemini Virgo Sagitarius Pisces. 
-        :return: Boolean
-         """
-        endpoint = "IsCommonSign"
-        params = {
-            "ZodiacName": sunSign.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetPermanentRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet):
-        """
-         Gets a planets permenant relationship. Based on Hindu Predictive Astrology pg. 21 Note Rahu Ketu are not mentioned in any permenant relatioship by Raman. But some websites do mention this. As such Ramans take is taken as final. Since theres so far no explanation by Raman on Rahu Ketu permenant relation it is assumed that such relationship is not needed and to make them up for conveniece sake could result in wrong prediction down the line. But temporary relationship are mentioned by Raman for Rahu Ketu so explicitly use Temperary relationship where needed. 
-        :return: PlanetToPlanetRelationship
-         """
-        endpoint = "PlanetPermanentRelationshipWithPlanet"
-        params = {
-            "PlanetName": mainPlanet.value,
-            "PlanetName": secondaryPlanet.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def ConvertJulianTimeToNormalTime(cls, julianTime):
-        """
-         Converts julian time to normal time normal time can be lmt lat utc 
-        :return: DateTime
-         """
-        endpoint = "ConvertJulianTimeToNormalTime"
-        params = {
-            "julianTime": julianTime,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def GreenwichTimeFromJulianDays(cls, julianTime):
-        """
-         Gets Greenwich time in normal format from Julian days at Greenwich Note Inputed time is Julian days at greenwich callers reponsibility to make sure 
-        :return: DateTimeOffset
-         """
-        endpoint = "GreenwichTimeFromJulianDays"
-        params = {
-            "julianTime": julianTime,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def GreenwichLmtInJulianDays(cls, time):
-        """
-         Gets Local mean time LMT at Greenwich UTC in Julian days based on the inputed time 
-        :return: Double
-         """
-        endpoint = "GreenwichLmtInJulianDays"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def LmtToUtc(cls, time):
-        """
-         Converts Local Mean Time LMT to Universal Time UTC 
-        :return: DateTimeOffset
-         """
-        endpoint = "LmtToUtc"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -3511,8 +2657,7 @@ class Calculate:
          """
         endpoint = "SarvashtakavargaChart"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3524,8 +2669,7 @@ class Calculate:
          """
         endpoint = "BhinnashtakavargaChart"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3537,10 +2681,9 @@ class Calculate:
          """
         endpoint = "PlanetAshtakvargaBindu"
         params = {
-            "PlanetName": planet.value,
-            "ZodiacName": signToCheck.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "signToCheck": signToCheck.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3552,10 +2695,9 @@ class Calculate:
          """
         endpoint = "PlanetAshtakvargaBinduByPlanet"
         params = {
-            "PlanetName": mainAshtakvargaPlanet.value,
-            "PlanetName": planetToCheck.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "mainAshtakvargaPlanet": mainAshtakvargaPlanet.value,
+            "planetToCheck": planetToCheck.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3567,9 +2709,8 @@ class Calculate:
          """
         endpoint = "PlanetOwnAshtakvargaBindu"
         params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3581,10 +2722,512 @@ class Calculate:
          """
         endpoint = "GocharaKakshas"
         params = {
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "checkTime": checkTime.to_json(),
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetAshtakavargaReducedBindu(cls, planet, sign, birthTime):
+        """
+         Returns reduced bindu count for a planet at a specific sign after Trikona and Ekadhipatya reductions BV Raman pp.1418. 
+        :return: Int32
+         """
+        endpoint = "PlanetAshtakavargaReducedBindu"
+        params = {
+            "planet": planet.value,
+            "sign": sign.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetAshtakavargaReductions(cls, planet, birthTime):
+        """
+         Returns full reduction result raw afterTrikona afterEkadhipatya for a planet. 
+        :return: AshtakavargaReductionResult
+         """
+        endpoint = "PlanetAshtakavargaReductions"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetSodyaPinda(cls, planet, birthTime, useReduced):
+        """
+         Calculates Sodya Pinda for a planets Ashtakavarga BV Raman Chapter XIV pp.139147. Sodya Pinda Rasi Pinda Graha Pinda. Used in longevity and timing predictions. 
+        :return: SodyaPindaResult
+         """
+        endpoint = "PlanetSodyaPinda"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+            "useReduced": useReduced,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AshtakavargaLongevity(cls, birthTime):
+        """
+         Gross longevity estimate using Ashtakavarga Sodya Pinda method. Per BV Raman Method A pp.139147 SodyaPinda 7 27. Returns years. This is gross longevity before Haranas combustiondebilitation adjustments. 
+        :return: Double
+         """
+        endpoint = "AshtakavargaLongevity"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DasaPeriodAshtakavargaStrength(cls, dasaPlanet, birthTime):
+        """
+         Returns Ashtakavargabased strength for a Dasa planet 0100 scale. Based on planets Sodya Pinda normalized to percentage. Higher Sodya Pinda stronger Dasa period. Typical range 80250. 
+        :return: Double
+         """
+        endpoint = "DasaPeriodAshtakavargaStrength"
+        params = {
+            "dasaPlanet": dasaPlanet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SarvashtakavargaReductions(cls, birthTime):
+        """
+         Sarvashtakavarga with Mandala Sodhana Raw mod 12 Trikona Ekadhipatya BV Raman pp.1820. 
+        :return: SarvashtakavargaReductionResult
+         """
+        endpoint = "SarvashtakavargaReductions"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def RekhaSarvashtakavargaReductions(cls, birthTime):
+        """
+         Rekha Sarvashtakavarga 56bindus with full reduction pipeline BV Raman pp.2122. 
+        :return: SarvashtakavargaReductionResult
+         """
+        endpoint = "RekhaSarvashtakavargaReductions"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SarvashtakavargaSodyaPinda(cls, birthTime):
+        """
+         Sodya Pinda calculated from Sarvashtakavarga reduced figures. 
+        :return: SodyaPindaResult
+         """
+        endpoint = "SarvashtakavargaSodyaPinda"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def RekhaSodyaPinda(cls, birthTime):
+        """
+         Sodya Pinda calculated from Rekha Sarvashtakavarga reduced figures. 
+        :return: SodyaPindaResult
+         """
+        endpoint = "RekhaSodyaPinda"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AshtakavargaTransitPrediction(cls, planet, houseFromPlanet, divisor, birthTime, useRawBindus):
+        """
+         Universal Ashtakavarga transit prediction formula BV Raman pp.139165. result SodyaPinda bindus_in_house divisor. Divisor 27nakshatra 12sign. 
+        :return: TransitPredictionResult
+         """
+        endpoint = "AshtakavargaTransitPrediction"
+        params = {
+            "planet": planet.value,
+            "houseFromPlanet": houseFromPlanet,
+            "divisor": divisor,
+            "birthTime": birthTime.to_json(),
+            "useRawBindus": useRawBindus,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FatherDeathBySaturn1(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "FatherDeathBySaturn1"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FatherDeathByJupiter(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "FatherDeathByJupiter"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FatherDeathBySun(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "FatherDeathBySun"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FatherDeathBySaturn2(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "FatherDeathBySaturn2"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FatherDeathBySaturnSign(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "FatherDeathBySaturnSign"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FatherDeathBySunSign(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "FatherDeathBySunSign"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MotherDeathBySaturn1(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "MotherDeathBySaturn1"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MotherDeathByJupiterAndSun(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "MotherDeathByJupiterAndSun"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MotherDeathBySaturn2(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "MotherDeathBySaturn2"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BrotherAfflictionBySaturn(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "BrotherAfflictionBySaturn"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BrotherProsperityByJupiter(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "BrotherProsperityByJupiter"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MentalBalanceByJupiter(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "MentalBalanceByJupiter"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MentalAfflictionBySaturn(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "MentalAfflictionBySaturn"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def CareerLossBySaturn(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "CareerLossBySaturn"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ChildBirthByJupiter1(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "ChildBirthByJupiter1"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ChildBirthByJupiter2(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "ChildBirthByJupiter2"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ChildBirthMonthBySun(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "ChildBirthMonthBySun"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ChildBirthStar(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "ChildBirthStar"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ChildLagna(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "ChildLagna"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MarriageByJupiter(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "MarriageByJupiter"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MarriageSignByJupiter(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "MarriageSignByJupiter"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MarriageMonthBySun(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "MarriageMonthBySun"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SpouseDeathByJupiter(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "SpouseDeathByJupiter"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NativeDeathBySaturn(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "NativeDeathBySaturn"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NativeDeathByJupiter(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "NativeDeathByJupiter"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NativeDeathMonthBySun(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "NativeDeathMonthBySun"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BhavaAfflictionBySaturn(cls, bhava, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "BhavaAfflictionBySaturn"
+        params = {
+            "bhava": bhava,
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BhavaImprovementBySaturn(cls, bhava, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "BhavaImprovementBySaturn"
+        params = {
+            "bhava": bhava,
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DeathMonthFromSarvashtakavarga(cls, t):
+        """
+        Empty sample text
+        :return: TransitPredictionResult
+         """
+        endpoint = "DeathMonthFromSarvashtakavarga"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DetailedAshtakavargaLongevity(cls, birthTime):
+        """
+         Detailed perplanet longevity with Haranas BV Raman pp.139165. Includes combustion debilitation enemy sign reductions. Converts lunar to solar years. 
+        :return: LongevityResult
+         """
+        endpoint = "DetailedAshtakavargaLongevity"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SarvashtakavargaLongevityDetailed(cls, birthTime):
+        """
+         Method B longevity using Sarvashtakavarga Sodya Pinda BV Raman pp.139165. 
+        :return: LongevityResult
+         """
+        endpoint = "SarvashtakavargaLongevityDetailed"
+        params = {
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3596,11 +3239,9 @@ class Calculate:
          """
         endpoint = "GocharaZodiacSignCountFromMoon"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": currentTime.geolocation.location_name,
-            "Time": currentTime.url_time_string(),
-            "PlanetName": planet.value,
+            "birthTime": birthTime.to_json(),
+            "currentTime": currentTime.to_json(),
+            "planet": planet.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -3612,12 +3253,10 @@ class Calculate:
          """
         endpoint = "IsGocharaObstructed"
         params = {
-            "PlanetName": planet.value,
+            "planet": planet.value,
             "gocharaHouse": gocharaHouse,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": currentTime.geolocation.location_name,
-            "Time": currentTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "currentTime": currentTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3629,10 +3268,8 @@ class Calculate:
          """
         endpoint = "PlanetsInGocharaHouse"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": currentTime.geolocation.location_name,
-            "Time": currentTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "currentTime": currentTime.to_json(),
             "gocharaHouse": gocharaHouse,
         }
         return cls._make_request(endpoint, params)
@@ -3645,7 +3282,7 @@ class Calculate:
          """
         endpoint = "Vedhanka"
         params = {
-            "PlanetName": planet.value,
+            "planet": planet.value,
             "house": house,
         }
         return cls._make_request(endpoint, params)
@@ -3658,11 +3295,9 @@ class Calculate:
          """
         endpoint = "IsGocharaOccurring"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-            "PlanetName": planet.value,
+            "birthTime": birthTime.to_json(),
+            "time": time.to_json(),
+            "planet": planet.value,
             "gocharaHouse": gocharaHouse,
         }
         return cls._make_request(endpoint, params)
@@ -3675,11 +3310,24 @@ class Calculate:
          """
         endpoint = "IsPlanetGocharaBindu"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": nowTime.geolocation.location_name,
-            "Time": nowTime.url_time_string(),
-            "PlanetName": planet.value,
+            "birthTime": birthTime.to_json(),
+            "nowTime": nowTime.to_json(),
+            "planet": planet.value,
+            "bindu": bindu,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetGocharaBinduResult(cls, birthTime, nowTime, planet, bindu):
+        """
+         Like IsPlanetGocharaBindu but returns rich CalculatorResult with dynamic BV Ramancompliant transit description intensity house karakatwa kakshya. 
+        :return: CalculatorResult
+         """
+        endpoint = "IsPlanetGocharaBinduResult"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "nowTime": nowTime.to_json(),
+            "planet": planet.value,
             "bindu": bindu,
         }
         return cls._make_request(endpoint, params)
@@ -3692,10 +3340,8 @@ class Calculate:
          """
         endpoint = "GetCharaDasaAtTime"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3707,8 +3353,7 @@ class Calculate:
          """
         endpoint = "DasaForLife"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
             "levels": levels,
             "precisionHours": precisionHours,
             "scanYears": scanYears,
@@ -3719,16 +3364,13 @@ class Calculate:
     def DasaAtRange(cls, birthTime, startTime, endTime, levels, precisionHours):
         """
          Calculates dasa for a specific time frame 
-        :return: JObject
+        :return: String
          """
         endpoint = "DasaAtRange"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": startTime.geolocation.location_name,
-            "Time": startTime.url_time_string(),
-            "Location": endTime.geolocation.location_name,
-            "Time": endTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "startTime": startTime.to_json(),
+            "endTime": endTime.to_json(),
             "levels": levels,
             "precisionHours": precisionHours,
         }
@@ -3737,15 +3379,13 @@ class Calculate:
     @classmethod
     def DasaAtTime(cls, birthTime, checkTime, levels):
         """
-        Empty sample text
+         Calculates the Dasa period active at a specific time. 
         :return: JObject
          """
         endpoint = "DasaAtTime"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "Location": checkTime.geolocation.location_name,
-            "Time": checkTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
             "levels": levels,
         }
         return cls._make_request(endpoint, params)
@@ -3753,976 +3393,26 @@ class Calculate:
     @classmethod
     def DasaForNow(cls, birthTime, levels):
         """
-        Empty sample text
+         Calculates the Dasa period active right now at birth location. 
         :return: JObject
          """
         endpoint = "DasaForNow"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
             "levels": levels,
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def IsMercuryAfflicted(cls, time):
+    def PlanetDasaEffectsBasedOnIshtaKashta(cls, planetName, birthTime):
         """
-         Whenever an affiiction by way of a malefic occupying a certain house or joining with a certain planet is suggested by implication an aspect is also meant though an affliction caused by aspect.is comparatively less malevolent Note TODO presently not 100 sure if what is meant by affliction is solely only limited to aspects conjunction with bad planets. Or Located in enemy sign an affliction Low shadbala an affliction Low drikbala an affliction At present malefic aspects conjunctions are used becasue it seems based on texts that this is correct. But it seems mercury in enemny sign or position in a house should also play a role. There must be a corelation between shadbala or drikbala to aspects conjucntion A more precise way of mesurement it could be via the bala method. Needs testing for sure to find out what bala values determine an afflicted mercury 
-        :return: Boolean
+         Reference Bhava Graha Bala pg. 104 A planet with more lshta Phala is always supposed to be inclined to do good in its Dasa or Bhukti while a planet with more Kashta Phala is supposed to give rise to more evil results. In case of Venus in the Standard Horoscope the Kashta predominates over Ishta. Therefore in his Dasa or Bhukti Venus will give aJl sorts of miseries with regard to the bhavas ruled or aspected by him. As lord of the 5th house in such a circumstance Saturn is sure to cause loss of children and producing evil on this account. 
+        :return: String
          """
-        endpoint = "IsMercuryAfflicted"
+        endpoint = "PlanetDasaEffectsBasedOnIshtaKashta"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsMercuryMalefic(cls, time):
-        """
-         Check if Mercury is malefic true returns false if benefic References Mercury by nature is called sournya or good. And if he is in conjunction with the Sun Saturn Mars Rahu or Ketu he will be a malefic. His conjunction with beneficial planets like Full Moon Jupiter or Venus will classify him as a benefic. Benefic means a good and malefic means an evil planet. TODO Does malefic moon make it malefic atm malefic moon makes it malefic Though in the earlier pages Mercury is defined either as a subba benefic or papa malefic according to its association is with a benefic or malefic Mercury for purposes of calculating Drisbtibala of Bbavas is to be deemed as a full benefic. This is in accord with the injunctions of classical writers Gurugnabbyam tu yuktasya poomamekam tu yojayet. 11. Benefics and Malefics. Among these Srya ani Mangal decreasing Candr Rahu and Ketu the ascending and the descending nodes of Candr are malefics while the rest are benefics. Budh however is a malefic if he joins a malefic. Note ATM malefic planets override benefic TODO not sure if malefic planet overrides benefic if both are conjunct 
-        :return: Boolean
-         """
-        endpoint = "IsMercuryMalefic"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsMoonBenefic(cls, time):
-        """
-         Moon is a benefic from the 8th day of the bright half of the lunar month to the 8th day of the dark half of the lunar month and a malefic in the rest of the days. Returns true if benefic false if malefic 
-        :return: Boolean
-         """
-        endpoint = "IsMoonBenefic"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetBenefic(cls, planetName, time):
-        """
-         Checks if a given planet is benefic 
-        :return: Boolean
-         """
-        endpoint = "IsPlanetBenefic"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BeneficPlanetList(cls, time):
-        """
-         Gets all planets that are benefics at a given time since moon mercury changes Benefics on the other hand tend to do good but sometimes they also become capable of doing harm. 
-        :return: List`1
-         """
-        endpoint = "BeneficPlanetList"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetMalefic(cls, planetName, time):
-        """
-         Checks if a given planet is Malefic 
-        :return: Boolean
-         """
-        endpoint = "IsPlanetMalefic"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MaleficPlanetList(cls, time):
-        """
-         Gets list of permanent malefic planets for moon mercury it is based on changing factors Malefics are always inclined to do harm but under certain conditions the intensity of the mischief is tempered. 
-        :return: List`1
-         """
-        endpoint = "MaleficPlanetList"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetsInAspect(cls, inputPlanet, time):
-        """
-         Gets all planets the inputed planet is transmitting aspect to 
-        :return: List`1
-         """
-        endpoint = "PlanetsInAspect"
-        params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetAspectDegree(cls, receiver, trasmitter, time):
-        """
-         Calculate aspect angle between 2 planets 
-        :return: Double
-         """
-        endpoint = "PlanetAspectDegree"
-        params = {
-            "PlanetName": receiver.value,
-            "PlanetName": trasmitter.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetsAspectingPlanet(cls, receivingAspect, time):
-        """
-         Gets all planets the transmitting aspect to inputed planet 
-        :return: List`1
-         """
-        endpoint = "PlanetsAspectingPlanet"
-        params = {
-            "PlanetName": receivingAspect.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HousesInAspect(cls, planet, time):
-        """
-         Gets houses aspected by the inputed planet 
-        :return: List`1
-         """
-        endpoint = "HousesInAspect"
-        params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetsAspectingHouse(cls, inputHouse, time):
-        """
-         Gets all planets aspecting inputed house 
-        :return: List`1
-         """
-        endpoint = "PlanetsAspectingHouse"
-        params = {
-            "HouseName": inputHouse.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetAspectedByPlanet(cls, receiveingAspect, transmitingAspect, time):
-        """
-         Checks if the a planet is aspected by another planet 
-        :return: Boolean
-         """
-        endpoint = "IsPlanetAspectedByPlanet"
-        params = {
-            "PlanetName": receiveingAspect.value,
-            "PlanetName": transmitingAspect.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsHouseAspectedByPlanet(cls, receiveingAspect, transmitingAspect, time):
-        """
-         Checks if a house is aspected by a planet 
-        :return: Boolean
-         """
-        endpoint = "IsHouseAspectedByPlanet"
-        params = {
-            "HouseName": receiveingAspect.value,
-            "PlanetName": transmitingAspect.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetConjunctWithPlanet(cls, planetA, planetB, time):
-        """
-         Checks if the a planet is conjunct with another planet Based on longitudes Note Both planets A B are checked if they are in conjunct with each other performance might be effected mildly but errors in conjunction calculation would be caught here. Can be removed once conjunction calculator is confirmed accurate. 
-        :return: Boolean
-         """
-        endpoint = "IsPlanetConjunctWithPlanet"
-        params = {
-            "PlanetName": planetA.value,
-            "PlanetName": planetB.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetConjunctWithBeneficPlanets(cls, inputPlanet, time):
-        """
-         Check if benefic planets are conjunct with specified planet 
-        :return: Boolean
-         """
-        endpoint = "IsPlanetConjunctWithBeneficPlanets"
-        params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetPowerPercentage(cls, inputPlanet, time):
-        """
-         convert the planets strength into a value over hundred with max min set by strongest weakest planet 
-        :return: Double
-         """
-        endpoint = "PlanetPowerPercentage"
-        params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PickOutStrongestPlanet(cls, relatedPlanets, birthTime):
-        """
-         Given a list of planets will pick out the strongest planet based on Shadbala 
-        :return: PlanetName
-         """
-        endpoint = "PickOutStrongestPlanet"
-        params = {
-            "relatedPlanets": relatedPlanets,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AllPlanetOrderedByStrength(cls, time):
-        """
-         Returns an array of all planets sorted by strenght 0 index being strongest to 8 index being weakest Note Significance of being Powerful.Among the several planets associated with a bhava that which has the greatest Sbadbala influences the bhava most. 
-        :return: List`1
-         """
-        endpoint = "AllPlanetOrderedByStrength"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetStrongInShadbala(cls, planet, time):
-        """
-         Significance of being Powerful.Among the several planets associated with a bhava that which has the greatest Sbadbala influences the bhava most. Powerful Planets.Ravi is befd to be powerful when his Shadbala Pinda is 5 or more rupas. Chandra becomes strong when his Shadbala Pinda is 6 or more rupas. Kuja becomes powerful when bis Shadbala Pinda does not fall short of 5 rupas.Budha becomes potent by having his Sbadbala Pinda as 7 rupas Guru Sukra and Sani become thoroughly powerful if their Shadbala Pindas are 6.5 5.5 and 5 rupas or more respectively. 
-        :return: Boolean
-         """
-        endpoint = "IsPlanetStrongInShadbala"
-        params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsHouseBeneficInShadbala(cls, house, birthTime, threshold):
-        """
-         sets benefic if above 450 score 
-        :return: Boolean
-         """
-        endpoint = "IsHouseBeneficInShadbala"
-        params = {
-            "HouseName": house.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "threshold": threshold,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AllPlanetStrength(cls, time):
-        """
-         Gets strength shadbala of all 9 planets 
-        :return: List`1
-         """
-        endpoint = "AllPlanetStrength"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AllHousesOrderedByStrength(cls, time):
-        """
-         Returns an array of all houses sorted by strength 0 index being strongest to 11 index being weakest 
-        :return: HouseName[]
-         """
-        endpoint = "AllHousesOrderedByStrength"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetShadbalaPinda(cls, planetName, time):
-        """
-         THE FINAL TOTAL STRENGTH Shadbala the six sources of strength and weakness the planets The importance of and the part played by the Shadbalas in the science of horoscopy are manifold In order to obtain the total strength of the Shadbala Pinda of each planet we have to add together its Sthana Bala Dik Bala Kala Bala. Chesta Bala and Naisargika Bala. And the Grahas Drik Bala must be added to or subtracted from the above sum according as it is positive or negative. The result obtained is the Shadbala Pinda of the planet in Shashtiamsas. Note Rahu Ketu supported via house lord 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetShadbalaPinda"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetStrength(cls, planetName, time):
-        """
-         get total combined strength of the inputed planet input birth time to get strength in horoscope note an alias method to GetPlanetShadbalaPinda strength is easier to remember 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetStrength"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetDrikBala(cls, planetName, time):
-        """
-         Aspect strength This strength is gained by the virtue of the aspect Graha Dristi of different planets on other planet. The aspect of benefics is considered to be strength and the aspect of malefics is considered to be weaknesses. Drik Bala.This means aspect strength. The Drik Bala of a Gqaha is onefourth of the Drishti Pinda on it. It is positive or negative according as the Drishti Pinda is positive or negative. See the formula given on page 85. There is special aspect for Jupiter Mars and Saturn on the 5th and 9th 4th and 8th and 3rd and 10th signs respectively. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetDrikBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def FindViseshaDrishti(cls, dk, p):
-        """
-         Get special aspect if any of Kuja Guru and Sani 
-        :return: Double
-         """
-        endpoint = "FindViseshaDrishti"
-        params = {
-            "dk": dk,
-            "PlanetName": p.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def FindDrishtiValue(cls, dk):
-        """
-        Empty sample text
-        :return: Double
-         """
-        endpoint = "FindDrishtiValue"
-        params = {
-            "dk": dk,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetNaisargikaBala(cls, planetName, time):
-        """
-         Nalsargika Bala.This is the natural strength that each Graha possesses. The value assigned to each depends upon its luminosity. Ravi the brightest of all planets has the greatest Naisargika strength while Sani the darkest has the least Naisargika Bala. This is the natural or inherent strength of a planet. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetNaisargikaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetChestaBala(cls, planetName, time, useSpecialSunMoon):
-        """
-         NOTE sun moon get score for ISHTAKESHA calculation only when specified for IshataKashta MOTIONAL STRENGTH Chesta here means Vakra Chesta or act of retrogression. Each planet except the Sun and the Moon and shadowy planets get into the state of Vakra or retrogression when its distance from the Sun exceeds a particular limit. And the strength or potency due to the planet on account of the arc of the retrogression is termed as Chesta Bala Deduct from the Seeghrocbcha half the sum of the True and Mean Longitudes of planets and divide the difference by 3. The quotient is the Chestabala. Max 60 meaning RetrogradeVakra When the distance of any one planet from the Sun exceeds a particular limit it becomes retrograde i.e. when the planet goes from perihelion the point in a planets orbit nearest to the Sun to aphelion the part of a planets oroit most distant from the Sun as it recedes from the Sun it gradually loses the power of the Suns gravitation and consequently 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetChestaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-            "useSpecialSunMoon": useSpecialSunMoon,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SunChestaBala(cls, inputTime):
-        """
-         special function to get chesta score for IshtaKashta score Bala book pg. 108 Sun has no Chesta kendra or Chesta bala as he never gets into retrogression. But still a method is prescribed to find his Chesla Bala which is necessary to ascertain the lshta and Kashta Phalas. 
-        :return: Shashtiamsa
-         """
-        endpoint = "SunChestaBala"
-        params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MoonChestaBala(cls, inputTime):
-        """
-         special function to get chesta score for IshtaKashta score Bala book pg. 108 
-        :return: Shashtiamsa
-         """
-        endpoint = "MoonChestaBala"
-        params = {
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def Madhya(cls, epochToBirthDays, time1):
-        """
-         The mean position of a planet is the position which it would have attained at a uniform rate of motion and the corrections to be applied in respect of the eccentricity of the orbit are not considered 
-        :return: Dictionary`2
-         """
-        endpoint = "Madhya"
-        params = {
-            "epochToBirthDays": epochToBirthDays,
-            "Location": time1.geolocation.location_name,
-            "Time": time1.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def EpochInterval(cls, time1):
-        """
-         Get interval from the epoch to the birth date in days The result represents the interval from the epoch to the birth date. 
-        :return: Double
-         """
-        endpoint = "EpochInterval"
-        params = {
-            "Location": time1.geolocation.location_name,
-            "Time": time1.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetMotionName(cls, planetName, time):
-        """
-         Gets the planets motion name can be Retrograde Direct Stationary a name version of Chesta Bala 
-        :return: PlanetMotion
-         """
-        endpoint = "PlanetMotionName"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetRetrograde(cls, planetName, time):
-        """
-         A retrograde planet moves in the reverse direction and instead of increasing its longitude decreases as the time elapses. Rahu and Ketu often move in retrograde direction only. Other planets except the Sun and the Moon are subject to retrogression from time to time. 
-        :return: Boolean
-         """
-        endpoint = "IsPlanetRetrograde"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetCombust(cls, planetName, time):
-        """
-         Determines if a given planet is combust at a specific time. Combustion of planets Planets when too close to the Sun become invisible and are labelled as combust. A combust planet loses its strength and tends to behave adversely according to predictive astrology. Aryabhata has the following to say about combustion When the Moon has no latitude i.e. when it is at zero degree of latitude it is visible when situated at a distance of 12 degrees from the Sun. Venus is visible when 9 degrees distant from the Sun. The other planets taken in the order of decreasing sizes viz. Jupiter Mercury Saturn and Mars are visible when they are 9 degrees increased by twos i.e. when they are 11 13 15 and 17 degrees distant from the Sun. The degrees as mentioned above are generally taken as the limits within which the respective planets are said to be combust. 
-        :return: Boolean
-         """
-        endpoint = "IsPlanetCombust"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetCirculationTime(cls, planetName):
-        """
-         circulation time of the objects in years used by cheshta bala calculation 
-        :return: Double
-         """
-        endpoint = "PlanetCirculationTime"
-        params = {
-            "PlanetName": planetName.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetSaptavargajaBala(cls, planetName, time):
-        """
-         Sapthavargajabala This is the strength of a planet due to its residence in the seven subdivisions according to its relation with the dispositor. Saptavargaja bala means the strength a planet gets by virtue of its disposition in a friendly neutral or inimical Rasi Hora Drekkana Sapthamsa Navamsa Dwadasamsa and Thrimsamsa. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetSaptavargajaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetSthanaBala(cls, planetName, time):
-        """
-         residence of the planet and as such a certain degree of strength or weakness attends on it Positonal strength A planet occupies a certain sign in a Rasi and friendly neutrai or inimical varga. It is either exalted or debilitated lt ocupies its Moolathrikona or it has its own varga. All these states refer to the position or residence of the planet and as such a certain degree of strength or weakness attends on it. This strength or potency is known as the Sthanabala. 1.Uccha Bala Uccha means exaltation. When a planet is placed in its highest exaltation point it is of full strength and when it is in its deepest debilitation point it is devoid of any strength. When in between the strength is calculated proportionately dependent on the distance these planets are placed from the highest exaltation or deepest debilitation point. 2.Sapta Vargiya Bala Rashi Hora Drekkana Saptamsha Navamsha Dwadasamsha and Trimsamsha constitute the Sapta Varga. The strength of the planets in these seven divisional charts based on their placements in Mulatrikona own sign friendly sign etc. constitute the Sapta vargiya bala. 3.OjaYugma RashiAmsha Bala Oja means odd signs and Yugma means even signs. Thus as the name imply this strength is derived from a planets placement in the odd or even signs in the Rashi and Navamsha. 4.Kendradi Bala The name itself implies how to compute this strength. A planet in a Kendra 14710 gets full strength while one in Panapara 25811 gets half and the one in Apoklimas 12369 gets quarter strength. 5.Drekkana Bala Due to placement in first second or third Drekkana of a sign male female and hermaphrodite planets respectively get a quarter strength according to placements in the first second and third Drekkana. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetSthanaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetDrekkanaBala(cls, planetName, time):
-        """
-         Drekkanabala The Sun Jupiter and Mars in the lst Saturn and Mercury in the 2nd and the Moon and Venus in the last Drekkana get full strength of 60 shashtiamsas. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetDrekkanaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetKendraBala(cls, planetName, time):
-        """
-         Kendrtzbala Planets in Kendras get 60 shashtiamsas in Panapara 30 and in Apoklima 15. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetKendraBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetOjayugmarasyamsaBala(cls, planetName, time):
-        """
-         Ojayugmarasyamsa In odd Rasi and Navamsa the Sun Mars Jupiter Mercury and Saturn get strength and the rest in even signs 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetOjayugmarasyamsaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetKalaBala(cls, planetName, time):
-        """
-         Gets a planets Kala Bala or Temporal strength 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetKalaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetYuddhaBala(cls, inputedPlanet, preKalaBalaValues, time):
-        """
-         Two planets are said to be in Yuddha or fight when they are in conjunction and the distance between them is less than one degree. TODO Not fully tested Yuddhabala All planets excepting the Sun and the Moon enter into war when two planets are in the same degree. The pJanet having the lesser longitude is the winner. Find out the sum total of the SthanabaJa Kalabala and Digbala of these two planets. Difference between the two divided by the difference of their diameters of its disc gives the Yuddhabala. Add this to the victorious planet and dedu_ct it from the vanquished. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetYuddhaBala"
-        params = {
-            "PlanetName": inputedPlanet.value,
-            "preKalaBalaValues": preKalaBalaValues,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetAyanaBala(cls, planetName, time):
-        """
-         Ayanabala All planets get 30 shasbtiamsas at the equator. For the Sun Jupiter Mars and Venus add proportionately when they are in northern course and for the Moon and Saturn when in southern course. Deduct proportionately when they are in the opposite direction. Unit of strength is 60 shashtiamsas. TODO some values for calculation with standard hooscope out of whack it seems small differences in longitude seem magnified at final value not 100 sure need further testing for confirmation but final values seem ok so far 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetAyanaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetDeclination(cls, planetName, time):
-        """
-         A heavenly body moves northwards the equator for sometime and then gets southwards. This angular distance from the equinoctial or celestial equator is Kranti or the declination. Declinations are reckoned plus or minus according as the planet is situated in the northern or southern celestial hemisphere 
-        :return: Double
-         """
-        endpoint = "PlanetDeclination"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def EclipticObliquity(cls, time):
-        """
-         true obliquity of the Ecliptic includes nutation 
-        :return: Double
-         """
-        endpoint = "EclipticObliquity"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetHoraBala(cls, planetName, time):
-        """
-         Hora Bala AKA Horadhipathi Bala 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetHoraBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetAbdaBala(cls, planetName, time):
-        """
-         The planet who is the king of the year of birth is assigned a value of 15 Shashtiamsas as his Abdabala. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetAbdaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetMasaBala(cls, planetName, time):
-        """
-         Gets a planets masa bala the lord of the month of birth is assigned a value of 30 Shashtiamsas as his Masabala 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetMasaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetVaraBala(cls, planetName, time):
-        """
-        Empty sample text
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetVaraBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def YearAndMonthLord(cls, time):
-        """
-         Gets year month lord at inputed time 
-        :return: Object
-         """
-        endpoint = "YearAndMonthLord"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetTribhagaBala(cls, planetName, time):
-        """
-         Thribhagabala Mercury the Sun and Saturn get 60 shashtiamsas each during the lst 2nd and 3rd onethird positions of the day respectively. The Moon Venus and Mars govern the lst 2nd and 3rd onethird portion of the night respectively. Jupiter is always strong and gets 60 shashtiamsas of strength. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetTribhagaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetOchchaBala(cls, planetName, time):
-        """
-         Oochchabala The distance between the planets longitude and its debilitation point divided by 3 gives its exaltation strength or oochchabaJa. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetOchchaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetPakshaBala(cls, planetName, time):
-        """
-         Pakshabala When the Moon is waxing take the distance from the Sun to the Moon and divide it by 3. The quotient is the Pakshabala. When the Moon is waning take the distance from the Moon to the Sun and divide it by 3 for assessing Pakshabala. Moon Jupiter Venus and Mercury are strong in Sukla Paksha and the others in Krishna Paksha. Note Mercury is benefic or malefic based on planets conjunct with it 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetPakshaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetNathonnathaBala(cls, planetName, time):
-        """
-         Nathonnathabala Midnight to midday the Sun Jupiter and Venus gain strength proportionately till they get maximum at zenith. The other planets except Mercury. are gaining strength from midday to midnight proportionately. In the same way Mercury is always strong and gets 60 shashtiamsas. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetNathonnathaBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetDigBala(cls, planetName, time):
-        """
-         Gets Dig Bala of a planet. Jupiter and Mercury are strong in Lagna Ascendant the Sun and Mars in the 10th Saturn in the 7th and the Moon and Venus in the 4th. The opposite houses are weak points. Divide the distance between the longitude of the planet and its depression point by 3. Quotient is the strength. 
-        :return: Shashtiamsa
-         """
-        endpoint = "PlanetDigBala"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HouseStrength(cls, inputHouse, time):
-        """
-         Bhava Bala.Bhava means house and Bala means strength. Bhava Bala is the potency or strength of the house or bhava or signification. We have already seen that there are 12 bhavas which comprehend all human events. Each bhava signifies or indicates certain events or functions. For instance the first bhava represents Thanu or body the appearance of the individual his complexion his disposition his stature etc. If it attains certain strength the native will enjoy the indications of the bhava fully otherwise he will not sufficiently enjoy them. The strength of a bhava is composed of three factors viz. 1 Bhavadhipathi Bala 2 Bhava Digbala 3 Bhava Drishti Bala. 
-        :return: Shashtiamsa
-         """
-        endpoint = "HouseStrength"
-        params = {
-            "HouseName": inputHouse.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BhavaDrishtiBala(cls, time):
-        """
-         House received aspect strength Bhavadrishti Bala.Each bhava in a horoscope remains aspected by certain planets. Sometimes the aspect cast on a bhava will be positive and sometimes it will be negative according as it is aspected by benefics or malefics. For all 12 houses 
-        :return: HouseSubStrength
-         """
-        endpoint = "BhavaDrishtiBala"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BhavaDigBala(cls, time):
-        """
-         House strength from different types of signs Bhava Digbala.This is the strength acquired by the different bhavas falling in the different groups or types of signs. For all 12 houses 
-        :return: HouseSubStrength
-         """
-        endpoint = "BhavaDigBala"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BhavaAdhipathiBala(cls, time):
-        """
-         Bhavadhipatbi Bala This is the potency of the lord of the bhava. For all 12 houses 
-        :return: HouseSubStrength
-         """
-        endpoint = "BhavaAdhipathiBala"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BeneficPlanetListByShadbala(cls, personBirthTime, threshold):
-        """
-         0 index is strongest 
-        :return: List`1
-         """
-        endpoint = "BeneficPlanetListByShadbala"
-        params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
-            "threshold": threshold,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BeneficPlanetListByShadbala(cls, personBirthTime):
-        """
-        Empty sample text
-        :return: List`1
-         """
-        endpoint = "BeneficPlanetListByShadbala"
-        params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BeneficHouseListByShadbala(cls, personBirthTime, threshold):
-        """
-         0 index is strongest 
-        :return: List`1
-         """
-        endpoint = "BeneficHouseListByShadbala"
-        params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
-            "threshold": threshold,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BeneficHouseListByShadbala(cls, personBirthTime):
-        """
-        Empty sample text
-        :return: List`1
-         """
-        endpoint = "BeneficHouseListByShadbala"
-        params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MaleficPlanetListByShadbala(cls, personBirthTime, threshold):
-        """
-        Empty sample text
-        :return: List`1
-         """
-        endpoint = "MaleficPlanetListByShadbala"
-        params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
-            "threshold": threshold,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MaleficPlanetListByShadbala(cls, personBirthTime):
-        """
-         0 index is most malefic 
-        :return: List`1
-         """
-        endpoint = "MaleficPlanetListByShadbala"
-        params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MaleficHouseListByShadbala(cls, personBirthTime, threshold):
-        """
-         0 index is most malefic 
-        :return: List`1
-         """
-        endpoint = "MaleficHouseListByShadbala"
-        params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
-            "threshold": threshold,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MaleficHouseListByShadbala(cls, personBirthTime):
-        """
-        Empty sample text
-        :return: List`1
-         """
-        endpoint = "MaleficHouseListByShadbala"
-        params = {
-            "Location": personBirthTime.geolocation.location_name,
-            "Time": personBirthTime.url_time_string(),
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4756,7 +3446,7 @@ class Calculate:
          """
         endpoint = "GetHouseTags"
         params = {
-            "HouseName": house.value,
+            "house": house.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -4768,17 +3458,17 @@ class Calculate:
          """
         endpoint = "GetSignTags"
         params = {
-            "ZodiacName": zodiacName.value,
+            "zodiacName": zodiacName.value,
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def GetPlanetTags(cls, planetList):
+    def GetPlanetTagsFromList(cls, planetList):
         """
-        Empty sample text
+         Gets combined tags for a list of planets. 
         :return: String
          """
-        endpoint = "GetPlanetTags"
+        endpoint = "GetPlanetTagsFromList"
         params = {
             "planetList": planetList,
         }
@@ -4792,7 +3482,7 @@ class Calculate:
          """
         endpoint = "GetPlanetTags"
         params = {
-            "PlanetName": lordOfHouse.value,
+            "lordOfHouse": lordOfHouse.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -4804,7 +3494,7 @@ class Calculate:
          """
         endpoint = "GetHouseType"
         params = {
-            "HouseName": houseNumber.value,
+            "houseNumber": houseNumber.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -4812,11 +3502,11 @@ class Calculate:
     def GetDasaInfoForAscendant(cls, ascendantName):
         """
          Get general planetary info for persons dasa hardcoded table It is intended to be used to interpret dasa predictions as such should be displayed next to dasa chart. This method is direct translation from the book. Similar to method GetPlanetDasaNature Data from pg 80 of Keyplanets for Each Sign in Hindu Predictive Astrology 
-        :return: String
+        :return: AscendantDasaInfo
          """
         endpoint = "GetDasaInfoForAscendant"
         params = {
-            "ZodiacName": ascendantName.value,
+            "ascendantName": ascendantName.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -4828,7 +3518,234 @@ class Calculate:
          """
         endpoint = "SignProperties"
         params = {
-            "ZodiacName": inputSign.value,
+            "inputSign": inputSign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PredictHealthConditions(cls, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: JObject
+         """
+        endpoint = "PredictHealthConditions"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetMotionName(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetMotion
+         """
+        endpoint = "PlanetMotionName"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAspectingHouse(cls, planet, house, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAspectingHouse"
+        params = {
+            "planet": planet.value,
+            "house": house.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAspectingHouse(cls, planet, houseNumber, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAspectingHouse"
+        params = {
+            "planet": planet.value,
+            "houseNumber": houseNumber,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsWaxingMoon(cls, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsWaxingMoon"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsWaningMoon(cls, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsWaningMoon"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def VedicDayStartTime(cls, inputTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Time
+         """
+        endpoint = "VedicDayStartTime"
+        params = {
+            "inputTime": inputTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def KujaDosaScore(cls, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "KujaDosaScore"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ClassifyForKartari(cls, planet, coOccupants):
+        """
+        NO DESC FOUND!! ERROR
+        :return: String
+         """
+        endpoint = "ClassifyForKartari"
+        params = {
+            "planet": planet.value,
+            "coOccupants": coOccupants,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ShubKartariPlanets(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "ShubKartariPlanets"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PaapaKartariPlanets(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PaapaKartariPlanets"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ShubKartariHouses(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "ShubKartariHouses"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PaapaKartariHouses(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PaapaKartariHouses"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DispositorFromOwnHouses(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "DispositorFromOwnHouses"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DispositorFromLagna(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Int32
+         """
+        endpoint = "DispositorFromLagna"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DispositorFromMoon(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Int32
+         """
+        endpoint = "DispositorFromMoon"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DispositorConjunctWith(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "DispositorConjunctWith"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AspectReceivedByDispositor(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AspectReceivedByDispositor"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4840,9 +3757,8 @@ class Calculate:
          """
         endpoint = "HousesOwnedByPlanet"
         params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4854,9 +3770,8 @@ class Calculate:
          """
         endpoint = "HouseFromSignName"
         params = {
-            "ZodiacName": zodiacName.value,
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "zodiacName": zodiacName.value,
+            "inputTime": inputTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4868,8 +3783,7 @@ class Calculate:
          """
         endpoint = "DayDurationHours"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4881,8 +3795,7 @@ class Calculate:
          """
         endpoint = "IsNightBirth"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4894,8 +3807,7 @@ class Calculate:
          """
         endpoint = "IsDayBirth"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4907,10 +3819,8 @@ class Calculate:
          """
         endpoint = "GhatakaChakra"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "time": time.to_json(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4934,23 +3844,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInWaterySign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def ResidentialStrength(cls, planetName, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Double
-         """
-        endpoint = "ResidentialStrength"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4962,8 +3857,19 @@ class Calculate:
          """
         endpoint = "LunarDay"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsSuklaPaksha(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsSuklaPaksha"
+        params = {
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4975,8 +3881,7 @@ class Calculate:
          """
         endpoint = "MoonConstellation"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -4988,9 +3893,8 @@ class Calculate:
          """
         endpoint = "PlanetConstellation"
         params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5002,8 +3906,7 @@ class Calculate:
          """
         endpoint = "Tarabala"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
             "person": person,
         }
         return cls._make_request(endpoint, params)
@@ -5016,8 +3919,7 @@ class Calculate:
          """
         endpoint = "Chandrabala"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
             "person": person,
         }
         return cls._make_request(endpoint, params)
@@ -5030,8 +3932,7 @@ class Calculate:
          """
         endpoint = "MoonSignName"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5043,8 +3944,7 @@ class Calculate:
          """
         endpoint = "LagnaSignName"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5056,8 +3956,7 @@ class Calculate:
          """
         endpoint = "NithyaYoga"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5069,8 +3968,7 @@ class Calculate:
          """
         endpoint = "Karana"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5082,8 +3980,7 @@ class Calculate:
          """
         endpoint = "SunSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5095,8 +3992,7 @@ class Calculate:
          """
         endpoint = "TimeSunEnteredCurrentSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5108,22 +4004,20 @@ class Calculate:
          """
         endpoint = "TimeSunLeavesCurrentSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def PlanetsInHouse(cls, houseNumber, time):
+    def PlanetsInHouseBasedOnLongitudes(cls, houseNumber, time):
         """
         NO DESC FOUND!! ERROR
         :return: List`1
          """
-        endpoint = "PlanetsInHouse"
+        endpoint = "PlanetsInHouseBasedOnLongitudes"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5135,9 +4029,8 @@ class Calculate:
          """
         endpoint = "PlanetsInHouseBasedOnSign"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5149,9 +4042,8 @@ class Calculate:
          """
         endpoint = "PlanetsInSign"
         params = {
-            "ZodiacName": signName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "signName": signName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5163,8 +4055,7 @@ class Calculate:
          """
         endpoint = "AllPlanetLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5176,8 +4067,7 @@ class Calculate:
          """
         endpoint = "AllPlanetFixedLongitude"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5189,9 +4079,8 @@ class Calculate:
          """
         endpoint = "HousePlanetOccupiesBasedOnLongitudes"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5203,9 +4092,8 @@ class Calculate:
          """
         endpoint = "HousePlanetOccupiesBasedOnSign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5217,8 +4105,7 @@ class Calculate:
          """
         endpoint = "HouseAllPlanetOccupiesBasedOnLongitudes"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5230,9 +4117,8 @@ class Calculate:
          """
         endpoint = "LordOfHouse"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5244,9 +4130,8 @@ class Calculate:
          """
         endpoint = "PlanetLordOfZodiacSign"
         params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5258,9 +4143,8 @@ class Calculate:
          """
         endpoint = "PlanetLordOfConstellation"
         params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5273,8 +4157,7 @@ class Calculate:
         endpoint = "LordOfHouseList"
         params = {
             "houseList": houseList,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5286,8 +4169,7 @@ class Calculate:
          """
         endpoint = "AllHouseConstellationLord"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5299,9 +4181,8 @@ class Calculate:
          """
         endpoint = "HouseConstellationLord"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5313,9 +4194,8 @@ class Calculate:
          """
         endpoint = "HouseConstellation"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5327,8 +4207,7 @@ class Calculate:
          """
         endpoint = "AllHousePlanetsInHouseBasedOnSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5340,7 +4219,7 @@ class Calculate:
          """
         endpoint = "SignCountedFromInputSign"
         params = {
-            "ZodiacName": inputSign.value,
+            "inputSign": inputSign.value,
             "countToNextSign": countToNextSign,
         }
         return cls._make_request(endpoint, params)
@@ -5354,9 +4233,8 @@ class Calculate:
         endpoint = "SignCountedFromPlanetSign"
         params = {
             "countToNextSign": countToNextSign,
-            "PlanetName": startPlanet.value,
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "startPlanet": startPlanet.value,
+            "inputTime": inputTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5369,8 +4247,7 @@ class Calculate:
         endpoint = "SignCountedFromLagnaSign"
         params = {
             "countToNextSign": countToNextSign,
-            "Location": inputTime.geolocation.location_name,
-            "Time": inputTime.url_time_string(),
+            "inputTime": inputTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5395,10 +4272,9 @@ class Calculate:
          """
         endpoint = "IsPlanetInSign"
         params = {
-            "PlanetName": planetName.value,
-            "ZodiacName": signInput.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "signInput": signInput.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5410,9 +4286,8 @@ class Calculate:
          """
         endpoint = "SignsPlanetIsAspecting"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5424,69 +4299,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInMoolatrikona"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetRelationshipWithSign(cls, planetName, zodiacSignName, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: PlanetToSignRelationship
-         """
-        endpoint = "PlanetRelationshipWithSign"
-        params = {
-            "PlanetName": planetName.value,
-            "ZodiacName": zodiacSignName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetCombinedRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: PlanetToPlanetRelationship
-         """
-        endpoint = "PlanetCombinedRelationshipWithPlanet"
-        params = {
-            "PlanetName": mainPlanet.value,
-            "PlanetName": secondaryPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetRelationshipWithHouse(cls, house, planet, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: PlanetToSignRelationship
-         """
-        endpoint = "PlanetRelationshipWithHouse"
-        params = {
-            "HouseName": house.value,
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetTemporaryRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: PlanetToPlanetRelationship
-         """
-        endpoint = "PlanetTemporaryRelationshipWithPlanet"
-        params = {
-            "PlanetName": mainPlanet.value,
-            "PlanetName": secondaryPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5498,23 +4312,8 @@ class Calculate:
          """
         endpoint = "PlanetInSign"
         params = {
-            "ZodiacName": signName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetTemporaryFriendList(cls, planetName, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "PlanetTemporaryFriendList"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "signName": signName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5526,9 +4325,8 @@ class Calculate:
          """
         endpoint = "HouseLongitude"
         params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5540,8 +4338,7 @@ class Calculate:
          """
         endpoint = "Panchaka"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5553,8 +4350,7 @@ class Calculate:
          """
         endpoint = "LordOfWeekday"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5578,8 +4374,7 @@ class Calculate:
          """
         endpoint = "IshtaKaala"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5591,8 +4386,7 @@ class Calculate:
          """
         endpoint = "IsBeforeSunrise"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5604,8 +4398,7 @@ class Calculate:
          """
         endpoint = "HoraAtBirth"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5617,8 +4410,7 @@ class Calculate:
          """
         endpoint = "SunriseTime"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5630,8 +4422,7 @@ class Calculate:
          """
         endpoint = "SunsetTime"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5643,50 +4434,7 @@ class Calculate:
          """
         endpoint = "NoonTime"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetInGoodAspectToPlanet(cls, receivingAspect, transmitingAspect, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetInGoodAspectToPlanet"
-        params = {
-            "PlanetName": receivingAspect.value,
-            "PlanetName": transmitingAspect.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetInGoodAspectToHouse(cls, receivingAspect, transmitingAspect, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetInGoodAspectToHouse"
-        params = {
-            "HouseName": receivingAspect.value,
-            "PlanetName": transmitingAspect.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetSthanaBalaNeutralPoint(cls, planet):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Double
-         """
-        endpoint = "PlanetSthanaBalaNeutralPoint"
-        params = {
-            "PlanetName": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5698,9 +4446,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInTrikona"
         params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5712,9 +4459,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInKendra"
         params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5726,9 +4472,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInUpachaya"
         params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5741,8 +4486,7 @@ class Calculate:
         endpoint = "IsPlanetInKendra"
         params = {
             "planetList": planetList,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5754,10 +4498,9 @@ class Calculate:
          """
         endpoint = "IsPlanetInKendraFromPlanet"
         params = {
-            "PlanetName": kendraFrom.value,
-            "PlanetName": kendraTo.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "kendraFrom": kendraFrom.value,
+            "kendraTo": kendraTo.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5769,10 +4512,9 @@ class Calculate:
          """
         endpoint = "SignDistanceFromPlanetToPlanet"
         params = {
-            "PlanetName": startPlanet.value,
-            "PlanetName": endPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "startPlanet": startPlanet.value,
+            "endPlanet": endPlanet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5784,10 +4526,9 @@ class Calculate:
          """
         endpoint = "IsHouseLordInHouseBasedOnLongitudes"
         params = {
-            "HouseName": lordHouse.value,
-            "HouseName": occupiedHouse.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "lordHouse": lordHouse.value,
+            "occupiedHouse": occupiedHouse.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -5799,260 +4540,9 @@ class Calculate:
          """
         endpoint = "IsHouseLordInHouseBasedOnSign"
         params = {
-            "HouseName": lordHouse.value,
-            "HouseName": occupiedHouse.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetConjunctWithMaleficPlanets(cls, planetName, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetConjunctWithMaleficPlanets"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetConjunctWithEnemyPlanets(cls, inputPlanet, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetConjunctWithEnemyPlanets"
-        params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetConjunctWithFriendPlanets(cls, inputPlanet, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetConjunctWithFriendPlanets"
-        params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsMaleficPlanetInHouse(cls, houseNumber, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsMaleficPlanetInHouse"
-        params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsBeneficPlanetInHouse(cls, houseNumber, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsBeneficPlanetInHouse"
-        params = {
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsBeneficsInKendra(cls, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsBeneficsInKendra"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsAllMaleficsInUpachayas(cls, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsAllMaleficsInUpachayas"
-        params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsMaleficPlanetInSign(cls, sign, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsMaleficPlanetInSign"
-        params = {
-            "ZodiacName": sign.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MaleficPlanetListInSign(cls, sign, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "MaleficPlanetListInSign"
-        params = {
-            "ZodiacName": sign.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsBeneficPlanetInSign(cls, sign, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsBeneficPlanetInSign"
-        params = {
-            "ZodiacName": sign.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BeneficPlanetListInSign(cls, sign, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "BeneficPlanetListInSign"
-        params = {
-            "ZodiacName": sign.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsMaleficPlanetAspectHouse(cls, house, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsMaleficPlanetAspectHouse"
-        params = {
-            "HouseName": house.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsBeneficPlanetAspectHouse(cls, house, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsBeneficPlanetAspectHouse"
-        params = {
-            "HouseName": house.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetAspectedByMaleficPlanets(cls, planetReceivingAspect, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetAspectedByMaleficPlanets"
-        params = {
-            "PlanetName": planetReceivingAspect.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def GetAllMaleficPlanetsAspecting(cls, planetReceivingAspect, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "GetAllMaleficPlanetsAspecting"
-        params = {
-            "PlanetName": planetReceivingAspect.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetAspectedByBeneficPlanets(cls, lord, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetAspectedByBeneficPlanets"
-        params = {
-            "PlanetName": lord.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetAspectedByEnemyPlanets(cls, inputPlanet, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetAspectedByEnemyPlanets"
-        params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetAspectedByFriendPlanets(cls, inputPlanet, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetAspectedByFriendPlanets"
-        params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "lordHouse": lordHouse.value,
+            "occupiedHouse": occupiedHouse.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6064,8 +4554,7 @@ class Calculate:
          """
         endpoint = "ArudhaLagnaSign"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6077,8 +4566,8 @@ class Calculate:
          """
         endpoint = "CountFromSignToSign"
         params = {
-            "ZodiacName": startSign.value,
-            "ZodiacName": endSign.value,
+            "startSign": startSign.value,
+            "endSign": endSign.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6096,17 +4585,30 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def IsPlanetInHouse(cls, planet, houseNumber, time):
+    def IsPlanetInHouseBasedOnLongitudes(cls, planet, houseNumber, time):
         """
         NO DESC FOUND!! ERROR
         :return: Boolean
          """
-        endpoint = "IsPlanetInHouse"
+        endpoint = "IsPlanetInHouseBasedOnLongitudes"
         params = {
-            "PlanetName": planet.value,
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetInHouseBasedOnSign(cls, planet, houseNumber, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetInHouseBasedOnSign"
+        params = {
+            "planet": planet.value,
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6120,7 +4622,7 @@ class Calculate:
         params = {
             "cusps": cusps,
             "planetNirayanaDegrees": planetNirayanaDegrees,
-            "HouseName": house.value,
+            "house": house.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6133,9 +4635,8 @@ class Calculate:
         endpoint = "IsAllPlanetsInHouse"
         params = {
             "planetList": planetList,
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6148,9 +4649,8 @@ class Calculate:
         endpoint = "IsAnyPlanetsInHouse"
         params = {
             "planetList": planetList,
-            "HouseName": houseNumber.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6162,9 +4662,8 @@ class Calculate:
          """
         endpoint = "IsPlanetDebilitated"
         params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6176,9 +4675,8 @@ class Calculate:
          """
         endpoint = "IsPlanetExaltedDegree"
         params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6190,9 +4688,8 @@ class Calculate:
          """
         endpoint = "IsPlanetExaltedSign"
         params = {
-            "PlanetName": planet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planet": planet.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6204,8 +4701,7 @@ class Calculate:
          """
         endpoint = "IsFullMoon"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6217,8 +4713,19 @@ class Calculate:
          """
         endpoint = "IsNewMoon"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsNaraRasi(cls, sign):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsNaraRasi"
+        params = {
+            "sign": sign.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6230,7 +4737,7 @@ class Calculate:
          """
         endpoint = "IsWaterSign"
         params = {
-            "ZodiacName": moonSign.value,
+            "moonSign": moonSign.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6242,7 +4749,7 @@ class Calculate:
          """
         endpoint = "IsFireSign"
         params = {
-            "ZodiacName": moonSign.value,
+            "moonSign": moonSign.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6254,7 +4761,7 @@ class Calculate:
          """
         endpoint = "IsEarthSign"
         params = {
-            "ZodiacName": moonSign.value,
+            "moonSign": moonSign.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6266,35 +4773,7 @@ class Calculate:
          """
         endpoint = "IsAirSign"
         params = {
-            "ZodiacName": moonSign.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetBeneficToLagna(cls, planetName, birthTime):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetBeneficToLagna"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IsPlanetMaleficToLagna(cls, planetName, birthTime):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetMaleficToLagna"
-        params = {
-            "PlanetName": planetName.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "moonSign": moonSign.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6306,9 +4785,8 @@ class Calculate:
          """
         endpoint = "IsPlanetYogakarakaToLagna"
         params = {
-            "PlanetName": planetName.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6320,9 +4798,8 @@ class Calculate:
          """
         endpoint = "IsPlanetMarakaToLagna"
         params = {
-            "PlanetName": planetName.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6334,9 +4811,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInOwnHouse"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6348,9 +4824,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInOwnSign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6362,9 +4837,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInFriendSign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6376,9 +4850,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInEnemySign"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6390,9 +4863,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInEnemyHouse"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6404,9 +4876,8 @@ class Calculate:
          """
         endpoint = "IsPlanetInFriendHouse"
         params = {
-            "PlanetName": planetName.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "planetName": planetName.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6418,8 +4889,7 @@ class Calculate:
          """
         endpoint = "BirthVarna"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6432,9 +4902,8 @@ class Calculate:
         endpoint = "AllPlanetsSignsFromPlanet"
         params = {
             "signsFromMoon": signsFromMoon,
-            "PlanetName": startPlanet.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "startPlanet": startPlanet.value,
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6447,8 +4916,7 @@ class Calculate:
         endpoint = "AllPlanetsInASignFromLagna"
         params = {
             "signsFromLagna": signsFromLagna,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6461,9 +4929,8 @@ class Calculate:
         endpoint = "AllPlanetsSignsFromPlanet"
         params = {
             "signsFromList": signsFromList,
-            "PlanetName": startPlanet.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "startPlanet": startPlanet.value,
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6476,9 +4943,8 @@ class Calculate:
         endpoint = "AllPlanetsSignsFromPlanet"
         params = {
             "signsFromList": signsFromList,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "PlanetName": startPlanet.value,
+            "birthTime": birthTime.to_json(),
+            "startPlanet": startPlanet.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6491,9 +4957,8 @@ class Calculate:
         endpoint = "AllPlanetsSignsFromPlanet"
         params = {
             "signsFromMoon": signsFromMoon,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
-            "PlanetName": startPlanet.value,
+            "birthTime": birthTime.to_json(),
+            "startPlanet": startPlanet.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -6506,8 +4971,7 @@ class Calculate:
         endpoint = "AllPlanetsInSignsFromLagna"
         params = {
             "signsFromList": signsFromList,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6521,9 +4985,8 @@ class Calculate:
         params = {
             "signsFromList": signsFromList,
             "planetList": planetList,
-            "PlanetName": startPlanet.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "startPlanet": startPlanet.value,
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6537,8 +5000,1202 @@ class Calculate:
         params = {
             "signsFromList": signsFromList,
             "planetList": planetList,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetAllHouseNirayanaMiddleLongitudes(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double[]
+         """
+        endpoint = "GetAllHouseNirayanaMiddleLongitudes"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllHouseLongitudes(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllHouseLongitudes"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetsInConjunction(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PlanetsInConjunction"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HouseFromPlanetByAspectOrKendra(cls, reference, target, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: HouseName
+         """
+        endpoint = "HouseFromPlanetByAspectOrKendra"
+        params = {
+            "reference": reference.value,
+            "target": target.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetInFriendlyDrekkana(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetInFriendlyDrekkana"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetVargottama(cls, planet, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetVargottama"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ArudhaOfHouse(cls, inputHouse, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: HouseName
+         """
+        endpoint = "ArudhaOfHouse"
+        params = {
+            "inputHouse": inputHouse.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetInGopuraAmsha(cls, planetName, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetInGopuraAmsha"
+        params = {
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MarakaPlanetList(cls, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetName[]
+         """
+        endpoint = "MarakaPlanetList"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsCruelNavamsa(cls, navamsaSign):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsCruelNavamsa"
+        params = {
+            "navamsaSign": navamsaSign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HasBalarishtaExceptions(cls, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "HasBalarishtaExceptions"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MaleficPlanetsAspectingPlanet(cls, receivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "MaleficPlanetsAspectingPlanet"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAspectedByMaleficPlanets(cls, receivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAspectedByMaleficPlanets"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetExalted(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetExalted"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsMercuryMalefic(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsMercuryMalefic"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Nutation(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "Nutation"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AscendantDegreesToARMC(cls, ascendant, obliquityOfEcliptic, geographicLatitude, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "AscendantDegreesToARMC"
+        params = {
+            "ascendant": ascendant,
+            "obliquityOfEcliptic": obliquityOfEcliptic,
+            "geographicLatitude": geographicLatitude,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AyanamsaDegree(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Angle
+         """
+        endpoint = "AyanamsaDegree"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetSayanaLongitude(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Angle
+         """
+        endpoint = "PlanetSayanaLongitude"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetNirayanaLongitude(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Angle
+         """
+        endpoint = "PlanetNirayanaLongitude"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NextLunarEclipse(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: DateTime
+         """
+        endpoint = "NextLunarEclipse"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NextSolarEclipse(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: DateTime
+         """
+        endpoint = "NextSolarEclipse"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetEphemerisLongitude(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Angle
+         """
+        endpoint = "PlanetEphemerisLongitude"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetSayanaLatitude(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Angle
+         """
+        endpoint = "PlanetSayanaLatitude"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetSpeed(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "PlanetSpeed"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ConstellationAtLongitude(cls, planetLongitude):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Constellation
+         """
+        endpoint = "ConstellationAtLongitude"
+        params = {
+            "planetLongitude": planetLongitude,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ZodiacSignAtLongitude(cls, longitude):
+        """
+        NO DESC FOUND!! ERROR
+        :return: ZodiacSign
+         """
+        endpoint = "ZodiacSignAtLongitude"
+        params = {
+            "longitude": longitude,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def LongitudeAtZodiacSign(cls, zodiacSign):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Angle
+         """
+        endpoint = "LongitudeAtZodiacSign"
+        params = {
+            "zodiacSign": zodiacSign,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DayOfWeek(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: DayOfWeek
+         """
+        endpoint = "DayOfWeek"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def LordOfHoraFromWeekday(cls, hora, day):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetName
+         """
+        endpoint = "LordOfHoraFromWeekday"
+        params = {
+            "hora": hora,
+            "day": day,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def LordOfHoraFromTime(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetName
+         """
+        endpoint = "LordOfHoraFromTime"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HouseJunctionPoint(cls, previousHouse, nextHouse):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Angle
+         """
+        endpoint = "HouseJunctionPoint"
+        params = {
+            "previousHouse": previousHouse,
+            "nextHouse": nextHouse,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def LordOfZodiacSign(cls, signName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetName
+         """
+        endpoint = "LordOfZodiacSign"
+        params = {
+            "signName": signName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ZodiacSignsOwnedByPlanet(cls, planetName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "ZodiacSignsOwnedByPlanet"
+        params = {
+            "planetName": planetName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NextZodiacSign(cls, inputSign):
+        """
+        NO DESC FOUND!! ERROR
+        :return: ZodiacName
+         """
+        endpoint = "NextZodiacSign"
+        params = {
+            "inputSign": inputSign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NextHouseNumber(cls, inputHouseNumber):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Int32
+         """
+        endpoint = "NextHouseNumber"
+        params = {
+            "inputHouseNumber": inputHouseNumber,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetExaltationPoint(cls, planetName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: ZodiacSign
+         """
+        endpoint = "PlanetExaltationPoint"
+        params = {
+            "planetName": planetName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetDebilitationPoint(cls, planetName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: ZodiacSign
+         """
+        endpoint = "PlanetDebilitationPoint"
+        params = {
+            "planetName": planetName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsEvenSign(cls, planetSignName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsEvenSign"
+        params = {
+            "planetSignName": planetSignName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsOddSign(cls, planetSignName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsOddSign"
+        params = {
+            "planetSignName": planetSignName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsFixedSign(cls, sunSign):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsFixedSign"
+        params = {
+            "sunSign": sunSign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsMovableSign(cls, sunSign):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsMovableSign"
+        params = {
+            "sunSign": sunSign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsCommonSign(cls, sunSign):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsCommonSign"
+        params = {
+            "sunSign": sunSign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetPermanentRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetToPlanetRelationship
+         """
+        endpoint = "PlanetPermanentRelationshipWithPlanet"
+        params = {
+            "mainPlanet": mainPlanet.value,
+            "secondaryPlanet": secondaryPlanet.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ConvertJulianTimeToNormalTime(cls, julianTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: DateTime
+         """
+        endpoint = "ConvertJulianTimeToNormalTime"
+        params = {
+            "julianTime": julianTime,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GreenwichTimeFromJulianDays(cls, julianTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: DateTimeOffset
+         """
+        endpoint = "GreenwichTimeFromJulianDays"
+        params = {
+            "julianTime": julianTime,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GreenwichLmtInJulianDays(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "GreenwichLmtInJulianDays"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def LmtToUtc(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: DateTimeOffset
+         """
+        endpoint = "LmtToUtc"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FunctionalMaleficPlanetList(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "FunctionalMaleficPlanetList"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetConjunctWithMaleficPlanets(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetConjunctWithMaleficPlanets"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllMaleficPlanetsAspecting(cls, planetReceivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllMaleficPlanetsAspecting"
+        params = {
+            "planetReceivingAspect": planetReceivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetMaleficToLagna(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetMaleficToLagna"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsMercuryAfflicted(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsMercuryAfflicted"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetBeneficToLagna(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetBeneficToLagna"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetFunctionalMalefic(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetFunctionalMalefic"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsMaleficPlanetAspectHouse(cls, house, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsMaleficPlanetAspectHouse"
+        params = {
+            "house": house.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetNaturalMalefic(cls, planetName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetNaturalMalefic"
+        params = {
+            "planetName": planetName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NaturalMaleficPlanetList(cls, ):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "NaturalMaleficPlanetList"
+        params = {
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PapaGrahasList(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PapaGrahasList"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetNaturalBenefic(cls, planetName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetNaturalBenefic"
+        params = {
+            "planetName": planetName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NaturalBeneficPlanetList(cls, ):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "NaturalBeneficPlanetList"
+        params = {
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SubhaGrahasList(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "SubhaGrahasList"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MaleficPlanetListForLagna(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "MaleficPlanetListForLagna"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PhysicallyHarmfulPlanetList(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PhysicallyHarmfulPlanetList"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetMaleficForLagna(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetMaleficForLagna"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetPhysicallyHarmful(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetPhysicallyHarmful"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetBeneficLordForLagna(cls, planetName, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetBeneficLordForLagna"
+        params = {
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetMaleficLordForLagna(cls, planetName, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetMaleficLordForLagna"
+        params = {
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetNeutralForLagna(cls, planetName, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetNeutralForLagna"
+        params = {
+            "planetName": planetName.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsMercuryAfflictedByMalefics(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsMercuryAfflictedByMalefics"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsMoonBenefic(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsMoonBenefic"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BeneficPlanetList(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "BeneficPlanetList"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetBenefic(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetBenefic"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsAllMaleficsInUpachayas(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsAllMaleficsInUpachayas"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MaleficPlanetListInSign(cls, sign, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "MaleficPlanetListInSign"
+        params = {
+            "sign": sign.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsMaleficPlanetInSign(cls, sign, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsMaleficPlanetInSign"
+        params = {
+            "sign": sign.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PhysicallyHarmfulPlanetsAspectingHouse(cls, house, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PhysicallyHarmfulPlanetsAspectingHouse"
+        params = {
+            "house": house.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsHarmfulPlanetAspectingHouse(cls, house, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsHarmfulPlanetAspectingHouse"
+        params = {
+            "house": house.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllPhysicallyHarmfulPlanetsAspecting(cls, planetReceivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllPhysicallyHarmfulPlanetsAspecting"
+        params = {
+            "planetReceivingAspect": planetReceivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAspectedByPhysicallyHarmfulPlanets(cls, planetReceivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAspectedByPhysicallyHarmfulPlanets"
+        params = {
+            "planetReceivingAspect": planetReceivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllPhysicallyHarmfulPlanetsConjunctWith(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllPhysicallyHarmfulPlanetsConjunctWith"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetConjunctWithPhysicallyHarmfulPlanets(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetConjunctWithPhysicallyHarmfulPlanets"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsMaleficPlanetInHouse(cls, houseNumber, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsMaleficPlanetInHouse"
+        params = {
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetHemmedByMalefics(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetHemmedByMalefics"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetInBeneficSign(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetInBeneficSign"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetWeak(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetWeak"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAfflicted(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAfflicted"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAfflictedSpecificallyByPlanets(cls, afflictedPlanet, damagingPlanets, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAfflictedSpecificallyByPlanets"
+        params = {
+            "afflictedPlanet": afflictedPlanet.value,
+            "damagingPlanets": damagingPlanets,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetTemporaryFriendList(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PlanetTemporaryFriendList"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetInGoodAspectToPlanet(cls, receivingAspect, transmitingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetInGoodAspectToPlanet"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "transmitingAspect": transmitingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllPlanetsInBadAspectToPlanet(cls, receivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllPlanetsInBadAspectToPlanet"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetReceivingBadAspects(cls, receivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetReceivingBadAspects"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetInGoodAspectToHouse(cls, receivingAspect, transmitingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetInGoodAspectToHouse"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "transmitingAspect": transmitingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllPlanetsInBadAspectToHouse(cls, receivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllPlanetsInBadAspectToHouse"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetInBadAspectToHouse(cls, receivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetInBadAspectToHouse"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6551,9 +6208,8 @@ class Calculate:
         endpoint = "IsBeneficsInSignsFromPlanet"
         params = {
             "signsFromList": signsFromList,
-            "PlanetName": startPlanet.value,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "startPlanet": startPlanet.value,
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6566,48 +6222,1286 @@ class Calculate:
         endpoint = "IsBeneficsInSignsFromLagna"
         params = {
             "signsFromList": signsFromList,
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def GetAllHouseNirayanaMiddleLongitudes(cls, time):
+    def SunAndMoonWellPlacedAndAspected(cls, birthTime):
         """
         NO DESC FOUND!! ERROR
-        :return: Double[]
+        :return: Boolean
          """
-        endpoint = "GetAllHouseNirayanaMiddleLongitudes"
+        endpoint = "SunAndMoonWellPlacedAndAspected"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def AllHouseLongitudes(cls, time):
+    def IsBeneficsInKendra(cls, time):
         """
         NO DESC FOUND!! ERROR
-        :return: List`1
+        :return: Boolean
          """
-        endpoint = "AllHouseLongitudes"
+        endpoint = "IsBeneficsInKendra"
         params = {
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def PlanetsInConjunction(cls, inputPlanet, time):
+    def BeneficPlanetListInSign(cls, sign, time):
         """
         NO DESC FOUND!! ERROR
         :return: List`1
          """
-        endpoint = "PlanetsInConjunction"
+        endpoint = "BeneficPlanetListInSign"
         params = {
-            "PlanetName": inputPlanet.value,
-            "Location": time.geolocation.location_name,
-            "Time": time.url_time_string(),
+            "sign": sign.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsBeneficPlanetInSign(cls, sign, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsBeneficPlanetInSign"
+        params = {
+            "sign": sign.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BeneficPlanetsAspectingHouse(cls, house, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "BeneficPlanetsAspectingHouse"
+        params = {
+            "house": house.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsBeneficPlanetAspectHouse(cls, house, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsBeneficPlanetAspectHouse"
+        params = {
+            "house": house.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BeneficPlanetsAspectingPlanet(cls, lord, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "BeneficPlanetsAspectingPlanet"
+        params = {
+            "lord": lord.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAspectedByBeneficPlanets(cls, lord, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAspectedByBeneficPlanets"
+        params = {
+            "lord": lord.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAspectedByEnemyPlanets(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAspectedByEnemyPlanets"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAspectedByFriendPlanets(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAspectedByFriendPlanets"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllPlanetsInEnemyConjunctionWith(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllPlanetsInEnemyConjunctionWith"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetConjunctWithEnemyPlanets(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetConjunctWithEnemyPlanets"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllPlanetsInFriendConjunctionWith(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllPlanetsInFriendConjunctionWith"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetConjunctWithFriendPlanets(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetConjunctWithFriendPlanets"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsBeneficPlanetInHouse(cls, houseNumber, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsBeneficPlanetInHouse"
+        params = {
+            "houseNumber": houseNumber.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetRelationshipWithSign(cls, planetName, zodiacSignName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetToSignRelationship
+         """
+        endpoint = "PlanetRelationshipWithSign"
+        params = {
+            "planetName": planetName.value,
+            "zodiacSignName": zodiacSignName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetCombinedRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetToPlanetRelationship
+         """
+        endpoint = "PlanetCombinedRelationshipWithPlanet"
+        params = {
+            "mainPlanet": mainPlanet.value,
+            "secondaryPlanet": secondaryPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetRelationshipWithHouse(cls, house, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetToSignRelationship
+         """
+        endpoint = "PlanetRelationshipWithHouse"
+        params = {
+            "house": house.value,
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetTemporaryRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetToPlanetRelationship
+         """
+        endpoint = "PlanetTemporaryRelationshipWithPlanet"
+        params = {
+            "mainPlanet": mainPlanet.value,
+            "secondaryPlanet": secondaryPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetFortified(cls, planet, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetFortified"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetsInAspect(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PlanetsInAspect"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetAspectDegree(cls, receiver, trasmitter, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "PlanetAspectDegree"
+        params = {
+            "receiver": receiver.value,
+            "trasmitter": trasmitter.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetsAspectingPlanet(cls, receivingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PlanetsAspectingPlanet"
+        params = {
+            "receivingAspect": receivingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HousesInAspect(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "HousesInAspect"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetsAspectingHouse(cls, inputHouse, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "PlanetsAspectingHouse"
+        params = {
+            "inputHouse": inputHouse.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetAspectedByPlanet(cls, receiveingAspect, transmitingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetAspectedByPlanet"
+        params = {
+            "receiveingAspect": receiveingAspect.value,
+            "transmitingAspect": transmitingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsHouseAspectedByPlanet(cls, receiveingAspect, transmitingAspect, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsHouseAspectedByPlanet"
+        params = {
+            "receiveingAspect": receiveingAspect.value,
+            "transmitingAspect": transmitingAspect.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetConjunctWithPlanet(cls, planetA, planetB, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetConjunctWithPlanet"
+        params = {
+            "planetA": planetA.value,
+            "planetB": planetB.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllBeneficPlanetsInGoodConjunctionWith(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllBeneficPlanetsInGoodConjunctionWith"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetConjunctWithBeneficPlanets(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetConjunctWithBeneficPlanets"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllHarmfulPlanetsInBadConjunctionWith(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllHarmfulPlanetsInBadConjunctionWith"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetReceivingHarmfulConjunctions(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetReceivingHarmfulConjunctions"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetPowerPercentage(cls, inputPlanet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "PlanetPowerPercentage"
+        params = {
+            "inputPlanet": inputPlanet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PickOutStrongestPlanet(cls, relatedPlanets, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: PlanetName
+         """
+        endpoint = "PickOutStrongestPlanet"
+        params = {
+            "relatedPlanets": relatedPlanets,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllPlanetOrderedByStrength(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllPlanetOrderedByStrength"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetStrongInShadbala(cls, planet, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetStrongInShadbala"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsHouseStrongInShadbala(cls, house, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsHouseStrongInShadbala"
+        params = {
+            "house": house.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsHouseWeakInShadbala(cls, house, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsHouseWeakInShadbala"
+        params = {
+            "house": house.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HouseStrengthCategory(cls, house, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Strength
+         """
+        endpoint = "HouseStrengthCategory"
+        params = {
+            "house": house.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllPlanetStrength(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "AllPlanetStrength"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AllHousesOrderedByStrength(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: HouseName[]
+         """
+        endpoint = "AllHousesOrderedByStrength"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetShadbalaPinda(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetShadbalaPinda"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetStrength(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetStrength"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetDrikBala(cls, target, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetDrikBala"
+        params = {
+            "target": target.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DistanceBetweenPlanets(cls, a, b):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Angle
+         """
+        endpoint = "DistanceBetweenPlanets"
+        params = {
+            "a": a,
+            "b": b,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FindViseshaDrishti(cls, dk, p):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "FindViseshaDrishti"
+        params = {
+            "dk": dk,
+            "p": p.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def FindDrishtiValue(cls, dk):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "FindDrishtiValue"
+        params = {
+            "dk": dk,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetNaisargikaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetNaisargikaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetChestaBala(cls, planetName, time, useSpecialSunMoon):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetChestaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+            "useSpecialSunMoon": useSpecialSunMoon,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Madhya(cls, epochToBirthDays, time1):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Dictionary`2
+         """
+        endpoint = "Madhya"
+        params = {
+            "epochToBirthDays": epochToBirthDays,
+            "time1": time1.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def EpochInterval(cls, time1):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "EpochInterval"
+        params = {
+            "time1": time1.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetRetrograde(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetRetrograde"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetCombust(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Boolean
+         """
+        endpoint = "IsPlanetCombust"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetCirculationTime(cls, planetName):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "PlanetCirculationTime"
+        params = {
+            "planetName": planetName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetSaptavargajaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetSaptavargajaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetSthanaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetSthanaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetDrekkanaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetDrekkanaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetKendraBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetKendraBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetOjayugmarasyamsaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetOjayugmarasyamsaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetKalaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetKalaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetYuddhaBala(cls, target, preKalaBalaValues, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetYuddhaBala"
+        params = {
+            "target": target.value,
+            "preKalaBalaValues": preKalaBalaValues,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetAyanaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetAyanaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetDeclination(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "PlanetDeclination"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def EclipticObliquity(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "EclipticObliquity"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetHoraBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetHoraBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetAbdaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetAbdaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetMasaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetMasaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetVaraBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetVaraBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def YearAndMonthLord(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Object
+         """
+        endpoint = "YearAndMonthLord"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetTribhagaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetTribhagaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetOchchaBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetOchchaBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetPakshaBala(cls, planet, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetPakshaBala"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetNathonnathaBala(cls, planet, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetNathonnathaBala"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetDigBala(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "PlanetDigBala"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HouseStrength(cls, inputHouse, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Shashtiamsa
+         """
+        endpoint = "HouseStrength"
+        params = {
+            "inputHouse": inputHouse.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BhavaDrishtiBala(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: HouseSubStrength
+         """
+        endpoint = "BhavaDrishtiBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BhavaDigBala(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: HouseSubStrength
+         """
+        endpoint = "BhavaDigBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BhavaAdhipathiBala(cls, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: HouseSubStrength
+         """
+        endpoint = "BhavaAdhipathiBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BeneficPlanetListByShadbala(cls, personBirthTime, threshold):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "BeneficPlanetListByShadbala"
+        params = {
+            "personBirthTime": personBirthTime.to_json(),
+            "threshold": threshold,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BeneficPlanetListByShadbala(cls, personBirthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "BeneficPlanetListByShadbala"
+        params = {
+            "personBirthTime": personBirthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BeneficHouseListByShadbala(cls, personBirthTime, threshold):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "BeneficHouseListByShadbala"
+        params = {
+            "personBirthTime": personBirthTime.to_json(),
+            "threshold": threshold,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BeneficHouseListByShadbala(cls, personBirthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "BeneficHouseListByShadbala"
+        params = {
+            "personBirthTime": personBirthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MaleficPlanetListByShadbala(cls, personBirthTime, threshold):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "MaleficPlanetListByShadbala"
+        params = {
+            "personBirthTime": personBirthTime.to_json(),
+            "threshold": threshold,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MaleficPlanetListByShadbala(cls, personBirthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "MaleficPlanetListByShadbala"
+        params = {
+            "personBirthTime": personBirthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MaleficHouseListByShadbala(cls, personBirthTime, threshold):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "MaleficHouseListByShadbala"
+        params = {
+            "personBirthTime": personBirthTime.to_json(),
+            "threshold": threshold,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MaleficHouseListByShadbala(cls, personBirthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: List`1
+         """
+        endpoint = "MaleficHouseListByShadbala"
+        params = {
+            "personBirthTime": personBirthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ResidentialStrength(cls, planetName, time):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "ResidentialStrength"
+        params = {
+            "planetName": planetName.value,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetIshtaKashtaScoreDegree(cls, planet, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "PlanetIshtaKashtaScoreDegree"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetKashtaScore(cls, planet, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "PlanetKashtaScore"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetIshtaScore(cls, planet, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "PlanetIshtaScore"
+        params = {
+            "planet": planet.value,
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def CalculateAshtamangalaNumberFromShells(cls, leftPile, centerPile, rightPile, totalShells):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Int32
+         """
+        endpoint = "CalculateAshtamangalaNumberFromShells"
+        params = {
+            "leftPile": leftPile,
+            "centerPile": centerPile,
+            "rightPile": rightPile,
+            "totalShells": totalShells,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Chapter7Predictions(cls, ashtamangalaRootNumber, birthTime, queryTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: JObject
+         """
+        endpoint = "Chapter7Predictions"
+        params = {
+            "ashtamangalaRootNumber": ashtamangalaRootNumber,
+            "birthTime": birthTime.to_json(),
+            "queryTime": queryTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Chapter8Predictions(cls, ashtamangalaRootNumber, birthTime, queryTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: JObject
+         """
+        endpoint = "Chapter8Predictions"
+        params = {
+            "ashtamangalaRootNumber": ashtamangalaRootNumber,
+            "birthTime": birthTime.to_json(),
+            "queryTime": queryTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Chapter17Predictions(cls, queryTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: JObject
+         """
+        endpoint = "Chapter17Predictions"
+        params = {
+            "queryTime": queryTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Chapter18Predictions(cls, queryTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: JObject
+         """
+        endpoint = "Chapter18Predictions"
+        params = {
+            "queryTime": queryTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Chapter23Predictions(cls, queryTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: JObject
+         """
+        endpoint = "Chapter23Predictions"
+        params = {
+            "queryTime": queryTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Chapter24Predictions(cls, queryTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: JObject
+         """
+        endpoint = "Chapter24Predictions"
+        params = {
+            "queryTime": queryTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Chapter29Predictions(cls, queryTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: JObject
+         """
+        endpoint = "Chapter29Predictions"
+        params = {
+            "queryTime": queryTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def RootNumberFriendship(cls, rootNumberA, rootNumberB):
+        """
+        NO DESC FOUND!! ERROR
+        :return: String
+         """
+        endpoint = "RootNumberFriendship"
+        params = {
+            "rootNumberA": rootNumberA,
+            "rootNumberB": rootNumberB,
         }
         return cls._make_request(endpoint, params)
 
@@ -6619,8 +7513,7 @@ class Calculate:
          """
         endpoint = "BirthNumber"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6632,8 +7525,7 @@ class Calculate:
          """
         endpoint = "DestinyNumber"
         params = {
-            "Location": birthTime.geolocation.location_name,
-            "Time": birthTime.url_time_string(),
+            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -6660,3 +7552,56 @@ class Calculate:
             "fullName": fullName,
         }
         return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AIGenerateNames(cls, nameDescription, numberOfNames, excludeNames):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Task`1
+         """
+        endpoint = "AIGenerateNames"
+        params = {
+            "nameDescription": nameDescription,
+            "numberOfNames": numberOfNames,
+            "excludeNames": excludeNames,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MainActivity(cls, birthTime, checkTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: BirdActivity
+         """
+        endpoint = "MainActivity"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def BirthYamaPanchaPakshi(cls, t):
+        """
+        NO DESC FOUND!! ERROR
+        :return: BirthYama
+         """
+        endpoint = "BirthYamaPanchaPakshi"
+        params = {
+            "t": t.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PanchaPakshiBirthBird(cls, birthTime):
+        """
+        NO DESC FOUND!! ERROR
+        :return: BirdName
+         """
+        endpoint = "PanchaPakshiBirthBird"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+

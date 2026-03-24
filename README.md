@@ -1,73 +1,89 @@
-<h1> ✨ Vedic Astrology in Python</h1>
+# VedAstro Python
 
+[![PyPI version](https://img.shields.io/pypi/v/vedastro)](https://pypi.org/project/vedastro/)
+[![Python](https://img.shields.io/pypi/pyversions/vedastro)](https://pypi.org/project/vedastro/)
 [![License](https://img.shields.io/github/license/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/blob/main/LICENSE)
-[![GitHub Issues](https://img.shields.io/github/issues/VedAstro/VedAstro.Python)](https://github.com/VedAstro/VedAstro.Python/issues)
 
+Python wrapper for the [VedAstro.org](https://vedastro.org) Vedic Astrology API. Perform complex Vedic astrology calculations including planet positions, house analysis, match compatibility, event predictions, and more.
 
-# 🙏 How VedAstro can help you...
+## Features
 
-- [Website](https://vedastro.org) --> easy & fast astrology data for **normal users**
-- [AI Astrologer](https://vedastro.org/AstrologerChat.html) --> 🤖 World's 1st open source **Vedic AI astrologer**
-- [Numerology](https://vedastro.org/Numerology.html) --> Accurate Name Numerology using **Mantra Shastra**
+- **596 API methods** auto-generated from the VedAstro engine
+- Planet positions, houses, divisional charts (D1-D60)
+- Match compatibility (Kuta system) reports
+- Muhurtha / event predictions with time ranges
+- AI-powered birth time lookup for famous persons
+- Vimshottari Dasa period calculations
 
+## Installation
 
-# 🗺️ What can this do?
-Easily code complex vedic astrology math and logic.
-A powerful tool for astronomical calculations and data analysis. It provides a collection of functions and classes to perform various astronomical calculations, such as celestial object positions, time conversions, coordinate transformations, and more.
-
-
-# 🏎️ Quick Start
-
-**Step 1:** Run `pip install vedastro`
-
-**Step 2:** Do astro calculation in less than 10 lines
-```python
-from vedastro import * 
-
-#PART 1 : PREPARE NEEDED DATA
-#-----------------------------------
-
-# set birth location
-geolocation = GeoLocation("Tokyo, Japan", 139.83, 35.65)
-
-# group all birth time data together (day/month/year)
-birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
-
-#PART 2 : CALCULATE ALL DATA
-#-----------------------------------
-
-#PLANETS
-allPlanetDataList = Calculate.AllPlanetData(PlanetName.Sun, birth_time)
-print(json.dumps(allPlanetDataList, indent=4))
-
-#HOUSES
-allHouseDataList = Calculate.AllHouseData(HouseName.House1, birth_time)
-print(json.dumps(allHouseDataList, indent=4))
-
-#ZODIAC SIGNS
-allZodiacDataList = Calculate.AllZodiacSignData(ZodiacName.Gemini, birth_time)
-print(json.dumps(allZodiacDataList, indent=4))
+```bash
+pip install vedastro
 ```
 
-**Step 3:** Done ✅
+## Quick Start
 
-# 🧮 +400 Calculations
-![400-plus-calculation-python](https://vedastro.org/images/400-plus-calculation-python.gif)
+```python
+from vedastro import *
 
+# Optional: set API key (get one at vedastro.org/Account)
+# Calculate.SetAPIKey("your-api-key")
 
+# Create location and time
+geo = GeoLocation("Tokyo, Japan", 139.83, 35.65)
+birth_time = Time(hour=23, minute=40, day=31, month=12, year=2010, offset="+08:00", geolocation=geo)
 
-# ⚙️ How it works
-Coded & compiled [in C#](https://github.com/VedAstro/VedAstro) for **maximum CPU computation efficency and speed**, then made available in a Python wrapper. Can be run in Linux, Windows & Mac OS.
+# Alternative: single string format
+# birth_time = Time("23:40 31/12/2010 +08:00", geo)
 
+# Planet data
+result = Calculate.AllPlanetData(birth_time, PlanetName.Sun)
+Tools.Print(result)
 
--------------------
+# House data
+result = Calculate.AllHouseData(birth_time, HouseName.House1)
+Tools.Print(result)
+
+# Match compatibility
+male_geo = GeoLocation("New York, USA", -74.006, 40.7128)
+male_time = Time("14:30 15/06/1990 -05:00", male_geo)
+female_geo = GeoLocation("London, UK", -0.1276, 51.5074)
+female_time = Time("09:15 22/03/1992 +00:00", female_geo)
+
+match = Calculate.MatchReport(male_time, female_time)
+print(match)
+```
+
+## API Key
+
+- Without an API key, requests use the free tier (rate limited)
+- Get a subscriber API key at [vedastro.org/Account](https://vedastro.org/Account)
+- Set it before making calls: `Calculate.SetAPIKey("your-key")`
+
+## Method Categories
+
+| Category | Examples |
+|----------|---------|
+| **Planet** | `AllPlanetData`, `PlanetNirayanaLongitude`, `PlanetsInConjunction` |
+| **House** | `AllHouseData`, `HouseSignName`, `AllHouseRasiSigns` |
+| **Zodiac** | `AllZodiacSignData`, `IsPlanetInSign` |
+| **Match** | `MatchReport`, `MatchReportWithBazi`, `MatchChat` |
+| **Events** | `EventsAtTime`, `EventsAtRange`, `EventStartTime` |
+| **AI** | `BirthTimeAutoAIFill`, `HoroscopeLLMSearch` |
+| **Divisional Charts** | `AllHouseNavamshaSigns`, `AllHouseDrekkanaSigns`, etc. |
+
+Full API reference: [vedastro.org/APIBuilder](https://vedastro.org/APIBuilder)
+
+## How It Works
+
+This package calls the VedAstro REST API, which runs the core Vedic astrology engine on cloud servers. All calculations are performed server-side — no local dependencies beyond Python and `requests`.
 
 ## Contributing
 
-Contributions to VedAstro Python are welcome! If you find a bug, have a feature request, or want to contribute code, please open an issue or submit a pull request. Make sure to read our [contribution guidelines](https://github.com/VedAstro/VedAstro.Python/CONTRIBUTING.md) before getting started.
+Contributions welcome! Please open an issue or submit a pull request.
+
+**Important:** `vedastro/calculate.py` is auto-generated by the [StaticTableGenerator](https://github.com/VedAstro/VedAstro) in the main repo. Do not edit it directly.
 
 ## License
 
-VedAstro Python is released under the MIT License. See [LICENSE](https://github.com/VedAstro/VedAstro.Python/LICENSE) for more information.
-
-
+Released under the [MIT License](LICENSE).
