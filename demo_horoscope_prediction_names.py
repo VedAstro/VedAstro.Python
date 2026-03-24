@@ -1,7 +1,10 @@
 from vedastro import *  # install via pip
 
 # PART 0 : Set API key
-Calculate.SetAPIKey('FreeAPIUser')  # ⚡ unlimited speed  API key from "vedastro.org/Account"
+Calculate.SetAPIKey('FreeAPIUser')  # ⚡ unlimited speed  API key from "vedastro.org/API.html"
+
+# PART 1 : PREPARE NEEDED DATA
+#-----------------------------------
 
 # set location
 geolocation = GeoLocation("Tokyo, Japan", 139.83, 35.65)
@@ -13,4 +16,4 @@ birthTime = Time("23:40 31/12/2010 +08:00", geolocation)
 calcResult = Calculate.HoroscopePredictionNames(birthTime)
 
 # display results
-print(json.dumps(calcResult, indent=4))
+Tools.Print(calcResult)

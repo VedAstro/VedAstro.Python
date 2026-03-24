@@ -18,13 +18,15 @@ birth_time = Time("23:40 31/12/2010 +08:00", geolocation)
 
 #PLANETS
 allPlanetDataList = Calculate.AllPlanetData(PlanetName.Sun, birth_time)
-Tools.Print(allPlanetDataList)
+jsonStringA = Tools.AnyToJSON("", allPlanetDataList)
+print(jsonStringA)
 
 #HOUSES
 allHouseDataList = Calculate.AllHouseData(HouseName.House1, birth_time)
-Tools.Print(allHouseDataList)
+jsonStringB = Tools.AnyToJSON("", allHouseDataList)
+print(jsonStringB)
 
 #ZODIAC SIGNS
 allZodiacDataList = Calculate.AllZodiacSignData(ZodiacName.Gemini, birth_time)
-Tools.Print(allZodiacDataList)
-
+jsonStringC = Tools.AnyToJSON("", allZodiacDataList)
+print(jsonStringC)

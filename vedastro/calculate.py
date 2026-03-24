@@ -9,6 +9,7 @@ from enum import Enum
 
 class Calculate:
     api_key = None
+    ayanamsa = None
     base_url = "https://vedastro.azurewebsites.net/api/Calculate"
 
     @classmethod
@@ -16,10 +17,16 @@ class Calculate:
         cls.api_key = api_key
 
     @classmethod
+    def SetAyanamsa(cls, ayanamsa):
+        cls.ayanamsa = ayanamsa
+
+    @classmethod
     def _make_request(cls, endpoint, params):
         url = f"{cls.base_url}/{endpoint}"
         if cls.api_key:
             params["APIKey"] = cls.api_key
+        if cls.ayanamsa:
+            params["Ayanamsa"] = cls.ayanamsa.value if hasattr(cls.ayanamsa, 'value') else cls.ayanamsa
         response = requests.post(url, json=params, timeout=120)
         response.raise_for_status()
         data = response.json()

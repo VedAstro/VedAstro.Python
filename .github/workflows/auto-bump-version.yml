@@ -25,10 +25,6 @@ jobs:
           new_version="${major}.${minor}.${patch}"
           echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
 
-      - name: Update version in meta.yaml
-        run: |
-          sed -i "s/version: .*/version: $NEW_VERSION/" vedastro/meta.yaml
-
       - name: Update version in setup.py
         run: |
           sed -i "s/version='.*'/version='$NEW_VERSION'/" setup.py

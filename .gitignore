@@ -1,6 +1,28 @@
-
-vedastro/__pycache__/
-
-.vs/
-
+# Python
 __pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDE
+.idea/
+.vs/
+.claude/
+
+# Virtual environments
+venv/
+.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+
+# Generated output
+*.csv
+
+# Environment
+.env
+.env.local
