@@ -36,9 +36,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install poetry
 
-    - name: Get current version
+    - name: Get current version from PyPI
       run: |
-        current_version=$(grep '^version' pyproject.toml | head -1 | cut -d'"' -f2)
+        current_version=$(pip index versions VedAstro 2>/dev/null | head -1 | grep -oP '\(\K[^)]+' || echo "0.0.0")
         echo "CURRENT_VERSION=$current_version" >> $GITHUB_ENV
 
     - name: Bump version
