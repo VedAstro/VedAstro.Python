@@ -1,7 +1,17 @@
 # VedAstro Python Library - REST API Mode
 # https://vedastro.org
 
-print("VedAstro - Made & Funded by Users - https://vedastro.org/Donate\n")
+from colorama import Fore, Style
+
+print(Fore.CYAN + "══════════════════════════════════════════════════════" + Style.RESET_ALL)
+print(Fore.CYAN + "  🪐 VedAstro" + Style.RESET_ALL + " - Vedic Astrology Library")
+print("  Open-source & powerful astronomical calculations")
+print()
+print("  🌐 " + Fore.BLUE + "https://vedastro.org" + Style.RESET_ALL)
+print("  📖 " + Fore.BLUE + "https://vedastro.org/API" + Style.RESET_ALL)
+print("  💖 " + Fore.BLUE + "https://vedastro.org/Donate" + Style.RESET_ALL)
+print(Fore.CYAN + "══════════════════════════════════════════════════════" + Style.RESET_ALL)
+print()
 
 from .update_check import check_for_update
 check_for_update("vedastro")

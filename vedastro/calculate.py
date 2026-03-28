@@ -15,6 +15,9 @@ class Calculate:
     @classmethod
     def SetAPIKey(cls, api_key):
         cls.api_key = api_key
+        if api_key and api_key != "FreeAPIUser":
+            from colorama import Fore, Style
+            print(Fore.GREEN + "⭐ Thank you for subscribing! Your support keeps VedAstro free & open-source." + Style.RESET_ALL)
 
     @classmethod
     def SetAyanamsa(cls, ayanamsa):
