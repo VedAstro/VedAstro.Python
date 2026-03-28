@@ -12,5 +12,5 @@ setup(
         'colorama',
         'requests',
     ],
-    python_requires='>=3.9,<3.13',
+    python_requires='>=3.9,<4.0',
 )
