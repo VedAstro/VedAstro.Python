@@ -9,6 +9,8 @@ on:
       - main
     paths-ignore:
       - '**.md'
+      - 'pyproject.toml'
+      - 'setup.py'
   workflow_dispatch:
 jobs:
   deploy:
