@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 14:21 18/05/2026 +07:00
+# AUTO GENERATED ON 13:25 16/06/2026 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -166,7 +166,7 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def SearchSourceText(cls, query, topK=5, sourceName=None):
+    def SearchSourceText(cls, query, topK=5, sourceName=None, contextSize=600):
         """
          Naturallanguage semantic search over the classical Vedic astrology sourcetext knowledge base e.g. Hindu Predictive Astrology BPHS. Returns topK most relevant passages with sourceName pageNumber chunkIndex text and similarity score. Powered by the same DashScope embeddings Cosmos DB vector index used by ContextBasedAstrologyDatas RAG enrichment step. 
         :return: Task`1
@@ -176,6 +176,18 @@ class Calculate:
             "query": query,
             "topK": topK,
             "sourceName": sourceName,
+            "contextSize": contextSize,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetAvailableSourceTexts(cls, ):
+        """
+         Returns a list of all available source text names in the knowledge base. Used by the frontend dropdown to dynamically show which classical texts are searchable. 
+        :return: Task`1
+         """
+        endpoint = "GetAvailableSourceTexts"
+        params = {
         }
         return cls._make_request(endpoint, params)
 
@@ -355,6 +367,61 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
+    def SearchEvents(cls, birthTime, atTime, eventTagList):
+        """
+         Searches for all matching events that are active at a single moment in time. This is the snapshot form of event discovery it answers what is happening right now. 
+        :return: List`1
+         """
+        endpoint = "SearchEvents"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "atTime": atTime.to_json(),
+            "eventTagList": eventTagList,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SearchEvents(cls, birthTime, startTime, endTime, eventTagList, precisionHours=100):
+        """
+         Searches for all matching events that occur within a specified time range. This is the workhorse for timeline and calendar views it answers what happens during this period. 
+        :return: List`1
+         """
+        endpoint = "SearchEvents"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "startTime": startTime.to_json(),
+            "endTime": endTime.to_json(),
+            "eventTagList": eventTagList,
+            "precisionHours": precisionHours,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetEventTiming(cls, birthTime, checkTime, nameOfEvent):
+        """
+         Resolves the full timing window start and end for a single specific event given a moment at which the event is believed to be active. If the event is not active at the supplied check time returns Event.Empty. 
+        :return: Event
+         """
+        endpoint = "GetEventTiming"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
+            "nameOfEvent": nameOfEvent,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ListEventTypes(cls, ):
+        """
+         Returns the full list of event definitions supported by the engine. Used for discovery autocomplete dropdowns app builders and any UI that needs to enumerate what kinds of events the system can compute. 
+        :return: List`1
+         """
+        endpoint = "ListEventTypes"
+        params = {
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
     def MatchReport(cls, maleBirthTime, femaleBirthTime):
         """
          Creates a full Kutabased compatibility report for two birth times. The method wraps the male and female birth times into temporary Person objects passes those objects into the compatibility engine returns the generated MatchReport. This is the core compatibility method for producing a standard Vedic match report between two charts. 
@@ -438,6 +505,18 @@ class Calculate:
         endpoint = "MarriagePartnerNameAutoAIFill"
         params = {
             "personFullName": personFullName,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AIBirthDataParser(cls, birthDataRawText):
+        """
+         Accepts a freeform naturallanguage birth description and returns a parsed Person JSON object. Sends the raw text to the Rahu Nova LLM and converts the reply to a valid Person instance. Defaults GenderFemale Time1200 noon LocationNew Delhi India 0530. 
+        :return: Task`1
+         """
+        endpoint = "AIBirthDataParser"
+        params = {
+            "birthDataRawText": birthDataRawText,
         }
         return cls._make_request(endpoint, params)
 
