@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 13:25 16/06/2026 +08:00
+# AUTO GENERATED ON 10:38 18/06/2026 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -380,21 +380,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def SearchEvents(cls, birthTime, startTime, endTime, eventTagList, precisionHours=100):
-        """
-         Searches for all matching events that occur within a specified time range. This is the workhorse for timeline and calendar views it answers what happens during this period. 
-        :return: List`1
-         """
-        endpoint = "SearchEvents"
-        params = {
-            "birthTime": birthTime.to_json(),
-            "startTime": startTime.to_json(),
-            "endTime": endTime.to_json(),
-            "eventTagList": eventTagList,
-            "precisionHours": precisionHours,
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'SearchEvents(TimebirthTime,TimestartTime,TimeendTime,List<EventTag>eventTagList,intprecisionHours)' not exposed - Python has no method
+    #       overloading; the API resolves 'SearchEvents' to its first definition only.
 
     @classmethod
     def GetEventTiming(cls, birthTime, checkTime, nameOfEvent):
@@ -3789,19 +3776,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def IsPlanetAspectingHouse(cls, planet, houseNumber, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetAspectingHouse"
-        params = {
-            "planet": planet.value,
-            "houseNumber": houseNumber,
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'IsPlanetAspectingHouse(PlanetNameplanet,inthouseNumber,Timetime)' not exposed - Python has no method
+    #       overloading; the API resolves 'IsPlanetAspectingHouse' to its first definition only.
 
     @classmethod
     def IsWaxingMoon(cls, birthTime):
@@ -4619,17 +4595,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def LordOfWeekday(cls, weekday):
-        """
-        NO DESC FOUND!! ERROR
-        :return: PlanetName
-         """
-        endpoint = "LordOfWeekday"
-        params = {
-            "weekday": weekday,
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'LordOfWeekday(DayOfWeekweekday)' not exposed - Python has no method
+    #       overloading; the API resolves 'LordOfWeekday' to its first definition only.
 
     @classmethod
     def IshtaKaala(cls, birthTime):
@@ -4742,18 +4709,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def IsPlanetInKendra(cls, planetList, time):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Boolean
-         """
-        endpoint = "IsPlanetInKendra"
-        params = {
-            "planetList": planetList,
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'IsPlanetInKendra(PlanetName[]planetList,Timetime)' not exposed - Python has no method
+    #       overloading; the API resolves 'IsPlanetInKendra' to its first definition only.
 
     @classmethod
     def IsPlanetInKendraFromPlanet(cls, kendraFrom, kendraTo, time):
@@ -5198,47 +5155,14 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def AllPlanetsSignsFromPlanet(cls, signsFromList, startPlanet, birthTime):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "AllPlanetsSignsFromPlanet"
-        params = {
-            "signsFromList": signsFromList,
-            "startPlanet": startPlanet.value,
-            "birthTime": birthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'AllPlanetsSignsFromPlanet(int[]signsFromList,PlanetNamestartPlanet,TimebirthTime)' not exposed - Python has no method
+    #       overloading; the API resolves 'AllPlanetsSignsFromPlanet' to its first definition only.
 
-    @classmethod
-    def AllPlanetsSignsFromPlanet(cls, signsFromList, birthTime, startPlanet):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "AllPlanetsSignsFromPlanet"
-        params = {
-            "signsFromList": signsFromList,
-            "birthTime": birthTime.to_json(),
-            "startPlanet": startPlanet.value,
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'AllPlanetsSignsFromPlanet(int[]signsFromList,TimebirthTime,PlanetNamestartPlanet)' not exposed - Python has no method
+    #       overloading; the API resolves 'AllPlanetsSignsFromPlanet' to its first definition only.
 
-    @classmethod
-    def AllPlanetsSignsFromPlanet(cls, signsFromMoon, birthTime, startPlanet):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "AllPlanetsSignsFromPlanet"
-        params = {
-            "signsFromMoon": signsFromMoon,
-            "birthTime": birthTime.to_json(),
-            "startPlanet": startPlanet.value,
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'AllPlanetsSignsFromPlanet(intsignsFromMoon,TimebirthTime,PlanetNamestartPlanet)' not exposed - Python has no method
+    #       overloading; the API resolves 'AllPlanetsSignsFromPlanet' to its first definition only.
 
     @classmethod
     def AllPlanetsInSignsFromLagna(cls, signsFromList, birthTime):
@@ -7079,18 +7003,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def DistanceBetweenPlanets(cls, a, b):
-        """
-        NO DESC FOUND!! ERROR
-        :return: Angle
-         """
-        endpoint = "DistanceBetweenPlanets"
-        params = {
-            "a": a,
-            "b": b,
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'DistanceBetweenPlanets(Anglea,Angleb)' not exposed - Python has no method
+    #       overloading; the API resolves 'DistanceBetweenPlanets' to its first definition only.
 
     @classmethod
     def FindViseshaDrishti(cls, dk, p):
@@ -7528,17 +7442,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def BeneficPlanetListByShadbala(cls, personBirthTime):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "BeneficPlanetListByShadbala"
-        params = {
-            "personBirthTime": personBirthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'BeneficPlanetListByShadbala(TimepersonBirthTime)' not exposed - Python has no method
+    #       overloading; the API resolves 'BeneficPlanetListByShadbala' to its first definition only.
 
     @classmethod
     def BeneficHouseListByShadbala(cls, personBirthTime, threshold):
@@ -7553,17 +7458,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def BeneficHouseListByShadbala(cls, personBirthTime):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "BeneficHouseListByShadbala"
-        params = {
-            "personBirthTime": personBirthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'BeneficHouseListByShadbala(TimepersonBirthTime)' not exposed - Python has no method
+    #       overloading; the API resolves 'BeneficHouseListByShadbala' to its first definition only.
 
     @classmethod
     def MaleficPlanetListByShadbala(cls, personBirthTime, threshold):
@@ -7578,17 +7474,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def MaleficPlanetListByShadbala(cls, personBirthTime):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "MaleficPlanetListByShadbala"
-        params = {
-            "personBirthTime": personBirthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'MaleficPlanetListByShadbala(TimepersonBirthTime)' not exposed - Python has no method
+    #       overloading; the API resolves 'MaleficPlanetListByShadbala' to its first definition only.
 
     @classmethod
     def MaleficHouseListByShadbala(cls, personBirthTime, threshold):
@@ -7603,17 +7490,8 @@ class Calculate:
         }
         return cls._make_request(endpoint, params)
 
-    @classmethod
-    def MaleficHouseListByShadbala(cls, personBirthTime):
-        """
-        NO DESC FOUND!! ERROR
-        :return: List`1
-         """
-        endpoint = "MaleficHouseListByShadbala"
-        params = {
-            "personBirthTime": personBirthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
+    # NOTE: overload 'MaleficHouseListByShadbala(TimepersonBirthTime)' not exposed - Python has no method
+    #       overloading; the API resolves 'MaleficHouseListByShadbala' to its first definition only.
 
     @classmethod
     def ResidentialStrength(cls, planetName, time):
