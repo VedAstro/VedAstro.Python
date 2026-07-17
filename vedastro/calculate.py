@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 10:38 18/06/2026 +08:00
+# AUTO GENERATED ON 20:44 23/06/2026 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -98,7 +98,7 @@ class Calculate:
     @classmethod
     def FindBirthTimeByMachineLearning(cls, possibleBirthTime, bodyHeight, bodyShape, hair, lips, nose, complexion, faceShape, constitution, personality, precisionHours=0.041666666666666664, modelType="NCC"):
         """
-        Empty sample text
+         Rectifies finds an unknown birth time using machine learning over physical and personality traits. Scans candidate time slices across the birth day and returns the TimeRange the model judges most consistent with the supplied appearance and temperament body heightshape hair lips nose complexion face shape constitution personality. Uses the RAMAN ayanamsa to match the trained rule set model and precision are configurable. 
         :return: TimeRange
          """
         endpoint = "FindBirthTimeByMachineLearning"
@@ -207,7 +207,7 @@ class Calculate:
     @classmethod
     def ContextBasedAstrologyData(cls, query, birthTime=None, checkTime=None):
         """
-        NO DESC FOUND!! ERROR
+         Allinone agentic entrypoint. Takes a plainEnglish query plus up to two Times a birth Time andor a checkcurrent Time semanticsearches the bestmatching Calculate methods autobinds their parameters invokes them in parallel and returns the results with metadata showing which methods were routed to and which Time each parameter was bound from. Replaces handpicking from 640 Calculate methods. Binding rules inside SmartInvokeAsync a methods FIRST Time parameter receives birthTime falling back to checkTime if birthTime is null a methods SECOND Time parameter receives checkTime falling back to birthTime. At least one of the two Times must be supplied if both are null the method returns an error JObject instead of throwing. 
         :return: Task`1
          """
         endpoint = "ContextBasedAstrologyData"
@@ -3532,7 +3532,7 @@ class Calculate:
     @classmethod
     def DasaForNow(cls, birthTime, levels=3):
         """
-        Empty sample text
+         Returns the Vimshottari Dasa periods operating right now current system time at the birth location for the given birth chart nested down to the requested number of levels Maha Dasa Bhukti Antaram .... Handy for what planetary period am I in today. 
         :return: JObject
          """
         endpoint = "DasaForNow"
@@ -3545,7 +3545,7 @@ class Calculate:
     @classmethod
     def DasaAtTime(cls, birthTime, checkTime, levels=3):
         """
-        Empty sample text
+         Returns the Vimshottari Dasa periods operating at a specific moment for the given birth chart nested down to the requested number of levels Maha Dasa Bhukti Antaram .... 
         :return: JObject
          """
         endpoint = "DasaAtTime"
@@ -3559,7 +3559,7 @@ class Calculate:
     @classmethod
     def DasaAtRange(cls, birthTime, startTime, endTime, levels=3, precisionHours=100):
         """
-        Empty sample text
+         Returns the sequence of Vimshottari Dasa periods across a time range for the given birth chart sampling the range at the given precision and nesting down to the requested number of levels. Use this to build a Dasa timeline between two dates. 
         :return: JObject
          """
         endpoint = "DasaAtRange"
@@ -3575,7 +3575,7 @@ class Calculate:
     @classmethod
     def DasaForLife(cls, birthTime, levels=3, precisionHours=24, scanYears=100):
         """
-        Empty sample text
+         Returns the full Vimshottari Dasa timeline for an entire life starting at birth and scanning forward the given number of years nested down to the requested number of levels. A convenience wrapper over DasaAtRange covering birth to birth scanYears. 
         :return: JObject
          """
         endpoint = "DasaForLife"
@@ -3590,7 +3590,7 @@ class Calculate:
     @classmethod
     def DasaAtRangeString(cls, birthTime, startTime, endTime, levels=3, precisionHours=100):
         """
-        Empty sample text
+         Same as DasaAtRange but returns the Dasa timeline as a compact JSON string instead of a JObject. Useful for callers that want the raw serialized payload directly. 
         :return: String
          """
         endpoint = "DasaAtRangeString"
@@ -3606,7 +3606,7 @@ class Calculate:
     @classmethod
     def DasaForLifeString(cls, birthTime, levels=3, precisionHours=24, scanYears=100):
         """
-        Empty sample text
+         Same as DasaForLife but returns the wholelife Dasa timeline as a compact JSON string instead of a JObject. Useful for callers that want the raw serialized payload directly. 
         :return: String
          """
         endpoint = "DasaForLifeString"
@@ -3738,12 +3738,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def PredictHealthConditions(cls, birthTime):
+    def PredictMedicalHealthConditions(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Predicts a persons likely health conditions and bodily vulnerabilities from their birth chart. Computes the fundamental chart data once then maps afflicted and weak planets to the body parts and organs they rule to highlight areas of medical concern. Returns a structured report of predicted conditions grouped by organ and ruling planet based on Vedic medical astrology. 
         :return: JObject
          """
-        endpoint = "PredictHealthConditions"
+        endpoint = "PredictMedicalHealthConditions"
         params = {
             "birthTime": birthTime.to_json(),
         }
@@ -3752,7 +3752,7 @@ class Calculate:
     @classmethod
     def PlanetMotionName(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Determines the motion state Gati of a planet according to classical Vedic astrology rules. The method uses different logic depending on the planet Sun and Moon are always treated as Sama or normal motion. Rahu and Ketu are always treated as Vakra or retrograde. Mars Jupiter and Saturn are classified by their sign distance from the Sun. Mercury and Venus are classified using Chesta Bala and actual motion speed. 
         :return: PlanetMotion
          """
         endpoint = "PlanetMotionName"
@@ -3765,7 +3765,7 @@ class Calculate:
     @classmethod
     def IsPlanetAspectingHouse(cls, planet, house, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet aspects a specific house at the given time. The method gets all houses currently aspected by the planet checks whether the target house is included in that list. 
         :return: Boolean
          """
         endpoint = "IsPlanetAspectingHouse"
@@ -3782,7 +3782,7 @@ class Calculate:
     @classmethod
     def IsWaxingMoon(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the Moon is in the waxing phase also called Shukla Paksha or the bright half of the lunar month. The method calculates the lunar day and checks whether its moon phase is BrightHalf. 
         :return: Boolean
          """
         endpoint = "IsWaxingMoon"
@@ -3794,7 +3794,7 @@ class Calculate:
     @classmethod
     def IsWaningMoon(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the Moon is in the waning phase also called Krishna Paksha or the dark half of the lunar month. The method calculates the lunar day and checks whether its moon phase is DarkHalf. 
         :return: Boolean
          """
         endpoint = "IsWaningMoon"
@@ -3806,7 +3806,7 @@ class Calculate:
     @classmethod
     def VedicDayStartTime(cls, inputTime):
         """
-        NO DESC FOUND!! ERROR
+         Returns the start time of the Vedic day containing the supplied time. A Vedic day begins at sunrise not at midnight. The method calculates sunrise for the supplied date returns that sunrise when the input time is after sunrise otherwise moves back roughly one day and returns the previous sunrise. 
         :return: Time
          """
         endpoint = "VedicDayStartTime"
@@ -3818,7 +3818,7 @@ class Calculate:
     @classmethod
     def KujaDosaScore(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the total Kuja Dosha Manglik Dosha score for a chart. The method evaluates the dosha contribution of Mars Saturn Rahu Ketu Sun. It checks each planets house placement applies classical cancellation rules evaluates sign relationship and dignity then assigns a weighted score. The total score is the sum of all relevant planet scores. 
         :return: Double
          """
         endpoint = "KujaDosaScore"
@@ -3830,7 +3830,7 @@ class Calculate:
     @classmethod
     def ClassifyForKartari(cls, planet, coOccupants):
         """
-        NO DESC FOUND!! ERROR
+         Classifies a planet as benefic malefic or neutral for Kartari Yoga calculations. The method uses natural benefic and malefic groups then applies two special rules If both benefics and malefics are present with the planet the classification becomes neutral. Mercury is benefic when alone or with benefics but malefic when joined with any malefic. 
         :return: String
          """
         endpoint = "ClassifyForKartari"
@@ -3843,7 +3843,7 @@ class Calculate:
     @classmethod
     def ShubKartariPlanets(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds planets in Shubha Kartari Yoga meaning planets hemmed between benefic influences. For each planet the method finds the planets signbased house checks the 2nd and 12th houses from that planet classifies the planets in those surrounding houses returns the planet when benefics are present and no malefics are present. 
         :return: List`1
          """
         endpoint = "ShubKartariPlanets"
@@ -3855,7 +3855,7 @@ class Calculate:
     @classmethod
     def PaapaKartariPlanets(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds planets in Paapa Kartari Yoga meaning planets hemmed between malefic influences. For each planet the method finds the planets signbased house checks the 2nd and 12th houses from that planet classifies the planets in those surrounding houses returns the planet when malefics are present and no benefics are present. 
         :return: List`1
          """
         endpoint = "PaapaKartariPlanets"
@@ -3867,7 +3867,7 @@ class Calculate:
     @classmethod
     def ShubKartariHouses(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds houses in Shubha Kartari Yoga meaning houses hemmed between benefic planets. For each house the method checks the adjacent 2nd and 12th houses classifies the planets found there and returns the house when benefics are present and malefics are absent. 
         :return: List`1
          """
         endpoint = "ShubKartariHouses"
@@ -3879,7 +3879,7 @@ class Calculate:
     @classmethod
     def PaapaKartariHouses(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds houses in Paapa Kartari Yoga meaning houses hemmed between malefic planets. For each house the method checks the adjacent 2nd and 12th houses classifies the planets found there and returns the house when malefics are present and benefics are absent. 
         :return: List`1
          """
         endpoint = "PaapaKartariHouses"
@@ -3891,7 +3891,7 @@ class Calculate:
     @classmethod
     def DispositorFromOwnHouses(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the distance between a planets dispositor and each sign owned by that dispositor. The method finds the dispositor of the input planet gets the signs owned by that dispositor gets the dispositors current sign counts from each owned sign to the dispositors current sign. 
         :return: List`1
          """
         endpoint = "DispositorFromOwnHouses"
@@ -3904,7 +3904,7 @@ class Calculate:
     @classmethod
     def DispositorFromLagna(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the house distance of a planets dispositor from Lagna. The method finds the planets dispositor gets the Lagna sign gets the dispositors current sign and counts from Lagna to that sign. 
         :return: Int32
          """
         endpoint = "DispositorFromLagna"
@@ -3917,7 +3917,7 @@ class Calculate:
     @classmethod
     def DispositorFromMoon(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the house distance of a planets dispositor from the Moon sign. The method finds the planets dispositor gets the Moon sign gets the dispositors current sign and counts from the Moon to that sign. 
         :return: Int32
          """
         endpoint = "DispositorFromMoon"
@@ -3930,7 +3930,7 @@ class Calculate:
     @classmethod
     def DispositorConjunctWith(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets conjunct with the dispositor of the given planet. 
         :return: List`1
          """
         endpoint = "DispositorConjunctWith"
@@ -3943,7 +3943,7 @@ class Calculate:
     @classmethod
     def AspectReceivedByDispositor(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets aspecting the dispositor of the given planet. 
         :return: List`1
          """
         endpoint = "AspectReceivedByDispositor"
@@ -3956,7 +3956,7 @@ class Calculate:
     @classmethod
     def HousesOwnedByPlanet(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all houses owned by a planet at a given time. The method gets the zodiac signs ruled by the planet gets the sign assigned to every house using Bhava Chalit signs returns the houses whose signs are ruled by the input planet. 
         :return: List`1
          """
         endpoint = "HousesOwnedByPlanet"
@@ -3969,7 +3969,7 @@ class Calculate:
     @classmethod
     def HouseFromSignName(cls, zodiacName, inputTime):
         """
-        NO DESC FOUND!! ERROR
+         Finds the house that contains a given zodiac sign using Rasistyle house mapping. 
         :return: HouseName
          """
         endpoint = "HouseFromSignName"
@@ -3982,7 +3982,7 @@ class Calculate:
     @classmethod
     def DayDurationHours(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the length of the daylight period in hours. The method subtracts sunrise time from sunset time for the supplied date and location. 
         :return: Double
          """
         endpoint = "DayDurationHours"
@@ -3994,7 +3994,7 @@ class Calculate:
     @classmethod
     def IsNightBirth(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the supplied birth time occurs during the night period. Night is treated as the inverse of day birth. 
         :return: Boolean
          """
         endpoint = "IsNightBirth"
@@ -4006,7 +4006,7 @@ class Calculate:
     @classmethod
     def IsDayBirth(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the supplied birth time occurs between sunrise and sunset. The method treats sunrise as included and sunset as excluded. 
         :return: Boolean
          """
         endpoint = "IsDayBirth"
@@ -4018,7 +4018,7 @@ class Calculate:
     @classmethod
     def GhatakaChakra(cls, time, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks the Ghataka Chakra for potentially harmful or adverse indicators at a given time. The method gets the natives birth Moon sign loads the Ghataka rule row for that Moon sign compares the current Moon sign Tithi group weekday Moon constellation and Lagna against that row returns the names of the matching harmful indicators. 
         :return: List`1
          """
         endpoint = "GhatakaChakra"
@@ -4031,7 +4031,7 @@ class Calculate:
     @classmethod
     def LordOfConstellation(cls, constellation):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planetary lord of a constellation Nakshatra. The method maps the 27 constellations to the standard repeating planetary ruler sequence Ketu Venus Sun Moon Mars Rahu Jupiter Saturn Mercury. 
         :return: PlanetName
          """
         endpoint = "LordOfConstellation"
@@ -4043,7 +4043,7 @@ class Calculate:
     @classmethod
     def IsPlanetInWaterySign(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is currently in a water sign. The method gets the planets Rasi sign and tests whether that sign is Cancer Scorpio or Pisces. 
         :return: Boolean
          """
         endpoint = "IsPlanetInWaterySign"
@@ -4056,7 +4056,7 @@ class Calculate:
     @classmethod
     def LunarDay(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the lunar day or Tithi from the angular distance between the Moon and Sun. The method gets the Nirayana longitudes of the Sun and Moon measures the forward MoonSun separation divides the separation by 12 rounds up to the next whole Tithi number. 
         :return: LunarDay
          """
         endpoint = "LunarDay"
@@ -4068,7 +4068,7 @@ class Calculate:
     @classmethod
     def IsSuklaPaksha(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the supplied time falls in Shukla Paksha the bright or waxing half of the lunar month. 
         :return: Boolean
          """
         endpoint = "IsSuklaPaksha"
@@ -4080,7 +4080,7 @@ class Calculate:
     @classmethod
     def MoonConstellation(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the constellation occupied by a planet. The method gets the planets Nirayana longitude and maps that longitude to a constellation. 
         :return: Constellation
          """
         endpoint = "MoonConstellation"
@@ -4092,7 +4092,7 @@ class Calculate:
     @classmethod
     def PlanetConstellation(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Gets the constellation behind a planet at a given time 
         :return: Constellation
          """
         endpoint = "PlanetConstellation"
@@ -4105,7 +4105,7 @@ class Calculate:
     @classmethod
     def SignToNakshatra(cls, sign):
         """
-        NO DESC FOUND!! ERROR
+         Returns the Nakshatra that begins at the starting degree of a zodiac sign. The method converts the signs starting longitude into a constellation. 
         :return: ConstellationName
          """
         endpoint = "SignToNakshatra"
@@ -4117,7 +4117,7 @@ class Calculate:
     @classmethod
     def NakshatraToZodiacSign(cls, constellation):
         """
-        NO DESC FOUND!! ERROR
+         Returns the zodiac sign in which a Nakshatra begins. The method calculates the starting longitude of the constellation and maps that longitude to a zodiac sign. 
         :return: ZodiacName
          """
         endpoint = "NakshatraToZodiacSign"
@@ -4129,7 +4129,7 @@ class Calculate:
     @classmethod
     def IsPlanetDefeatedInPlanetaryWar(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is defeated in Graha Yuddha planetary war. The method applies the planetarywar rules documented in the source comments Only the five Tara Grahas can participate Mars Mercury Jupiter Venus Saturn Sun Moon Rahu and Ketu are excluded. A planetary war occurs only when two eligible planets are within 1 degree of each other. The planet with the lesser longitude is treated as the victor. The planet with the greater longitude is treated as defeated. A special wraparound check handles cases near the 0 360 boundary. 
         :return: Boolean
          """
         endpoint = "IsPlanetDefeatedInPlanetaryWar"
@@ -4142,7 +4142,7 @@ class Calculate:
     @classmethod
     def Tarabala(cls, time, person):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Tarabala the birthstar strength used in personal Muhurtha. The method gets the Moon constellation number at the selected time gets the persons birth Moon constellation number counts from the birth constellation to the current constellation reduces the count into the standard 9fold Tara cycle returns the Tara number and cycle. 
         :return: Tarabala
          """
         endpoint = "Tarabala"
@@ -4155,7 +4155,7 @@ class Calculate:
     @classmethod
     def Chandrabala(cls, time, person):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Chandrabala the Moon strength used in personal Muhurtha. The method gets the Moon sign at the selected time gets the persons birth Moon sign counts from the birth Moon sign to the current Moon sign returns the resulting sign distance. 
         :return: Int32
          """
         endpoint = "Chandrabala"
@@ -4168,7 +4168,7 @@ class Calculate:
     @classmethod
     def MoonSignName(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the zodiac sign occupied by the Moon at the given time. The method calculates the Moons Rasi sign and returns only the sign name. 
         :return: ZodiacName
          """
         endpoint = "MoonSignName"
@@ -4180,7 +4180,7 @@ class Calculate:
     @classmethod
     def LagnaSignName(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the zodiac sign of the Lagna Ascendant at the given time. The method reads the sign of House 1 and returns only the sign name. 
         :return: ZodiacName
          """
         endpoint = "LagnaSignName"
@@ -4192,7 +4192,7 @@ class Calculate:
     @classmethod
     def NithyaYoga(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the Nithya Yoga for the given time. The method gets the Nirayana longitudes of the Sun and Moon adds them together normalizes the result to the zodiac circle divides the combined longitude by 800 minutes of arc rounds up to the next Yoga number returns the matching NithyaYoga. 
         :return: NithyaYoga
          """
         endpoint = "NithyaYoga"
@@ -4204,7 +4204,7 @@ class Calculate:
     @classmethod
     def Karana(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the Karana which is half of a lunar day or Tithi. The method calculates the angular separation between the Moon and Sun converts that separation into a raw lunarday value determines the current Tithi checks whether the time is in the first or second half of the Tithi maps that position to the correct Karana. 
         :return: Karana
          """
         endpoint = "Karana"
@@ -4216,7 +4216,7 @@ class Calculate:
     @classmethod
     def SunSign(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the zodiac sign occupied by the Sun at the given time. The method calculates the Suns Rasi sign and returns the full ZodiacSign including both sign name and degree within the sign. 
         :return: ZodiacSign
          """
         endpoint = "SunSign"
@@ -4228,7 +4228,7 @@ class Calculate:
     @classmethod
     def TimeSunEnteredCurrentSign(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds the approximate time when the Sun entered its current zodiac sign. The method starts from the supplied time identifies the Suns current sign scans backward in time reduces the scan step whenever it overshoots into the previous sign stops when the Sun is very close to the beginning of the current sign or when the accuracy limit is reached. 
         :return: Time
          """
         endpoint = "TimeSunEnteredCurrentSign"
@@ -4240,7 +4240,7 @@ class Calculate:
     @classmethod
     def TimeSunLeavesCurrentSign(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds the approximate time when the Sun will leave its current zodiac sign. The method starts from the supplied time identifies the Suns current sign scans forward in time reduces the scan step whenever it overshoots into the next sign stops when the Sun is very close to the end of the current sign or when the accuracy limit is reached. 
         :return: Time
          """
         endpoint = "TimeSunLeavesCurrentSign"
@@ -4252,7 +4252,7 @@ class Calculate:
     @classmethod
     def PlanetsInHouseBasedOnLongitudes(cls, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets located in a specific house using house longitude boundaries. The method gets all house longitude ranges selects the requested house gets the Nirayana longitude of all planets checks which planetary longitudes fall inside that houses range. 
         :return: List`1
          """
         endpoint = "PlanetsInHouseBasedOnLongitudes"
@@ -4265,7 +4265,7 @@ class Calculate:
     @classmethod
     def PlanetsInHouseBasedOnSign(cls, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets located in a specific house using signbased house mapping. The method gets the zodiac sign assigned to the requested house finds all planets currently occupying that sign returns the matching planets. 
         :return: List`1
          """
         endpoint = "PlanetsInHouseBasedOnSign"
@@ -4278,7 +4278,7 @@ class Calculate:
     @classmethod
     def PlanetsInSign(cls, signName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets currently occupying a given zodiac sign. The method checks all nine planets and collects those whose Rasi sign matches the requested sign. 
         :return: List`1
          """
         endpoint = "PlanetsInSign"
@@ -4291,7 +4291,7 @@ class Calculate:
     @classmethod
     def AllPlanetLongitude(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the Nirayana longitudes of all nine planets at the given time. The method calculates and packages the longitude of Sun Moon Mars Mercury Jupiter Venus Saturn Ketu Rahu 
         :return: List`1
          """
         endpoint = "AllPlanetLongitude"
@@ -4303,7 +4303,7 @@ class Calculate:
     @classmethod
     def AllPlanetFixedLongitude(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the Sayana fixedzodiac longitudes of all nine planets at the given time. The method calculates and packages the Sayana longitude for the same nineplanet set used by AllPlanetLongitude.... 
         :return: List`1
          """
         endpoint = "AllPlanetFixedLongitude"
@@ -4315,7 +4315,7 @@ class Calculate:
     @classmethod
     def HousePlanetOccupiesBasedOnLongitudes(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds the house occupied by a planet using house longitude ranges. The method gets the planets Nirayana longitude loads all house longitude ranges checks which house range contains the planet returns that house. 
         :return: HouseName
          """
         endpoint = "HousePlanetOccupiesBasedOnLongitudes"
@@ -4328,7 +4328,7 @@ class Calculate:
     @classmethod
     def HousePlanetOccupiesBasedOnSign(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds the house occupied by a planet using signbased house assignment. The method gets the planets Rasi sign gets the Rasi sign assigned to every house returns the house whose sign matches the planets sign. 
         :return: HouseName
          """
         endpoint = "HousePlanetOccupiesBasedOnSign"
@@ -4341,7 +4341,7 @@ class Calculate:
     @classmethod
     def HouseAllPlanetOccupiesBasedOnLongitudes(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the longitudebased house placement of all nine planets. The method loops through all nine planets calculates each planets house using HousePlanetOccupiesBasedOnLongitudes... and stores the result in a dictionary. 
         :return: Dictionary`2
          """
         endpoint = "HouseAllPlanetOccupiesBasedOnLongitudes"
@@ -4353,7 +4353,7 @@ class Calculate:
     @classmethod
     def LordOfHouse(cls, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the lord of a house. The method gets the zodiac sign assigned to the requested house returns the planetary lord of that sign. 
         :return: PlanetName
          """
         endpoint = "LordOfHouse"
@@ -4366,7 +4366,7 @@ class Calculate:
     @classmethod
     def PlanetLordOfZodiacSign(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the lord of the zodiac sign occupied by a planet. The method calculates the planets Nirayana longitude converts that longitude to a zodiac sign returns the lord of that sign. 
         :return: PlanetName
          """
         endpoint = "PlanetLordOfZodiacSign"
@@ -4379,7 +4379,7 @@ class Calculate:
     @classmethod
     def PlanetLordOfConstellation(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the lord of the constellation occupied by a planet. The method calculates the planets Nirayana longitude finds the constellation at that longitude returns the planetary lord of that constellation. 
         :return: PlanetName
          """
         endpoint = "PlanetLordOfConstellation"
@@ -4392,7 +4392,7 @@ class Calculate:
     @classmethod
     def LordOfHouseList(cls, houseList, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planetary lords for a list of houses. The method loops through each requested house calculates that houses lord using LordOfHouse... and adds the result to a return list. 
         :return: List`1
          """
         endpoint = "LordOfHouseList"
@@ -4405,7 +4405,7 @@ class Calculate:
     @classmethod
     def AllHouseConstellationLord(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the constellation lord for every house at the given time. The method loops through all twelve houses finds the constellation at the middle longitude of each house gets the lord of that constellation stores the result in a dictionary keyed by house. 
         :return: Dictionary`2
          """
         endpoint = "AllHouseConstellationLord"
@@ -4417,7 +4417,7 @@ class Calculate:
     @classmethod
     def HouseConstellationLord(cls, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the constellation lord of a specific house. The method gets the constellation at the middle longitude of the requested house and then returns that constellations planetary lord. 
         :return: PlanetName
          """
         endpoint = "HouseConstellationLord"
@@ -4430,7 +4430,7 @@ class Calculate:
     @classmethod
     def HouseConstellation(cls, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the constellation located at the middle longitude of a house. The method gets all house longitude ranges finds the requested house reads the houses middle longitude converts that longitude into a Constellation. 
         :return: Constellation
          """
         endpoint = "HouseConstellation"
@@ -4443,7 +4443,7 @@ class Calculate:
     @classmethod
     def AllHousePlanetsInHouseBasedOnSign(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets occupying each house using signbased house placement. The method loops through every house finds the planets in that house using PlanetsInHouseBasedOnSign... and stores the result in a dictionary. 
         :return: Dictionary`2
          """
         endpoint = "AllHousePlanetsInHouseBasedOnSign"
@@ -4455,7 +4455,7 @@ class Calculate:
     @classmethod
     def SignCountedFromInputSign(cls, inputSign, countToNextSign):
         """
-        NO DESC FOUND!! ERROR
+         Counts forward from a starting zodiac sign and returns the sign reached after the requested count. For example this can answer questions like Which sign is the 4th from Cancer The starting sign is counted as 1. 
         :return: ZodiacName
          """
         endpoint = "SignCountedFromInputSign"
@@ -4468,7 +4468,7 @@ class Calculate:
     @classmethod
     def SignCountedFromPlanetSign(cls, countToNextSign, startPlanet, inputTime):
         """
-        NO DESC FOUND!! ERROR
+         Counts forward from the zodiac sign occupied by a planet and returns the sign reached after the requested count. For example this can answer questions like Which sign is the 4th from the Moon 
         :return: ZodiacName
          """
         endpoint = "SignCountedFromPlanetSign"
@@ -4482,7 +4482,7 @@ class Calculate:
     @classmethod
     def SignCountedFromLagnaSign(cls, countToNextSign, inputTime):
         """
-        NO DESC FOUND!! ERROR
+         Counts forward from the Lagna Ascendant sign and returns the sign reached after the requested count. This is a convenience wrapper around SignCountedFromInputSign.... 
         :return: ZodiacName
          """
         endpoint = "SignCountedFromLagnaSign"
@@ -4495,7 +4495,7 @@ class Calculate:
     @classmethod
     def HouseCountedFromInputHouse(cls, inputHouseNumber, countToNextHouse):
         """
-        NO DESC FOUND!! ERROR
+         Counts forward from a starting house number and returns the house reached after the requested count. For example this can answer questions like Which house is the 4th from the 5th house The starting house is counted as 1. 
         :return: Int32
          """
         endpoint = "HouseCountedFromInputHouse"
@@ -4508,7 +4508,7 @@ class Calculate:
     @classmethod
     def IsPlanetInSign(cls, planetName, signInput, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is currently in a specific zodiac sign. The method calculates the planets Rasi sign at the given time and compares it with the requested sign. 
         :return: Boolean
          """
         endpoint = "IsPlanetInSign"
@@ -4522,7 +4522,7 @@ class Calculate:
     @classmethod
     def SignsPlanetIsAspecting(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the zodiac signs aspected by a planet at the given time. The method begins from the planets current sign and applies the supported Vedic aspect rules all planets aspect the 7th sign from themselves Saturn additionally aspects the 3rd and 10th signs Jupiter additionally aspects the 5th and 9th signs Mars additionally aspects the 4th and 8th signs Maandi and Gulika additionally aspect the 2nd 7th and 12th signs from their sign of occupation. 
         :return: List`1
          """
         endpoint = "SignsPlanetIsAspecting"
@@ -4535,7 +4535,7 @@ class Calculate:
     @classmethod
     def IsPlanetInMoolatrikona(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in its Moolatrikona zone. Moolatrikona is similar to exaltation but it applies to a sign range rather than only a single point. The method checks the planets sign and degree against the supported ranges Sun Leo 020 Moon Taurus 430 Mercury Virgo 1620 Jupiter Sagittarius 013 Mars Aries 018 Venus Libra 010 Saturn Aquarius 020 
         :return: Boolean
          """
         endpoint = "IsPlanetInMoolatrikona"
@@ -4548,7 +4548,7 @@ class Calculate:
     @classmethod
     def PlanetInSign(cls, signName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets currently located in the requested zodiac sign. The method explicitly calculates the sign of each of the nine planets and adds every matching planet to the return list. 
         :return: List`1
          """
         endpoint = "PlanetInSign"
@@ -4561,7 +4561,7 @@ class Calculate:
     @classmethod
     def HouseLongitude(cls, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the longitude data for a specific house. The method checks the cache gets all house longitudes selects the requested house returns the corresponding House object. 
         :return: House
          """
         endpoint = "HouseLongitude"
@@ -4574,7 +4574,7 @@ class Calculate:
     @classmethod
     def Panchaka(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the Panchaka classification for a given time. The method gets the lunar day number gets the Moon constellation number gets the weekday number gets the rising sign number adds them together divides the total by 9 maps the remainder to a Panchaka name. 
         :return: PanchakaName
          """
         endpoint = "Panchaka"
@@ -4586,7 +4586,7 @@ class Calculate:
     @classmethod
     def LordOfWeekday(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planetary lord of the weekday for a given time. The method first calculates the Vedic weekday and then maps it to its ruling planet. 
         :return: PlanetName
          """
         endpoint = "LordOfWeekday"
@@ -4601,7 +4601,7 @@ class Calculate:
     @classmethod
     def IshtaKaala(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Ishta Kaala also known as Suryodayadi Jananakala Ghatika. This is the number of ghatis elapsed from sunrise to the moment of birth. The method checks whether the birth time is before sunrise uses the previous days sunrise when needed measures the time elapsed from the relevant sunrise converts hours into ghatis using the rule 1 hour 2.5 ghatis returns the result as an Angle. 
         :return: Angle
          """
         endpoint = "IshtaKaala"
@@ -4613,7 +4613,7 @@ class Calculate:
     @classmethod
     def IsBeforeSunrise(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a given time occurs before sunrise on that same date and location. 
         :return: Boolean
          """
         endpoint = "IsBeforeSunrise"
@@ -4625,7 +4625,7 @@ class Calculate:
     @classmethod
     def HoraAtBirth(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates which Hora of the Vedic day contains the supplied time. The method gets the birth time in local mean time gets sunrise for the current date uses the previous days sunrise if the time occurs before sunrise measures the hours elapsed since the relevant sunrise rounds up to the next whole Hora clamps the result to the range 124. 
         :return: Int32
          """
         endpoint = "HoraAtBirth"
@@ -4637,7 +4637,7 @@ class Calculate:
     @classmethod
     def SunriseTime(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the sunrise time for the date and location of the supplied Time. The method checks the cache prepares Swiss Ephemeris risetransit parameters for the Sun starts the search from local midnight calculates sunrise using the configured geographic coordinates converts the Swiss Ephemeris Julian result back into the original standardtime offset returns the final Time. 
         :return: Time
          """
         endpoint = "SunriseTime"
@@ -4649,7 +4649,7 @@ class Calculate:
     @classmethod
     def SunsetTime(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the sunset time for the date and location of the supplied Time. The method follows the same Swiss Ephemeris risetransit pattern as SunriseTime... but requests the Suns setting time instead of rising time. 
         :return: Time
          """
         endpoint = "SunsetTime"
@@ -4661,7 +4661,7 @@ class Calculate:
     @classmethod
     def NoonTime(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the apparent noon for the date of the supplied time. The method converts the input time into local apparent time takes that apparent date creates a DateTime at 1200 PM preserves the DateTimeKind from the local apparent time. 
         :return: DateTime
          """
         endpoint = "NoonTime"
@@ -4673,7 +4673,7 @@ class Calculate:
     @classmethod
     def IsPlanetInTrikona(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in a Trikona house from Lagna. The Trikona houses are 1st 5th 9th 
         :return: Boolean
          """
         endpoint = "IsPlanetInTrikona"
@@ -4686,7 +4686,7 @@ class Calculate:
     @classmethod
     def IsPlanetInKendra(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in a Kendra house from Lagna. The method checks only 4th house 7th house 10th house 
         :return: Boolean
          """
         endpoint = "IsPlanetInKendra"
@@ -4699,7 +4699,7 @@ class Calculate:
     @classmethod
     def IsPlanetInUpachaya(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in an Upachaya house. The Upachaya houses are 3rd 6th 10th 11th 
         :return: Boolean
          """
         endpoint = "IsPlanetInUpachaya"
@@ -4715,7 +4715,7 @@ class Calculate:
     @classmethod
     def IsPlanetInKendraFromPlanet(cls, kendraFrom, kendraTo, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether one planet is in a Kendra position from another planet. The method counts the sign distance between the two planets checks whether the distance is one of the Kendra positions 1 4 7 10 
         :return: Boolean
          """
         endpoint = "IsPlanetInKendraFromPlanet"
@@ -4729,7 +4729,7 @@ class Calculate:
     @classmethod
     def SignDistanceFromPlanetToPlanet(cls, startPlanet, endPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Counts the zodiacsign distance from one planet to another. The method gets the Rasi sign of the starting planet gets the Rasi sign of the ending planet counts inclusively from the starting sign to the ending sign. 
         :return: Int32
          """
         endpoint = "SignDistanceFromPlanetToPlanet"
@@ -4743,7 +4743,7 @@ class Calculate:
     @classmethod
     def IsHouseLordInHouseBasedOnLongitudes(cls, lordHouse, occupiedHouse, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the lord of one house is located in another specified house using longitudebased house placement. The method finds the lord of lordHouse finds which house that lord occupies using house longitude boundaries compares the occupied house with the requested occupiedHouse. 
         :return: Boolean
          """
         endpoint = "IsHouseLordInHouseBasedOnLongitudes"
@@ -4757,7 +4757,7 @@ class Calculate:
     @classmethod
     def IsHouseLordInHouseBasedOnSign(cls, lordHouse, occupiedHouse, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the lord of one house is located in another specified house using signbased house placement. The method finds the lord of lordHouse finds which house that lord occupies by sign compares the result with occupiedHouse. 
         :return: Boolean
          """
         endpoint = "IsHouseLordInHouseBasedOnSign"
@@ -4771,7 +4771,7 @@ class Calculate:
     @classmethod
     def ArudhaLagnaSign(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the Arudha Lagna sign. The method follows the source rule find the Janma Lagna sign find the sign occupied by the Lagna lord count from the Lagna sign to the Lagna lords sign count the same distance again from the Lagna lords sign return the resulting sign as the Arudha Lagna. 
         :return: ZodiacName
          """
         endpoint = "ArudhaLagnaSign"
@@ -4783,7 +4783,7 @@ class Calculate:
     @classmethod
     def CountFromSignToSign(cls, startSign, endSign):
         """
-        NO DESC FOUND!! ERROR
+         Counts inclusively from one zodiac sign to another. For example counting from Aquarius to Taurus returns 4 Aquarius Pisces Aries Taurus. 
         :return: Int32
          """
         endpoint = "CountFromSignToSign"
@@ -4796,7 +4796,7 @@ class Calculate:
     @classmethod
     def CountFromConstellationToConstellation(cls, start, end):
         """
-        NO DESC FOUND!! ERROR
+         Counts inclusively from one constellation to another. The method reads the constellation number of the start and end constellations counts forward through the 27constellation cycle wraps around when the end constellation is earlier in the sequence. 
         :return: Int32
          """
         endpoint = "CountFromConstellationToConstellation"
@@ -4809,7 +4809,7 @@ class Calculate:
     @classmethod
     def IsPlanetInHouseBasedOnLongitudes(cls, planet, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in a specified house using longitudebased house boundaries. The method calculates the planets house through HousePlanetOccupiesBasedOnLongitudes... and compares it with the requested house. 
         :return: Boolean
          """
         endpoint = "IsPlanetInHouseBasedOnLongitudes"
@@ -4823,7 +4823,7 @@ class Calculate:
     @classmethod
     def IsPlanetInHouseBasedOnSign(cls, planet, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in a specified house using signbased house placement. The method calculates the planets house through HousePlanetOccupiesBasedOnSign... and compares it with the requested house. 
         :return: Boolean
          """
         endpoint = "IsPlanetInHouseBasedOnSign"
@@ -4837,7 +4837,7 @@ class Calculate:
     @classmethod
     def IsPlanetInHouseKP(cls, cusps, planetNirayanaDegrees, house):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet falls inside a house using a KPstyle cusp boundary method. The method reads the cusp longitude for the requested house compares the planets Nirayana longitude with the current and next cusp handles wraparound when the next cusp longitude is numerically smaller than the current cusp returns whether the planet falls inside that cusp interval. 
         :return: Boolean
          """
         endpoint = "IsPlanetInHouseKP"
@@ -4851,7 +4851,7 @@ class Calculate:
     @classmethod
     def IsAllPlanetsInHouse(cls, planetList, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether every planet in a supplied list is in the same requested house. The method tests each planet using signbased house placement and returns false as soon as one planet is outside the requested house. 
         :return: Boolean
          """
         endpoint = "IsAllPlanetsInHouse"
@@ -4865,7 +4865,7 @@ class Calculate:
     @classmethod
     def IsAnyPlanetsInHouse(cls, planetList, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether at least one planet in a supplied list is in the requested house. The method tests each planet using signbased house placement and returns true as soon as one match is found. 
         :return: Boolean
          """
         endpoint = "IsAnyPlanetsInHouse"
@@ -4879,7 +4879,7 @@ class Calculate:
     @classmethod
     def IsPlanetDebilitated(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is at its exact debilitation degree. The method gets the planets Nirayana longitude converts it into a zodiac sign and degree gets the planets debilitation point compares both the sign and wholedegree position. 
         :return: Boolean
          """
         endpoint = "IsPlanetDebilitated"
@@ -4892,7 +4892,7 @@ class Calculate:
     @classmethod
     def IsPlanetExaltedDegree(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is at its exact exaltation degree. The method gets the planets Nirayana longitude converts it into a zodiac sign and degree gets the planets exaltation point compares both the sign and wholedegree position. 
         :return: Boolean
          """
         endpoint = "IsPlanetExaltedDegree"
@@ -4905,7 +4905,7 @@ class Calculate:
     @classmethod
     def IsPlanetExaltedSign(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is anywhere in its exaltation sign. The method calculates the planets Rasi sign gets the planets exaltation point compares only the sign names. 
         :return: Boolean
          """
         endpoint = "IsPlanetExaltedSign"
@@ -4918,7 +4918,7 @@ class Calculate:
     @classmethod
     def IsFullMoon(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the Moon is at the fullmoon Tithi for the supplied time. The method calculates the lunar day and returns true when the lunarday number is 15. 
         :return: Boolean
          """
         endpoint = "IsFullMoon"
@@ -4930,7 +4930,7 @@ class Calculate:
     @classmethod
     def IsNewMoon(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the Moon is at the newmoon Tithi for the supplied time. The method calculates the lunar day and returns true when the lunarday number is 1 or 0. 
         :return: Boolean
          """
         endpoint = "IsNewMoon"
@@ -4942,7 +4942,7 @@ class Calculate:
     @classmethod
     def IsNaraRasi(cls, sign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign is treated as Nara Rasi or a human sign. The implementation returns true for Gemini Virgo Libra Aquarius Sagittarius 
         :return: Boolean
          """
         endpoint = "IsNaraRasi"
@@ -4954,7 +4954,7 @@ class Calculate:
     @classmethod
     def IsWaterSign(cls, moonSign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign belongs to the water element. Water signs are Cancer Scorpio Pisces 
         :return: Boolean
          """
         endpoint = "IsWaterSign"
@@ -4966,7 +4966,7 @@ class Calculate:
     @classmethod
     def IsFireSign(cls, moonSign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign belongs to the fire element. Fire signs are Aries Leo Sagittarius 
         :return: Boolean
          """
         endpoint = "IsFireSign"
@@ -4978,7 +4978,7 @@ class Calculate:
     @classmethod
     def IsEarthSign(cls, moonSign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign belongs to the earth element. Earth signs are Taurus Virgo Capricorn 
         :return: Boolean
          """
         endpoint = "IsEarthSign"
@@ -4990,7 +4990,7 @@ class Calculate:
     @classmethod
     def IsAirSign(cls, moonSign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign belongs to the air element. Air signs are Gemini Libra Aquarius 
         :return: Boolean
          """
         endpoint = "IsAirSign"
@@ -5002,7 +5002,7 @@ class Calculate:
     @classmethod
     def IsPlanetYogakarakaToLagna(cls, planetName, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is a Yogakaraka for the charts Lagna. The method gets the Lagna sign applies a fixed LagnatoYogakaraka lookup table returns whether the supplied planet appears in that favorable list. 
         :return: Boolean
          """
         endpoint = "IsPlanetYogakarakaToLagna"
@@ -5015,7 +5015,7 @@ class Calculate:
     @classmethod
     def IsPlanetMarakaToLagna(cls, planetName, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is a Maraka for the charts Lagna. The method gets the Lagna sign applies a fixed LagnatoMaraka lookup table returns whether the supplied planet appears in that Maraka list. 
         :return: Boolean
          """
         endpoint = "IsPlanetMarakaToLagna"
@@ -5028,7 +5028,7 @@ class Calculate:
     @classmethod
     def IsPlanetInOwnHouse(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is placed in a house whose sign it owns. The method excludes Rahu and Ketu finds the planets current house using signbased placement checks the planets relationship to that house returns true when the relationship is OwnVarga. 
         :return: Boolean
          """
         endpoint = "IsPlanetInOwnHouse"
@@ -5041,7 +5041,7 @@ class Calculate:
     @classmethod
     def IsPlanetAspectingOwnHouse(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet aspects any house that it owns. The method excludes Rahu and Ketu gets all houses currently aspected by the planet checks the lord of each aspected house returns true if any aspected house is ruled by the planet itself. 
         :return: Boolean
          """
         endpoint = "IsPlanetAspectingOwnHouse"
@@ -5054,7 +5054,7 @@ class Calculate:
     @classmethod
     def IsPlanetInOwnSign(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is placed in its own sign. The method uses the same relationship check as IsPlanetInOwnHouse... excludes Rahu and Ketu finds the planets signbased house checks whether the planets relationship with that house is OwnVarga. 
         :return: Boolean
          """
         endpoint = "IsPlanetInOwnSign"
@@ -5067,7 +5067,7 @@ class Calculate:
     @classmethod
     def IsPlanetInFriendSign(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is placed in a friendly sign. The method gets the planets current Rasi sign determines the relationship between the planet and that sign returns true for FriendVarga or BestFriendVarga. 
         :return: Boolean
          """
         endpoint = "IsPlanetInFriendSign"
@@ -5080,7 +5080,7 @@ class Calculate:
     @classmethod
     def IsPlanetInEnemySign(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is placed in an enemy sign. The method gets the planets current Rasi sign determines the relationship between the planet and that sign returns true for EnemyVarga or BitterEnemyVarga. 
         :return: Boolean
          """
         endpoint = "IsPlanetInEnemySign"
@@ -5093,7 +5093,7 @@ class Calculate:
     @classmethod
     def IsPlanetInEnemyHouse(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in a house whose sign is ruled by an enemy. The method excludes Rahu and Ketu finds the planets signbased house determines the planets relationship to that house returns true for EnemyVarga or BitterEnemyVarga. 
         :return: Boolean
          """
         endpoint = "IsPlanetInEnemyHouse"
@@ -5106,7 +5106,7 @@ class Calculate:
     @classmethod
     def IsPlanetInFriendHouse(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in a house whose sign is ruled by a friend. The method excludes Rahu and Ketu finds the planets signbased house determines the planets relationship to that house returns true for FriendVarga or BestFriendVarga. 
         :return: Boolean
          """
         endpoint = "IsPlanetInFriendHouse"
@@ -5119,7 +5119,7 @@ class Calculate:
     @classmethod
     def BirthVarna(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the natives birth Varna from the Moon sign. The method gets the Moons Rasi sign at birth maps that sign to one of the traditional Varna groups returns the matching Varna. 
         :return: Varna
          """
         endpoint = "BirthVarna"
@@ -5131,7 +5131,7 @@ class Calculate:
     @classmethod
     def AllPlanetsSignsFromPlanet(cls, signsFromMoon, startPlanet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets located in a sign counted from a reference planet. The method finds the sign that is the requested count from startPlanet returns all planets currently occupying that sign. 
         :return: List`1
          """
         endpoint = "AllPlanetsSignsFromPlanet"
@@ -5145,7 +5145,7 @@ class Calculate:
     @classmethod
     def AllPlanetsInASignFromLagna(cls, signsFromLagna, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets located in a sign counted from the Lagna Ascendant. The method finds the sign that is the requested count from Lagna returns all planets in that sign. 
         :return: List`1
          """
         endpoint = "AllPlanetsInASignFromLagna"
@@ -5167,7 +5167,7 @@ class Calculate:
     @classmethod
     def AllPlanetsInSignsFromLagna(cls, signsFromList, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets located in any of several signs counted from Lagna. The method loops through the requested sign counts gathers planets from each counted sign removes duplicate planets returns the final list. 
         :return: List`1
          """
         endpoint = "AllPlanetsInSignsFromLagna"
@@ -5180,7 +5180,7 @@ class Calculate:
     @classmethod
     def IsPlanetsInSignsFromPlanet(cls, signsFromList, planetList, startPlanet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any planet from a supplied list is located in any of the requested signs counted from a reference planet. The method gathers all planets found in the counted signs from startPlanet checks whether any of those planets appear in planetList returns true on the first match. 
         :return: Boolean
          """
         endpoint = "IsPlanetsInSignsFromPlanet"
@@ -5195,7 +5195,7 @@ class Calculate:
     @classmethod
     def IsPlanetsInSignsFromLagna(cls, signsFromList, planetList, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any planet from a supplied list is located in any of the requested signs counted from Lagna. The method gathers all planets found in the counted signs from Lagna checks whether any of those planets appear in planetList returns true on the first match. 
         :return: Boolean
          """
         endpoint = "IsPlanetsInSignsFromLagna"
@@ -5209,7 +5209,7 @@ class Calculate:
     @classmethod
     def GetAllHouseNirayanaMiddleLongitudes(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the Nirayana middle longitudes of the twelve houses using Swiss Ephemeris. The method gets the chart location converts the time to Julian Universal Time sets the sidereal ayanamsa mode calculates house cusps using Swiss Ephemeris returns the cusp array. 
         :return: Double[]
          """
         endpoint = "GetAllHouseNirayanaMiddleLongitudes"
@@ -5221,7 +5221,7 @@ class Calculate:
     @classmethod
     def AllHouseLongitudes(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates and returns the full longitude ranges for all twelve houses. The method checks the cache gets the house cusp data derives the angular house points constructs House objects containing beginning middle and ending longitudes returns the complete list. 
         :return: List`1
          """
         endpoint = "AllHouseLongitudes"
@@ -5233,7 +5233,7 @@ class Calculate:
     @classmethod
     def PlanetsInConjunction(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets in conjunction with a given planet. The method sets an 8degree conjunction orb gets the longitude of the input planet gets the longitudes of all nine planets excludes the input planet itself adds every planet within the conjunction orb. 
         :return: List`1
          """
         endpoint = "PlanetsInConjunction"
@@ -5246,7 +5246,7 @@ class Calculate:
     @classmethod
     def HouseFromPlanetByAspectOrKendra(cls, reference, target, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the target planets signbased house if the target is meaningfully connected to the reference planet. The method checks two possible connections whether the target is in a Kendra from the reference planet whether the target aspects the reference planet. If either condition is true the targets signbased house is returned. Otherwise the default HouseName value is returned. 
         :return: HouseName
          """
         endpoint = "HouseFromPlanetByAspectOrKendra"
@@ -5260,7 +5260,7 @@ class Calculate:
     @classmethod
     def IsPlanetInFriendlyDrekkana(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in a Drekkana whose lord is friendly to that planet. The method finds the planets D3 Drekkana sign gets the lord of that Drekkana sign calculates the combined planettoplanet relationship returns true when the relationship is Friend or BestFriend. 
         :return: Boolean
          """
         endpoint = "IsPlanetInFriendlyDrekkana"
@@ -5273,7 +5273,7 @@ class Calculate:
     @classmethod
     def IsPlanetVargottama(cls, planet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is Vargottama. A planet is treated as Vargottama when it occupies the same zodiac sign in the Rasi chart D1 and the Navamsha chart D9. 
         :return: Boolean
          """
         endpoint = "IsPlanetVargottama"
@@ -5286,7 +5286,7 @@ class Calculate:
     @classmethod
     def ArudhaOfHouse(cls, inputHouse, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the Arudha of a given house. The method gets the sign of the input house finds the lord of that house gets the sign occupied by the house lord counts from the house sign to the lords sign counts the same distance again from the lords sign converts the resulting sign back into a house. 
         :return: HouseName
          """
         endpoint = "ArudhaOfHouse"
@@ -5299,7 +5299,7 @@ class Calculate:
     @classmethod
     def IsPlanetInGopuraAmsha(cls, planetName, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet has attained Gopura Amsha Gopuramsa. The method excludes Rahu and Ketu checks the planets sign in several divisional charts counts how many times each sign appears returns true if any sign appears in at least four of those divisional placements. The divisional charts checked are D1 Rasi D2 Hora D3 Drekkana D7 Saptamsha D9 Navamsha D12 Dwadashamsha D30 Trimshamsha 
         :return: Boolean
          """
         endpoint = "IsPlanetInGopuraAmsha"
@@ -5312,7 +5312,7 @@ class Calculate:
     @classmethod
     def MarakaPlanetList(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Builds a prioritized list of potential Maraka planets for the chart. The method groups planets into rough strength tiers Strong Marakas planets occupying the 2nd and 7th houses. Medium Marakas lords of the 2nd and 7th houses planets conjunct those lords Sun or Venus when they are Kendra lords. Weak Marakas fallback planets conjunct the 12th lord fallback lords of the 3rd and 8th houses if no stronger candidates are found. The final list is assembled in priority order and deduplicated. 
         :return: PlanetName[]
          """
         endpoint = "MarakaPlanetList"
@@ -5324,7 +5324,7 @@ class Calculate:
     @classmethod
     def IsCruelNavamsa(cls, navamsaSign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a Navamsha sign is considered cruel. The method returns true for signs ruled by Mars or Saturn Aries Scorpio Capricorn Aquarius 
         :return: Boolean
          """
         endpoint = "IsCruelNavamsa"
@@ -5336,7 +5336,7 @@ class Calculate:
     @classmethod
     def HasBalarishtaExceptions(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any classical Balarishta cancellation or exception is present in the birth chart. The method tests multiple protective combinations including Moon full exalted Vargottama or in a friendly sign strong Lagna lord in Kendra with benefic support and no malefic aspect Jupiter Venus or Mercury in Kendra without malefic aspects Rahu in the 3rd 6th or 11th house strong Jupiter in Kendra specific daynight and Paksha conditions involving the Moon Lagna lord in Kendra or Trikona benefics in Kendras strong Moon in favorable house positions strong natural benefic influence on Lagna. 
         :return: Boolean
          """
         endpoint = "HasBalarishtaExceptions"
@@ -5348,7 +5348,7 @@ class Calculate:
     @classmethod
     def MaleficPlanetsAspectingPlanet(cls, receivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the lagnaspecific malefic planets that aspect a given planet. The method gets the list of malefic planets for the charts Lagna filters that list to only planets aspecting receivingAspect returns the matching planets. 
         :return: List`1
          """
         endpoint = "MaleficPlanetsAspectingPlanet"
@@ -5361,7 +5361,7 @@ class Calculate:
     @classmethod
     def IsPlanetAspectedByMaleficPlanets(cls, receivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet receives any aspect from lagnaspecific malefic planets. The method delegates to MaleficPlanetsAspectingPlanet... and returns whether any matching aspect exists. 
         :return: Boolean
          """
         endpoint = "IsPlanetAspectedByMaleficPlanets"
@@ -5374,7 +5374,7 @@ class Calculate:
     @classmethod
     def IsPlanetExalted(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is in its exaltation sign. The method gets the planets current Rasi sign looks up the planets classical exaltation sign compares the two signs. 
         :return: Boolean
          """
         endpoint = "IsPlanetExalted"
@@ -5387,7 +5387,7 @@ class Calculate:
     @classmethod
     def IsMercuryMalefic(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether Mercury is malefic for the specific Lagna at the given time. The method requires both conditions to be true Mercury must be a malefic lord for the current Lagna. Mercury must be afflicted by association with malefics. 
         :return: Boolean
          """
         endpoint = "IsMercuryMalefic"
@@ -5399,7 +5399,7 @@ class Calculate:
     @classmethod
     def Nutation(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Gets the nutation value from Swiss Ephemeris for the supplied time. The method converts the time to Julian Day in UT calls Swiss Ephemeris with SE_ECL_NUT returns the nutationrelated value stored in the result array. 
         :return: Double
          """
         endpoint = "Nutation"
@@ -5411,7 +5411,7 @@ class Calculate:
     @classmethod
     def AscendantDegreesToARMC(cls, ascendant, obliquityOfEcliptic, geographicLatitude, time):
         """
-        NO DESC FOUND!! ERROR
+         Converts a tropical ascendant degree into an ARMC value. The method is intended to calculate right ascension calculate declination derive oblique ascension convert that into ARMC based on the ascendant quadrant. 
         :return: Double
          """
         endpoint = "AscendantDegreesToARMC"
@@ -5426,7 +5426,7 @@ class Calculate:
     @classmethod
     def AyanamsaDegree(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the ayanamsa value for the supplied time. The method checks the cache uses a manual Raman ayanamsa calculation when Ayanamsa is set to Raman otherwise retrieves the ayanamsa from Swiss Ephemeris. 
         :return: Angle
          """
         endpoint = "AyanamsaDegree"
@@ -5438,7 +5438,7 @@ class Calculate:
     @classmethod
     def PlanetSayanaLongitude(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns a planets Sayana tropical longitude at the supplied time. The method checks the cache converts the time to Julian Ephemeris Time maps the VedAstro planet name to a Swiss Ephemeris planet ID calculates the tropical longitude using Swiss Ephemeris adjusts Ketu by adding 180 to Rahus longitude. 
         :return: Angle
          """
         endpoint = "PlanetSayanaLongitude"
@@ -5451,7 +5451,7 @@ class Calculate:
     @classmethod
     def PlanetNirayanaLongitude(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns a planets Nirayana sidereal longitude at the supplied time. The method checks the cache handles Upagrahas separately by routing to their special longitude methods uses the manual Raman path when the selected ayanamsa is Raman otherwise uses Swiss Ephemeris sidereal calculation adjusts Ketu by adding 180 to Rahus longitude where needed. 
         :return: Angle
          """
         endpoint = "PlanetNirayanaLongitude"
@@ -5464,7 +5464,7 @@ class Calculate:
     @classmethod
     def NextLunarEclipse(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds the next lunar eclipse after the supplied time. The method checks the cache converts the time to Julian form asks Swiss Ephemeris to search forward for the next lunar eclipse reads the time of maximum eclipse from the result array converts that Julian value back into a normal UTC DateTime. 
         :return: DateTime
          """
         endpoint = "NextLunarEclipse"
@@ -5476,7 +5476,7 @@ class Calculate:
     @classmethod
     def NextSolarEclipse(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Finds the next solar eclipse after the supplied time and returns the global UTC time of maximum eclipse. The method checks the cache converts the input time to Julian time asks Swiss Ephemeris to search forward for the next solar eclipse reads the maximum eclipse time from the result array converts that Julian result back into a normal UTC DateTime. 
         :return: DateTime
          """
         endpoint = "NextSolarEclipse"
@@ -5488,7 +5488,7 @@ class Calculate:
     @classmethod
     def PlanetEphemerisLongitude(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns a planets raw ephemeris longitude from Swiss Ephemeris. The method acts as a lowerlevel bridge between VedAstro planet names and Swiss Ephemeris planet IDs. It calculates the requested planets longitude at the given time and returns it as an Angle. 
         :return: Angle
          """
         endpoint = "PlanetEphemerisLongitude"
@@ -5501,7 +5501,7 @@ class Calculate:
     @classmethod
     def PlanetSayanaLatitude(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns a planets Sayana tropical latitude at the supplied time. The method checks the cache converts the time to Julian Ephemeris Time maps the planet to a Swiss Ephemeris planet ID calculates the planets tropical position returns the latitude component as an Angle. 
         :return: Angle
          """
         endpoint = "PlanetSayanaLatitude"
@@ -5514,7 +5514,7 @@ class Calculate:
     @classmethod
     def PlanetSpeed(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planets longitudinal speed at the supplied time. The method checks the cache converts the time to Julian Ephemeris Time calls Swiss Ephemeris with speed flags enabled returns the longitudespeed component from the result. 
         :return: Double
          """
         endpoint = "PlanetSpeed"
@@ -5527,7 +5527,7 @@ class Calculate:
     @classmethod
     def ConstellationAtLongitude(cls, planetLongitude):
         """
-        NO DESC FOUND!! ERROR
+         Returns the constellation located at a given zodiac longitude. The method normalizes the longitude into the zodiac circle divides it by one Nakshatra span of 1320 rounds up to the constellation number builds and returns the corresponding Constellation. 
         :return: Constellation
          """
         endpoint = "ConstellationAtLongitude"
@@ -5539,7 +5539,7 @@ class Calculate:
     @classmethod
     def ZodiacSignAtLongitude(cls, longitude):
         """
-        NO DESC FOUND!! ERROR
+         Returns the zodiac sign and degreeinsign for a given longitude. The method normalizes the longitude divides the zodiac circle into 30degree signs determines the sign number calculates the degree position inside that sign returns a ZodiacSign. 
         :return: ZodiacSign
          """
         endpoint = "ZodiacSignAtLongitude"
@@ -5551,7 +5551,7 @@ class Calculate:
     @classmethod
     def LongitudeAtZodiacSign(cls, zodiacSign):
         """
-        NO DESC FOUND!! ERROR
+         Converts a ZodiacSign object back into an absolute zodiac longitude. The method takes the sign number multiplies the sign offset by 30 adds the degree within the sign returns the result as an Angle. 
         :return: Angle
          """
         endpoint = "LongitudeAtZodiacSign"
@@ -5563,7 +5563,7 @@ class Calculate:
     @classmethod
     def DayOfWeek(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the Vedic weekday for the supplied time. The method bases the weekday on the Vedic day calculation rather than simply using the civil midnightbased date. 
         :return: DayOfWeek
          """
         endpoint = "DayOfWeek"
@@ -5575,7 +5575,7 @@ class Calculate:
     @classmethod
     def LordOfHoraFromWeekday(cls, hora, day):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planetary lord of a given Hora number for a supplied weekday. The method uses a fixed 24Hora lookup table for each weekday. The first Hora is ruled by the lord of the weekday and the sequence continues through the classical planetary Hora order. 
         :return: PlanetName
          """
         endpoint = "LordOfHoraFromWeekday"
@@ -5588,7 +5588,7 @@ class Calculate:
     @classmethod
     def LordOfHoraFromTime(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planetary lord of the Hora active at the supplied time. The method calculates the Vedic weekday calculates the Hora number at the time looks up the Hora lord using LordOfHoraFromWeekday.... 
         :return: PlanetName
          """
         endpoint = "LordOfHoraFromTime"
@@ -5600,7 +5600,7 @@ class Calculate:
     @classmethod
     def HouseJunctionPoint(cls, previousHouse, nextHouse):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the junction point between two house longitudes. The method finds the midpoint between a previous and next house longitude normalizes the result to the 360degree circle and returns it as an Angle. 
         :return: Angle
          """
         endpoint = "HouseJunctionPoint"
@@ -5613,7 +5613,7 @@ class Calculate:
     @classmethod
     def LordOfZodiacSign(cls, signName):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planetary lord of a zodiac sign. The method maps each sign to its classical ruler Aries Scorpio Mars Taurus Libra Venus Gemini Virgo Mercury Cancer Moon Leo Sun Sagittarius Pisces Jupiter Capricorn Aquarius Saturn 
         :return: PlanetName
          """
         endpoint = "LordOfZodiacSign"
@@ -5625,7 +5625,7 @@ class Calculate:
     @classmethod
     def ZodiacSignsOwnedByPlanet(cls, planetName):
         """
-        NO DESC FOUND!! ERROR
+         Returns all zodiac signs ruled by a planet. The method maps the standard planetary rulers to their signs and also includes mappings for supported Upagrahas where defined in the source. 
         :return: List`1
          """
         endpoint = "ZodiacSignsOwnedByPlanet"
@@ -5637,7 +5637,7 @@ class Calculate:
     @classmethod
     def NextZodiacSign(cls, inputSign):
         """
-        NO DESC FOUND!! ERROR
+         Returns the zodiac sign immediately after the supplied sign. The method advances one sign forward and wraps from Pisces back to Aries. 
         :return: ZodiacName
          """
         endpoint = "NextZodiacSign"
@@ -5649,7 +5649,7 @@ class Calculate:
     @classmethod
     def NextHouseNumber(cls, inputHouseNumber):
         """
-        NO DESC FOUND!! ERROR
+         Returns the next house number after the supplied house. The method checks the cache increments the house number wraps from 12 back to 1. 
         :return: Int32
          """
         endpoint = "NextHouseNumber"
@@ -5661,7 +5661,7 @@ class Calculate:
     @classmethod
     def PlanetExaltationPoint(cls, planetName):
         """
-        NO DESC FOUND!! ERROR
+         Returns the classical exaltation point for a planet. The result includes both the exaltation sign the exact exaltation degree inside that sign. 
         :return: ZodiacSign
          """
         endpoint = "PlanetExaltationPoint"
@@ -5673,7 +5673,7 @@ class Calculate:
     @classmethod
     def PlanetDebilitationPoint(cls, planetName):
         """
-        NO DESC FOUND!! ERROR
+         Returns the classical debilitation point for a planet. The result includes both the debilitation sign the exact debilitation degree inside that sign. 
         :return: ZodiacSign
          """
         endpoint = "PlanetDebilitationPoint"
@@ -5685,7 +5685,7 @@ class Calculate:
     @classmethod
     def IsEvenSign(cls, planetSignName):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign is evennumbered. Even signs are Taurus Cancer Virgo Scorpio Capricorn Pisces 
         :return: Boolean
          """
         endpoint = "IsEvenSign"
@@ -5697,7 +5697,7 @@ class Calculate:
     @classmethod
     def IsOddSign(cls, planetSignName):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign is oddnumbered. Odd signs are Aries Gemini Leo Libra Sagittarius Aquarius 
         :return: Boolean
          """
         endpoint = "IsOddSign"
@@ -5709,7 +5709,7 @@ class Calculate:
     @classmethod
     def IsFixedSign(cls, sunSign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign is fixed. Fixed signs are Taurus Leo Scorpio Aquarius 
         :return: Boolean
          """
         endpoint = "IsFixedSign"
@@ -5721,7 +5721,7 @@ class Calculate:
     @classmethod
     def IsMovableSign(cls, sunSign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign is movable. Movable signs are Aries Cancer Libra Capricorn 
         :return: Boolean
          """
         endpoint = "IsMovableSign"
@@ -5733,7 +5733,7 @@ class Calculate:
     @classmethod
     def IsCommonSign(cls, sunSign):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a zodiac sign is common dual. Common signs are Gemini Virgo Sagittarius Pisces 
         :return: Boolean
          """
         endpoint = "IsCommonSign"
@@ -5745,7 +5745,7 @@ class Calculate:
     @classmethod
     def PlanetPermanentRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet):
         """
-        NO DESC FOUND!! ERROR
+         Returns the permanent natural relationship between two planets. The method uses fixed classical friendship neutrality and enmity tables for the seven classical planets. 
         :return: PlanetToPlanetRelationship
          """
         endpoint = "PlanetPermanentRelationshipWithPlanet"
@@ -5758,7 +5758,7 @@ class Calculate:
     @classmethod
     def ConvertJulianTimeToNormalTime(cls, julianTime):
         """
-        NO DESC FOUND!! ERROR
+         Converts a Julian Day value into a normal UTC DateTime. The method checks the cache uses Swiss Ephemeris to convert Julian UT into calendar date parts builds a DateTime from those parts. 
         :return: DateTime
          """
         endpoint = "ConvertJulianTimeToNormalTime"
@@ -5770,7 +5770,7 @@ class Calculate:
     @classmethod
     def GreenwichTimeFromJulianDays(cls, julianTime):
         """
-        NO DESC FOUND!! ERROR
+         Converts a Julian Day value at Greenwich into a DateTimeOffset. The method checks the cache converts the Julian Day into date and time components using Swiss Ephemeris creates a DateTime wraps it in a DateTimeOffset with a 0000 offset. 
         :return: DateTimeOffset
          """
         endpoint = "GreenwichTimeFromJulianDays"
@@ -5782,7 +5782,7 @@ class Calculate:
     @classmethod
     def GreenwichLmtInJulianDays(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Converts the input times Local Mean Time into Greenwichbased Julian Day format. The method gets the input time as LMT converts it to universal time extracts the UTC date and fractional hour calls Swiss Ephemeris swe_julday.... 
         :return: Double
          """
         endpoint = "GreenwichLmtInJulianDays"
@@ -5794,7 +5794,7 @@ class Calculate:
     @classmethod
     def LmtToUtc(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Converts the supplied Time from Local Mean Time to UTC. The method returns the input times LMT DateTimeOffset converted to universal time. 
         :return: DateTimeOffset
          """
         endpoint = "LmtToUtc"
@@ -5806,7 +5806,7 @@ class Calculate:
     @classmethod
     def FunctionalMaleficPlanetList(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the complete list of functional malefic planets for the charts Lagna. The method delegates to MaleficPlanetListForLagna... which includes lagnaspecific malefic lordship conditional Moon behavior conditional Mercury behavior Rahu and Ketu as malefics. 
         :return: List`1
          """
         endpoint = "FunctionalMaleficPlanetList"
@@ -5818,7 +5818,7 @@ class Calculate:
     @classmethod
     def IsPlanetConjunctWithMaleficPlanets(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is conjunct with any functional malefic planet for the charts Lagna. The method gets the lagnaspecific malefic planet list gets the planets conjunct the input planet returns whether any conjunct planet appears in the malefic list. 
         :return: Boolean
          """
         endpoint = "IsPlanetConjunctWithMaleficPlanets"
@@ -5831,7 +5831,7 @@ class Calculate:
     @classmethod
     def AllMaleficPlanetsAspecting(cls, planetReceivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all functional malefic planets that aspect the specified planet. The method gets the complete malefic list for the charts Lagna checks which of those malefics aspect the input planet returns the matching planets. 
         :return: List`1
          """
         endpoint = "AllMaleficPlanetsAspecting"
@@ -5844,7 +5844,7 @@ class Calculate:
     @classmethod
     def IsPlanetMaleficToLagna(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is malefic for the charts specific Lagna. This method is a naming alias that delegates to the comprehensive lagnaspecific malefic check IsPlanetMaleficForLagna.... 
         :return: Boolean
          """
         endpoint = "IsPlanetMaleficToLagna"
@@ -5857,7 +5857,7 @@ class Calculate:
     @classmethod
     def IsMercuryAfflicted(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether Mercury is afflicted by malefic association. This method is an alias for IsMercuryAfflictedByMalefics... retained to match naming patterns used elsewhere in the codebase. 
         :return: Boolean
          """
         endpoint = "IsMercuryAfflicted"
@@ -5869,7 +5869,7 @@ class Calculate:
     @classmethod
     def IsPlanetBeneficToLagna(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is benefic for the charts specific Lagna. This method is a naming alias that delegates to the complete benefic check IsPlanetBenefic.... 
         :return: Boolean
          """
         endpoint = "IsPlanetBeneficToLagna"
@@ -5882,7 +5882,7 @@ class Calculate:
     @classmethod
     def IsPlanetFunctionalMalefic(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is a functional or temporal malefic for the charts Lagna. The method delegates to IsPlanetMaleficForLagna... which includes lagnaspecific house lordship waning Moon logic afflicted Mercury logic Rahu and Ketu as malefics. 
         :return: Boolean
          """
         endpoint = "IsPlanetFunctionalMalefic"
@@ -5895,7 +5895,7 @@ class Calculate:
     @classmethod
     def IsMaleficPlanetAspectHouse(cls, house, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any lagnaspecific malefic planet aspects a given house. The method gets the complete malefic planet list for the charts Lagna checks whether any of those planets aspect the requested house returns the result. 
         :return: Boolean
          """
         endpoint = "IsMaleficPlanetAspectHouse"
@@ -5908,7 +5908,7 @@ class Calculate:
     @classmethod
     def IsPlanetNaturalMalefic(cls, planetName):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is a natural malefic. The implementation treats the following planets as natural malefics Mars Saturn Rahu Ketu 
         :return: Boolean
          """
         endpoint = "IsPlanetNaturalMalefic"
@@ -5920,7 +5920,7 @@ class Calculate:
     @classmethod
     def NaturalMaleficPlanetList(cls, ):
         """
-        NO DESC FOUND!! ERROR
+         Returns the fixed list of natural malefic planets. The returned list contains Mars Saturn Rahu Ketu 
         :return: List`1
          """
         endpoint = "NaturalMaleficPlanetList"
@@ -5931,7 +5931,7 @@ class Calculate:
     @classmethod
     def PapaGrahasList(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the list of Papa Grahas used for Shadbala and physicalaffliction calculations. The method always includes Sun Mars Saturn Rahu Ketu It conditionally adds Moon when the Moon is not benefic Mercury when Mercury is afflicted by malefics. 
         :return: List`1
          """
         endpoint = "PapaGrahasList"
@@ -5943,7 +5943,7 @@ class Calculate:
     @classmethod
     def IsPlanetNaturalBenefic(cls, planetName):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is a natural benefic. The implementation treats the following planets as natural benefics Jupiter Venus 
         :return: Boolean
          """
         endpoint = "IsPlanetNaturalBenefic"
@@ -5955,7 +5955,7 @@ class Calculate:
     @classmethod
     def NaturalBeneficPlanetList(cls, ):
         """
-        NO DESC FOUND!! ERROR
+         Returns the fixed list of natural benefic planets. The returned list contains Jupiter Venus 
         :return: List`1
          """
         endpoint = "NaturalBeneficPlanetList"
@@ -5966,7 +5966,7 @@ class Calculate:
     @classmethod
     def SubhaGrahasList(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the list of Subha Grahas used for benefic strength and aspect calculations. The method always includes Jupiter Venus It conditionally adds Moon when the Moon is benefic Mercury when Mercury is not afflicted by malefics. 
         :return: List`1
          """
         endpoint = "SubhaGrahasList"
@@ -5978,7 +5978,7 @@ class Calculate:
     @classmethod
     def MaleficPlanetListForLagna(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the complete list of planets that are malefic for the charts specific Lagna. The method checks the seven classical planets against lagnaspecific malefic lordship treats Moon as malefic only when it is both malefic for the Lagna and not benefic by lunar phase treats Mercury as malefic only when it is both malefic for the Lagna and afflicted by malefics always includes Rahu and Ketu. 
         :return: List`1
          """
         endpoint = "MaleficPlanetListForLagna"
@@ -5990,7 +5990,7 @@ class Calculate:
     @classmethod
     def PhysicallyHarmfulPlanetList(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the list of planets considered physically harmful through aspects conjunctions combustionlike influence or harsh rays. The method delegates directly to PapaGrahasList.... 
         :return: List`1
          """
         endpoint = "PhysicallyHarmfulPlanetList"
@@ -6002,7 +6002,7 @@ class Calculate:
     @classmethod
     def IsPlanetMaleficForLagna(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet appears in the complete lagnaspecific malefic list. The method simply tests whether MaleficPlanetListForLagna... contains the requested planet. 
         :return: Boolean
          """
         endpoint = "IsPlanetMaleficForLagna"
@@ -6015,7 +6015,7 @@ class Calculate:
     @classmethod
     def IsPlanetPhysicallyHarmful(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet appears in the physically harmful planet list. The method delegates to PhysicallyHarmfulPlanetList.... 
         :return: Boolean
          """
         endpoint = "IsPlanetPhysicallyHarmful"
@@ -6028,7 +6028,7 @@ class Calculate:
     @classmethod
     def IsPlanetBeneficLordForLagna(cls, planetName, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is a benefic lord for the charts Lagna based on fixed Lagnaspecific lordship rules. The method determines the Lagna sign applies the corresponding B. V. Ramanstyle beneficlord table returns whether the planet is listed as favorable for that Lagna. 
         :return: Boolean
          """
         endpoint = "IsPlanetBeneficLordForLagna"
@@ -6041,7 +6041,7 @@ class Calculate:
     @classmethod
     def IsPlanetMaleficLordForLagna(cls, planetName, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is a malefic lord for the charts Lagna based on fixed Lagnaspecific lordship rules. The method determines the Lagna sign applies the corresponding B. V. Ramanstyle maleficlord table returns whether the planet is listed as unfavorable for that Lagna. 
         :return: Boolean
          """
         endpoint = "IsPlanetMaleficLordForLagna"
@@ -6054,7 +6054,7 @@ class Calculate:
     @classmethod
     def IsPlanetNeutralForLagna(cls, planetName, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is neutral for the charts Lagna. The method determines the Lagna sign applies a fixed Lagnaspecific neutralplanet table returns whether the planet is listed as neutral. 
         :return: Boolean
          """
         endpoint = "IsPlanetNeutralForLagna"
@@ -6067,7 +6067,7 @@ class Calculate:
     @classmethod
     def IsMercuryAfflictedByMalefics(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether Mercury is afflicted through conjunction with malefic planets. The method checks whether Mercury is conjunct with any relevant malefic returns true immediately if such a conjunction exists checks whether Mercury is conjunct with benefics returns false if Mercury is protected by benefic association returns false when Mercury is not conjunct any planet. 
         :return: Boolean
          """
         endpoint = "IsMercuryAfflictedByMalefics"
@@ -6079,7 +6079,7 @@ class Calculate:
     @classmethod
     def IsMoonBenefic(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether the Moon is benefic based on its lunarday position. The method calculates the lunar day number returns true when the lunar day falls from 8 through 23 returns false otherwise. 
         :return: Boolean
          """
         endpoint = "IsMoonBenefic"
@@ -6091,7 +6091,7 @@ class Calculate:
     @classmethod
     def BeneficPlanetList(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the complete list of planets that are benefic for the charts Lagna. The method checks the seven classical planets against benefic lordship treats Moon as benefic only when it is both benefic for the Lagna and benefic by lunar phase treats Mercury as benefic only when it is both benefic for the Lagna and not afflicted by malefics excludes planets that are neutral or conditionally unfavorable. 
         :return: List`1
          """
         endpoint = "BeneficPlanetList"
@@ -6103,7 +6103,7 @@ class Calculate:
     @classmethod
     def IsPlanetBenefic(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet appears in the complete lagnaspecific benefic list. The method delegates to BeneficPlanetList... and checks whether the requested planet is included. 
         :return: Boolean
          """
         endpoint = "IsPlanetBenefic"
@@ -6116,7 +6116,7 @@ class Calculate:
     @classmethod
     def IsAllMaleficsInUpachayas(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether all lagnaspecific malefic planets are placed in Upachaya houses. The method gets the complete malefic list for the charts Lagna checks each planets house placement returns false if any malefic is outside an Upachaya house returns true only when all malefics are in Upachayas. 
         :return: Boolean
          """
         endpoint = "IsAllMaleficsInUpachayas"
@@ -6128,7 +6128,7 @@ class Calculate:
     @classmethod
     def MaleficPlanetListInSign(cls, sign, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all lagnaspecific malefic planets located in a given sign. The method gets all planets in the requested sign gets the complete malefic list for the charts Lagna returns only the planets that appear in both lists. 
         :return: List`1
          """
         endpoint = "MaleficPlanetListInSign"
@@ -6141,7 +6141,7 @@ class Calculate:
     @classmethod
     def IsMaleficPlanetInSign(cls, sign, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any lagnaspecific malefic planet is located in a given sign. The method delegates to MaleficPlanetListInSign... and checks whether the result contains any planets. 
         :return: Boolean
          """
         endpoint = "IsMaleficPlanetInSign"
@@ -6154,7 +6154,7 @@ class Calculate:
     @classmethod
     def PhysicallyHarmfulPlanetsAspectingHouse(cls, house, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all physically harmful planets that aspect a given house. The method gets the physically harmful planet list checks which of those planets aspect the requested house returns the matching planets. 
         :return: List`1
          """
         endpoint = "PhysicallyHarmfulPlanetsAspectingHouse"
@@ -6167,7 +6167,7 @@ class Calculate:
     @classmethod
     def IsHarmfulPlanetAspectingHouse(cls, house, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any physically harmful planet aspects a given house. The method delegates to PhysicallyHarmfulPlanetsAspectingHouse... and checks whether any matching planets exist. 
         :return: Boolean
          """
         endpoint = "IsHarmfulPlanetAspectingHouse"
@@ -6180,7 +6180,7 @@ class Calculate:
     @classmethod
     def AllPhysicallyHarmfulPlanetsAspecting(cls, planetReceivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all physically harmful planets that aspect a specified planet. The method gets the physically harmful planet list checks which harmful planets aspect the target planet returns the matching planets. 
         :return: List`1
          """
         endpoint = "AllPhysicallyHarmfulPlanetsAspecting"
@@ -6193,7 +6193,7 @@ class Calculate:
     @classmethod
     def IsPlanetAspectedByPhysicallyHarmfulPlanets(cls, planetReceivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet receives an aspect from any physically harmful planet. The method delegates to AllPhysicallyHarmfulPlanetsAspecting... and returns whether that list is nonempty. 
         :return: Boolean
          """
         endpoint = "IsPlanetAspectedByPhysicallyHarmfulPlanets"
@@ -6206,7 +6206,7 @@ class Calculate:
     @classmethod
     def AllPhysicallyHarmfulPlanetsConjunctWith(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all physically harmful planets conjunct with a specified planet. The method gets all planets conjunct with the input planet gets the physically harmful planet list returns the conjunct planets that also appear in the harmful list. 
         :return: List`1
          """
         endpoint = "AllPhysicallyHarmfulPlanetsConjunctWith"
@@ -6219,7 +6219,7 @@ class Calculate:
     @classmethod
     def IsPlanetConjunctWithPhysicallyHarmfulPlanets(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is conjunct with any physically harmful planet. The method delegates to AllPhysicallyHarmfulPlanetsConjunctWith... and returns whether that list contains any matching planets. 
         :return: Boolean
          """
         endpoint = "IsPlanetConjunctWithPhysicallyHarmfulPlanets"
@@ -6232,7 +6232,7 @@ class Calculate:
     @classmethod
     def IsMaleficPlanetInHouse(cls, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any lagnaspecific malefic planet occupies a given house. The method gets all planets in the requested house using signbased placement gets the complete malefic list for the charts Lagna checks whether any planet in the house appears in that malefic list. 
         :return: Boolean
          """
         endpoint = "IsMaleficPlanetInHouse"
@@ -6245,7 +6245,7 @@ class Calculate:
     @classmethod
     def IsPlanetHemmedByMalefics(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is hemmed between malefic planets. The method finds the planets signbased house identifies the previous and next houses checks whether both adjacent houses contain lagnaspecific malefics. 
         :return: Boolean
          """
         endpoint = "IsPlanetHemmedByMalefics"
@@ -6258,7 +6258,7 @@ class Calculate:
     @classmethod
     def IsPlanetInBeneficSign(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is placed in a sign ruled by a benefic planet. The method gets the planets current Rasi sign finds the lord of that sign checks whether that sign lord is benefic for the chart. 
         :return: Boolean
          """
         endpoint = "IsPlanetInBeneficSign"
@@ -6271,7 +6271,7 @@ class Calculate:
     @classmethod
     def IsPlanetWeak(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is weak by the two simple conditions used in this helper. The method returns true if the planet is either debilitated or combust. 
         :return: Boolean
          """
         endpoint = "IsPlanetWeak"
@@ -6284,7 +6284,7 @@ class Calculate:
     @classmethod
     def IsPlanetAfflicted(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Performs an enhanced affliction check for a planet. The method treats a planet as afflicted when any of the following are true the planet is combust except for the Sun the planet is debilitated the planet is in an enemy sign the planet is aspected by a natural malefic the planet is aspected by the Sun the planet is aspected by a planet with an enemy or bitterenemy relationship the planet is conjunct with a natural malefic the planet is conjunct with the Sun the planet is conjunct with a planet that has an enemy or bitterenemy relationship. 
         :return: Boolean
          """
         endpoint = "IsPlanetAfflicted"
@@ -6297,7 +6297,7 @@ class Calculate:
     @classmethod
     def IsPlanetAfflictedSpecificallyByPlanets(cls, afflictedPlanet, damagingPlanets, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is afflicted specifically by a supplied list of damaging planets. For each damaging planet the method verifies the damaging planet is not the afflicted planet itself the damaging planet is either in the same signbased house or aspecting the afflicted planet the damaging planet is harmful by one of these standards natural malefic Sun enemy or bitterenemy relationship. If any damaging planet fails the required conditions the method returns false. 
         :return: Boolean
          """
         endpoint = "IsPlanetAfflictedSpecificallyByPlanets"
@@ -6311,7 +6311,7 @@ class Calculate:
     @classmethod
     def PlanetTemporaryFriendList(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planets that are temporary friends of a given planet based on sign position. The method gets the planets current sign identifies the signs in the 2nd 3rd 4th 10th 11th and 12th positions from it collects planets placed in those signs removes Rahu and Ketu from the result. 
         :return: List`1
          """
         endpoint = "PlanetTemporaryFriendList"
@@ -6324,7 +6324,7 @@ class Calculate:
     @classmethod
     def IsPlanetInGoodAspectToPlanet(cls, receivingAspect, transmitingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether one planet casts a good aspect onto another planet. The method confirms that the transmitting planet aspects the receiving planet calculates the combined relationship between the two planets returns true only when the relationship is Friend or BestFriend. 
         :return: Boolean
          """
         endpoint = "IsPlanetInGoodAspectToPlanet"
@@ -6338,7 +6338,7 @@ class Calculate:
     @classmethod
     def AllPlanetsInBadAspectToPlanet(cls, receivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets casting bad aspects onto a given planet. The method gets all planets aspecting the receiving planet automatically includes natural malefics for all other planets checks whether the combined relationship is enemy or bitter enemy returns the resulting badaspect list. 
         :return: List`1
          """
         endpoint = "AllPlanetsInBadAspectToPlanet"
@@ -6351,7 +6351,7 @@ class Calculate:
     @classmethod
     def IsPlanetReceivingBadAspects(cls, receivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is receiving any bad aspects. The method delegates to AllPlanetsInBadAspectToPlanet... and returns whether any bad aspectors are found. 
         :return: Boolean
          """
         endpoint = "IsPlanetReceivingBadAspects"
@@ -6364,7 +6364,7 @@ class Calculate:
     @classmethod
     def IsPlanetInGoodAspectToHouse(cls, receivingAspect, transmitingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet casts a good aspect onto a house. The method confirms that the transmitting planet aspects the requested house evaluates the planets relationship to the house sign returns true when the relationship is own varga friend varga best friend varga. 
         :return: Boolean
          """
         endpoint = "IsPlanetInGoodAspectToHouse"
@@ -6378,7 +6378,7 @@ class Calculate:
     @classmethod
     def AllPlanetsInBadAspectToHouse(cls, receivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets casting bad aspects onto a house. The method gets all planets aspecting the requested house automatically includes natural malefics for all other planets checks the relationship between the planet and the house sign returns planets whose aspect is harmful by nature or relationship. 
         :return: List`1
          """
         endpoint = "AllPlanetsInBadAspectToHouse"
@@ -6391,7 +6391,7 @@ class Calculate:
     @classmethod
     def IsPlanetInBadAspectToHouse(cls, receivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a house receives any bad aspects. The method delegates to AllPlanetsInBadAspectToHouse... and checks whether the returned list is nonempty. 
         :return: Boolean
          """
         endpoint = "IsPlanetInBadAspectToHouse"
@@ -6404,7 +6404,7 @@ class Calculate:
     @classmethod
     def IsBeneficsInSignsFromPlanet(cls, signsFromList, startPlanet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any lagnaspecific benefic planet is present in selected signs counted from a reference planet. The method gets the complete benefic planet list for the chart checks the requested counted signs from the reference planet returns whether any benefic appears there. 
         :return: Boolean
          """
         endpoint = "IsBeneficsInSignsFromPlanet"
@@ -6418,7 +6418,7 @@ class Calculate:
     @classmethod
     def IsBeneficsInSignsFromLagna(cls, signsFromList, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any lagnaspecific benefic planet is present in selected signs counted from Lagna. The method gets the complete benefic planet list for the chart checks the requested counted signs from the Ascendant returns whether any benefic appears there. 
         :return: Boolean
          """
         endpoint = "IsBeneficsInSignsFromLagna"
@@ -6431,7 +6431,7 @@ class Calculate:
     @classmethod
     def SunAndMoonWellPlacedAndAspected(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether both the Sun and Moon are sufficiently strong and receive netbenefic aspect influence. The method requires both conditions Sun and Moon must each have positive Drik Bala. Sun and Moon must meet minimum Shadbala Pinda thresholds Sun must be at least 5 rupas or 300 shashtiamsas Moon must be at least 6 rupas or 360 shashtiamsas. 
         :return: Boolean
          """
         endpoint = "SunAndMoonWellPlacedAndAspected"
@@ -6443,7 +6443,7 @@ class Calculate:
     @classmethod
     def IsBeneficsInKendra(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any lagnaspecific benefic planet is placed in a Kendra house. The method gets the complete benefic planet list checks whether any benefic is in a Kendra returns true on the first match. 
         :return: Boolean
          """
         endpoint = "IsBeneficsInKendra"
@@ -6455,7 +6455,7 @@ class Calculate:
     @classmethod
     def BeneficPlanetListInSign(cls, sign, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all lagnaspecific benefic planets located in a given sign. The method gets all planets in the requested sign gets the complete benefic list for the chart returns the intersection of those two lists. 
         :return: List`1
          """
         endpoint = "BeneficPlanetListInSign"
@@ -6468,7 +6468,7 @@ class Calculate:
     @classmethod
     def IsBeneficPlanetInSign(cls, sign, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any lagnaspecific benefic planet is located in a given sign. The method delegates to BeneficPlanetListInSign.... 
         :return: Boolean
          """
         endpoint = "IsBeneficPlanetInSign"
@@ -6481,7 +6481,7 @@ class Calculate:
     @classmethod
     def BeneficPlanetsAspectingHouse(cls, house, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all lagnaspecific benefic planets aspecting a given house. The method gets the complete benefic planet list filters it to planets aspecting the requested house. 
         :return: List`1
          """
         endpoint = "BeneficPlanetsAspectingHouse"
@@ -6494,7 +6494,7 @@ class Calculate:
     @classmethod
     def IsBeneficPlanetAspectHouse(cls, house, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any lagnaspecific benefic planet aspects a given house. The method delegates to BeneficPlanetsAspectingHouse.... 
         :return: Boolean
          """
         endpoint = "IsBeneficPlanetAspectHouse"
@@ -6507,7 +6507,7 @@ class Calculate:
     @classmethod
     def BeneficPlanetsAspectingPlanet(cls, lord, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all lagnaspecific benefic planets aspecting a given planet. The method gets the complete benefic planet list filters it to planets aspecting the requested planet. 
         :return: List`1
          """
         endpoint = "BeneficPlanetsAspectingPlanet"
@@ -6520,7 +6520,7 @@ class Calculate:
     @classmethod
     def IsPlanetAspectedByBeneficPlanets(cls, lord, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet receives an aspect from any lagnaspecific benefic planet. The method delegates to BeneficPlanetsAspectingPlanet.... 
         :return: Boolean
          """
         endpoint = "IsPlanetAspectedByBeneficPlanets"
@@ -6533,7 +6533,7 @@ class Calculate:
     @classmethod
     def IsPlanetAspectedByEnemyPlanets(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet receives an aspect from any planet that is an enemy by combined relationship. The method gets all planets aspecting the input planet evaluates each aspecting planets combined relationship to the input planet returns true if any aspecting planet is an enemy or bitter enemy. 
         :return: Boolean
          """
         endpoint = "IsPlanetAspectedByEnemyPlanets"
@@ -6546,7 +6546,7 @@ class Calculate:
     @classmethod
     def IsPlanetAspectedByFriendPlanets(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet receives an aspect from any planet that is friendly by combined relationship. The method gets all planets aspecting the input planet evaluates each aspecting planets combined relationship to the input planet returns true if any aspecting planet is a friend or best friend. 
         :return: Boolean
          """
         endpoint = "IsPlanetAspectedByFriendPlanets"
@@ -6559,7 +6559,7 @@ class Calculate:
     @classmethod
     def AllPlanetsInEnemyConjunctionWith(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets conjunct with the input planet that are enemies by combined relationship. The method gets all planets conjunct with the input planet evaluates each conjunct planets combined relationship to the input planet returns planets whose relationship is enemy or bitter enemy. 
         :return: List`1
          """
         endpoint = "AllPlanetsInEnemyConjunctionWith"
@@ -6572,7 +6572,7 @@ class Calculate:
     @classmethod
     def IsPlanetConjunctWithEnemyPlanets(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is conjunct with any enemy planet. The method delegates to AllPlanetsInEnemyConjunctionWith.... 
         :return: Boolean
          """
         endpoint = "IsPlanetConjunctWithEnemyPlanets"
@@ -6585,7 +6585,7 @@ class Calculate:
     @classmethod
     def AllPlanetsInFriendConjunctionWith(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets conjunct with the input planet that are friends by combined relationship. The method gets all planets conjunct with the input planet evaluates each conjunct planets combined relationship to the input planet returns planets whose relationship is friend or best friend. 
         :return: List`1
          """
         endpoint = "AllPlanetsInFriendConjunctionWith"
@@ -6598,7 +6598,7 @@ class Calculate:
     @classmethod
     def IsPlanetConjunctWithFriendPlanets(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is conjunct with any friendly planet. The method delegates to AllPlanetsInFriendConjunctionWith.... 
         :return: Boolean
          """
         endpoint = "IsPlanetConjunctWithFriendPlanets"
@@ -6611,7 +6611,7 @@ class Calculate:
     @classmethod
     def IsBeneficPlanetInHouse(cls, houseNumber, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether any complete lagnaspecific benefic planet occupies a given house. The method gets all planets in the requested house using signbased placement gets the complete benefic planet list for the chart checks whether any planet in the house appears in that benefic list. 
         :return: Boolean
          """
         endpoint = "IsBeneficPlanetInHouse"
@@ -6624,7 +6624,7 @@ class Calculate:
     @classmethod
     def PlanetRelationshipWithSign(cls, planetName, zodiacSignName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns a planets relationship to a zodiac sign based on the planets relationship with that signs lord. The method excludes Rahu and Ketu from the calculation gets the lord of the requested sign returns OwnVarga when the planet itself rules the sign otherwise calculates the combined relationship between the planet and the sign lord converts that planettoplanet relationship into a planettosign relationship. 
         :return: PlanetToSignRelationship
          """
         endpoint = "PlanetRelationshipWithSign"
@@ -6638,7 +6638,7 @@ class Calculate:
     @classmethod
     def PlanetCombinedRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the combined relationship between two planets by merging permanent and temporary relationships. The method excludes Rahu and Ketu from the calculation returns SamePlanet when both inputs are the same gets the permanent natural relationship gets the temporary positional relationship combines them according to the classical relationship table. 
         :return: PlanetToPlanetRelationship
          """
         endpoint = "PlanetCombinedRelationshipWithPlanet"
@@ -6652,7 +6652,7 @@ class Calculate:
     @classmethod
     def PlanetRelationshipWithHouse(cls, house, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns a planets relationship with a house based on the sign occupying that house. The method gets the zodiac sign assigned to the house evaluates the planets relationship to that sign returns the resulting planettosign relationship. 
         :return: PlanetToSignRelationship
          """
         endpoint = "PlanetRelationshipWithHouse"
@@ -6666,7 +6666,7 @@ class Calculate:
     @classmethod
     def PlanetTemporaryRelationshipWithPlanet(cls, mainPlanet, secondaryPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the temporary relationship between two planets based on their relative sign positions. The method returns SamePlanet when both inputs are the same gets the temporary friend list of the main planet returns Friend if the secondary planet is in that list otherwise returns Enemy. 
         :return: PlanetToPlanetRelationship
          """
         endpoint = "PlanetTemporaryRelationshipWithPlanet"
@@ -6680,7 +6680,7 @@ class Calculate:
     @classmethod
     def IsPlanetFortified(cls, planet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is fortified meaning strong and well supported. The method requires the planet to be strong by Shadbala either excellent placement or beneficial support no active affliction. Excellent placement means the planet is in its own sign exalted or in Moolatrikona. Beneficial support means the planet has benefic aspects or benefic conjunctions. 
         :return: Boolean
          """
         endpoint = "IsPlanetFortified"
@@ -6693,7 +6693,7 @@ class Calculate:
     @classmethod
     def PlanetsInAspect(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets that receive aspects from the input planet. The method calculates the signs aspected by the input planet finds all planets located in those signs returns the combined planet list. 
         :return: List`1
          """
         endpoint = "PlanetsInAspect"
@@ -6706,7 +6706,7 @@ class Calculate:
     @classmethod
     def PlanetAspectDegree(cls, receiver, trasmitter, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the aspect strength or aspect value between two planets. The method calculates the longitudinal difference from the transmitting planet to the receiving planet normalizes the difference to the zodiac circle calculates the basic Drishti value adds any special Vishesha Drishti value for Mars Jupiter or Saturn returns the final aspect value. 
         :return: Double
          """
         endpoint = "PlanetAspectDegree"
@@ -6720,7 +6720,7 @@ class Calculate:
     @classmethod
     def PlanetsAspectingPlanet(cls, receivingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets that aspect a given planet. The method checks all nine planets and keeps those for which IsPlanetAspectedByPlanet... returns true. 
         :return: List`1
          """
         endpoint = "PlanetsAspectingPlanet"
@@ -6733,7 +6733,7 @@ class Calculate:
     @classmethod
     def HousesInAspect(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all houses aspected by a planet. The method calculates the signs aspected by the planet checks the sign assigned to each house returns the houses whose signs are included in the aspectedsign list. 
         :return: List`1
          """
         endpoint = "HousesInAspect"
@@ -6746,7 +6746,7 @@ class Calculate:
     @classmethod
     def PlanetsAspectingHouse(cls, inputHouse, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets that aspect a given house. The method loops through all nine planets gets the houses aspected by each planet adds planets whose aspectedhouse list contains the requested house. 
         :return: List`1
          """
         endpoint = "PlanetsAspectingHouse"
@@ -6759,7 +6759,7 @@ class Calculate:
     @classmethod
     def IsPlanetAspectedByPlanet(cls, receiveingAspect, transmitingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether one planet aspects another planet. The method gets all planets aspected by the transmitting planet checks whether the receiving planet appears in that list. 
         :return: Boolean
          """
         endpoint = "IsPlanetAspectedByPlanet"
@@ -6773,7 +6773,7 @@ class Calculate:
     @classmethod
     def IsHouseAspectedByPlanet(cls, receiveingAspect, transmitingAspect, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet aspects a given house. The method gets all houses aspected by the transmitting planet checks whether the requested house appears in that list. 
         :return: Boolean
          """
         endpoint = "IsHouseAspectedByPlanet"
@@ -6787,7 +6787,7 @@ class Calculate:
     @classmethod
     def IsPlanetConjunctWithPlanet(cls, planetA, planetB, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether two planets are conjunct. The method gets the conjunction list for planetA gets the conjunction list for planetB confirms that each planet appears in the others conjunction list. 
         :return: Boolean
          """
         endpoint = "IsPlanetConjunctWithPlanet"
@@ -6801,7 +6801,7 @@ class Calculate:
     @classmethod
     def AllBeneficPlanetsInGoodConjunctionWith(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all natural benefic planets that are in genuinely beneficial conjunction with the input planet. The method requires both conditions the conjunct planet must be a natural benefic in the current context the conjunct planet must have a friendly or bestfriend relationship with the input planet. The natural benefic set starts with Jupiter Venus. It conditionally adds Moon when the Moon is benefic Mercury when Mercury is not afflicted. 
         :return: List`1
          """
         endpoint = "AllBeneficPlanetsInGoodConjunctionWith"
@@ -6814,7 +6814,7 @@ class Calculate:
     @classmethod
     def IsPlanetConjunctWithBeneficPlanets(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is conjunct with any natural benefic that also has a beneficial relationship to it. The method delegates to AllBeneficPlanetsInGoodConjunctionWith.... 
         :return: Boolean
          """
         endpoint = "IsPlanetConjunctWithBeneficPlanets"
@@ -6827,7 +6827,7 @@ class Calculate:
     @classmethod
     def AllHarmfulPlanetsInBadConjunctionWith(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all planets that form genuinely harmful conjunctions with the input planet. The method gets the physically harmful planet list checks which harmful planets are conjunct with the input planet always counts natural malefics as harmful checks relationship for Sun weak Moon and afflicted Mercury includes those conditional harmful planets only when their relationship is enemy or bitter enemy. 
         :return: List`1
          """
         endpoint = "AllHarmfulPlanetsInBadConjunctionWith"
@@ -6840,7 +6840,7 @@ class Calculate:
     @classmethod
     def IsPlanetReceivingHarmfulConjunctions(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet receives any harmful conjunctions. The method delegates to AllHarmfulPlanetsInBadConjunctionWith.... 
         :return: Boolean
          """
         endpoint = "IsPlanetReceivingHarmfulConjunctions"
@@ -6853,7 +6853,7 @@ class Calculate:
     @classmethod
     def PlanetPowerPercentage(cls, inputPlanet, time):
         """
-        NO DESC FOUND!! ERROR
+         Converts a planets Shadbala strength into a relative percentage score. The method calculates the strength of all planets finds the strength of the requested planet identifies the weakest and strongest planet values remaps the requested planets strength onto a 0100 scale. 
         :return: Double
          """
         endpoint = "PlanetPowerPercentage"
@@ -6866,7 +6866,7 @@ class Calculate:
     @classmethod
     def PickOutStrongestPlanet(cls, relatedPlanets, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Selects the strongest planet from a supplied list based on Shadbala. The method returns immediately if the list contains only one planet calculates Shadbala strength for each planet selects the planet with the highest strength value. 
         :return: PlanetName
          """
         endpoint = "PickOutStrongestPlanet"
@@ -6879,7 +6879,7 @@ class Calculate:
     @classmethod
     def AllPlanetOrderedByStrength(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all nine planets ordered by Shadbala strength strongest first. The method checks the cache calculates Shadbala Pinda for every planet sorts the planets by descending strength returns only the planet names. 
         :return: List`1
          """
         endpoint = "AllPlanetOrderedByStrength"
@@ -6891,7 +6891,7 @@ class Calculate:
     @classmethod
     def IsPlanetStrongInShadbala(cls, planet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet meets its classical minimum Shadbala threshold. The method compares the planets Shadbala Pinda in Rupas against a planetspecific threshold Sun 5 Moon 6 Mars 5 Mercury 7 Jupiter 6.5 Venus 5.5 Saturn 5 Rahu 5 Ketu 5 
         :return: Boolean
          """
         endpoint = "IsPlanetStrongInShadbala"
@@ -6904,7 +6904,7 @@ class Calculate:
     @classmethod
     def IsHouseStrongInShadbala(cls, house, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a house belongs to the strongest third of all houses by housestrength score. The method delegates to HouseStrengthCategory.... 
         :return: Boolean
          """
         endpoint = "IsHouseStrongInShadbala"
@@ -6917,7 +6917,7 @@ class Calculate:
     @classmethod
     def IsHouseWeakInShadbala(cls, house, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a house belongs to the weakest third of all houses by housestrength score. The method delegates to HouseStrengthCategory.... 
         :return: Boolean
          """
         endpoint = "IsHouseWeakInShadbala"
@@ -6930,7 +6930,7 @@ class Calculate:
     @classmethod
     def HouseStrengthCategory(cls, house, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Classifies a houses strength relative to the other houses in the same chart. The method calculates the strength of all twelve houses sorts the houses by strength splits the list into three tiers bottom third Weak middle third Average top third Strong returns the category for the requested house. 
         :return: Strength
          """
         endpoint = "HouseStrengthCategory"
@@ -6943,7 +6943,7 @@ class Calculate:
     @classmethod
     def AllPlanetStrength(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the Shadbala strength of all nine planets. The method calculates PlanetShadbalaPinda... for each planet and returns a list of strengthandplanet tuples. 
         :return: List`1
          """
         endpoint = "AllPlanetStrength"
@@ -6955,7 +6955,7 @@ class Calculate:
     @classmethod
     def AllHousesOrderedByStrength(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns all houses ordered by strength strongest first. The method checks the cache calculates strength for every house sorts by descending strength returns only the house names. 
         :return: HouseName[]
          """
         endpoint = "AllHousesOrderedByStrength"
@@ -6967,7 +6967,7 @@ class Calculate:
     @classmethod
     def PlanetShadbalaPinda(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the final total Shadbala Pinda for a planet. The method adds the six main planetary strength components Sthana Bala positional strength Dig Bala directional strength Kala Bala temporal strength Chesta Bala motional strength Naisargika Bala natural strength Drik Bala aspect strength added or subtracted depending on sign For Rahu and Ketu the method uses the strength of the lord of the house occupied by the node. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetShadbalaPinda"
@@ -6980,7 +6980,7 @@ class Calculate:
     @classmethod
     def PlanetStrength(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Alias for PlanetShadbalaPinda.... This method exists as a simpler easiertoremember name for retrieving a planets total Shadbala strength. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetStrength"
@@ -6993,7 +6993,7 @@ class Calculate:
     @classmethod
     def PlanetDrikBala(cls, target, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Drik Bala the aspect strength of a planet. The method excludes Rahu and Ketu loops through the seven classical planets calculates the angular distance from each aspecting planet to the target calculates the basic Drishti value adds special Vishesha Drishti for Mars Jupiter or Saturn treats Mercury as benefic for Drik Bala treats other planets as positive or negative depending on benefic status divides the accumulated Drishti Pinda by 4. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetDrikBala"
@@ -7009,7 +7009,7 @@ class Calculate:
     @classmethod
     def FindViseshaDrishti(cls, dk, p):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the special aspect value Vishesha Drishti for Mars Jupiter or Saturn. The method checks the angular distance dk and applies additional specialaspect strength when the planet is Saturn special strength over the 3rd and 10th aspect zones. Jupiter special strength over the 5th and 9th aspect zones. Mars special strength over the 4th and 8th aspect zones. 
         :return: Double
          """
         endpoint = "FindViseshaDrishti"
@@ -7022,7 +7022,7 @@ class Calculate:
     @classmethod
     def FindDrishtiValue(cls, dk):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the ordinary Drishti or aspect value from an angular distance. The method maps different angular ranges to different aspectstrength formulas. This produces a graduated aspect value rather than a simple yesorno aspect. 
         :return: Double
          """
         endpoint = "FindDrishtiValue"
@@ -7034,7 +7034,7 @@ class Calculate:
     @classmethod
     def PlanetNaisargikaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the planets Naisargika Bala or natural strength. Naisargika Bala is the inherent brightnessbased strength of a planet. In this implementation the values are fixed constants Sun 60 Moon 51.43 Venus 42.85 Jupiter 34.28 Mercury 25.70 Mars 17.14 Saturn 8.57 
         :return: Shashtiamsa
          """
         endpoint = "PlanetNaisargikaBala"
@@ -7047,7 +7047,7 @@ class Calculate:
     @classmethod
     def PlanetChestaBala(cls, planetName, time, useSpecialSunMoon=False):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Chesta Bala the motional strength of a planet. The method supports three different calculation paths Sun and Moon Normally return zero. When useSpecialSunMoon is true special IshtaKashta formulas are used. Rahu and Ketu Return zero in this implementation. Mars Mercury Jupiter Venus and Saturn Use the mean longitude true longitude and Seeghrochcha aphelionstyle value. The resulting Chesta Kendra is folded into a 0180 range. The final Chesta Bala is calculated by dividing by 3. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetChestaBala"
@@ -7061,7 +7061,7 @@ class Calculate:
     @classmethod
     def Madhya(cls, epochToBirthDays, time1):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the mean longitudes of planets from the interval between the epoch and the birth date. The method estimates where each planet would be if it moved at a uniform mean rate without applying orbital corrections. 
         :return: Dictionary`2
          """
         endpoint = "Madhya"
@@ -7074,7 +7074,7 @@ class Calculate:
     @classmethod
     def EpochInterval(cls, time1):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the number of days between the configured epoch and the supplied chart time. The method converts the time into the needed date representation and returns the day interval used by meanmotion calculations. 
         :return: Double
          """
         endpoint = "EpochInterval"
@@ -7086,7 +7086,7 @@ class Calculate:
     @classmethod
     def IsPlanetRetrograde(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Checks whether a planet is retrograde at the supplied time. The method handles special fixed cases calculates the planets speed or motion condition returns whether the planet is moving in reverse zodiacal direction. 
         :return: Boolean
          """
         endpoint = "IsPlanetRetrograde"
@@ -7099,7 +7099,7 @@ class Calculate:
     @classmethod
     def IsPlanetCombust(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Determines whether a planet is combust because it is too close to the Sun. The method excludes planets that are not evaluated for combustion in this implementation gets the longitudes of the planet and Sun calculates the shortest angular distance between them compares that distance against the planetspecific combustion limit. 
         :return: Boolean
          """
         endpoint = "IsPlanetCombust"
@@ -7112,7 +7112,7 @@ class Calculate:
     @classmethod
     def PlanetCirculationTime(cls, planetName):
         """
-        NO DESC FOUND!! ERROR
+         Returns the circulation or orbital period used by Chesta Bala support calculations. 
         :return: Double
          """
         endpoint = "PlanetCirculationTime"
@@ -7124,7 +7124,7 @@ class Calculate:
     @classmethod
     def PlanetSaptavargajaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Saptavargaja Bala the strength a planet receives from its dignity across seven divisional placements. The method evaluates the planets condition in the following charts Rasi Hora Drekkana Saptamsha Navamsha Dwadashamsha Trimshamsha For each divisional placement strength is assigned according to whether the planet is in a favorable neutral own exalted or hostile placement. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetSaptavargajaBala"
@@ -7137,7 +7137,7 @@ class Calculate:
     @classmethod
     def PlanetSthanaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Sthana Bala the positional strength of a planet. The method combines the major subcomponents of positional strength Ochcha Bala exaltation strength. Saptavargaja Bala dignity across seven divisions. Ojayugmarasyamsa Bala oddeven sign and Navamsha strength. Kendra Bala strength from Kendra Panapara or Apoklima placement. Drekkana Bala strength from position in the correct Drekkana for the planets gender class. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetSthanaBala"
@@ -7150,7 +7150,7 @@ class Calculate:
     @classmethod
     def PlanetDrekkanaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Drekkana Bala a positionalstrength component based on where a planet falls within a sign. The method follows these rules Masculine planets receive strength in the first Drekkana 010. Hermaphrodite planets receive strength in the second Drekkana 1020. Feminine planets receive strength in the third Drekkana 2030. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetDrekkanaBala"
@@ -7163,7 +7163,7 @@ class Calculate:
     @classmethod
     def PlanetKendraBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Kendra Bala the strength a planet receives from its house category. The method assigns strength based on the planets house placement Kendras 1 4 7 10 60 Panaparas 2 5 8 11 30 Apoklimas 3 6 9 12 15 
         :return: Shashtiamsa
          """
         endpoint = "PlanetKendraBala"
@@ -7176,7 +7176,7 @@ class Calculate:
     @classmethod
     def PlanetOjayugmarasyamsaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Ojayugmarasyamsa Bala strength from oddeven placement in Rasi and Navamsha. The method checks whether the planet is in the sign parity favored by its class Sun Mars Jupiter Mercury and Saturn gain strength in odd signs. Moon and Venus gain strength in even signs. The same idea is applied to both Rasi and Navamsha positions. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetOjayugmarasyamsaBala"
@@ -7189,7 +7189,7 @@ class Calculate:
     @classmethod
     def PlanetKalaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Kala Bala the temporal strength of a planet. The method combines several timebased substrengths including Nathonnatha Bala Paksha Bala Tribhaga Bala Abda Bala Masa Bala Vara Bala Hora Bala Ayana Bala Yuddha Bala 
         :return: Shashtiamsa
          """
         endpoint = "PlanetKalaBala"
@@ -7202,7 +7202,7 @@ class Calculate:
     @classmethod
     def PlanetYuddhaBala(cls, target, preKalaBalaValues, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Yuddha Bala the strength adjustment from planetary war. The method checks whether the target planet is eligible for Graha Yuddha searches for nearby eligible planets within the war threshold determines the victorious and defeated planets calculates the strength difference using prewar Kala Bala values adjusts the result according to the planetarywar rule. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetYuddhaBala"
@@ -7216,7 +7216,7 @@ class Calculate:
     @classmethod
     def PlanetAyanaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Ayana Bala the strength based on a planets declination and northern or southern course. The method gets the planets declination applies the planetspecific northsouth rule scales the result into Shashtiamsas. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetAyanaBala"
@@ -7229,7 +7229,7 @@ class Calculate:
     @classmethod
     def PlanetDeclination(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the declination of a planet. Declination is the planets angular distance north or south of the celestial equator. The method gets the planets ecliptic position uses obliquity of the ecliptic converts the ecliptic position into declination. 
         :return: Double
          """
         endpoint = "PlanetDeclination"
@@ -7242,7 +7242,7 @@ class Calculate:
     @classmethod
     def EclipticObliquity(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Returns the true obliquity of the ecliptic for the supplied time. The method gets the obliquity value through Swiss Ephemeris including nutation effects where available. 
         :return: Double
          """
         endpoint = "EclipticObliquity"
@@ -7254,7 +7254,7 @@ class Calculate:
     @classmethod
     def PlanetHoraBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Hora Bala also called Horadhipathi Bala. The method awards strength when the planet is the lord of the Hora active at the supplied time. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetHoraBala"
@@ -7267,7 +7267,7 @@ class Calculate:
     @classmethod
     def PlanetAbdaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Abda Bala the yearly lord strength. The method awards strength to the planet that rules the year of birth. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetAbdaBala"
@@ -7280,7 +7280,7 @@ class Calculate:
     @classmethod
     def PlanetMasaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Masa Bala the monthly lord strength. The method awards strength to the planet that rules the month of birth. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetMasaBala"
@@ -7293,7 +7293,7 @@ class Calculate:
     @classmethod
     def PlanetVaraBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Vara Bala the weekday lord strength. The method awards strength to the planet that rules the day of birth. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetVaraBala"
@@ -7306,7 +7306,7 @@ class Calculate:
     @classmethod
     def YearAndMonthLord(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the lords of the year and month for the supplied time. The method uses the day interval from the epoch and derives the year and month lord according to the counting logic used by the Kala Bala calculations. 
         :return: Object
          """
         endpoint = "YearAndMonthLord"
@@ -7318,7 +7318,7 @@ class Calculate:
     @classmethod
     def PlanetTribhagaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Tribhaga Bala strength from the onethird division of day or night. The method follows these rules During the day Mercury gains strength in the first third. Sun gains strength in the second third. Saturn gains strength in the third third. During the night Moon gains strength in the first third. Venus gains strength in the second third. Mars gains strength in the third third. Jupiter always receives full Tribhaga Bala. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetTribhagaBala"
@@ -7331,7 +7331,7 @@ class Calculate:
     @classmethod
     def PlanetOchchaBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Ochcha Bala the planets exaltation strength. The method gets the planets current longitude gets the planets debilitation point measures the angular distance from the debilitation point folds the result into the shortest valid arc when needed divides the distance by 3. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetOchchaBala"
@@ -7344,7 +7344,7 @@ class Calculate:
     @classmethod
     def PlanetPakshaBala(cls, planet, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Paksha Bala strength based on the Moons phase. The method measures the angular distance between the Moon and Sun derives separate base values for Subha and Papa planets classifies the Moon by waxing or waning phase classifies Mercury by whether it is malefic applies the appropriate base value to the requested planet doubles the Moons Paksha Bala. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetPakshaBala"
@@ -7357,7 +7357,7 @@ class Calculate:
     @classmethod
     def PlanetNathonnathaBala(cls, planet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Nathonnatha Bala also called Divaratri Bala. The method returns full strength for Mercury converts the birth time to local apparent time finds apparent noon measures the distance from apparent noon converts that distance into ghatis applies dayplanet or nightplanet rules. Planet groups Sun Jupiter and Venus gain day strength. Moon Mars and Saturn gain night strength. Mercury always receives 60. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetNathonnathaBala"
@@ -7370,7 +7370,7 @@ class Calculate:
     @classmethod
     def PlanetDigBala(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Dig Bala the directional strength of a planet. The method assigns each planet a direction of maximum strength Jupiter and Mercury House 1 Sun and Mars House 10 Saturn House 7 Moon and Venus House 4 It then finds the opposite powerless house measures the shortest arc from the planet to that powerlesshouse midpoint divides the arc by 3 to get the Shashtiamsa value. 
         :return: Shashtiamsa
          """
         endpoint = "PlanetDigBala"
@@ -7383,7 +7383,7 @@ class Calculate:
     @classmethod
     def HouseStrength(cls, inputHouse, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the total Bhava Bala or house strength for a specific house. The method combines three housestrength components Bhavadhipathi Bala strength of the house lord. Bhava Dig Bala directional or signtype strength of the house. Bhava Drishti Bala aspect strength received by the house. The method calculates each component for all houses adds the three values together for each house and returns the total strength of the requested house. 
         :return: Shashtiamsa
          """
         endpoint = "HouseStrength"
@@ -7396,7 +7396,7 @@ class Calculate:
     @classmethod
     def BhavaDrishtiBala(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Bhava Drishti Bala the aspect strength received by each house. The method determines whether each of the seven classical planets contributes a positive or negative influence treats Mercury as a full benefic for this specific Bhava Drishti Bala calculation calculates each planets aspect value toward every house midpoint adds special aspect strength where applicable reduces the aspect value for planets other than Jupiter and Mercury combines all planetary contributions into one score per house. 
         :return: HouseSubStrength
          """
         endpoint = "BhavaDrishtiBala"
@@ -7408,7 +7408,7 @@ class Calculate:
     @classmethod
     def BhavaDigBala(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Bhava Dig Bala the strength a house receives based on the type of sign containing its midpoint. The method checks the midpoint longitude of every house maps that midpoint into a sign group applies the corresponding directional subtraction rule folds large differences back into the 06 range multiplies the final difference by 10. 
         :return: HouseSubStrength
          """
         endpoint = "BhavaDigBala"
@@ -7420,7 +7420,7 @@ class Calculate:
     @classmethod
     def BhavaAdhipathiBala(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Bhavadhipathi Bala the strength contributed by the lord of each house. For every house the method finds the lord of the house calculates that planets total Shadbala Pinda uses the planets Shadbala as the houselord strength. 
         :return: HouseSubStrength
          """
         endpoint = "BhavaAdhipathiBala"
@@ -7432,7 +7432,7 @@ class Calculate:
     @classmethod
     def BeneficPlanetListByShadbala(cls, personBirthTime, threshold):
         """
-        NO DESC FOUND!! ERROR
+         Returns planets whose Shadbala strength is above a supplied threshold. The method calculates the strength of all planets checks each planets strength value returns planets whose strength is greater than threshold. 
         :return: List`1
          """
         endpoint = "BeneficPlanetListByShadbala"
@@ -7448,7 +7448,7 @@ class Calculate:
     @classmethod
     def BeneficHouseListByShadbala(cls, personBirthTime, threshold):
         """
-        NO DESC FOUND!! ERROR
+         Returns houses whose total house strength is above a supplied threshold. The method calculates HouseStrength... for every house compares each house strength against the threshold returns houses whose strength is greater than the threshold. 
         :return: List`1
          """
         endpoint = "BeneficHouseListByShadbala"
@@ -7464,7 +7464,7 @@ class Calculate:
     @classmethod
     def MaleficPlanetListByShadbala(cls, personBirthTime, threshold):
         """
-        NO DESC FOUND!! ERROR
+         Returns planets whose Shadbala strength is below a supplied threshold. The method calculates the strength of all planets checks each planets strength value returns planets whose strength is less than threshold. 
         :return: List`1
          """
         endpoint = "MaleficPlanetListByShadbala"
@@ -7480,7 +7480,7 @@ class Calculate:
     @classmethod
     def MaleficHouseListByShadbala(cls, personBirthTime, threshold):
         """
-        NO DESC FOUND!! ERROR
+         Returns houses whose total house strength is below a supplied threshold. The method calculates HouseStrength... for every house compares each house strength against the threshold returns houses whose strength is less than the threshold. 
         :return: List`1
          """
         endpoint = "MaleficHouseListByShadbala"
@@ -7496,7 +7496,7 @@ class Calculate:
     @classmethod
     def ResidentialStrength(cls, planetName, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates the residential strength of a planet inside the house it occupies. The method finds the planets house using longitudebased house boundaries gets the beginning middle and end longitudes of that house gets the planets actual longitude determines whether the planet lies in the first half or second half of the house returns a proportional strength value based on its position within that half. 
         :return: Double
          """
         endpoint = "ResidentialStrength"
@@ -7509,7 +7509,7 @@ class Calculate:
     @classmethod
     def PlanetIshtaKashtaScoreDegree(cls, planet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Converts a planets Ishta and Kashta scores into a compact beneficversusmalefic scale. The method calculates the planets Ishta score calculates the planets Kashta score compares the two scores as a percentage of total strength maps the result from 100..100 into a final 4..4 range rounds the final value to three decimal places. 
         :return: Double
          """
         endpoint = "PlanetIshtaKashtaScoreDegree"
@@ -7522,7 +7522,7 @@ class Calculate:
     @classmethod
     def PlanetKashtaScore(cls, planet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Kashta Phala the difficult or unfavorable strength of a planet. The method returns 0 for Rahu and Ketu calculates the planets Ochcha Bala calculates the planets Chesta Bala using the special SunMoon path subtracts both values from 60 multiplies the adjusted values returns the square root of that product. 
         :return: Double
          """
         endpoint = "PlanetKashtaScore"
@@ -7535,7 +7535,7 @@ class Calculate:
     @classmethod
     def PlanetIshtaScore(cls, planet, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Calculates Ishta Phala the favorable or beneficial strength of a planet. The method returns 0 for Rahu and Ketu calculates the planets Ochcha Bala calculates the planets Chesta Bala using the special SunMoon path multiplies those two values returns the square root of the product. 
         :return: Double
          """
         endpoint = "PlanetIshtaScore"
@@ -7548,7 +7548,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeNearEclipse(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Earthquakes generally occur at the times of eclipses p.66 rule 1 p.61 p.6871 Eclipse proximity is one of the most frequently cited indicators in the book. Solar eclipse Sun near RahuKetu near New Moon Lunar eclipse Sun near RahuKetu near Full Moon. Charts Argentina 1887 annular solar eclipse on 22nd Manila 1887 total lunar eclipse June 1 Java 1882 annular solar eclipse Nov 10 Japan 1923 lunar eclipse Aug 26 Iran 1978. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeNearEclipse"
@@ -7560,7 +7560,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMoonMercuryExactConjunction(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         The most important feature is again the closeness of the Moon and Mercury p.65 EXACT conjunction within 3 degrees strongest form of MoonMercury indicator. Appears in virtually every major earthquake chart in BV Ramans study. Charts China 1976 p.65 Assam 1950 p.72 Agadir 1960 p.74 Iran 1990 p.80. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMoonMercuryExactConjunction"
@@ -7572,7 +7572,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeJupiterSaturnOpposition(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Jupiter and Saturn are in opposite signs p.73 Assam earthquake 1950 JupiterSaturn opposition is associated with the strongest earthquakes. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeJupiterSaturnOpposition"
@@ -7584,7 +7584,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeJupiterSaturnConjunction(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Two of the worst earthquakes occurred in 1960 perhaps due to JupiterSaturn remaining in the same sign p.73 
         :return: Boolean
          """
         endpoint = "IsEarthquakeJupiterSaturnConjunction"
@@ -7596,7 +7596,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeNearNewMoon(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Earthquakes generally occur at the times of eclipses and near new Moon days p.66 New Moon Amavasya lunar day 30 or 1. Checks within 3 tithis. Charts Bihar 1934 Chart 1 China 1976 Chart 2 Agadir 1960 Chart 9 Iran 1990 Chart 14. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeNearNewMoon"
@@ -7608,7 +7608,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeNearFullMoon(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Earthquakes generally occur near full Moon days p.66 Full Moon Purnima lunar day 15. Checks within 3 tithis. Chart Iran 1978 Chart 13 occurred just after full Moon p.79. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeNearFullMoon"
@@ -7620,7 +7620,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeSaturnMarsInKendras(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Not only were the major planets Saturn and Mars in mutual angles p.67 SaturnMars in Kendras is a classic earthquake indicator. Kendras houses 1 4 7 10 from each other. Charts Calcutta 1737 Chart 3 Java 1882 Chart 6. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeSaturnMarsInKendras"
@@ -7632,7 +7632,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMarsJupiterInKendras(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Jupiter and Mars are in mutual square Kendra China 1976 p.65 Mars and Jupiter are in mutual trines Assam 1950 p.73 Jupiter and Mars are in square Iran 1978 p.79 Iran 1990 p.80 MarsJupiter angular relationship is cited in MORE earthquake charts than SaturnMars. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMarsJupiterInKendras"
@@ -7644,7 +7644,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMoonMercuryConjunction(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         The most important feature is again the closeness of the Moon and Mercury p.65 MoonMercury conjunction appears in nearly every earthquake chart in the book. Wider orb version within 10 degrees for general conjunction tracking. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMoonMercuryConjunction"
@@ -7656,7 +7656,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMajorPlanetsInMutualKendras(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         The major planets Mars Saturn Rahu and Jupiter will be in mutual angles Kendras or trines Trikonas p.66 rule 3 Checks if at least 3 of these 4 major planets are in KendraTrikona from each other. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMajorPlanetsInMutualKendras"
@@ -7668,7 +7668,7 @@ class Calculate:
     @classmethod
     def IsEarthquakePlanetsClusteredInNarrowArc(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Except Jupiter and RahuKetu the rest were all clustered within an arc of 38 p.65 Checks if 5 planets fall within a 40degree arc. China 1976. 
         :return: Boolean
          """
         endpoint = "IsEarthquakePlanetsClusteredInNarrowArc"
@@ -7680,7 +7680,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMajorPlanetsInEarthySigns(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Major planets generally occupy earthy signs p.66 rule 5 Earthy signs Taurus Virgo Capricorn. Threshold 2 of Mars Saturn Rahu Jupiter in earthy signs lowered from 3 per audit. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMajorPlanetsInEarthySigns"
@@ -7692,7 +7692,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMajorPlanetsInAirySigns(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Major planets generally occupy airy signs p.66 rule 5 Airy signs Gemini Libra Aquarius. Seven bodies are disposed in mutual Trikona Rasis in airy signs p.68 Threshold 2 of Mars Saturn Rahu Jupiter in airy signs lowered from 3 per audit. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMajorPlanetsInAirySigns"
@@ -7704,7 +7704,7 @@ class Calculate:
     @classmethod
     def IsEarthquakePrithviMandalaRuling(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         The asterism of the day belongs to Prithvi Earth Mandala p.66 rule 6 Using BV Ramans Indra Mandala nakshatras p.28 which he associates with terrestrial disturbances fear from fire poverty crops fail. Nakshatras Rohini Anuradha Jyeshta Uttarashadha Sravana Dhanishta. 
         :return: Boolean
          """
         endpoint = "IsEarthquakePrithviMandalaRuling"
@@ -7716,7 +7716,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeVayuMandalaRuling(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         The asterism of the day belongs to Vayu Wind Mandala p.66 rule 6 Vayu Mandala nakshatras per BV Raman p.28 fear from kings storms and scarcity. Nakshatras Aswini Mrigasira Punarvasu Uttara Hasta Chitta Swathi. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeVayuMandalaRuling"
@@ -7728,7 +7728,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeJupiterInKendraFromAscendant(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         At the times of severe earthquakes Jupiter is placed in an angle Kendra from the rising sign at the time of the earthquake occurrence p.59 Jupiter in houses 1 4 7 or 10 from the ascendant. NOTE Locationdependent requires geographic location for ascendant calculation. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeJupiterInKendraFromAscendant"
@@ -7740,7 +7740,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMoonNearPerigee(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Moon was in perigee Manila 1887 p.69 Moon was near perigee Assam 1950 p.73. Moon at perigee closest to Earth amplifies gravitational stress on tectonic plates. Moons average daily motion is 13.2 degday. At perigee it exceeds 14.5 degday. Uses Moons speed as a proxy for perigee proximity. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMoonNearPerigee"
@@ -7752,7 +7752,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMaleficsNearMeridian(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Mars was exactly in the 10th house Japan 1923 p.71 Both Jupiter and Saturn are near the lower meridian Persia 1960 p.75 The locality is indicated in places where Saturn or Jupiter is on the meridian p.62 Checks if Saturn Mars or Jupiter are in houses 4 or 10 meridiannadir. NOTE Locationdependent requires geographic location for house calculation. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMaleficsNearMeridian"
@@ -7764,7 +7764,7 @@ class Calculate:
     @classmethod
     def IsEarthquakeMercurySaturnConjunction(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Mercury is in conjunction with both the Moon and Saturn Assam 1950 p.73 MercurySaturn conjunction appears alongside MoonMercury in several earthquake charts. Orb of 15 degrees since Saturn moves slowly. 
         :return: Boolean
          """
         endpoint = "IsEarthquakeMercurySaturnConjunction"
@@ -7776,7 +7776,7 @@ class Calculate:
     @classmethod
     def CalculateEarthquakeRiskScore(cls, time):
         """
-        NO DESC FOUND!! ERROR
+         Calculates weighted earthquake risk score 035 scale. Weight 3 Critical max 12 points Eclipse MoonMercury exact JupiterSaturn aspect Weight 2 Strong max 14 points NewFull Moon planetary Kendras clustering Weight 1 Supporting max 9 points Sign positions nakshatras Moon perigee Based on frequency of appearance in BV Ramans 200 historical earthquake charts. Maximum possible score 35 if every indicator fires simultaneously. In practice scores above 12 are extremely rare. Risk levels Score 8 HIGH RISK critical mass of indicators Score 47 MODERATE RISK several supporting indicators Score 03 LOW RISK few or no indicators 
         :return: Int32
          """
         endpoint = "CalculateEarthquakeRiskScore"
@@ -7788,7 +7788,7 @@ class Calculate:
     @classmethod
     def CalculateAshtamangalaNumberFromShells(cls, leftPile, centerPile, rightPile, totalShells):
         """
-        NO DESC FOUND!! ERROR
+         Computes the Ashtamangala Number used in cowrieshell Ashtamangala Prasna divination. Supports both the original 108shell system and the reduced 9shell system selected by totalShells turning the three counted piles of shells into a threedigit number whose digits each range 1 to 8. The resulting number feeds Chapter7Predictions for interpretation. 
         :return: Int32
          """
         endpoint = "CalculateAshtamangalaNumberFromShells"
@@ -7803,7 +7803,7 @@ class Calculate:
     @classmethod
     def Chapter5Predictions(cls, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Chapter5Predictions Prasna Marga Chapter V Mathematical Foundations SOURCE Prasna Marga Chapter V Stanzas 1750 WHAT THIS METHOD COMPUTES 1. Trisphuta Stanza 17 Lagna Moon Gulika 2. Chatusphuta Stanza 18 Trisphuta Sun 3. Panchasphuta Stanza 18 Chatusphuta Rahu 4. Pranasphuta Stanza 19 Lagna 5 Gulika primary 5. Dehasphuta Stanza 19 Moon 8 Gulika primary 6. Mrityusphuta Stanza 19 Gulika 7 Sun primary 7. Alt. Pranasphuta Stanza 2022 ghatibased research method 8. Alt. Mrityu Stanza 23 ghati weekdayoffset method 9. Kalasphuta Stanza 23 same as above subtracted 10. Sukshma TrisphutaStanza 4647 Prana Deha Mrityu summed 11. PranaDehaMrityu x9 method Stanza 44 12. Arudha Sphuta Stanza 32 Arudha Rasi start Lagna degrees 13. Stanza 48 sphuta prasna vighatikas 6 562 Gulika 14. Trisphuta Navamsa disease onset Stanza 38 15. Mrityu Nakshatra from Trisphuta Stanza 41 ALL INTERPRETIVE RULES covered Stanzas 2830 3134 CancerScorpioPisces trouble Samhara zone Stanzas 3738 planetary diseases from Trisphuta signNavamsa Stanza 40 evilgood indicators around Trisphuta Stanzas 4143 Mrityu Nakshatra SunMoon transit Panchasphuta death test Stanza 44 x9 PranaDehaMrityu aspect check Stanza 45 Navamsa triad LagnaMoonGulika Navamsas Stanza 46 Sukshma Trisphuta who is greater Mrityu in deadly nakshatra Stanza 47 planets in Sukshma Trisphuta sign family danger Stanzas 4849 additional death tests Stanza 50 longevity Srishti factors 
         :return: JObject
          """
         endpoint = "Chapter5Predictions"
@@ -7816,7 +7816,7 @@ class Calculate:
     @classmethod
     def Chapter7Predictions(cls, ashtamangalaRootNumber, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Comprehensive Ashtamangala algorithm found in Chapter 7 of Prasna Marga returns all prediction steps and factors with Janma Rasi and Nakshatra derived from the birth time. 
         :return: JObject
          """
         endpoint = "Chapter7Predictions"
@@ -7830,7 +7830,7 @@ class Calculate:
     @classmethod
     def Chapter8Predictions(cls, ashtamangalaRootNumber, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Chapter 8 Effects of Arudha and Related Factors Prasna Marga Comprehensive implementation covering stanzas 165 Analyzes Arudha Avasthas PranaDehaMrityu RahuChakra KalaHora Chandra Navamsa Chandra Kriya 
         :return: JObject
          """
         endpoint = "Chapter8Predictions"
@@ -7844,7 +7844,7 @@ class Calculate:
     @classmethod
     def Chapter9Predictions(cls, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 9 Longevity Determination Ayur Prasna Integrates horary and natal chart methods for assessing life span. Classifies life into Alpayus short 032 yrs Madhyayus medium 3264 yrs or Purnayus long 64100 yrs via Yogayus yogabased and Dasayus Dasabased systems. Per Stanza 3 Longevity must be examined FIRST before all other predictions. 
         :return: JObject
          """
         endpoint = "Chapter9Predictions"
@@ -7857,7 +7857,7 @@ class Calculate:
     @classmethod
     def Chapter10Predictions(cls, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 10 Timing Death Implements Maraka planet identification DasaAntardasa evil periods Kalachakra Dasa junctions Niryana deathtransit Rasis for SaturnJupiterSunMoon Pramana Gulika Ashtakavarga selection of the critical Niryana Rasi Marana Lagna deathdealing ascendant and Prasnabased timing of death. ETHICAL NOTE This chapter identifies windows of elevated risk not certainties. Use only when directly relevant hospitalised patient welfare assessment of missing person and never volunteer death predictions unsolicited. A multilayer convergence of Dasa transit Ashtakavarga and Prasna factors is the only basis for a strong conclusion. Disagreement among layers indicates danger present but not conclusive. 
         :return: JObject
          """
         endpoint = "Chapter10Predictions"
@@ -7870,7 +7870,7 @@ class Calculate:
     @classmethod
     def Chapter11Predictions(cls, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Generates Prasna Marga Chapter 11 predictions on the nature and cause of death. Analyses the 8th house the 22nd Drekkana lord the Navamsa of Mandi Gulika signbased Doshas organ correlations and environmental omens at the query time to describe the likely nature cause and circumstances of death. Source Prasna Marga Chapter XI. 
         :return: JObject
          """
         endpoint = "Chapter11Predictions"
@@ -7883,7 +7883,7 @@ class Calculate:
     @classmethod
     def Chapter12Predictions(cls, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 12 Diagnosis and Classification of Diseases Roga Prasna SOURCE Prasna Marga Chapter XII Stanzas 179 WHAT THIS METHOD COMPUTES BLOCK 1 General Health Status Stanzas 15 77 Malefics in houses other than 3 and 11 indicate disease planets in 6 8 12 identify the specific affliction. BLOCK 2 Disease Classification Nija vs Agantuka Stanzas 1824 Nija Sarirotha bodily VataPittaKaphaSannipatha Chittotha mental 5th8th lord relationship Agantuka Drishtanimittaja 6th house curses falls Adrishtanimittaja evil spirits Badhaka BLOCK 3 Tridosha Determination Stanzas 4 1015 Which humour is afflicted per the dustha planet. Two systems Varahamihira Stanza 4 and Sarasangraha Stanza 11. BLOCK 4 Dhatu Body Tissue Affected Stanzas 3 16 Sunbone Moonblood Marsmuscle Mercuryskin Jupiterfat Venusspermovum Saturnnerves. BLOCK 5 Season of Disease Onset Stanza 12 Each planet rules a Ritu disease appears in the season of the dustha planet Venusspring SunMarssummer Moonrainy Mercuryautumn Jupiterfall Saturnwinter. BLOCK 6 Dietary Remedies Six Tastes Shadrasas Stanzas 2729 MadhuraAmlaLavana remove Vata ThikthaUshnaKashaya remove Kapha Pitta is destroyed by Madhura Thiktha Kashaya. BLOCK 7 Madness Unmada Stanzas 3132 4649 Eight classical yogas for lunacy causes by house analysis treatment notes. BLOCK 8 Epilepsy Apasmara Stanzas 5057 Saturn in 8th malefics in trines SunMars in 12th twelve classical forms enumerated. BLOCK 9 Bhakta Virodha Anorexia Stanza 63 Malefics aspect Lagna Saturn aspects 8th weak 8th lord. BLOCK 10 Diabetes Madhumeha Stanza 64 Malefics aspect Lagna Lagna lord debilitatedenemy Venus occupies or aspects 8th. BLOCK 11 Diseases by Dustha Planet Stanzas 6774 Full classical catalogue per planet Sun through Gulika. BLOCK 12 Specific Planetary Combinations Stanza 75 Saturn in 10th GulikaRahu in Lagna8th Mars positions etc. BLOCK 13 Body Part Organ Affected Stanza 78 Limbs typified by signs aspected or occupied by malefics. 
         :return: JObject
          """
         endpoint = "Chapter12Predictions"
@@ -7896,7 +7896,7 @@ class Calculate:
     @classmethod
     def Chapter13Predictions(cls, birthTime, queryTime, firstLetterOfQuery=None):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 13 Timing of Illness Onset and Recovery Roga Kala Prasna SOURCE Prasna Marga Chapter XIII Stanzas 139 WHAT THIS METHOD COMPUTES BLOCK 1 ONSET NAKSHATRAS Stanzas 13 89 Stanza 1 Onset nakshatra from MoonLagna nakshatra distance method Stanza 2 Onset nakshatras from Mandi 9 Mandi 12 MoonMandi Stanza 3 Onset via mostmalefic planet transiting the sign of the querys first letter Stanza 8 Day vs. night onset lordoccupant of 6th diurnal vs. nocturnal Stanza 9 Duration in months three calculation methods via 6th lord BLOCK 2 DIRECTION OF ILLNESS Stanzas 46 Stanza 4 Direction faced by querent place of first attack Stanza 5 Direction number from East yamas from sunrise when illness began Stanza 6 Number of companions number of attendants at the sickbed BLOCK 3 DISEASE DURATION FROM 6TH LORD Stanza 7 Expired portion of 6th lords sign half long illness half near recovery BLOCK 4 RECOVERY INDICATORS Stanzas 1015 2728 Stanza 10 Disease began when Moon was in sign of 6th lord recovery when Moon enters 4th lords sign Stanza 11 Last malefic affliction of LagnalordMoon onset benefic contact recovery Stanza 12 Moon entering Lagna Rasi Navamsa Dwadasamsa Gulikas sign subsidence Stanza 13 Ashtama Rasi nakshatras relief after Moon exits that group Stanza 15 Worst dustha planets sign onset best sustha planets sign recovery Stanza 27 Full Moon in Lagna with Jupiter JupiterVenus in Kendras recovery Stanza 28 Moon in Upachayas with benefics in good places or Lagna aspected by benefics recovery BLOCK 5 RECOVERY TIMELINE BY ONSET NAKSHATRA Stanzas 1617 Specific recovery windows days mapped to each of the 27 onset nakshatras BLOCK 6 DEATH INDICATORS Stanzas 1822 Stanza 18 Fatal combo AshtamiParvaRiktha malefic weekday trijanmaVipatPratyakNaidhana Stanzas 1920 Soola Chakra fatal worsening recovery zones around Suns nakshatra Stanza 21 All coincident factors death certain Stanza 22 Child formula for patients under 12 Janmaonset distance 3 4 BLOCK 7 RECOVERY SPEED AND DIFFICULTY Stanzas 2324 Stanza 23 6th lord speed and sign quality fast or slow recovery Stanza 24 Malefichemmed Lagna weak lord waning Moon in 6812 prolonged or fatal BLOCK 8 CAUSES AND REMEDIES Stanzas 2639 Stanza 26 Two root causes Drishta physical and Adrishta karmic Stanza 29 Diseases as pastbirth karma remedy medicine gifts japa homa worship Stanzas 3135 Deity wrath from malefics in anishta places Karma Vipaka remedies Stanzas 3639 Mrityunjaya Homa universal panacea 8000 Japa for severe illness summary
         :return: JObject
          """
         endpoint = "Chapter13Predictions"
@@ -7910,7 +7910,7 @@ class Calculate:
     @classmethod
     def Chapter14Predictions(cls, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Generates Prasna Marga Chapter 14 predictions on house interpretation and the timing of events. Synthesises houselord and karaka dispositions allbhava strength bhava ruin periods the effects of malefics and benefics in each house Gulika and tertiaryplanet effects event fructification timing karma analysis and imprisonment indicators. Source Prasna Marga Chapter XIV. 
         :return: JObject
          """
         endpoint = "Chapter14Predictions"
@@ -7923,7 +7923,7 @@ class Calculate:
     @classmethod
     def Chapter15Predictions(cls, birthTime, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 15 Causes of Misery and Remedial Measures SOURCE Prasna Marga Chapter XV Stanzas 1120 OVERVIEW This chapter identifies the eleven root causes of human suffering and provides a complete diagnostic and remedial framework. WHAT THIS METHOD COMPUTES BLOCK 1 KARMA NATURE Stanzas 13 Jupiters disposition favorable or unfavorable destiny. Eleven enumerated causes of misery. BLOCK 2 PLANETARY DEITY MAPPINGS Stanzas 47 Which deity is signified by each planetsignDrekkana SunShivaSubrahmanyaGanesha MoonDurgaBhadrakaliChamundi MarsSubrahmanyaBhairava or ChamundiBhadrakali MercuryVishnu AvatarasKrishna JupiterVishnu VenusAnnapoornaLakshmiYakshi SaturnSasthaKiratha RahuSerpent God. SatwicRajasicTamasic nature of deity determined from sign. BLOCK 3 BADHAKA HOUSE OF HARM Stanzas 110112 Movable Lagna 11th house is Badhakasthana. Fixed Lagna 9th house is Badhakasthana. Common Lagna 7th house is Badhakasthana. BLOCK 4 IDENTIFY THE ANGRY PLANET Stanzas 89 Lord of Badhakasthana in a dusthana 6812 primary angry planet. Angry planets deity the offended deity. BLOCK 5 KARMA SOURCE NATURE DIAGNOSIS Stanzas 101105 Reference point for evil Karma Benefics in 6812 malefics in kendrastrines from Chatra Rasi divine wrath. Same from Arudha Brahmins curse. Same from Moon enemy black magic. Same from Lagna peoples hatred. Dridha deliberate vs Adridha accidental Karma indicator in Moons sign Dridha. Karma type malefic in 5th mental 2nd verbal 10th bodily. BLOCK 6 TEMPLE IDOL CONDITION Stanzas 1011 Malefic in 12th from angry planet idol disfigured. GulikaRahu joining idol polluted by Dundubha. Saturn joining temple worn outpolluted. Mars joining temple guards in dissension. Angry planet in Lagna Mars idol broken Saturn idol dirty. Angry planet in 4th house temple very old needs repairs. BLOCK 7 PALLIATIVES BY ANGRY PLANETS HOUSE POSITION Stanzas 1214 1stPratibimbadana 2ndJapa 3rdPuja 4thTemple construction 5thSantarpana feeding 6thPratheekara Bali 7thDivine dance Nrithya 8thBali 9thDevopasana 10thDantiskandha 11thTarpana 12thno harm. Also angry planet in MarsSun signs illumination MoonVenus signs milkgheepayasa Mercury sign sandal paste Jupiter sign garlands Saturn sign ornamentsdress. Badhaka in 8th10th pujaBali 12th musicdrums. BLOCK 8 PLANETSPECIFIC REMEDIES Stanzas 1518 Sun angry Devaradhana divine worship. Moon angry Sankabhisheka free ricewater distribution. Mars angry illumination and havanas. Mercury angry dance before deity. Jupiter angry homas and feeding Brahmins. Venus angry liberal feeding of all. Saturn angry feeding of backwardpoor classes. BLOCK 9 FAVORED DEITY NEGLECTED WORSHIP Stanza 19 Planet with benefic in Lagna favoring deity. Lord of 9th in harm house neglected worship. BLOCK 10 MISAPPROPRIATION OF DEITYS PROPERTY Stanzas 2021 Lord of harm house in 2nd or 11th misappropriation. Lagna movable Dhatu minerals taken fixed Moola plantsland common Jeeva living beings. BLOCK 11 INTENSITY OF DEITYS WRATH Stanzas 2830 Lord of harm in 4th or lord of 4th in harm house or crosssign occupancy active wrath. Sun Moon in harm house anger of family deities. BLOCK 12 ANGER OF THE SERPENT GOD Stanzas 3132 38 Jupiter as lord of harm in 6812 in kendras of Rahu superior serpents angry. Jupiter in kendras of Gulika inferior serpents. Rahu in harm house serpent trouble with Sun good serpents with Moon bad ones. Rahu remedies by house 6810harm Sarpa Bali 4th Chitra Kuta stone 12th singing Lagna milk siddhapayasa 7th devotional music. Gulika alone in Rahus kendra serpent abodes unclean. Saturn Gulika in kendras purify surroundings with trees and rites. BLOCK 13 PARENTAL CURSES Stanzas 3940 SunMoon in harm house in Mars signNavamsa fathersmothers curse. Malefic in LeoCancer in unfavorable house same. Evil planet in harm house Jupiters sign BrahminDeva curse Purva Sapa. Harm house Leo or Sun present ancestors curse Mars as evil planet very intense. BLOCK 14 CURSES OF ELDERS AND PRECEPTORS Stanza 41 Lord of 6th in 9th OR lord of 9th in 12th fatherpreceptorelder displeased. Sun in 6th or conjoining 6th lord fathers displeasure. Moon similarly mothers displeasure. BLOCK 15 TROUBLES FROM GHOSTS PRETAS Stanzas 4250 Gulika in harm house ghost trouble. Gulika Mars connection unnatural death fireweaponsdisease. Gulika Saturn died in miserypenury abroad. Gulika Rahu serpent bite death. Gulika evil in watery sign drowned. Sex of Preta from oddeven sign and Navamsa of Gulika. Caste of Preta from sign lords caste. Remedy Shraddhas kshetra pindas tilavahana feeding Brahmins. BLOCK 16 EVIL EYE DRISHTI BADHA Stanzas 5154 115120 Lord of harm aspecting Lagna or lord of Lagna Drishti Badha. Lord of 7th in harm house or lords mutually joinedaspecting Drishti Badha. Movable Lagna evil in Lagna Mars in 7th affliction from Devatas. Nonbenefics in Lagna Saturn in 7th Moon aspected by malefics Pisachas. Intent of Devata harm lord friendly with Lagna lord enjoyment inimical destruction neutral eatingdrinking. BLOCK 17 SPIRITS CATALOGUE Stanzas 6065 18 Mahagrahas Amara Asura Naga Yaksha Gandharva Rakshasa Heydra Kasmala Nistheja Bhasmaka Pitris Krisa Vinayaka Pralapa Pisacha Anthyaja Yonija Bhuta. 9 Laghu Grahas Apasmara Brahmana Brahma Rakshasa Kshatriya Vaisya Sudra Neecha Chandala Vyanthara. All originated from anger of Rudra categories Bali Kama Rati Kama Hanthu Kama. BLOCK 18 OVERALL SYNTHESIS AND RECOMMENDED REMEDIES 
         :return: JObject
          """
         endpoint = "Chapter15Predictions"
@@ -7936,7 +7936,7 @@ class Calculate:
     @classmethod
     def Chapter16Predictions(cls, birthTime, queryTime, thamBoolaLeafCount=None, firstLetterOfQuery=None):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 16 Miscellaneous Queries Final Chapter of Part I SOURCE Prasna Marga Chapter XVI Stanzas 1125 WHAT THIS METHOD COMPUTES BLOCK 1 WHEREABOUTS OF THE QUERIST Stanzas 17 Arudha Lagna sign quality movablefixedcommon distance from home Navamsa of Arudha Lagna living conditions of the absent person Planets in Arudha aspects what they encountered on the journey BLOCK 2 BRIGHT AND DARK FUTURE Stanzas 810 LibraPisces births beneficsmalefics in 6 houses from 4th future 6 houses from 10th past AriesVirgo births houses 410 past houses 104 future BLOCK 3 FOUR MEANS OF ACHIEVING OBJECTIVES Stanzas 1112 Jupiter Venus Sama gentle persuasion Moon Dana bribery gifts Saturn Rahu Mercury Bheda intimidation division Sun Mars Danda force war Determined by the strongest planet in Lagna Upachayas 361011 or Kendras BLOCK 4 TREASURE IN THE HOUSE referenced section Sign of Arudha and planets aspectingoccupying it reveal direction and depth of buried treasure element of sign gives material BLOCK 5 FIRST LETTER OF QUERY DEITY Stanza 42 Letter number modulo 9 mapped to planet ruling deity disease cause BLOCK 6 PREDICTING BY BETEL LEAVES THAMBOOLA LAGNA Stanzas 4750 Formula 2 leafCount 5 1 mod 7 remainder weekday planet Sign of that planet in Prasna chart Thamboola Lagna Housebyhouse leaf quality Bhava prosperity affliction Thamboola Lagna planet immediate prediction BLOCK 7 PERFORMING PARENTAL OBSEQUIES Stanzas 5560 Sun and 9th lord wellplaced obsequies completed successfully Affliction signals Sun combustdebilitated 9th lord in 6812 obstacles Venus in good position grateful children BLOCK 8 ACQUISITION OF POWER Stanzas 7880 Nakshatras of Sun Moon Mars Lagna lord 10th lord at query time 34 falling in Indra Nirithi Varuna direction groups imminent headship BLOCK 9 KALACHAKRA YOGINI AND MRITYU Stanzas 8192 28nakshatra timecycle diagram including Abhijit Prana count from Suns nak pos 1 to Moons nak Deha count from Janma nak to Prana position Mrityu count from Krittika pos 28 anticlockwise to query nak All three on same linepole death same pole DehaMrityu prolonged illness BLOCK 10 KANTAKASTHUNA RAKTASTHUNA STUNA Hell and Heaven Stanzas 116120 Kantakasthuna count from Suns nak to Moola same count from Moola star Raktasthuna Mars longitude subtracted from 138 position Stuna kantaka star sthuna star mod 27 count from Moola If these three afflict Lagna or Arudha hell life equivalent to death BLOCK 11 YUGA LONGEVITY SYSTEM Stanzas 122125 Krita Yuga signs Aries Leo Sagittarius full Dasa years Treta Yuga signs Taurus Virgo Capricorn half Dasa years Dwapara Yuga signs Gemini Libra Aquarius quarter Dasa years Kali Yuga signs Cancer Scorpio Pisces oneeighth Dasa years Apply to both Rasi and Navamsa of each planet for proportionate longevity 
         :return: JObject
          """
         endpoint = "Chapter16Predictions"
@@ -7951,7 +7951,7 @@ class Calculate:
     @classmethod
     def Chapter17Predictions(cls, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 17 Vivaha Prasna Marriage Query SOURCE Prasna Marga Chapter XVII Stanzas 142 WHAT THIS METHOD COMPUTES BLOCK 1 MARRIAGE POSSIBILITY Stanzas 712 LagnaArudha7th house analysis malefic vs. benefic balance whether marriage negotiations will succeed or break down. BLOCK 2 DEATH OF THE COUPLE Stanzas 1718 Moon afflicted in 6th8th 8th year additionally Mars in 6th8th from Moon 9th year MoonMars in 7th 7th month. BLOCK 3 YAMA SUKRA ANALYSIS Stanza 19 Calculates Yama Sukra lagna at weekdayspecific ghati after sunrise flags dusthana placement and Yoga Sphuta affliction. BLOCK 4 EARLY MARRIAGE INDICATORS Stanzas 2732 Moon in Upachaya with benefic aspect VenusMoon in Lagna or 7th MercuryVenusJupiter in kendras female DrekkanaNavamsa aspected by MoonVenus benefics in 1st2nd7th full Stanza 32 horary happiness check. BLOCK 5 QUALITY OF WIFE Stanzas 2332 JupiterVenus in 7th owncaste wife strength of 7th lord Venus devoted chaste or vicious wife combinations beautiful bride kendrastrikonas benefic RahuKetu in 7th warnings. BLOCK 6 TIMING OF MARRIAGE Stanzas 5865 Early middle age after prime of youth logic parvatamsa and mridwamsa checks for preyouth marriage JupiterSunMoon transit triggers. BLOCK 7 CHANDRABHILASHA SPHUTA Stanza 41 Full calculation Moonminutes 800 remainder a Chandrabhilasha sign floora3200 Chandravela sign union of all four transit windows for the wedding date. BLOCK 8 SPOUSE DESCRIPTION Stanzas 2021 Physical complexion nature and caste from the stronger of the 7th lord its signNavamsa lord and Venus. BLOCK 9 HORARY OMENS GUIDE Stanzas 2026 Reference table of classical nimittas auspicious inauspicious signs for the astrologer to verify at query time. 
         :return: JObject
          """
         endpoint = "Chapter17Predictions"
@@ -7963,7 +7963,7 @@ class Calculate:
     @classmethod
     def Chapter18Predictions(cls, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 18 Santhathi Prasna Children Comprehensive implementation covering the principles of predicting the birth of children pregnancy Garbha Prasna sex of the child adoption curses and Santana Tithi calculations. 
         :return: JObject
          """
         endpoint = "Chapter18Predictions"
@@ -7975,7 +7975,7 @@ class Calculate:
     @classmethod
     def Chapter19Predictions(cls, birthTime, partnerBirthTime=None):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 19 Issues According to Birth Horoscope SOURCE Prasna Marga Chapter XIX Stanzas 130 and companion stanzas 147155 WHAT THIS METHOD COMPUTES BLOCK 1 MOON ANALYSIS Stanza 2 Moon in Upachaya vs. Anupachaya with benefic aspect fertility outlook. Crosschart husbandwife comparison when partnerBirthTime is supplied. BLOCK 2 BEEJA SPHUTA MALE FERTILITY Stanzas 46 11 Method A Stanza 5 ghati method contribution of each planet expired arc in nakshatra 27 equivalent to 5 30 on the ghatis Method B Stanza 11 direct sum Sun Venus Jupiter longitudes Strength test Stanza 6 Beeja strong if in odd sign odd Navamsa benefic contact. BLOCK 3 KSHETRA SPHUTA FEMALE FERTILITY Stanzas 4 7 11 Method A Moon Mars Jupiter contributions same ghati formula as Beeja. Method B Moon Mars Jupiter direct longitudes. Strength test Stanza 7 Kshetra strong if in even sign even Navamsa benefic contact. BLOCK 4 AFFLICTION DIAGNOSIS Stanza 8 Rahu serpentgod curse Gulika Preta trouble Saturn pastlife sin Mars enemydeity trouble. BLOCK 5 CHILDLESSNESS AND LOSS YOGAS Stanzas 816 10 classical combinations from Stanzas 816. BLOCK 6 CHILDREN BIRTH YOGAS Stanzas 1720 6 positive combinations for birth of children. BLOCK 7 SANTANA GRAHA SPHUTAS Stanza 18 Each Santana Sphuta planet longitude 5 mod 360. Santana Trisphuta Santana Sun Santana Moon Santana Jupiter mod 360. Checked against 3rd5th7th nakshatra from Janma 88th108th pada 6812 from Lagna. BLOCK 8 SANTANA YOGA SPHUTA Stanzas 147150 Formula Santana Jupiter Yamakantaka 9 mod 360. Number of children floordegreesinsign 5. Jupiter controlling 3 vargas more than 6 sons. Drekkana lord debilitatedenemy which child dies Stanza 149. Mercury Saturn in 3 vargas twins Stanza 150. BLOCK 9 DATTA SPHUTA ADOPTION Stanza 151 Mercury Saturn FifthLord 5 mod 360. Solar odd Rasi Lunar even Navamsa malefic contact adoption. BLOCK 10 TIMING AND SEX Stanzas 153155 Sex of child from Navamsa of Yoga Sphuta odd male even female. Birth timing Santana Guru Yamakantaka Santana Gulika 81 nakshatra. Moon transiting that nakshatra or trines time of birth. 
         :return: JObject
          """
         endpoint = "Chapter19Predictions"
@@ -7988,7 +7988,7 @@ class Calculate:
     @classmethod
     def Chapter20Predictions(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 20 Seventh House According to Birth Horoscope Spouse Analysis SOURCE Prasna Marga Chapter XX Stanzas 166 OVERVIEW This chapter analyses the natal birth chart to reveal all aspects of the spouse character appearance career longevity and the timing of marriage. It is the horoscopic complement to Chapter XVII Vivaha Prasna which uses the horary chart. Per Stanza 1 when Jataka natal and Prasna agree predictions gain great accuracy. WHAT THIS METHOD COMPUTES BLOCK 1 MARRIAGE POSSIBILITY Stanza 6 7th house affliction indicators probabilities of no marriage or shortlived spouse. BLOCK 2 CHARACTER OF WIFE FROM 7TH HOUSE SIGN Stanzas 45 The 12 signbased character descriptions for the wife. BLOCK 3 DEATH OF WIFE YOGAS Stanzas 716 Stanza 7 MarsSaturnspecific signplanet in 7th wife dies or separation. Stanza 8 Saturn in Pisces 7th Jupiter in Virgo 7th strong malefic in 4th 8th5th lord in 7th SunVenus in 579 wife defective of limbs. Stanza 9 Venus hemmed by malefics danger SunRahu in 7th wasteful. Stanzas 1012 Venus in MarsSaturn sign or Navamsa wifes character. Stanza 13 Venus Ashtakavarga 7th from Venus dominated by malefics Gulika in trine wife dies soon. Stanza 14 Venus in MarsSun sign wife dies by fire. Stanza 15 Venus Mandi Rahu in trinekendra snakebite death. Stanza 16 Venus Saturn malefic in 8th from Venus unnatural death death mode from quadrupedalbirdwatery sign. BLOCK 4 NATURE OF WIFE FROM VENUS CONJUNCTIONS Stanzas 1718 Stanza 17 VenusSun bhutaafflicted but distinguished VenusMoon superior VenusMars Rakshasaafflicted has paramour VenusJupiter virtuous VenusMercury educated handsome. Stanza 18 VenusSaturn Gandharva trouble deceptive VenusRahuKetu low company limb defect VenusGulika sudden accidental death. BLOCK 5 WIFES NATURE FROM VENUS ASHTAKAVARGA Stanza 19 Bindu contributor in 7th from Lagna in Venus Ashtakavarga specific quality. BLOCK 6 PHYSICAL DESCRIPTION AND CASTE OF WIFE Stanzas 2021 Strongest of lord of sign of 7th lord Navamsa lord of 7th lord and Venus appearance. Jupiter or Venus in 7th owncaste wife. BLOCK 7 QUALITY YOGAS FOR THE WIFE Stanzas 2232 Stanza 22 Benefic in 9th from Venus strong 9th lord spiritual lucky. Stanza 23 7th lord benefic beneficaspected loved by husband and children. Stanza 24 7th occupiedaspected by lord or benefics Venus welldisposed good wife. Stanza 25 7th lord strong rich family weak poor family. Stanza 26 7th lord withaspected byhemmed between benefics good wife. Stanza 27 7th lordVenus in benefic signNavamsa strong 10th lord good qualities. Stanza 28 7thlordVenus strong Jupiter aspect devoted wife. Stanza 29 7th lordSun aspected by VenusMercury 7th lord with Jupiter chaste. Stanza 30 7th lord in kendra benefic aspectsignNavamsa paragon of chastity. Stanza 31 7th lordSun in malefic sign malefic Navamsa inclined to vice. Stanza 32 RahuKetu in 7th malefic aspect malefic Navamsa sinful wife. BLOCK 8 HUSBANDS TENDENCIES Stanza 33 Planets in 7th reveal the husbands erotic inclinations. BLOCK 9 SOCIAL STANDING OF WIFES FAMILY Stanzas 3436 Stanza 34 Lagna7th lords friends wifes family friendly enemies inimical. Stanza 35 Lagna lord very strong 7th lord in benefic Navamsa highborn family. Stanza 36 Lagna lord weak 7th lord combustinimicaldebilitated lower family. BLOCK 10 MULTIPLE WIVES REMARRIAGE YOGAS Stanzas 3746 Full enumeration of 10 classical yogas for 2 3 or many wives. BLOCK 11 WIFES BIRTH STAR Nakshatra THREE METHODS Stanzas 4749 Stanza 47 Compatible Janma Rasis from 7 indicators. Stanza 48 Moons Chandra Kaksha lord sign Lagna lord sign. Stanza 49 Three Nakshatra calculations from planetary longitude sums. BLOCK 12 DIRECTION FROM WHICH WIFE COMES Stanzas 5052 13 directional indicators from 7th lord Venus and aspectors. Distance farnearintermediate from sign quality Stanza 52. BLOCK 13 TIMING OF MARRIAGE Stanzas 6566 Stanza 65 DasaBhukti of 7th house occupant aspector 7th lord sign lord of 7th lord Navamsa lord of 7th lord Venus Moon Navamsa lord of Lagna Rahus Dasa also recognised. Stanza 66 Transit of VenusLagna lord7th lord over 7th or its trines Jupiters transit of 7th lords sign or its Navamsa. 
         :return: JObject
          """
         endpoint = "Chapter20Predictions"
@@ -8000,7 +8000,7 @@ class Calculate:
     @classmethod
     def Chapter23Predictions(cls, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 23 Vrishti Prasna Queries regarding Rain Comprehensive implementation covering the probability of rain quantity timing and nature windystormy based on Arudha Lagna and planetary positions. 
         :return: JObject
          """
         endpoint = "Chapter23Predictions"
@@ -8012,7 +8012,7 @@ class Calculate:
     @classmethod
     def Chapter24Predictions(cls, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 24 Raja Prasna Yuddha Prasna Queries on Rulers and War Comprehensive implementation covering the future of the government soldiers fate enemy invasion peace treaties and war outcomes. 
         :return: JObject
          """
         endpoint = "Chapter24Predictions"
@@ -8024,7 +8024,7 @@ class Calculate:
     @classmethod
     def Chapter25Predictions(cls, queryTime, firstLetterOfQuery=None):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 25 Vrishti Prasna Rainfall Prediction SOURCE Prasna Marga Chapter XXV Stanzas 197 WHAT THIS METHOD COMPUTES BLOCK 1 PLANETARY COMBINATIONS FOR HEAVY RAINFALL Stanzas 15 Solar ingress into Gemini conditions SunMoonMarsSaturnRahu in watery signs MercuryVenus conjoin fixed sign triple conjunctions combustion combos earthy Sun watery vargas rainbow directions. BLOCK 2 MOCK SUN AND RAINBOW GUIDE Stanzas 68 Rainbow direction rules for rainy and other seasons. Pratisurya mock Sun directional effects north rain south tempest both sides flood top danger to king below calamity to people. BLOCK 3 PAKSHAWISE RAINFALL FROM LUNAR PHASE Stanzas 911 Rain on New Moon Pratipada rain in Shukla Paksha Rain on Full Moon no rain in Krishna Paksha 15 ghatikas rule on Dwiteeya Pratipada for paksha forecast. BLOCK 4 ASHADHA LUNAR MONTH SIGNIFICANCE Stanzas 1214 Northeast winds at Ashadha Full Moon evening good rain year Rain on Ashadha Krishna Chaturthi with Poorvabhadra luxuriant vegetation Weekday of Ashadha Shukla Panchami annual rain quality Sun in Aquarius Rohini tithi combinations. BLOCK 5 VENUS MANDALAS Stanzas 1620 Venuss postcombustion nakshatra determines annual rain forecast. Six Mandalas Bharanigroup through Dhanishtagroup 4th and 6th Mandalas copious rain 3rd and 5th famine 1st and 2nd below average. Moon in 7th from Venus or 5th7th9th from Saturn heavy rain Stanza 21. BLOCK 6 SEASONAL PLANETARY TRIGGERS Stanzas 2223 Combustion startend Moon conjunctions Sun in CancerCapricornAridra MercuryJupiter MercuryVenus JupiterVenus rain MarsSaturn without benefic firelightningstorm. BLOCK 7 CLOUD SHAPES AND NATURE OMENS Stanzas 2437 Classical nimitta catalogue ant eggcarrying snake behavior cattle rushing home cat scratching chameleons cocks crowing rainbow at dawndusk thunder patterns cloud colors and shapes Moon disc color honey parroteye Pratichandra mock Moon. BLOCK 8 CHAITRA AND SOLAR INGRESS Stanzas 3866 Chaitra month 1st day by weekday annual rain forecast Solar ingress into AriesCapricorn by nakshatra crop and rain outlook Solar ingress into Aries by tithi and Karana Annual forecast from lagna at Solar Ingress chart. BLOCK 9 ANNUAL NAKSHATRA MANDALA Stanzas 6871 Indra Mandala Rohini group prosperity Agni Mandala Bharani group scarcity fire Vayu Mandala Mrigasira group storms wind Varuna Mandala Aridra group copious rain. Sankramana Purusha by Karana price levels. BLOCK 10 HORARY QUERY INDICATORS NIMITTAS Stanzas 7280 Physical omens at query time querent touching water wet clothes standing near water shedding tears sighting elephantspregnant women Halo round Sun or Moon great downpour Planet pairs SunMars no rain MoonVenus heavy rain MercuryJupiter moderate rain First letter classification ghoshalong vowels rain khara no rain. BLOCK 11 HORARY CHART ANALYSIS Stanzas 8197 Moon aspected by beneficmalefic MoonMercuryJupiterVenus in kendra aspected by benefics floods ArudhaChatra in watery sign with watery planet heavy rain 4th underground water 7th rivers 10th rain from sky Mercury associationaspect winds disperse rain MarsMercurySaturnRahu in kendras storms MoonVenus in watery Lagna Prishtodaya triple RahuSaturn in water signs Full classification of watery signs and aquatic planets. BLOCK 12 OVERALL SYNTHESIS Weighted count of positivenegative indicators verdict. 
         :return: JObject
          """
         endpoint = "Chapter25Predictions"
@@ -8037,7 +8037,7 @@ class Calculate:
     @classmethod
     def Chapter26Predictions(cls, queryTime, firstLetterOfQuery=None):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 26 Koopa Prasna WellDigging and Water Location SOURCE Prasna Marga Chapter XXVI Stanzas 170 WHAT THIS METHOD COMPUTES BLOCK 1 WATER AVAILABILITY YOGAS Stanzas 715 Thirteen specific planetary combinations that confirm underground water. Stanza 15 Single nowater indicator Moon in Taurus Rahu in Scorpio. BLOCK 2 SPRING QUANTITY Stanza 37 Moveable Lagna small spring Fixed many springs Common two springs. BLOCK 3 OLD BURIED WELL YOGAS Stanzas 3850 Twelve classical combinations indicating a submerged well in the compound. BLOCK 4 DIRECTION FROM BODY TOUCH Stanzas 1618 Observational bodytouch indicators for direction of digging. Bony spot no water Fleshy spot mirymuddy Forehead rocky. BLOCK 5 CHANDRA GUPTI CHAKRA Stanzas 2036 Four methods for locating the exact spot in the compound. Primary method Stanzas 2427 Dinarsha Udaya Nakshatra Moons Nakshatra. The 28square grid maps compass direction to the wells location. BLOCK 6 WATER TASTE Stanzas 5153 From planet inaspecting 4th house or Lagna Navamsa lord. Sunacidhot Moonsaltish Marsbitter Jupitersweet Venussour Saturnpungent Mercurymixed Rahuinsipid. BLOCK 7 VASTU PURUSHA AND COMPOUND DIVISION Stanzas 5557 Head NE of Vastu Purusha is best for wells. Compound divided into 12 signs Aquarius zone best Virgo zone forbidden. BLOCK 8 DEPTH AND WATER CHARACTER Stanzas 5865 Planets in Lagna determine depth rocksandabundance. Rasmis planetary rays measure depth in cubits halfcubits or manheights. Sun16 Moon4 Mars10 Mercury9 Jupiter7 Venus5 Saturn21 rays. Sign rays Aries7 Taurus8 Gemini12 Cancer11 Leo12 Virgo6 Libra9 Scorpio7 Sagittarius13 Capricorn7 Aquarius8 Pisces27. BLOCK 9 PLANETSIGN WATER ABUNDANCE Stanza 68 Watery planets in watery signs water at surface. Watery planets in nonwatery low water table. Nonwatery in nonwatery dry. BLOCK 10 DINARSHA Stanza 70 Expired ghatikas 28 60 Nakshatra counted from Aswini. 
         :return: JObject
          """
         endpoint = "Chapter26Predictions"
@@ -8050,7 +8050,7 @@ class Calculate:
     @classmethod
     def Chapter27Predictions(cls, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 27 Bhojana Prasna Food Meal Query and Proshithogamana Prasna Return of a Traveller. BHOJANA PRASNA Cast when someone asks about a recent meal its quality menu server codiners conversation and aftermeal rest. Each of the 12 horary houses carries a fixed meal signification Stanzas 139. PROSHITHOGAMANA PRASNA Cast when someone asks whether an absent person traveller exile person out of contact will return when and how Stanzas 4046. 
         :return: JObject
          """
         endpoint = "Chapter27Predictions"
@@ -8062,7 +8062,7 @@ class Calculate:
     @classmethod
     def Chapter28Predictions(cls, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 28 Suratha Prasna Queries on Intimacy SOURCE Prasna Marga Chapter XXVIII Stanzas 119 WHAT THIS METHOD COMPUTES BLOCK 1 UNION OCCURRENCE Stanzas 12 Sun in Lagna7th or aspectingconjoining lords of 1st or 7th no union. Krishnacharya MoonVenus inaspecting 7th union. 7th beneficmalefic happy or unhappy union. BLOCK 2 CONSENT AND EMOTIONAL STATE Stanzas 23 MoonVenus Sun aspectjoin genuine passion. MoonVenus malefic not Sun aspect Lagna no real love. Moon with malefics forced union woman unwilling. Sun with malefics forced union man unwilling. BLOCK 3 PARTNER QUALITIES Stanza 4 Moon with Sun in Suns vargas man is handsome and educated. Moon withaspecting benefics in benefic vargas woman has good qualities. BLOCK 4 PARTNER IDENTITY AND AGE Stanzas 58 Planet aspecting Lagna and its dignity partner type social status caste. 7th house occupant wife another woman dancing girl etc. Moon phase age of partner. BLOCK 5 CHATHRA RASI ANALYSIS Stanza 9 Arudha Chathra wife friend sign Chathra related family enemy sign Chathra inimical family. BLOCK 6 FREQUENCY AND TIMING Stanza 10 Odd ascendant odd aspecting planet sign once. Even twice. MarsVenus vargas exclusively many times. Sun varga daytime Moon varga nighttime. BLOCK 7 INCIDENT DETAILS Stanzas 1113 MoonMars in 1579 quarrel and sleeplessness. MoonSaturn dreamt of union no actual union. MoonSun partial intimacy. MoonVenus private conversation. MoonJupiter union with accomplished woman pregnancy possible. MoonMercury another woman not wife. Mars in Lagna Saturn in 7th or vice versa fear of fire no sleep. BLOCK 8 PLACE OF UNION Stanzas 1418 From 7th house planet Saturnrepaired house Marsburnt Mercurycarpenters Moonnew Sunwooden Venusornamental Jupiterstrong. Alternative Sun in watery sign bath house Sun in other kitchen. Marskitchen Mercuryplayground SaturnSudracowshed Rahulowbornlatrine Moonpalacetemple weak Venusold house. When Lagna unaspected determined by Lagna sign itself Stanzas 1718. 
         :return: JObject
          """
         endpoint = "Chapter28Predictions"
@@ -8074,7 +8074,7 @@ class Calculate:
     @classmethod
     def Chapter29Predictions(cls, queryTime):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 29 Nashta Prasna Lost Article Queries Implements predictions for queries about lost or stolen articles based on horoscope analysis 
         :return: JObject
          """
         endpoint = "Chapter29Predictions"
@@ -8086,7 +8086,7 @@ class Calculate:
     @classmethod
     def Chapter30Predictions(cls, queryTime, personsPresent=None, bodyPartTouched=None):
         """
-        NO DESC FOUND!! ERROR
+         Generates Prasna Marga Chapter 30 predictions for Nashta Jataka reconstructing an unknown birth chart. When the querent has no birth record the Prasna chart at query time is used to reverseengineer the Janma Nakshatra Janma Lagna birth Moon sign and the birth positions of Jupiter and the Sun. Several methods are provided and should be weighed against Nimittas omens the number of persons present any body part touched and the querents appearance. Source Prasna Marga Chapter XXX. 
         :return: JObject
          """
         endpoint = "Chapter30Predictions"
@@ -8100,7 +8100,7 @@ class Calculate:
     @classmethod
     def Chapter31Predictions(cls, queryTime, dreamDescription=None, isDaytimeDream=False, wasDreamForgotten=False, dreamBeforeMidnight=False, sleptAfterDream=False, hadGoodDreamAfterBad=False, yamaOfNight=0, isQuerentSick=False, querentBackground="ordinary"):
         """
-        NO DESC FOUND!! ERROR
+         Prasna Marga Chapter 31 Swapna Prasna Dream Interpretation SOURCE Prasna Marga Chapter XXXI Stanzas 168 ARCHITECTURE Three targeted LLM calls Qwenflash are fused into pure chartcalculation blocks when a dreamDescription is provided. All LLM calls are grounded exclusively in verbatim stanza text the model performs semantic lookup not free interpretation. Pure chart blocks always run. LLM CALL 1 DoshaChart CrossValidation gates everything Determines whether the dream is Doshaja physiological nonprophetic or Bhavija prophetic by crosschecking chart dosha against dream imagery. Source Stanza 46 Doshaja dreams will not be effective Stanzas 25 planet in Lagna specific imagery type. Runs in parallel with Call 2. LLM CALL 2 Symbol Matching with Severity Tiers Semantic matching of dream description against verbatim stanza catalogues. Returns four severity tiers immediateDeathSymbols diseaseThenDeathSymbols dreadfulResultSymbols earlyDeathOmen auspiciousSymbols Bharata pattern Abhichara indicator. Source Stanzas 1129 bad and 3667 good. Runs in parallel with Call 1. LLM CALL 3 PersonAdjusted Synthesis Oracle Waits for Calls 1 and 2. Applies sickhealthy distinction Stanzas 3031 6667 varnaspecific symbols Stanzas 6061 Bharata severity escalation Stanzas 4859 and Yama timing. Every claim must cite a stanza number. DECISION TREE dreamDescription empty pure chart blocks only no LLM isDaytimeDream mark ineffective no LLM Stanza 32 wasDreamForgottenpreMidnight mark very weak skip all LLM Stanza 33 isDoshaja strong match skip Call 3 UNLESS critical symbols found hadGoodDreamAfterBad Call 2 analyses both flags accordingly otherwise Calls 12 parallel Call 3 
         :return: Task`1
          """
         endpoint = "Chapter31Predictions"
@@ -8121,7 +8121,7 @@ class Calculate:
     @classmethod
     def RootNumberFriendship(cls, rootNumberA, rootNumberB):
         """
-        NO DESC FOUND!! ERROR
+         Given 2 root numbers 19 returns their compatibility as Good Bad or Neutral 
         :return: String
          """
         endpoint = "RootNumberFriendship"
@@ -8134,7 +8134,7 @@ class Calculate:
     @classmethod
     def BirthNumber(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Numerology Your birth number denotes your ruling power the structure of the body and the character depend on that number. The birth number denotes a persons status and desires. let us take it as 17101931. Number 17 becomes 17 8. So 8 is your Birth number. 
         :return: Int32
          """
         endpoint = "BirthNumber"
@@ -8146,7 +8146,7 @@ class Calculate:
     @classmethod
     def DestinyNumber(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Numerology The events that occur in your life your relationship with others your future and the end of your life are all denoted by your destiny number. The destiny number denotes to what extent a person will come up in life as well as it determines his fate. 
         :return: Int32
          """
         endpoint = "DestinyNumber"
@@ -8158,7 +8158,7 @@ class Calculate:
     @classmethod
     def NameNumber(cls, inputText):
         """
-        NO DESC FOUND!! ERROR
+         The numerical values given to the alphabets are based on the Chaldean System Numbers values denote the wave length of the sound and impact of letters. The powers of the nine planets in twelve star signs at different times are indicated in 108 numbers. 
         :return: Int32
          """
         endpoint = "NameNumber"
@@ -8170,7 +8170,7 @@ class Calculate:
     @classmethod
     def NameNumberPrediction(cls, fullName):
         """
-        NO DESC FOUND!! ERROR
+         Shows numerology prediction for given name. At first the name number is calculated based on Chaldean System then prediction is matched with translation from Mantra Sutras. 
         :return: NumerologyPrediction
          """
         endpoint = "NameNumberPrediction"
@@ -8182,7 +8182,7 @@ class Calculate:
     @classmethod
     def AIGenerateNames(cls, nameDescription, numberOfNames=20, excludeNames=None):
         """
-        NO DESC FOUND!! ERROR
+         Generates a batch of suggested names matching a plainlanguage description using AI. Sends the description to the language model with the numerology namegeneration prompt and returns a list of candidate names that vary in length and style. Optionally excludes a set of previously generated names so repeated calls keep producing fresh suggestions. Useful for picking auspicious baby names brand names or business names by theme. 
         :return: Task`1
          """
         endpoint = "AIGenerateNames"
@@ -8196,7 +8196,7 @@ class Calculate:
     @classmethod
     def MainActivity(cls, birthTime, checkTime):
         """
-        NO DESC FOUND!! ERROR
+         Returns the main Pancha Pakshi bird activity Ruling Eating Walking Sleeping or Dying for a person at a given moment. Determines the persons stellar birthbird whether the Moon is waxing or waning day vs night the weekday and which of the five yamas the check time falls into then looks these up in the Pancha Pakshi master table. The activity indicates how favourable that moment is for the person under the South Indian Pancha Pakshi five birds system. 
         :return: BirdActivity
          """
         endpoint = "MainActivity"
@@ -8209,7 +8209,7 @@ class Calculate:
     @classmethod
     def BirthYamaPanchaPakshi(cls, t):
         """
-        NO DESC FOUND!! ERROR
+         Calculates which of the five yamas equal time divisions a given moment falls into under the Pancha Pakshi system. Splits the relevant span daytime sunrisetosunset or the night span either side of it into five equal parts and returns the yama index 1 to 5 together with the exact start and end times of that yama. Used as a building block for Pancha Pakshi bird activity. 
         :return: BirthYama
          """
         endpoint = "BirthYamaPanchaPakshi"
@@ -8221,7 +8221,7 @@ class Calculate:
     @classmethod
     def PanchaPakshiBirthBird(cls, birthTime):
         """
-        NO DESC FOUND!! ERROR
+         Returns the persons Pancha Pakshi birthbird one of the five birds Vulture Owl Crow Cock or Peacock from their birth time. The bird is assigned from the ruling Moon constellation nakshatra at birth choosing between the waxingMoon and waningMoon bird groupings. The birthbird is the foundation of all Pancha Pakshi timing predictions for that person. 
         :return: BirdName
          """
         endpoint = "PanchaPakshiBirthBird"

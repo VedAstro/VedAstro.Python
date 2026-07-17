@@ -317,6 +317,51 @@ for aspect in numerology['LifeAspectList']:
 
 ---
 
+### Example 7: Semantic Search of Classical Texts (RAG)
+
+**Use Case:** Ask a plain-English question and get the most relevant passages from classical Vedic books (BPHS, Phaladeepika, Hindu Predictive Astrology, …) — no exact keywords needed
+
+```python
+from vedastro import *
+
+Calculate.SetAPIKey('FreeAPIUser')
+
+# See which classical texts are searchable
+print(Calculate.GetAvailableSourceTexts())
+
+# Natural-language semantic search across all texts
+passages = Calculate.SearchSourceText("effects of Saturn in the 7th house")
+
+for p in passages:
+    # lower score = closer match → convert to a relevance %
+    relevance = (1 - p.get("score", 1)) * 100
+    print(f"📖 {p['sourceName']} p.{p['pageNumber']} ({relevance:.0f}%)")
+    print(f"   {p['text']}\n")
+
+# Narrow to one book and tune the knobs
+focused = Calculate.SearchSourceText(
+    "results of Jupiter aspecting the Moon",
+    topK=3,
+    sourceName="Hindu-Predictive-Astrology",
+    contextSize=800,
+)
+```
+
+**Output:**
+```
+['Brihat-Parashara-Hora-Shastra', 'Hindu-Predictive-Astrology', 'Phaladeepika', ...]
+📖 Hindu-Predictive-Astrology p.142 (71%)
+   Saturn in the 7th house makes the native ...
+📖 Phaladeepika p.88 (66%)
+   The seventh house governs marriage and partnership ...
+```
+
+> 🤖 This is the same retrieval step that powers VedAstro's RAG/AI features — feed the returned passages into an LLM prompt to build a **cited** astrology chatbot.
+
+👉 **See full example:** [`demo_rag_vedic_books.py`](demo_rag_vedic_books.py)
+
+---
+
 ## 🎓 Step-by-Step Tutorials
 
 ### Tutorial 1: Understanding Time Format
@@ -479,6 +524,7 @@ for kuta in match['PredictionList']:
 | [`demo_all_astro_data.py`](demo_all_astro_data.py) | All planet and house data | Intermediate |
 | [`demo_all_astro_data_csv.py`](demo_all_astro_data_csv.py) | Export to CSV with pandas | Intermediate |
 | [`demo_bhava_chart_data.py`](demo_bhava_chart_data.py) | Bhava house analysis | Intermediate |
+| [`demo_rag_vedic_books.py`](demo_rag_vedic_books.py) | Semantic search of classical Vedic texts (RAG) | Intermediate |
 
 ---
 
@@ -645,7 +691,7 @@ Calculate.SetAPIKey('your-premium-key-here')
 `AllPlanetAshtakvarga`, `SarvaAshtakvarga`, `BhinnaAshtakvarga`, +42 more
 
 ### AI Features (8 methods)
-`BirthTimeAutoAIFill`, `HoroscopeLLMSearch`, `MatchChat`, +5 more
+`BirthTimeAutoAIFill`, `HoroscopeLLMSearch`, `MatchChat`, `SearchSourceText` (RAG over classical texts), `GetAvailableSourceTexts`, +3 more
 
 ### Numerology (10 methods)
 `NumerologyReport`, `NameNumber`, `LifePathNumber`, `DestinyNumber`, +6 more
