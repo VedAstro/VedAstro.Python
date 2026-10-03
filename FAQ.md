@@ -300,7 +300,7 @@ is_retro = Calculate.IsPlanetRetrograde(PlanetName.Mercury, birth)
 Try:
 ```python
 import requests
-response = requests.get("https://api.vedastro.org")
+response = requests.get("https://vedastro.zaishi.net")
 print(response.status_code)  # Should be 200
 ```
 

@@ -9,7 +9,7 @@ from enum import Enum
 
 class Calculate:
     api_key = None
-    base_url = "https://api.vedastro.org/api/Calculate"
+    base_url = "https://vedastro.zaishi.net/api/Calculate"
 
     @classmethod
     def SetAPIKey(cls, api_key):

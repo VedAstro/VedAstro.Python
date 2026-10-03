@@ -728,7 +728,7 @@ Your Python Code
       ↓
 vedastro pip library (this package)
       ↓
-REST API (api.vedastro.org)
+REST API (vedastro.zaishi.net)
       ↓
 VedAstro Engine (Azure Cloud)
       ↓
