@@ -1,9 +1,9 @@
 from vedastro import *  # install via pip
 
 # PART 0 : Set API key
-Calculate.SetAPIKey('FreeAPIUser')  # ⚡ unlimited speed  API key from "vedastro.org/API.html"
+Calculate.SetAPIKey('FreeAPIUser')  # !! unlimited speed  API key from "vedastro.org/API.html"
 
-# Set custom ayanamsa (default is Raman if not set)
+# Set custom ayanamsa (the API default is Lahiri when none is sent)
 Calculate.SetAyanamsa(Ayanamsa.Lahiri)
 
 # PART 1 : PREPARE NEEDED DATA

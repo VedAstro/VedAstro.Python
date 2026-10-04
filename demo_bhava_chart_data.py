@@ -3,7 +3,7 @@ from vedastro import *  # install via pip
 # THIS DEMO CALCULATES DATA NEEDED TO MAKE BHAVA CHART
 
 # PART 0 : Set API key
-Calculate.SetAPIKey('FreeAPIUser')  # ⚡ unlimited speed  API key from "vedastro.org/API.html"
+Calculate.SetAPIKey('FreeAPIUser')  # !! unlimited speed  API key from "vedastro.org/API.html"
 
 # PART 1 : PREPARE NEEDED DATA
 #-----------------------------------

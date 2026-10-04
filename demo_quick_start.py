@@ -39,26 +39,26 @@ birth_time = Time("14:30 25/10/1992 +05:30",
 
 # Step 3: Make Your First Calculation
 # This gets the zodiac sign where the Sun was at birth
-sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth_time)
+sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth_time)['Name']
 
 # Step 4: Display the Result
 print(f"Sun Sign: {sun_sign}")
 
-# That's it! You just made your first Vedic astrology calculation! 🎉
+# That's it! You just made your first Vedic astrology calculation!
 
 # NEXT STEPS:
 # - Try changing the birth time to your own birth date
-# - Try Calculate.PlanetSignName(PlanetName.Moon, birth_time) for Moon sign
+# - Try Calculate.PlanetRasiD1Sign(PlanetName.Moon, birth_time)['Name'] for Moon sign
 # - Explore more examples: demo_birth_chart_basics.py
 # - Read the full README.md for 596+ calculation methods
 # - Check the FAQ: FAQ.md for common questions
 
 # COMMON VARIATIONS:
 # Get Moon sign:
-# moon_sign = Calculate.PlanetSignName(PlanetName.Moon, birth_time)
+# moon_sign = Calculate.PlanetRasiD1Sign(PlanetName.Moon, birth_time)['Name']
 
 # Get Ascendant (Rising sign):
 # ascendant = Calculate.HouseSignName(HouseName.House1, birth_time)
 
 # Get current position of Mars:
-# mars_sign = Calculate.PlanetSignName(PlanetName.Mars, birth_time)
+# mars_sign = Calculate.PlanetRasiD1Sign(PlanetName.Mars, birth_time)['Name']

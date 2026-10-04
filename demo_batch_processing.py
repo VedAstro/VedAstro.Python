@@ -17,9 +17,9 @@ RUN:
 python demo_batch_processing.py
 
 EXPECTED OUTPUT:
-🔄 Batch Processing 10 Charts
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Progress: [████████░░] 80% (8/10 charts)
+Batch Processing 10 Charts
+---------------------------------------
+Progress: [########..] 80% (8/10 charts)
 Estimated time remaining: 24 seconds
 ...
 """
@@ -33,8 +33,8 @@ from datetime import datetime
 # Step 1: Set API Key
 Calculate.SetAPIKey('FreeAPIUser')
 
-print("🔄 Batch Processing Demo\n")
-print("━" * 60)
+print("Batch Processing Demo\n")
+print("-" * 60)
 
 # Step 2: Prepare Sample Data
 # In production, this would come from a database, CSV file, or API
@@ -52,7 +52,7 @@ sample_charts = [
 ]
 
 # APPROACH 1: Simple Sequential Processing
-print("📋 APPROACH 1: Simple Sequential Processing\n")
+print("APPROACH 1: Simple Sequential Processing\n")
 print("Use this for small batches (<10 charts)\n")
 
 def simple_batch_process(charts_list, delay_seconds=12):
@@ -70,7 +70,7 @@ def simple_batch_process(charts_list, delay_seconds=12):
             birth = Time(chart['time'], location)
 
             # Calculate sun sign
-            sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+            sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
 
             # Store result
             results.append({
@@ -81,7 +81,7 @@ def simple_batch_process(charts_list, delay_seconds=12):
                 "error": None
             })
 
-            print(f"✅ {i+1}/{total} - {chart['name']}: {sun_sign}")
+            print(f"[ok] {i+1}/{total} - {chart['name']}: {sun_sign}")
 
         except Exception as e:
             results.append({
@@ -91,12 +91,12 @@ def simple_batch_process(charts_list, delay_seconds=12):
                 "success": False,
                 "error": str(e)
             })
-            print(f"❌ {i+1}/{total} - {chart['name']}: Error - {e}")
+            print(f"[x] {i+1}/{total} - {chart['name']}: Error - {e}")
 
         # Rate limiting: Free tier = 5 req/min = 12 seconds between requests
         if i < total - 1:  # Don't sleep after last request
             # Show a simple progress indicator
-            print(f"   ⏳ Waiting {delay_seconds} seconds (rate limit)...")
+            print(f"   ... Waiting {delay_seconds} seconds (rate limit)...")
             time.sleep(delay_seconds)
 
     return results
@@ -105,13 +105,13 @@ def simple_batch_process(charts_list, delay_seconds=12):
 print("Demo: Processing first 3 charts only\n")
 results = simple_batch_process(sample_charts[:3])
 
-print(f"\n✅ Completed! {len(results)} charts processed")
+print(f"\n[ok] Completed! {len(results)} charts processed")
 print(f"   Success: {sum(1 for r in results if r['success'])}")
 print(f"   Failed: {sum(1 for r in results if not r['success'])}")
 
 # APPROACH 2: With Progress Bar
-print("\n━" * 60)
-print("📋 APPROACH 2: Progress Bar (Better UX)\n")
+print("\n-" * 60)
+print("APPROACH 2: Progress Bar (Better UX)\n")
 print("Use this for larger batches to show progress\n")
 
 def batch_process_with_progress(charts_list, delay_seconds=12):
@@ -121,13 +121,13 @@ def batch_process_with_progress(charts_list, delay_seconds=12):
     total = len(charts_list)
     start_time = time.time()
 
-    print(f"🔄 Processing {total} charts\n")
+    print(f"Processing {total} charts\n")
 
     for i, chart in enumerate(charts_list):
         try:
             location = GeoLocation(chart['location'], chart['long'], chart['lat'])
             birth = Time(chart['time'], location)
-            sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+            sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
 
             results.append({
                 "name": chart['name'],
@@ -139,7 +139,7 @@ def batch_process_with_progress(charts_list, delay_seconds=12):
             progress = (i + 1) / total
             bar_length = 40
             filled_length = int(bar_length * progress)
-            bar = '█' * filled_length + '░' * (bar_length - filled_length)
+            bar = '#' * filled_length + '.' * (bar_length - filled_length)
 
             # Calculate time estimates
             elapsed = time.time() - start_time
@@ -169,8 +169,8 @@ print("Demo: Processing with progress bar (3 charts)\n")
 results_with_progress = batch_process_with_progress(sample_charts[:3])
 
 # APPROACH 3: Save Results to CSV
-print("\n━" * 60)
-print("📋 APPROACH 3: Save Results to CSV\n")
+print("\n-" * 60)
+print("APPROACH 3: Save Results to CSV\n")
 print("Use this to export data for Excel, Google Sheets, analysis\n")
 
 def batch_process_and_save_csv(charts_list, filename="birth_charts.csv"):
@@ -185,8 +185,8 @@ def batch_process_and_save_csv(charts_list, filename="birth_charts.csv"):
             birth = Time(chart['time'], location)
 
             # Get multiple calculations
-            sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
-            moon_sign = Calculate.PlanetSignName(PlanetName.Moon, birth)
+            sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
+            moon_sign = Calculate.PlanetRasiD1Sign(PlanetName.Moon, birth)['Name']
             ascendant = Calculate.HouseSignName(HouseName.House1, birth)
 
             results.append({
@@ -199,7 +199,7 @@ def batch_process_and_save_csv(charts_list, filename="birth_charts.csv"):
                 "Success": "Yes"
             })
 
-            print(f"✅ {chart['name']}: Sun={sun_sign}, Moon={moon_sign}, Asc={ascendant}")
+            print(f"[ok] {chart['name']}: Sun={sun_sign}, Moon={moon_sign}, Asc={ascendant}")
 
         except Exception as e:
             results.append({
@@ -211,7 +211,7 @@ def batch_process_and_save_csv(charts_list, filename="birth_charts.csv"):
                 "Ascendant": "Error",
                 "Success": "No"
             })
-            print(f"❌ {chart['name']}: Error")
+            print(f"[x] {chart['name']}: Error")
 
         # Rate limiting (skip for demo)
         # if i < len(charts_list) - 1:
@@ -225,7 +225,7 @@ def batch_process_and_save_csv(charts_list, filename="birth_charts.csv"):
             writer.writeheader()
             writer.writerows(results)
 
-        print(f"\n💾 Results saved to: {filename}")
+        print(f"\nResults saved to: {filename}")
 
     return results
 
@@ -234,8 +234,8 @@ print("Demo: Processing and saving to CSV (2 charts)\n")
 csv_results = batch_process_and_save_csv(sample_charts[:2], "demo_charts.csv")
 
 # APPROACH 4: Save Results to JSON
-print("\n━" * 60)
-print("📋 APPROACH 4: Save Results to JSON\n")
+print("\n-" * 60)
+print("APPROACH 4: Save Results to JSON\n")
 print("Use this for structured data, API responses, databases\n")
 
 def batch_process_and_save_json(charts_list, filename="birth_charts.json"):
@@ -255,8 +255,8 @@ def batch_process_and_save_json(charts_list, filename="birth_charts.json"):
             location = GeoLocation(chart['location'], chart['long'], chart['lat'])
             birth = Time(chart['time'], location)
 
-            sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
-            moon_sign = Calculate.PlanetSignName(PlanetName.Moon, birth)
+            sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
+            moon_sign = Calculate.PlanetRasiD1Sign(PlanetName.Moon, birth)['Name']
 
             results["charts"].append({
                 "name": chart['name'],
@@ -274,7 +274,7 @@ def batch_process_and_save_json(charts_list, filename="birth_charts.json"):
                 "error": None
             })
 
-            print(f"✅ {chart['name']}: Processed")
+            print(f"[ok] {chart['name']}: Processed")
 
         except Exception as e:
             results["charts"].append({
@@ -282,13 +282,13 @@ def batch_process_and_save_json(charts_list, filename="birth_charts.json"):
                 "success": False,
                 "error": str(e)
             })
-            print(f"❌ {chart['name']}: Error")
+            print(f"[x] {chart['name']}: Error")
 
     # Save to JSON
     with open(filename, 'w', encoding='utf-8') as jsonfile:
         json.dump(results, jsonfile, indent=2)
 
-    print(f"\n💾 Results saved to: {filename}")
+    print(f"\nResults saved to: {filename}")
 
     return results
 
@@ -297,8 +297,8 @@ print("Demo: Processing and saving to JSON (2 charts)\n")
 json_results = batch_process_and_save_json(sample_charts[:2], "demo_charts.json")
 
 # APPROACH 5: Error Recovery (Resume from failure)
-print("\n━" * 60)
-print("📋 APPROACH 5: Error Recovery (Resume interrupted batches)\n")
+print("\n-" * 60)
+print("APPROACH 5: Error Recovery (Resume interrupted batches)\n")
 print("Use this for very large batches that may get interrupted\n")
 
 def batch_process_with_checkpoints(charts_list, checkpoint_file="checkpoint.json"):
@@ -310,11 +310,11 @@ def batch_process_with_checkpoints(charts_list, checkpoint_file="checkpoint.json
             checkpoint = json.load(f)
             results = checkpoint['results']
             start_index = checkpoint['last_processed_index'] + 1
-            print(f"📌 Resuming from checkpoint: {start_index}/{len(charts_list)}")
+            print(f"Resuming from checkpoint: {start_index}/{len(charts_list)}")
     except FileNotFoundError:
         results = []
         start_index = 0
-        print(f"🆕 Starting fresh batch")
+        print(f"Starting fresh batch")
 
     # Process from start_index onwards
     for i in range(start_index, len(charts_list)):
@@ -323,7 +323,7 @@ def batch_process_with_checkpoints(charts_list, checkpoint_file="checkpoint.json
         try:
             location = GeoLocation(chart['location'], chart['long'], chart['lat'])
             birth = Time(chart['time'], location)
-            sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+            sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
 
             results.append({
                 "name": chart['name'],
@@ -331,11 +331,11 @@ def batch_process_with_checkpoints(charts_list, checkpoint_file="checkpoint.json
                 "success": True
             })
 
-            print(f"✅ {i+1}/{len(charts_list)} - {chart['name']}")
+            print(f"[ok] {i+1}/{len(charts_list)} - {chart['name']}")
 
         except Exception as e:
             results.append({"name": chart['name'], "success": False, "error": str(e)})
-            print(f"❌ {i+1}/{len(charts_list)} - {chart['name']}: Error")
+            print(f"[x] {i+1}/{len(charts_list)} - {chart['name']}: Error")
 
         # Save checkpoint after each successful process
         checkpoint = {
@@ -352,7 +352,7 @@ def batch_process_with_checkpoints(charts_list, checkpoint_file="checkpoint.json
     import os
     if os.path.exists(checkpoint_file):
         os.remove(checkpoint_file)
-        print(f"\n✅ Batch complete! Checkpoint file removed.")
+        print(f"\n[ok] Batch complete! Checkpoint file removed.")
 
     return results
 
@@ -361,9 +361,9 @@ print("Demo: Processing with checkpoints (2 charts)\n")
 checkpoint_results = batch_process_with_checkpoints(sample_charts[:2], "demo_checkpoint.json")
 
 # BEST PRACTICES SUMMARY
-print("\n━" * 60)
-print("✅ Batch Processing Best Practices")
-print("━" * 60)
+print("\n-" * 60)
+print("[ok] Batch Processing Best Practices")
+print("-" * 60)
 
 print("""
 1. RATE LIMITING (Critical for free tier)
@@ -410,9 +410,9 @@ print("""
 """)
 
 # EXAMPLE USE CASES
-print("\n━" * 60)
-print("💡 Real-World Use Cases")
-print("━" * 60)
+print("\n-" * 60)
+print("Real-World Use Cases")
+print("-" * 60)
 
 print("""
 1. DATING APP
@@ -446,9 +446,9 @@ print("""
    - Track planetary cycles for planning
 """)
 
-print("\n✨ Batch processing demonstration complete!")
-print("\n📁 Files created:")
+print("\n* Batch processing demonstration complete!")
+print("\nFiles created:")
 print("   - demo_charts.csv (CSV export)")
 print("   - demo_charts.json (JSON export)")
-print("\n💡 Tip: For production batches > 100 charts, upgrade to premium ($1/month)")
+print("\nTip: For production batches > 100 charts, upgrade to premium ($1/month)")
 print("   to remove rate limits and process 12x faster!")

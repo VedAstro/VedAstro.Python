@@ -29,7 +29,7 @@ birth = Time("14:30 25/10/1992 +05:30",
              GeoLocation("Mumbai", 72.8777, 19.0760))
 
 # Get Sun sign
-sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
 
 print(f"Sun Sign: {sun_sign}")
 ```
@@ -73,7 +73,7 @@ python demo_daily_panchanga.py
 
 ## What's Next?
 
-1. **📖 Read README.md** - See all 596 calculations and features
+1. **📖 Read README.md** - See all 684 calculations and features
 2. **🎓 Try Tutorials** - [TUTORIALS.md](TUTORIALS.md) for step-by-step guides
 3. **❓ Check FAQ** - [FAQ.md](FAQ.md) for common questions
 4. **🚀 Build Something** - Your first horoscope app!

@@ -2,7 +2,7 @@ from vedastro import *  # install via pip
 import re
 
 # PART 0 : Set API key
-Calculate.SetAPIKey('FreeAPIUser')  # ⚡ unlimited speed  API key from "vedastro.org/API.html"
+Calculate.SetAPIKey('FreeAPIUser')  # !! unlimited speed  API key from "vedastro.org/API.html"
 
 # PART 1 : Define CALCULATE Planet DATA Function
 #---------------------------------------

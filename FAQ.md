@@ -58,7 +58,7 @@ For the **premium tier** ($1/month unlimited), get your key from [vedastro.org/A
 
 | Feature | Free | Premium |
 |---------|------|---------|
-| **All 596 calculations** | ✅ | ✅ |
+| **All 684 calculations** | ✅ | ✅ |
 | **All 47 ayanamsa** | ✅ | ✅ |
 | **Commercial use** | ✅ | ✅ |
 | **Swiss Ephemeris** | ✅ | ✅ |
@@ -193,7 +193,7 @@ Find coordinates: Search "[city name] coordinates" on Google.
 | Your Context | Recommended Ayanamsa |
 |--------------|----------------------|
 | Indian astrology | `Ayanamsa.Lahiri` (govt standard) |
-| Unsure / General | `Ayanamsa.Raman` (API default) |
+| Unsure / General | `Ayanamsa.Lahiri` (API default) |
 | KP system | `Ayanamsa.Krishnamurti` |
 | Western sidereal | `Ayanamsa.Fagan_Bradley` |
 
@@ -249,7 +249,7 @@ longitude = Calculate.PlanetNirayanaLongitude(PlanetName.Sun, birth)
 # Output: 217.45
 
 # Degree within sign
-degree = Calculate.PlanetLongitudeInSign(PlanetName.Sun, birth)
+degree = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['DegreesIn']
 # Output: "7° 27' 15\""
 ```
 
@@ -326,7 +326,7 @@ print(response.status_code)  # Should be 200
 Add error handling:
 ```python
 try:
-    result = Calculate.PlanetSignName(PlanetName.Sun, birth)
+    result = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
     if result:
         print(result)
     else:
@@ -353,7 +353,7 @@ except Exception as e:
 
 ### Q: How many calculations are available?
 
-**A:** **596+ methods** across 10 categories:
+**A:** **684+ methods** across 10 categories:
 - Planets (120 methods)
 - Houses (85 methods)
 - Zodiac (42 methods)
@@ -375,13 +375,13 @@ Full list: [vedastro.org/API.html](https://vedastro.org/API.html)
 
 ```python
 # D9 (Navamsa)
-d9_signs = Calculate.AllHouseNavamshaSigns(birth)
+d9_signs = Calculate.AllHouseNavamshaSign(birth)
 
 # D10 (Dashamsa)
-d10_signs = Calculate.AllHouseDashamsaSigns(birth)
+d10_signs = Calculate.AllHouseDashamamshaSign(birth)
 
 # D12 (Dwadashamsa)
-d12_signs = Calculate.AllHouseDwadashamsaSigns(birth)
+d12_signs = Calculate.AllHouseDwadashamshaSign(birth)
 ```
 
 ---
@@ -391,11 +391,14 @@ d12_signs = Calculate.AllHouseDwadashamsaSigns(birth)
 **A:** Yes! Both SAV (Sarva Ashtakvarga) and BAV (Bhinna Ashtakvarga):
 
 ```python
-# All planets' ashtakvarga
-ashtakvarga = Calculate.AllPlanetAshtakvarga(birth)
+# Sarva Ashtakvarga (SAV) - the combined bindu chart for all planets and houses
+sav = Calculate.SarvashtakavargaChart(birth)
 
-# Sarva Ashtakvarga (combined)
-sav = Calculate.SarvaAshtakvarga(birth)
+# Bhinna Ashtakvarga (BAV) - bindus one planet contributes to one sign
+bav = Calculate.PlanetAshtakvargaBindu(PlanetName.Sun, ZodiacName.Aries, birth)
+
+# Or, one planet's contribution checked against another planet's sign
+bav2 = Calculate.PlanetAshtakvargaBinduByPlanet(PlanetName.Sun, PlanetName.Moon, birth)
 ```
 
 ---
@@ -421,7 +424,7 @@ start = Time("00:00 01/01/2020 +05:30", GeoLocation("Mumbai", 72.8777, 19.0760))
 end = Time("23:59 31/12/2030 +05:30", GeoLocation("Mumbai", 72.8777, 19.0760))
 
 # Get Mahadasa, Bhukti, Antaram (3 levels)
-dasa = Calculate.DasaAtRange(birth, start, end, levels=3, precision_hours=100)
+dasa = Calculate.DasaAtRange(birth, start, end, levels=3, precisionHours=100)
 ```
 
 ---
@@ -442,7 +445,7 @@ charts = [
 
 for chart in charts:
     birth = Time(chart["time"], chart["location"])
-    sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+    sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
     print(f"{chart['name']}: {sun_sign}")
     time.sleep(12)  # Rate limiting for free tier
 ```
@@ -464,7 +467,7 @@ Calculate.SetAPIKey('your-key-here')
 def get_horoscope():
     data = request.json
     birth = Time(data['birth_time'], GeoLocation(data['location'], data['long'], data['lat']))
-    sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+    sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
     return jsonify({"sun_sign": sun_sign})
 
 app.run()
@@ -482,7 +485,7 @@ from functools import lru_cache
 @lru_cache(maxsize=100)
 def get_sun_sign(birth_time_str, location_name, long, lat):
     birth = Time(birth_time_str, GeoLocation(location_name, long, lat))
-    return Calculate.PlanetSignName(PlanetName.Sun, birth)
+    return Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
 
 # First call - makes API request
 result1 = get_sun_sign("14:30 25/10/1992 +05:30", "Mumbai", 72.8777, 19.0760)
@@ -550,7 +553,7 @@ Check [GitHub commits](https://github.com/VedAstro/VedAstro) for recent activity
 |---------|----------|-----------|--------------|--------------------------|
 | **Price** | $1/month | $50/month | $100/month | Free (but complex setup) |
 | **Setup** | Zero | Medium | Medium | Very complex |
-| **Calculations** | 596+ | ~100 | ~150 | Unlimited (but requires coding) |
+| **Calculations** | 684+ | ~100 | ~150 | Unlimited (but requires coding) |
 | **Ayanamsa** | 47 | 3-5 | 5-10 | 47+ (need to implement) |
 | **Cloud-powered** | ✅ | ✅ | ✅ | ❌ (local only) |
 | **Beginners** | Very easy | Medium | Medium | Very hard |

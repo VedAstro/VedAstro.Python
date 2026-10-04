@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <em>The most comprehensive Vedic astrology library for Python — 596 calculations, one line of code.</em>
+  <em>The most comprehensive Vedic astrology library for Python — 684 calculations, one line of code.</em>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@
 |--------------|----------|-------------|
 | **Monthly Cost** | **$1/month** | $50-$200/month |
 | **Free Tier** | ✅ 5 req/min | ❌ None or very limited |
-| **Calculations** | **596+ methods** | 50-200 methods |
+| **Calculations** | **684+ methods** | 50-200 methods |
 | **Ayanamsa Systems** | **47 systems** | 3-10 systems |
 | **Setup Complexity** | **Zero setup** | Complex (DLLs, ephemeris files) |
 | **Commercial Use** | ✅ Both tiers | ❌ Enterprise only |
@@ -40,7 +40,7 @@
 
 **Indian Developers:** ₹79/month or ₹758/year (₹63/month, most popular)
 
-> **All 596 calculations included in both tiers.** The only difference is rate limits.
+> **All 684 calculations included in both tiers.** The only difference is rate limits.
 
 ### 🎯 Built for Real Apps
 
@@ -75,7 +75,7 @@ birth = Time("14:30 25/10/1992 +05:30",
              GeoLocation("Mumbai", 72.8777, 19.0760))
 
 # Get Sun sign (one line!)
-sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
 
 print(f"Sun Sign: {sun_sign}")  # Output: "Libra"
 ```
@@ -100,13 +100,13 @@ birth = Time("14:30 25/10/1992 +05:30",
              GeoLocation("Mumbai", 72.8777, 19.0760))
 
 # Get the big three
-sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
-moon_sign = Calculate.PlanetSignName(PlanetName.Moon, birth)
+sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
+moon_sign = Calculate.PlanetRasiD1Sign(PlanetName.Moon, birth)['Name']
 ascendant = Calculate.HouseSignName(HouseName.House1, birth)
 
-print(f"☀️ Sun: {sun_sign}")        # e.g., "Libra"
-print(f"🌙 Moon: {moon_sign}")       # e.g., "Scorpio"
-print(f"⬆️ Rising: {ascendant}")     # e.g., "Capricorn"
+print(f"Sun: {sun_sign}")        # e.g., "Libra"
+print(f"Moon: {moon_sign}")       # e.g., "Scorpio"
+print(f"^Rising: {ascendant}")     # e.g., "Capricorn"
 ```
 
 👉 **See full example:** [`demo_birth_chart_basics.py`](demo_birth_chart_basics.py)
@@ -134,8 +134,8 @@ person2 = Time("14:30 15/06/1997 -05:00",
 match = Calculate.MatchReport(person1, person2)
 
 # Check overall compatibility
-print(f"💑 Compatibility Score: {match['KutaScore']}/100")
-print(f"📊 {match['Summary']['ScoreSummary']}")
+print(f"Compatibility Score: {match['KutaScore']}/100")
+print(f"{match['Summary']['ScoreSummary']}")
 
 # Show predictions
 for prediction in match['PredictionList'][:5]:
@@ -144,8 +144,8 @@ for prediction in match['PredictionList'][:5]:
 
 **Output:**
 ```
-💑 Compatibility Score: 65/100
-📊 Near perfect match, overall happiness
+Compatibility Score: 65/100
+Near perfect match, overall happiness
   • Graha Maitram: Good
   • Rajju: Good
   • Nadi Kuta: Good
@@ -181,16 +181,16 @@ planets = [PlanetName.Sun, PlanetName.Moon, PlanetName.Mars,
            PlanetName.Mercury, PlanetName.Jupiter, PlanetName.Venus,
            PlanetName.Saturn, PlanetName.Rahu, PlanetName.Ketu]
 
-print("🪐 Current Planetary Positions:")
+print("Current Planetary Positions:")
 for planet in planets:
-    sign = Calculate.PlanetSignName(planet, current_time)
+    sign = Calculate.PlanetRasiD1Sign(planet, current_time)['Name']
     constellation = Calculate.PlanetConstellation(planet, current_time)
     print(f"  {planet}: {sign} in {constellation}")
 ```
 
 **Output:**
 ```
-🪐 Current Planetary Positions:
+Current Planetary Positions:
   Sun: Taurus in Rohini
   Moon: Sagittarius in Moola
   Mars: Pisces in Revathi
@@ -224,23 +224,23 @@ today = Time(
 # Get panchanga elements
 tithi = Calculate.LunarDay(today)
 nakshatra = Calculate.MoonConstellation(today)
-yoga = Calculate.Yoga(today)
+yoga = Calculate.NithyaYoga(today)
 karana = Calculate.Karana(today)
 
-print(f"📅 Panchanga for {now.strftime('%d %B %Y')}")
-print(f"🌙 Tithi: {tithi}")
-print(f"⭐ Nakshatra: {nakshatra}")
-print(f"🔗 Yoga: {yoga}")
-print(f"⚡ Karana: {karana}")
+print(f"Panchanga for {now.strftime('%d %B %Y')}")
+print(f"Tithi: {tithi}")
+print(f"* Nakshatra: {nakshatra}")
+print(f"Yoga: {yoga}")
+print(f"!! Karana: {karana}")
 ```
 
 **Output:**
 ```
-📅 Panchanga for 18 May 2026
-🌙 Tithi: Shukla Dwadashi
-⭐ Nakshatra: Pushya
-🔗 Yoga: Ganda
-⚡ Karana: Vishti
+Panchanga for 18 May 2026
+Tithi: Shukla Dwadashi
+* Nakshatra: Pushya
+Yoga: Ganda
+!! Karana: Vishti
 ```
 
 👉 **See full example:** [`demo_daily_panchanga.py`](demo_daily_panchanga.py)
@@ -267,9 +267,9 @@ end = Time("23:59 31/12/2030 +05:30",
            GeoLocation("Mumbai", 72.8777, 19.0760))
 
 # Calculate with 3 levels of depth
-dasa = Calculate.DasaAtRange(birth, start, end, levels=3, precision_hours=100)
+dasa = Calculate.DasaAtRange(birth, start, end, levels=3, precisionHours=100)
 
-# Print Mahadasa → Bhukti → Antaram
+# Print Mahadasa -> Bhukti -> Antaram
 import json
 print(json.dumps(dasa, indent=2))
 ```
@@ -292,26 +292,25 @@ name = "John Doe"
 dob = Time("14:30 25/10/1992 +05:30",
            GeoLocation("NYC", -74.006, 40.7128))
 
-# Get numerology report
-numerology = Calculate.NumerologyReport(name, dob)
+# Numbers taken from the birth date
+print("Birth number:  ", Calculate.BirthNumber(dob))
+print("Destiny number:", Calculate.DestinyNumber(dob))
 
-# Show life aspects with scores
-print(f"🔢 Numerology Report for {name}")
-for aspect in numerology['LifeAspectList']:
-    print(f"  {aspect['Name']}: {aspect['Score']}/100")
+# Name number (Chaldean system), with its ruling planet and interpretation
+prediction = Calculate.NameNumberPrediction(name)
+print(f"{name}: number {prediction['Number']} "
+      f"(root {prediction['RootNumber']}, ruling planet {prediction['Planet']})")
+print(prediction['Prediction'])
 ```
 
 **Output:**
 ```
-🔢 Numerology Report for John Doe
-  Finance: 72/100
-  Romance: 85/100
-  Education: 68/100
-  Health: 78/100
-  Family: 80/100
-  Career: 75/100
-  ...
+Birth number:   7
+Destiny number: 2
+John Doe: number 34 (root 7, ruling planet Ketu)
+This number has the potential to be seen as lucky, ...
 ```
+`Prediction` is HTML-formatted interpretation text - render it or strip the tags before display.
 
 👉 **See full example:** [`demo_numerology_calculator.py`](demo_numerology_calculator.py)
 
@@ -333,9 +332,9 @@ print(Calculate.GetAvailableSourceTexts())
 passages = Calculate.SearchSourceText("effects of Saturn in the 7th house")
 
 for p in passages:
-    # lower score = closer match → convert to a relevance %
+    # lower score = closer match -> convert to a relevance %
     relevance = (1 - p.get("score", 1)) * 100
-    print(f"📖 {p['sourceName']} p.{p['pageNumber']} ({relevance:.0f}%)")
+    print(f"{p['sourceName']} p.{p['pageNumber']} ({relevance:.0f}%)")
     print(f"   {p['text']}\n")
 
 # Narrow to one book and tune the knobs
@@ -350,9 +349,9 @@ focused = Calculate.SearchSourceText(
 **Output:**
 ```
 ['Brihat-Parashara-Hora-Shastra', 'Hindu-Predictive-Astrology', 'Phaladeepika', ...]
-📖 Hindu-Predictive-Astrology p.142 (71%)
+Hindu-Predictive-Astrology p.142 (71%)
    Saturn in the 7th house makes the native ...
-📖 Phaladeepika p.88 (66%)
+Phaladeepika p.88 (66%)
    The seventh house governs marriage and partnership ...
 ```
 
@@ -402,16 +401,16 @@ time2 = Time(
 **Common Mistakes:**
 
 ```python
-# ❌ Wrong - Wrong date format (YYYY-MM-DD not supported)
+# [x] Wrong - Wrong date format (YYYY-MM-DD not supported)
 Time("14:30 1992-10-25 +05:30", location)
 
-# ❌ Wrong - AM/PM format not supported (use 24-hour)
+# [x] Wrong - AM/PM format not supported (use 24-hour)
 Time("2:30 PM 25/10/1992 +05:30", location)
 
-# ❌ Wrong - Missing timezone offset
+# [x] Wrong - Missing timezone offset
 Time("14:30 25/10/1992", location)
 
-# ✅ Correct
+# [ok] Correct
 Time("14:30 25/10/1992 +05:30", location)
 ```
 
@@ -427,8 +426,8 @@ Ayanamsa is the difference between tropical (Western) and sidereal (Vedic) zodia
 
 | System | When to Use |
 |--------|-------------|
-| **Lahiri** | Indian government standard, most widely used |
-| **Raman** | API default, popular in South India |
+| **Lahiri** | Indian government standard, most widely used - **the API default when none is set** |
+| **Raman** | popular in South India |
 | **Krishnamurti** | KP (Krishnamurti Paddhati) system |
 | **Fagan-Bradley** | Western sidereal astrology |
 | **Yukteswar** | Sri Yukteswar's calculation |
@@ -441,25 +440,30 @@ from vedastro import *
 
 Calculate.SetAPIKey('FreeAPIUser')
 
-# Default is Raman
 birth = Time("14:30 25/10/1992 +05:30", GeoLocation("Mumbai", 72.8777, 19.0760))
-sun_raman = Calculate.PlanetSignName(PlanetName.Sun, birth)
-print(f"Sun (Raman): {sun_raman}")
 
-# Switch to Lahiri
-Calculate.SetAyanamsa(Ayanamsa.Lahiri)
-sun_lahiri = Calculate.PlanetSignName(PlanetName.Sun, birth)
-print(f"Sun (Lahiri): {sun_lahiri}")
+# Nothing set: the API applies its own default, which measures as Lahiri
+print(Calculate.GetAyanamsa())                                  # None
+print(Calculate.AyanamsaDegree(birth)['DegreeMinuteSecond'])     # 23° 45' 39
 
-# Switch to KP
-Calculate.SetAyanamsa(Ayanamsa.Krishnamurti)
-sun_kp = Calculate.PlanetSignName(PlanetName.Sun, birth)
-print(f"Sun (KP): {sun_kp}")
+# Set it for the rest of the script
+Calculate.SetAyanamsa(Ayanamsa.Raman)
+print(Calculate.AyanamsaDegree(birth)['DegreeMinuteSecond'])     # 22° 18' 2
+
+# ...or scope it to a block - it reverts automatically on exit
+with Calculate.use_ayanamsa(Ayanamsa.Krishnamurti):
+    print(Calculate.AyanamsaDegree(birth)['DegreeMinuteSecond']) # 23° 39' 52
+
+print(Calculate.GetAyanamsa())                                  # Raman again
 ```
+
+Values above are measured output, not illustrations: ayanamsa choice shifts
+positions by up to ~3°, so a planet near a sign boundary can change sign.
+Any calculator call made inside the block also uses the scoped ayanamsa.
 
 **Recommendation:**
 - 🇮🇳 **Indian astrology** → Use `Ayanamsa.Lahiri`
-- 🌏 **General/API default** → Use `Ayanamsa.Raman`
+- 🌏 **API default** → Use `Ayanamsa.Lahiri` (measured server default)
 - 📐 **KP system** → Use `Ayanamsa.Krishnamurti`
 - 🌍 **Western sidereal** → Use `Ayanamsa.Fagan_Bradley`
 
@@ -539,7 +543,7 @@ import time
 
 # Solution 1: Add delays between requests (12 seconds = 5 req/min)
 for i in range(10):
-    result = Calculate.PlanetSignName(PlanetName.Sun, birth)
+    result = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
     time.sleep(12)  # Wait 12 seconds between requests
 
 # Solution 2: Upgrade to premium ($1/month unlimited)
@@ -553,12 +557,12 @@ Calculate.SetAPIKey('your-premium-key-here')  # No more rate limits!
 **A:** Use format: `"HH:MM DD/MM/YYYY +TZ:TZ"` (24-hour format, DD/MM/YYYY order)
 
 ```python
-# ✅ Correct examples
+# [ok] Correct examples
 Time("14:30 25/10/1992 +05:30", location)  # 2:30 PM IST
 Time("09:00 01/01/2000 -05:00", location)  # 9 AM EST
 Time("23:45 15/08/1985 +09:00", location)  # 11:45 PM JST
 
-# ❌ Wrong examples
+# [x] Wrong examples
 Time("2:30 PM 25/10/1992 +05:30", location)  # No AM/PM
 Time("14:30 1992-10-25 +05:30", location)   # Wrong date format
 Time("14:30 25/10/1992", location)          # Missing timezone
@@ -571,7 +575,7 @@ Time("14:30 25/10/1992", location)          # Missing timezone
 **A:** Quick guide:
 
 - 🇮🇳 **You're in India** → `Ayanamsa.Lahiri` (govt standard)
-- 🌐 **You're unsure** → `Ayanamsa.Raman` (API default)
+- 🌐 **You're unsure** → `Ayanamsa.Lahiri` (API default)
 - 📐 **You use KP** → `Ayanamsa.Krishnamurti`
 - 🌍 **You're Western sidereal** → `Ayanamsa.Fagan_Bradley`
 
@@ -593,7 +597,7 @@ Calculate.SetAyanamsa(Ayanamsa.Lahiri)  # Most common choice
 ```python
 # Proper error handling
 try:
-    result = Calculate.PlanetSignName(PlanetName.Sun, birth)
+    result = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
     print(result)
 except Exception as e:
     print(f"Error: {e}")
@@ -612,7 +616,7 @@ except Exception as e:
 longitude = Calculate.PlanetNirayanaLongitude(PlanetName.Sun, birth)
 # Returns: 217.45 (continuous)
 
-degree = Calculate.PlanetLongitudeInSign(PlanetName.Sun, birth)
+degree = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['DegreesIn']
 # Returns: "7° 27' 15\"" (within Scorpio)
 ```
 
@@ -633,7 +637,7 @@ No attribution required (but appreciated!).
 
 ### Q: "What's included in free vs premium?"
 
-**A:** **All 596 calculations included in both!** Only difference is rate limits:
+**A:** **All 684 calculations included in both!** Only difference is rate limits:
 
 | Feature | Free | Premium |
 |---------|------|---------|
@@ -662,7 +666,7 @@ Calculate.SetAPIKey('your-premium-key-here')
 
 ---
 
-## 📖 What Can You Calculate? (596 Methods)
+## 📖 What Can You Calculate? (684 Methods)
 
 **Full API reference:** [vedastro.org/API.html](https://vedastro.org/API.html)
 
@@ -715,7 +719,7 @@ Calculate.SetAPIKey('your-premium-key-here')
 
 > "Setup took 2 minutes. First calculation worked immediately. No configuration hell. This is how all APIs should be." — Sarah, USA
 
-> "596 calculations, 47 ayanamsas, Swiss Ephemeris accuracy, $1/month. I thought there was a catch. There isn't." — Yuki, Japan
+> "684 calculations, 47 ayanamsas, Swiss Ephemeris accuracy, $1/month. I thought there was a catch. There isn't." — Yuki, Japan
 
 > "The free tier is generous enough for my personal app with 50 users. When I scale up, $1/month won't break the bank." — Carlos, Brazil
 
@@ -725,19 +729,19 @@ Calculate.SetAPIKey('your-premium-key-here')
 
 ```
 Your Python Code
-      ↓
+      v
 vedastro pip library (this package)
-      ↓
+      v
 REST API (vedastro.zaishi.net)
-      ↓
+      v
 VedAstro Engine (Azure Cloud)
-      ↓
+      v
 Swiss Ephemeris (NASA JPL data)
 ```
 
 **Why cloud-powered?**
 - ✅ Zero local dependencies (no DLLs, no native code)
-- ✅ Instant updates (596 calculations, always latest)
+- ✅ Instant updates (684 calculations, always latest)
 - ✅ Blazing fast (< 500ms average response)
 - ✅ No setup complexity (works on Windows/Mac/Linux)
 - ✅ Scales automatically (handles any load)

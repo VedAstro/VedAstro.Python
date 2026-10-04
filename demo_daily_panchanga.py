@@ -18,15 +18,15 @@ RUN:
 python demo_daily_panchanga.py
 
 EXPECTED OUTPUT:
-📅 Daily Panchanga for 18 May 2026
-📍 Location: Mumbai, India
+Daily Panchanga for 18 May 2026
+Location: Mumbai, India
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌙 Tithi (Lunar Day):      Shukla Dwadashi
-⭐ Nakshatra (Lunar Mansion): Pushya
-🔗 Yoga:                    Ganda
-⚡ Karana:                  Vishti
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---------------------------------------
+Tithi (Lunar Day):      Shukla Dwadashi
+* Nakshatra (Lunar Mansion): Pushya
+Yoga:                    Ganda
+!! Karana:                  Vishti
+---------------------------------------
 
 Use for: Muhurtha (auspicious timing), daily guidance, spiritual practices
 """
@@ -75,7 +75,7 @@ nakshatra = Calculate.MoonConstellation(today)
 # 3. YOGA - Sun-Moon Angle Combination (1 of 27 yogas)
 #    Sum of Sun and Moon longitudes divided into 27 parts
 #    Important for: Daily predictions, auspiciousness
-yoga = Calculate.Yoga(today)
+yoga = Calculate.NithyaYoga(today)
 
 # 4. KARANA - Half of Tithi (1 of 11 karanas, repeated twice per Tithi)
 #    Important for: Timing of actions, muhurtha
@@ -86,54 +86,54 @@ karana = Calculate.Karana(today)
 vara = now.strftime('%A')  # e.g., "Monday"
 
 # Step 6: Display Panchanga
-print(f"📅 Daily Panchanga for {now.strftime('%d %B %Y')}")
-print(f"📍 Location: {location_name}, India\n")
-print("━" * 50)
+print(f"Daily Panchanga for {now.strftime('%d %B %Y')}")
+print(f"Location: {location_name}, India\n")
+print("-" * 50)
 
 # Display the 5 elements
-print(f"🌙 Tithi (Lunar Day):         {tithi}")
-print(f"⭐ Nakshatra (Lunar Mansion):  {nakshatra}")
-print(f"🔗 Yoga:                       {yoga}")
-print(f"⚡ Karana:                     {karana}")
-print(f"📆 Vara (Weekday):             {vara}")
+print(f"Tithi (Lunar Day):         {tithi}")
+print(f"* Nakshatra (Lunar Mansion):  {nakshatra}")
+print(f"Yoga:                       {yoga}")
+print(f"!! Karana:                     {karana}")
+print(f"Vara (Weekday):             {vara}")
 
-print("━" * 50)
+print("-" * 50)
 
 # WHAT IS PANCHANGA USED FOR?
-print("\n💡 Uses of Panchanga:\n")
-print("✅ Muhurtha (auspicious timing) - Choose best time for important events")
-print("✅ Festival calculation - Many festivals tied to specific Tithis")
-print("✅ Fasting - Ekadashi (11th Tithi) is a fasting day")
-print("✅ Spiritual practices - Certain nakshatras favor specific practices")
-print("✅ Daily guidance - Avoid inauspicious combinations")
+print("\nUses of Panchanga:\n")
+print("[ok] Muhurtha (auspicious timing) - Choose best time for important events")
+print("[ok] Festival calculation - Many festivals tied to specific Tithis")
+print("[ok] Fasting - Ekadashi (11th Tithi) is a fasting day")
+print("[ok] Spiritual practices - Certain nakshatras favor specific practices")
+print("[ok] Daily guidance - Avoid inauspicious combinations")
 
 # AUSPICIOUSNESS GUIDE
-print("\n🎯 Quick Auspiciousness Guide:\n")
+print("\nQuick Auspiciousness Guide:\n")
 
 # Good Tithis for starting ventures
 good_tithis = ["Pratipada", "Tritiya", "Panchami", "Saptami", "Dashami", "Ekadashi", "Trayodashi"]
-print("🌟 Auspicious Tithis: " + ", ".join(good_tithis))
+print("Auspicious Tithis: " + ", ".join(good_tithis))
 
 # Good Nakshatras
 good_nakshatras = ["Ashwini", "Rohini", "Mrigashira", "Pushya", "Hasta", "Anuradha", "Shravana", "Uttara"]
-print("⭐ Auspicious Nakshatras: " + ", ".join(good_nakshatras))
+print("* Auspicious Nakshatras: " + ", ".join(good_nakshatras))
 
 # Check if today is auspicious
 if tithi.split()[1] in good_tithis:  # Split to handle "Shukla Pratipada" format
-    print(f"\n✨ Today's Tithi ({tithi}) is generally auspicious!")
+    print(f"\n* Today's Tithi ({tithi}) is generally auspicious!")
 
 if nakshatra in good_nakshatras:
-    print(f"✨ Today's Nakshatra ({nakshatra}) is favorable!")
+    print(f"* Today's Nakshatra ({nakshatra}) is favorable!")
 
 # NEXT STEPS:
 # - Build a panchanga calendar for the whole month
 # - Add sunrise/sunset times: Calculate.SunriseTime(), Calculate.SunsetTime()
-# - Get Rahu Kaal (inauspicious time): Calculate.RahuKaal()
+# - Get Rahu Kaal (inauspicious time): Calculate.RahuKala()
 # - Find best muhurtha: demo_muhurtha_finder.py
 # - Create a daily panchanga email/SMS service
 
 # BONUS: Additional Panchanga Elements
-print("\n📊 Additional Timing Elements:\n")
+print("\nAdditional Timing Elements:\n")
 
 # Paksha (Lunar Fortnight) - Derived from Tithi
 if "Shukla" in tithi:
@@ -143,56 +143,56 @@ elif "Krishna" in tithi:
 else:
     paksha = "New Moon (Amavasya) or Full Moon (Purnima)"
 
-print(f"🌓 Paksha: {paksha}")
+print(f"Paksha: {paksha}")
 
 # Moon Phase - Approximate from Tithi
 tithi_parts = tithi.split()
 if len(tithi_parts) > 1:
     tithi_name = tithi_parts[1]
     tithi_to_phase = {
-        "Pratipada": "🌑 New Moon",
-        "Dwitiya": "🌒 Waxing Crescent",
-        "Tritiya": "🌒 Waxing Crescent",
-        "Chaturthi": "🌓 Waxing Crescent",
-        "Panchami": "🌓 First Quarter",
-        "Shashthi": "🌔 Waxing Gibbous",
-        "Saptami": "🌔 Waxing Gibbous",
-        "Ashtami": "🌔 Waxing Gibbous",
-        "Navami": "🌕 Nearly Full",
-        "Dashami": "🌕 Nearly Full",
-        "Ekadashi": "🌕 Nearly Full",
-        "Dwadashi": "🌕 Full Moon",
-        "Trayodashi": "🌖 Waning Gibbous",
-        "Chaturdashi": "🌖 Waning Gibbous",
+        "Pratipada": "New Moon",
+        "Dwitiya": "Waxing Crescent",
+        "Tritiya": "Waxing Crescent",
+        "Chaturthi": "Waxing Crescent",
+        "Panchami": "First Quarter",
+        "Shashthi": "Waxing Gibbous",
+        "Saptami": "Waxing Gibbous",
+        "Ashtami": "Waxing Gibbous",
+        "Navami": "Nearly Full",
+        "Dashami": "Nearly Full",
+        "Ekadashi": "Nearly Full",
+        "Dwadashi": "Full Moon",
+        "Trayodashi": "Waning Gibbous",
+        "Chaturdashi": "Waning Gibbous",
     }
-    moon_phase = tithi_to_phase.get(tithi_name, "🌙 Moon")
-    print(f"🌙 Moon Phase: {moon_phase}")
+    moon_phase = tithi_to_phase.get(tithi_name, "Moon")
+    print(f"Moon Phase: {moon_phase}")
 
 # UNDERSTANDING EACH ELEMENT:
-print("\n📚 Panchanga Elements Explained:\n")
+print("\nPanchanga Elements Explained:\n")
 
-print("1️⃣ TITHI (Lunar Day)")
+print("1TITHI (Lunar Day)")
 print("   - 30 tithis per lunar month (15 Shukla + 15 Krishna)")
 print("   - Shukla Paksha = Waxing moon (after New Moon)")
 print("   - Krishna Paksha = Waning moon (after Full Moon)")
 print("   - Important tithis: Amavasya (New Moon), Purnima (Full Moon), Ekadashi (11th)")
 
-print("\n2️⃣ NAKSHATRA (Lunar Mansion)")
+print("\n2NAKSHATRA (Lunar Mansion)")
 print("   - 27 nakshatras, each 13°20' of zodiac")
 print("   - Moon spends ~1 day in each nakshatra")
 print("   - Used for: Naming, marriage matching, muhurtha")
 
-print("\n3️⃣ YOGA")
+print("\n3YOGA")
 print("   - 27 yogas based on Sun + Moon longitude")
 print("   - Some yogas are auspicious, some inauspicious")
 print("   - Important for: Daily activities, travel, starting ventures")
 
-print("\n4️⃣ KARANA")
+print("\n4KARANA")
 print("   - 11 karanas, each is half of a tithi (~6 hours)")
 print("   - 4 fixed karanas + 7 movable karanas (repeated)")
 print("   - Used for: Precise timing of activities")
 
-print("\n5️⃣ VARA (Weekday)")
+print("\n5VARA (Weekday)")
 print("   - Sun=Sunday, Moon=Monday, Mars=Tuesday, Mercury=Wednesday")
 print("   - Jupiter=Thursday, Venus=Friday, Saturn=Saturday")
 print("   - Each day has different qualities and ruling planets")

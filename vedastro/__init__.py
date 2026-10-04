@@ -1,17 +1,12 @@
 # VedAstro Python Library - REST API Mode
 # https://vedastro.org
 
-from colorama import Fore, Style
+import sys
 
-print(Fore.CYAN + "══════════════════════════════════════════════════════" + Style.RESET_ALL)
-print(Fore.CYAN + "  🪐 VedAstro" + Style.RESET_ALL + " - Vedic Astrology Library")
-print("  Open-source & powerful astronomical calculations")
-print()
-print("  🌐 " + Fore.BLUE + "https://vedastro.org" + Style.RESET_ALL)
-print("  📖 " + Fore.BLUE + "https://vedastro.org/API" + Style.RESET_ALL)
-print("  💖 " + Fore.BLUE + "https://vedastro.org/Donate" + Style.RESET_ALL)
-print(Fore.CYAN + "══════════════════════════════════════════════════════" + Style.RESET_ALL)
-print()
+# Plain ASCII on purpose: a banner with box-drawing characters or emoji raises
+# UnicodeEncodeError on Windows consoles that use a legacy code page (cp1252).
+if sys.stdout is not None:  # pythonw.exe and some embedded hosts have no stdout
+    print("VedAstro : Easy To Use Advanced Astrology Engine")
 
 from .update_check import check_for_update
 check_for_update("vedastro")

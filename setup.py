@@ -9,7 +9,6 @@ setup(
     packages=find_packages(include=['vedastro']),
     install_requires=[
         'packaging',
-        'colorama',
         'requests',
     ],
     python_requires='>=3.9,<4.0',

@@ -16,16 +16,16 @@ RUN:
 python demo_current_planets.py
 
 EXPECTED OUTPUT:
-🪐 Current Planetary Positions for 18 May 2026, 14:23 UTC
+Current Planetary Positions for 18 May 2026, 14:23 UTC
 
 Location: London (51.5074°N, 0.1278°W)
 
 Planet          Sign            Nakshatra
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-☀️  Sun         Taurus          Rohini
-🌙  Moon        Sagittarius     Moola
-♂️  Mars        Pisces          Revathi
-☿️  Mercury     Aries           Bharani
+--------------------------------------------
+ Sun         Taurus          Rohini
+ Moon        Sagittarius     Moola
+ Mars        Pisces          Revathi
+ Mercury     Aries           Bharani
 ...
 """
 
@@ -77,41 +77,41 @@ planets = [
 ]
 
 # Step 6: Display Header
-print(f"🪐 Current Planetary Positions for {now.strftime('%d %B %Y, %H:%M')} UTC\n")
+print(f"Current Planetary Positions for {now.strftime('%d %B %Y, %H:%M')} UTC\n")
 print(f"Location: {location_name} ({latitude}°N, {abs(longitude)}°W)\n")
 
 # Create a nice formatted table
 print(f"{'Planet':<15} {'Sign':<15} {'Nakshatra':<15}")
-print("━" * 50)
+print("-" * 50)
 
 # Step 7: Get and Display Each Planet's Position
 for planet in planets:
     # Get zodiac sign (12 signs: Aries, Taurus, Gemini, etc.)
-    sign = Calculate.PlanetSignName(planet, current_time)
+    sign = Calculate.PlanetRasiD1Sign(planet, current_time)['Name']
 
     # Get nakshatra (27 lunar mansions)
     nakshatra = Calculate.PlanetConstellation(planet, current_time)
 
     # Get emoji for each planet
     planet_emoji = {
-        'Sun': '☀️',
-        'Moon': '🌙',
-        'Mars': '♂️',
-        'Mercury': '☿️',
-        'Jupiter': '♃',
-        'Venus': '♀️',
-        'Saturn': '♄',
-        'Rahu': '☊',
-        'Ketu': '☋'
+        'Sun': '',
+        'Moon': '',
+        'Mars': '',
+        'Mercury': '',
+        'Jupiter': '',
+        'Venus': '',
+        'Saturn': '',
+        'Rahu': '',
+        'Ketu': ''
     }
 
-    emoji = planet_emoji.get(str(planet), '🪐')
+    emoji = planet_emoji.get(str(planet), '')
 
     # Display in a nicely formatted row
     print(f"{emoji}  {str(planet):<12} {sign:<15} {nakshatra:<15}")
 
 # BONUS: Check for Retrograde Planets
-print("\n🔄 Retrograde Status:\n")
+print("\nRetrograde Status:\n")
 
 for planet in planets:
     # Rahu and Ketu are always retrograde by nature, so skip them
@@ -122,7 +122,7 @@ for planet in planets:
     is_retrograde = Calculate.IsPlanetRetrograde(planet, current_time)
 
     if is_retrograde:
-        print(f"  ⚠️  {planet} is retrograde")
+        print(f"  [!] {planet} is retrograde")
 
 # UNDERSTANDING TRANSITS (GOCHARA):
 # - Transits are current planetary positions
@@ -138,7 +138,7 @@ for planet in planets:
 # NEXT STEPS:
 # - Compare these positions to a birth chart: demo_transit_analysis.py
 # - Get daily predictions based on transits: Calculate.EventsAtTime()
-# - Check auspicious timings: Calculate.LunarDay(), Calculate.Yoga()
+# - Check auspicious timings: Calculate.LunarDay(), Calculate.NithyaYoga()
 # - Build a daily panchanga widget: demo_daily_panchanga.py
 
 # CUSTOMIZATION IDEAS:
@@ -149,16 +149,16 @@ for planet in planets:
 # 5. Compare today vs yesterday to see planet movements
 
 # BONUS: Get Exact Degrees
-print("\n📐 Exact Positions (Degrees):\n")
+print("\nExact Positions (Degrees):\n")
 
 for planet in [PlanetName.Sun, PlanetName.Moon]:  # Just show Sun & Moon for brevity
     # Get precise degree position (0-360°)
     longitude_deg = Calculate.PlanetNirayanaLongitude(planet, current_time)
 
     # Get degree within sign (0-30°)
-    degree_in_sign = Calculate.PlanetLongitudeInSign(planet, current_time)
+    degree_in_sign = Calculate.PlanetRasiD1Sign(planet, current_time)['DegreesIn']
 
-    emoji = '☀️' if planet == PlanetName.Sun else '🌙'
+    emoji = '' if planet == PlanetName.Sun else ''
     print(f"{emoji}  {planet}:")
     print(f"   Total Longitude: {longitude_deg}°")
     print(f"   Degree in Sign: {degree_in_sign}")

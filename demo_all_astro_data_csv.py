@@ -4,7 +4,7 @@ import pandas as pd  # Install via pip if not already installed
 import json
 
 # PART 0 : Set API key
-Calculate.SetAPIKey('FreeAPIUser')  # ⚡ unlimited speed API key from "vedastro.org/API.html"
+Calculate.SetAPIKey('FreeAPIUser')  # !! unlimited speed API key from "vedastro.org/API.html"
 
 # PART 1 : PREPARE NEEDED DATA
 # -----------------------------------
@@ -32,16 +32,16 @@ for i in range(10):
     try:
         # Increment the time by 'i' hours
         current_datetime = birth_datetime + datetime.timedelta(hours=i)
-        
+
         # Format the new datetime back to the string format expected by Vedastro's Time class
         current_time_str = current_datetime.strftime("%H:%M %d/%m/%Y %z")
-        
+
         # Create a Time object with the new time
         current_time = Time(current_time_str, geolocation)
-        
+
         # Calculate all planet data for the specified planet at the current time
         planet_data = Calculate.AllPlanetData(planet, current_time)
-        
+
         # Flatten the planet_data if it's a nested dictionary
         # This step depends on the actual structure of planet_data
         # For demonstration, let's assume it's a flat dictionary
@@ -49,7 +49,7 @@ for i in range(10):
             "time": current_time_str,
             "planet": planet.value  # Assuming PlanetName is an Enum
         }
-        
+
         # Update flat_data with planet_data
         if isinstance(planet_data, dict):
             for key, value in planet_data.items():
@@ -62,10 +62,10 @@ for i in range(10):
         else:
             # If planet_data is not a dict, store it as a string
             flat_data["planet_data"] = str(planet_data)
-        
+
         # Append the flattened data to the results list
         results.append(flat_data)
-        
+
     except Exception as e:
         print(f"Error at iteration {i}: {e}")
         # Optionally, you can decide to continue or break the loop based on the error

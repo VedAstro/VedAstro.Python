@@ -17,9 +17,9 @@ RUN:
 python demo_error_handling.py
 
 EXPECTED OUTPUT:
-✅ Test 1: Valid input - Success!
-❌ Test 2: Invalid time format - Caught and handled
-❌ Test 3: Invalid coordinates - Caught and handled
+[ok] Test 1: Valid input - Success!
+[x] Test 2: Invalid time format - Caught and handled
+[x] Test 3: Invalid coordinates - Caught and handled
 ...
 """
 
@@ -30,11 +30,11 @@ from datetime import datetime
 # Step 1: Set API Key
 Calculate.SetAPIKey('FreeAPIUser')
 
-print("🛡️ Error Handling Patterns for VedAstro\n")
-print("━" * 60)
+print("Error Handling Patterns for VedAstro\n")
+print("-" * 60)
 
 # PATTERN 1: Basic Try-Catch
-print("\n📋 PATTERN 1: Basic Try-Catch\n")
+print("\nPATTERN 1: Basic Try-Catch\n")
 
 print("Use this for simple operations where you just need to know if it worked:\n")
 
@@ -43,18 +43,18 @@ def basic_error_handling():
     try:
         birth = Time("14:30 25/10/1992 +05:30",
                     GeoLocation("Mumbai", 72.8777, 19.0760))
-        sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
-        print(f"✅ Success! Sun Sign: {sun_sign}")
+        sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
+        print(f"[ok] Success! Sun Sign: {sun_sign}")
         return sun_sign
     except Exception as e:
-        print(f"❌ Error occurred: {e}")
+        print(f"[x] Error occurred: {e}")
         return None
 
 basic_error_handling()
 
 # PATTERN 2: Specific Error Types
-print("\n━" * 60)
-print("📋 PATTERN 2: Catching Specific Error Types\n")
+print("\n-" * 60)
+print("PATTERN 2: Catching Specific Error Types\n")
 
 print("Handle different types of errors differently:\n")
 
@@ -63,22 +63,22 @@ def specific_error_handling():
     try:
         # Intentionally invalid time format to trigger error
         birth = Time("INVALID_FORMAT", GeoLocation("Mumbai", 72.8777, 19.0760))
-        sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
-        print(f"✅ Success! Sun Sign: {sun_sign}")
+        sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
+        print(f"[ok] Success! Sun Sign: {sun_sign}")
     except ValueError as e:
-        print(f"❌ ValueError: Invalid input format - {e}")
+        print(f"[x] ValueError: Invalid input format - {e}")
     except ConnectionError as e:
-        print(f"❌ ConnectionError: Network issue - {e}")
+        print(f"[x] ConnectionError: Network issue - {e}")
     except TimeoutError as e:
-        print(f"❌ TimeoutError: Request took too long - {e}")
+        print(f"[x] TimeoutError: Request took too long - {e}")
     except Exception as e:
-        print(f"❌ Unexpected error: {type(e).__name__} - {e}")
+        print(f"[x] Unexpected error: {type(e).__name__} - {e}")
 
 specific_error_handling()
 
 # PATTERN 3: Input Validation Before API Call
-print("\n━" * 60)
-print("📋 PATTERN 3: Input Validation (Prevent errors before they happen)\n")
+print("\n-" * 60)
+print("PATTERN 3: Input Validation (Prevent errors before they happen)\n")
 
 print("Validate inputs BEFORE making API calls:\n")
 
@@ -87,39 +87,39 @@ def validate_and_calculate(birth_time_str, location_name, longitude, latitude):
 
     # Validate time format
     if not isinstance(birth_time_str, str) or len(birth_time_str) < 10:
-        print(f"❌ Invalid time format: {birth_time_str}")
+        print(f"[x] Invalid time format: {birth_time_str}")
         return None
 
     # Check if time string has required components
     time_parts = birth_time_str.split()
     if len(time_parts) != 3:
-        print(f"❌ Time must have format: 'HH:MM DD/MM/YYYY +TZ:TZ'")
+        print(f"[x] Time must have format: 'HH:MM DD/MM/YYYY +TZ:TZ'")
         print(f"   Got: {birth_time_str}")
         return None
 
     # Validate coordinates
     if not (-90 <= latitude <= 90):
-        print(f"❌ Invalid latitude: {latitude} (must be -90 to 90)")
+        print(f"[x] Invalid latitude: {latitude} (must be -90 to 90)")
         return None
 
     if not (-180 <= longitude <= 180):
-        print(f"❌ Invalid longitude: {longitude} (must be -180 to 180)")
+        print(f"[x] Invalid longitude: {longitude} (must be -180 to 180)")
         return None
 
     # Validate location name
     if not location_name or not isinstance(location_name, str):
-        print(f"❌ Invalid location name: {location_name}")
+        print(f"[x] Invalid location name: {location_name}")
         return None
 
     # All validations passed, make API call
     try:
         location = GeoLocation(location_name, longitude, latitude)
         birth = Time(birth_time_str, location)
-        sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
-        print(f"✅ Valid input! Sun Sign: {sun_sign}")
+        sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
+        print(f"[ok] Valid input! Sun Sign: {sun_sign}")
         return sun_sign
     except Exception as e:
-        print(f"❌ API Error: {e}")
+        print(f"[x] API Error: {e}")
         return None
 
 # Test cases
@@ -136,8 +136,8 @@ print("\nTest 4: Invalid longitude")
 validate_and_calculate("14:30 25/10/1992 +05:30", "Mumbai", 200.0, 19.0760)
 
 # PATTERN 4: Retry Logic for Transient Failures
-print("\n━" * 60)
-print("📋 PATTERN 4: Retry Logic (Handle temporary failures)\n")
+print("\n-" * 60)
+print("PATTERN 4: Retry Logic (Handle temporary failures)\n")
 
 print("Retry failed requests (useful for network issues):\n")
 
@@ -147,28 +147,28 @@ def calculate_with_retry(birth_time_str, location, max_retries=3, delay=2):
     for attempt in range(max_retries):
         try:
             birth = Time(birth_time_str, location)
-            sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
-            print(f"✅ Success on attempt {attempt + 1}! Sun Sign: {sun_sign}")
+            sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
+            print(f"[ok] Success on attempt {attempt + 1}! Sun Sign: {sun_sign}")
             return sun_sign
         except ConnectionError as e:
-            print(f"⚠️  Attempt {attempt + 1} failed: {e}")
+            print(f"[!] Attempt {attempt + 1} failed: {e}")
             if attempt < max_retries - 1:
                 print(f"   Retrying in {delay} seconds...")
                 time.sleep(delay)
             else:
-                print(f"❌ All {max_retries} attempts failed")
+                print(f"[x] All {max_retries} attempts failed")
                 return None
         except Exception as e:
             # Non-network errors shouldn't be retried
-            print(f"❌ Non-retryable error: {e}")
+            print(f"[x] Non-retryable error: {e}")
             return None
 
 location = GeoLocation("Mumbai", 72.8777, 19.0760)
 calculate_with_retry("14:30 25/10/1992 +05:30", location)
 
 # PATTERN 5: Rate Limit Handling (Free Tier)
-print("\n━" * 60)
-print("📋 PATTERN 5: Rate Limit Handling (Free Tier: 5 req/min)\n")
+print("\n-" * 60)
+print("PATTERN 5: Rate Limit Handling (Free Tier: 5 req/min)\n")
 
 print("Handle rate limits gracefully:\n")
 
@@ -180,18 +180,18 @@ def batch_calculate_with_rate_limit(birth_times_list):
     for i, (name, birth_time_str, location) in enumerate(birth_times_list):
         try:
             birth = Time(birth_time_str, location)
-            sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+            sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
             results.append({"name": name, "sun_sign": sun_sign, "success": True})
-            print(f"✅ {name}: {sun_sign}")
+            print(f"[ok] {name}: {sun_sign}")
 
             # Rate limiting: Free tier = 5 req/min = 12 seconds between requests
             if i < len(birth_times_list) - 1:  # Don't sleep after last request
-                print(f"   ⏳ Waiting 12 seconds to respect rate limit...")
+                print(f"   ... Waiting 12 seconds to respect rate limit...")
                 time.sleep(12)
 
         except Exception as e:
             results.append({"name": name, "sun_sign": None, "success": False, "error": str(e)})
-            print(f"❌ {name}: Error - {e}")
+            print(f"[x] {name}: Error - {e}")
 
     return results
 
@@ -211,8 +211,8 @@ charts = [
 print("(Skipped actual execution to save time)")
 
 # PATTERN 6: User-Friendly Error Messages
-print("\n━" * 60)
-print("📋 PATTERN 6: User-Friendly Error Messages\n")
+print("\n-" * 60)
+print("PATTERN 6: User-Friendly Error Messages\n")
 
 print("Convert technical errors into helpful guidance:\n")
 
@@ -223,7 +223,7 @@ def get_friendly_error_message(error):
 
     if "connection" in error_str or "network" in error_str:
         return """
-🔌 Connection Error
+Connection Error
 
    Problem: Can't reach VedAstro servers
    Solutions:
@@ -234,7 +234,7 @@ def get_friendly_error_message(error):
 
     elif "time" in error_str or "format" in error_str:
         return """
-⏰ Time Format Error
+Time Format Error
 
    Problem: Birth time is in wrong format
    Solutions:
@@ -246,7 +246,7 @@ def get_friendly_error_message(error):
 
     elif "rate" in error_str or "limit" in error_str:
         return """
-🚦 Rate Limit Exceeded
+Rate Limit Exceeded
 
    Problem: Too many requests (free tier = 5/min)
    Solutions:
@@ -257,7 +257,7 @@ def get_friendly_error_message(error):
 
     elif "api" in error_str or "key" in error_str:
         return """
-🔑 API Key Error
+API Key Error
 
    Problem: Invalid or missing API key
    Solutions:
@@ -268,7 +268,7 @@ def get_friendly_error_message(error):
 
     else:
         return f"""
-❌ Error Occurred
+[x] Error Occurred
 
    Problem: {error}
    Solutions:
@@ -288,8 +288,8 @@ except Exception as e:
     print(get_friendly_error_message(e))
 
 # PATTERN 7: Logging for Debugging
-print("\n━" * 60)
-print("📋 PATTERN 7: Logging (Track what happened)\n")
+print("\n-" * 60)
+print("PATTERN 7: Logging (Track what happened)\n")
 
 print("Keep logs for debugging production issues:\n")
 
@@ -311,25 +311,25 @@ def calculate_with_logging(birth_time_str, location_name, longitude, latitude):
     try:
         location = GeoLocation(location_name, longitude, latitude)
         birth = Time(birth_time_str, location)
-        sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+        sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
 
         logging.info(f"Success: Sun sign = {sun_sign}")
-        print(f"✅ Success! Sun Sign: {sun_sign}")
+        print(f"[ok] Success! Sun Sign: {sun_sign}")
         return sun_sign
 
     except Exception as e:
         logging.error(f"Error: {type(e).__name__} - {e}")
         logging.error(f"Failed inputs: time={birth_time_str}, location={location_name}")
-        print(f"❌ Error: {e}")
-        print(f"📝 Error logged to vedastro_errors.log")
+        print(f"[x] Error: {e}")
+        print(f"Error logged to vedastro_errors.log")
         return None
 
 calculate_with_logging("14:30 25/10/1992 +05:30", "Mumbai", 72.8777, 19.0760)
 
 # BEST PRACTICES SUMMARY
-print("\n━" * 60)
-print("✅ Best Practices Summary")
-print("━" * 60)
+print("\n-" * 60)
+print("[ok] Best Practices Summary")
+print("-" * 60)
 
 print("""
 1. ALWAYS validate inputs before API calls
@@ -376,9 +376,9 @@ print("""
 """)
 
 # PRODUCTION-READY FUNCTION
-print("\n━" * 60)
-print("🏭 Production-Ready Function (All patterns combined)")
-print("━" * 60)
+print("\n-" * 60)
+print("Production-Ready Function (All patterns combined)")
+print("-" * 60)
 
 def production_calculate_sun_sign(birth_time_str, location_name, longitude, latitude,
                                   max_retries=3, retry_delay=2):
@@ -407,7 +407,7 @@ def production_calculate_sun_sign(birth_time_str, location_name, longitude, lati
             # 3. Make API call
             location = GeoLocation(location_name, longitude, latitude)
             birth = Time(birth_time_str, location)
-            sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth)
+            sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)['Name']
 
             # 4. Log success
             logging.info(f"Success: {location_name} -> {sun_sign}")
@@ -451,12 +451,12 @@ result = production_calculate_sun_sign(
 )
 
 if result["success"]:
-    print(f"✅ Success!")
+    print(f"[ok] Success!")
     print(f"   Sun Sign: {result['sun_sign']}")
     print(f"   Location: {result['location']}")
 else:
-    print(f"❌ Failed!")
+    print(f"[x] Failed!")
     print(f"   Error: {result['error']}")
 
-print("\n✨ Error handling patterns demonstration complete!")
-print("📝 Check vedastro_errors.log for logged errors")
+print("\n* Error handling patterns demonstration complete!")
+print("Check vedastro_errors.log for logged errors")

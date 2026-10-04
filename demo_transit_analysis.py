@@ -17,13 +17,13 @@ RUN:
 python demo_transit_analysis.py
 
 EXPECTED OUTPUT:
-🌟 Transit Analysis for 25 October 1992
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Transit Analysis for 25 October 1992
+---------------------------------------
 
 Current Transits vs Birth Chart:
 
-Transit Sun in Taurus → Transiting 5th house (Romance, creativity)
-Transit Moon in Sagittarius → Transiting 12th house (Spirituality, expenses)
+Transit Sun in Taurus -> Transiting 5th house (Romance, creativity)
+Transit Moon in Sagittarius -> Transiting 12th house (Spirituality, expenses)
 ...
 """
 
@@ -33,8 +33,8 @@ from datetime import datetime
 # Step 1: Set API Key
 Calculate.SetAPIKey('FreeAPIUser')
 
-print("🌟 Transit Analysis (Gochar)\n")
-print("━" * 60)
+print("Transit Analysis (Gochar)\n")
+print("-" * 60)
 
 # Step 2: Define Birth Chart
 birth_time = "14:30 25/10/1992 +05:30"
@@ -54,7 +54,7 @@ current_time = Time(
 )
 
 # UNDERSTANDING TRANSITS
-print("📚 What Are Transits (Gochar)?\n")
+print("What Are Transits (Gochar)?\n")
 
 print("""
 DEFINITION:
@@ -90,14 +90,14 @@ MOST IMPORTANT TRANSITS:
 """)
 
 # Step 4: Compare Birth vs Transit Positions
-print("\n━" * 60)
+print("\n-" * 60)
 print(f"Transit Analysis for {now.strftime('%d %B %Y')}")
-print("━" * 60)
+print("-" * 60)
 
 # Get birth chart ascendant
 birth_ascendant = Calculate.HouseSignName(HouseName.House1, birth)
-print(f"\n📊 Birth Chart Ascendant: {birth_ascendant}")
-print(f"📍 Location: {birth_location.Name()}\n")
+print(f"\nBirth Chart Ascendant: {birth_ascendant}")
+print(f"Location: {birth_location.Name()}\n")
 
 # All 9 planets
 planets = [
@@ -112,21 +112,21 @@ planets = [
     PlanetName.Ketu,
 ]
 
-print("🪐 Current Transits vs Birth Chart:\n")
+print("Current Transits vs Birth Chart:\n")
 print(f"{'Planet':<10} {'Birth Sign':<12} {'Transit Sign':<12} {'House':<8} {'Interpretation'}")
-print("─" * 90)
+print("-" * 90)
 
 for planet in planets:
     # Get birth position
-    birth_sign = Calculate.PlanetSignName(planet, birth)
+    birth_sign = Calculate.PlanetRasiD1Sign(planet, birth)['Name']
 
     # Get current transit position
-    transit_sign = Calculate.PlanetSignName(planet, current_time)
+    transit_sign = Calculate.PlanetRasiD1Sign(planet, current_time)['Name']
 
     # Get which house the planet is transiting relative to birth chart
     # Note: This requires calculating which house the current sign falls in
     # For now, we'll just show the signs
-    transit_house = Calculate.PlanetHouseName(planet, current_time)
+    transit_house = Calculate.HousePlanetOccupiesBasedOnLongitudes(planet, current_time)
 
     # Determine if retrograde
     try:
@@ -157,9 +157,9 @@ for planet in planets:
     print(f"{str(planet):<10} {birth_sign:<12} {transit_sign:<12}{retro_mark} {transit_house:<8} {interpretation}")
 
 # Step 5: Major Transit Analysis
-print("\n━" * 60)
-print("⭐ Major Transits (Most Important)")
-print("━" * 60)
+print("\n-" * 60)
+print("* Major Transits (Most Important)")
+print("-" * 60)
 
 # Focus on slow-moving planets (Jupiter, Saturn, Rahu, Ketu)
 major_planets = [
@@ -172,11 +172,11 @@ major_planets = [
 print("\nThese transits last longest and have the deepest impact:\n")
 
 for name, planet, meaning in major_planets:
-    birth_sign = Calculate.PlanetSignName(planet, birth)
-    transit_sign = Calculate.PlanetSignName(planet, current_time)
-    transit_house = Calculate.PlanetHouseName(planet, current_time)
+    birth_sign = Calculate.PlanetRasiD1Sign(planet, birth)['Name']
+    transit_sign = Calculate.PlanetRasiD1Sign(planet, current_time)['Name']
+    transit_house = Calculate.HousePlanetOccupiesBasedOnLongitudes(planet, current_time)
 
-    print(f"🪐 {name}")
+    print(f"{name}")
     print(f"   Birth: {birth_sign}")
     print(f"   Transit: {transit_sign} in {transit_house}")
     print(f"   Meaning: {meaning}")
@@ -184,26 +184,26 @@ for name, planet, meaning in major_planets:
     # Special transit checks
     if name == "Saturn":
         # Sade Sati check (Saturn in 12th, 1st, or 2nd from Moon)
-        birth_moon_sign = Calculate.PlanetSignName(PlanetName.Moon, birth)
+        birth_moon_sign = Calculate.PlanetRasiD1Sign(PlanetName.Moon, birth)['Name']
         print(f"   Note: Check if in Sade Sati relative to Moon ({birth_moon_sign})")
 
     if name == "Jupiter":
         # Jupiter return (back to birth sign)
         if birth_sign == transit_sign:
-            print(f"   🌟 Jupiter Return! Major 12-year cycle completion")
+            print(f"   Jupiter Return! Major 12-year cycle completion")
 
     print()
 
 # Step 6: Analyze Specific Transits
-print("━" * 60)
-print("🔍 Detailed Transit Interpretations")
-print("━" * 60)
+print("-" * 60)
+print("Detailed Transit Interpretations")
+print("-" * 60)
 
 # Get Jupiter transit house
-jupiter_house = Calculate.PlanetHouseName(PlanetName.Jupiter, current_time)
+jupiter_house = Calculate.HousePlanetOccupiesBasedOnLongitudes(PlanetName.Jupiter, current_time)
 jupiter_house_num = int(jupiter_house.replace("House", ""))
 
-print(f"\n💫 Jupiter Transit (Current Growth Area):\n")
+print(f"\nJupiter Transit (Current Growth Area):\n")
 print(f"   Transiting {jupiter_house}")
 
 jupiter_interpretations = {
@@ -224,10 +224,10 @@ jupiter_interpretations = {
 print(f"   {jupiter_interpretations.get(jupiter_house_num, 'General expansion')}\n")
 
 # Get Saturn transit house
-saturn_house = Calculate.PlanetHouseName(PlanetName.Saturn, current_time)
+saturn_house = Calculate.HousePlanetOccupiesBasedOnLongitudes(PlanetName.Saturn, current_time)
 saturn_house_num = int(saturn_house.replace("House", ""))
 
-print(f"⚖️  Saturn Transit (Current Challenge Area):\n")
+print(f" Saturn Transit (Current Challenge Area):\n")
 print(f"   Transiting {saturn_house}")
 
 saturn_interpretations = {
@@ -248,9 +248,9 @@ saturn_interpretations = {
 print(f"   {saturn_interpretations.get(saturn_house_num, 'General challenges')}\n")
 
 # Step 7: Transit Aspects (Which planets are aspecting birth planets)
-print("━" * 60)
-print("👁️  Transit Aspects (Drishti)")
-print("━" * 60)
+print("-" * 60)
+print(" Transit Aspects (Drishti)")
+print("-" * 60)
 
 print("""
 Aspects are when transiting planets "look at" or influence positions
@@ -271,9 +271,9 @@ Use these to check which birth chart planets are being influenced.
 """)
 
 # Step 8: Dasha + Transit Combination
-print("\n━" * 60)
-print("⏰ Timing Events: Dasha + Transit Combination")
-print("━" * 60)
+print("\n-" * 60)
+print("Timing Events: Dasha + Transit Combination")
+print("-" * 60)
 
 print("""
 IMPORTANT PRINCIPLE:
@@ -287,7 +287,7 @@ Example:
   = Delay in marriage, or marriage with responsibility
 
 HOW TO USE:
-1. Check current Mahadasa: Calculate.CurrentDasa()
+1. Check current Mahadasa: Calculate.DasaAtTime(birth, current_time, levels=3)
 2. Check current transits (as above)
 3. Where they align, events manifest
 4. Where they conflict, challenges arise
@@ -296,9 +296,9 @@ Next Step: Use demo_vimshottari_dasa.py to get your current dasha
 """)
 
 # PRACTICAL APPLICATIONS
-print("\n━" * 60)
-print("💡 Practical Applications")
-print("━" * 60)
+print("\n-" * 60)
+print("Practical Applications")
+print("-" * 60)
 
 print("""
 1. DAILY PLANNING
@@ -328,15 +328,15 @@ print("""
 """)
 
 # NEXT STEPS
-print("\n━" * 60)
+print("\n-" * 60)
 print("Next Steps")
-print("━" * 60)
+print("-" * 60)
 
 print("""
 1. Calculate your current Dasha: demo_vimshottari_dasa.py
 2. Combine Dasha + Transit for accurate timing
 3. Track slow planets (Saturn, Jupiter, Rahu, Ketu)
-4. Use Ashtakvarga for transit strength: Calculate.SarvaAshtakvarga()
+4. Use Ashtakvarga for transit strength: Calculate.SarvashtakavargaChart()
 5. Check daily Moon transits for day-to-day planning
 6. Study Vedha (obstructing transits) for advanced analysis
 7. Learn about transit yogas (combinations) for specific events
@@ -345,16 +345,16 @@ Advanced: Calculate.EventsAtTime() - Get transit predictions directly!
 """)
 
 # BONUS: Quick Transit Checker Function
-print("\n━" * 60)
-print("🔧 Bonus: Quick Transit Checker Function")
-print("━" * 60)
+print("\n-" * 60)
+print("Bonus: Quick Transit Checker Function")
+print("-" * 60)
 
 def check_favorable_transits(birth_chart_time, current_time_obj):
     """Quick check if current transits are favorable"""
 
     # Get Jupiter and Saturn transits
-    jupiter_house = Calculate.PlanetHouseName(PlanetName.Jupiter, current_time_obj)
-    saturn_house = Calculate.PlanetHouseName(PlanetName.Saturn, current_time_obj)
+    jupiter_house = Calculate.HousePlanetOccupiesBasedOnLongitudes(PlanetName.Jupiter, current_time_obj)
+    saturn_house = Calculate.HousePlanetOccupiesBasedOnLongitudes(PlanetName.Saturn, current_time_obj)
 
     jupiter_num = int(jupiter_house.replace("House", ""))
     saturn_num = int(saturn_house.replace("House", ""))
@@ -369,29 +369,29 @@ def check_favorable_transits(birth_chart_time, current_time_obj):
 
     if jupiter_num in favorable_houses:
         score += 2
-        print(f"✅ Jupiter in {jupiter_house} (favorable)")
+        print(f"[ok] Jupiter in {jupiter_house} (favorable)")
     elif jupiter_num in challenging_houses:
         score -= 1
-        print(f"⚠️  Jupiter in {jupiter_house} (challenging)")
+        print(f"[!] Jupiter in {jupiter_house} (challenging)")
 
     if saturn_num in favorable_houses:
         score += 1
-        print(f"✅ Saturn in {saturn_house} (favorable - rare!)")
+        print(f"[ok] Saturn in {saturn_house} (favorable - rare!)")
     elif saturn_num in challenging_houses:
         score -= 2
-        print(f"⚠️  Saturn in {saturn_house} (challenging)")
+        print(f"[!] Saturn in {saturn_house} (challenging)")
 
     print(f"\nOverall Transit Score: {score}")
     if score > 0:
-        print("🌟 Favorable period overall - good time for action")
+        print("Favorable period overall - good time for action")
     elif score < 0:
-        print("🛡️  Challenging period - focus on patience and perseverance")
+        print(" Challenging period - focus on patience and perseverance")
     else:
-        print("⚖️  Neutral period - mixed results")
+        print(" Neutral period - mixed results")
 
 print("\nChecking current transits:\n")
 check_favorable_transits(birth, current_time)
 
-print("\n✨ Transit analysis complete!")
-print("\n💡 Pro Tip: Run this script daily/weekly to track changing transits")
+print("\n* Transit analysis complete!")
+print("\nPro Tip: Run this script daily/weekly to track changing transits")
 print("   and time your important decisions accordingly!")

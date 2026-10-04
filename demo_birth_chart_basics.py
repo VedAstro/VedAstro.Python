@@ -16,15 +16,15 @@ RUN:
 python demo_birth_chart_basics.py
 
 EXPECTED OUTPUT:
-🌟 Birth Chart Basics for 25 October 1992, 14:30 IST, Mumbai
+Birth Chart Basics for 25 October 1992, 14:30 IST, Mumbai
 
-☀️  Sun Sign: Libra
+ Sun Sign: Libra
     (Your core identity, ego, and life purpose)
 
-🌙  Moon Sign: Scorpio
+ Moon Sign: Scorpio
     (Your emotions, instincts, and inner world)
 
-⬆️  Ascendant (Rising): Capricorn
+^ Ascendant (Rising): Capricorn
     (Your outer personality and how others see you)
 
 These three signs form the foundation of your birth chart!
@@ -52,25 +52,25 @@ birth_time = Time(birth_time_str, location)
 
 # Step 3: Calculate The Big Three
 # The Sun Sign - Your core identity, ego, conscious self
-sun_sign = Calculate.PlanetSignName(PlanetName.Sun, birth_time)
+sun_sign = Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth_time)['Name']
 
 # The Moon Sign - Your emotions, instincts, subconscious
-moon_sign = Calculate.PlanetSignName(PlanetName.Moon, birth_time)
+moon_sign = Calculate.PlanetRasiD1Sign(PlanetName.Moon, birth_time)['Name']
 
 # The Ascendant (Rising Sign) - Your outer personality, how others see you
 # In Vedic astrology, House 1 = Ascendant
 ascendant = Calculate.HouseSignName(HouseName.House1, birth_time)
 
 # Step 4: Display Results
-print(f"🌟 Birth Chart Basics for {birth_time_str} {location_name}\n")
+print(f"Birth Chart Basics for {birth_time_str} {location_name}\n")
 
-print(f"☀️  Sun Sign: {sun_sign}")
+print(f" Sun Sign: {sun_sign}")
 print(f"    (Your core identity, ego, and life purpose)\n")
 
-print(f"🌙  Moon Sign: {moon_sign}")
+print(f" Moon Sign: {moon_sign}")
 print(f"    (Your emotions, instincts, and inner world)\n")
 
-print(f"⬆️  Ascendant (Rising): {ascendant}")
+print(f"^ Ascendant (Rising): {ascendant}")
 print(f"    (Your outer personality and how others see you)\n")
 
 print("These three signs form the foundation of your birth chart!")
@@ -83,7 +83,7 @@ print("These three signs form the foundation of your birth chart!")
 
 # BONUS: Get constellation (Nakshatra) for Moon
 moon_nakshatra = Calculate.MoonConstellation(birth_time)
-print(f"\n🌟 Bonus: Moon Nakshatra: {moon_nakshatra}")
+print(f"\nBonus: Moon Nakshatra: {moon_nakshatra}")
 print(f"   (The lunar mansion where your Moon is placed)")
 
 # EXPLANATION OF THE BIG THREE:

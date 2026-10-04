@@ -1,25 +1,64 @@
-# AUTO GENERATED ON 02:07 02/09/2026 +08:00
+# AUTO GENERATED ON 02:07 05/10/2026 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
+import contextvars
 import requests
 import json
 from enum import Enum
 
+try:
+    # the Ayanamsa enum ships beside this module in the package.
+    # optional so a standalone copy of this file still works.
+    from .vedastro import Ayanamsa as _AyanamsaEnum
+except Exception:
+    _AyanamsaEnum = None
+
 
 class Calculate:
     api_key = None
+    _ayanamsa_default = None
     base_url = "https://vedastro.zaishi.net/api/Calculate"
+    _ayanamsa_scope = contextvars.ContextVar("vedastro_ayanamsa", default=None)
 
     @classmethod
     def SetAPIKey(cls, api_key):
         cls.api_key = api_key
 
     @classmethod
+    def SetAyanamsa(cls, ayanamsa):
+        # Choose the ayanamsa used by later calculations.
+        # Accepts a vedastro.Ayanamsa member (e.g. Ayanamsa.Lahiri), its
+        # name as a string (e.g. "Lahiri"), or None to return to the API's
+        # own default. Sent in the POST body as the optional "Ayanamsa"
+        # field, which the server reads and removes before parsing params.
+        name = None if ayanamsa is None else str(getattr(ayanamsa, "name", ayanamsa)).strip()
+        if name and _AyanamsaEnum is not None:
+            known = {member.name.lower() for member in _AyanamsaEnum}
+            if name.lower() not in known:
+                raise ValueError(f"Unknown ayanamsa '{name}'. Pass a vedastro.Ayanamsa member like Ayanamsa.Lahiri.")
+        cls._ayanamsa_default = name
+
+    @classmethod
+    def GetAyanamsa(cls):
+        # the ayanamsa in effect, or None when the API default is used
+        return cls._ayanamsa_scope.get() or cls._ayanamsa_default
+
+    @classmethod
+    def use_ayanamsa(cls, ayanamsa):
+        # scoped ayanamsa, used as a context manager:
+        #     with Calculate.use_ayanamsa(Ayanamsa.Lahiri):
+        #         Calculate.PlanetRasiD1Sign(PlanetName.Sun, birth)
+        return _AyanamsaScope(ayanamsa)
+
+    @classmethod
     def _make_request(cls, endpoint, params):
         url = f"{cls.base_url}/{endpoint}"
         if cls.api_key:
             params["APIKey"] = cls.api_key
+        ayanamsa = cls.GetAyanamsa()
+        if ayanamsa and "Ayanamsa" not in params:
+            params["Ayanamsa"] = ayanamsa
         response = requests.post(url, json=params, timeout=120)
         response.raise_for_status()
         data = response.json()
@@ -1714,7 +1753,7 @@ class Calculate:
     @classmethod
     def Murthi(cls, transitPlanet, checkTime, birthTime):
         """
-         Intended to calculate the Murthi or symbolic transit form of a planet Swarna Gold Rajata Silver Tamra Copper Loha Iron. The method comments indicate that the result should be based on the planets transit position counted from the natal Moon sign. 
+         Calculates the Murthi or symbolic transit form of a planet Swarna Gold Rajata Silver Tamra Copper Loha Iron. The classification is based on the Moons sign at the planets latest ingress into its currently occupied sign counted from the natal Moon. 
         :return: String
          """
         endpoint = "Murthi"
@@ -3799,6 +3838,22 @@ class Calculate:
         endpoint = "CalculateSudarsanaChakraDasa"
         params = {
             "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MoolaDasa(cls, time, useLagna=True, useMoon=True, useSun=True, noCorrectionInMoolatrikona=False):
+        """
+         Builds JHoras Moola Dasa recovered from FUN_00410CD0 together with FUN_004AB650 FUN_004AB730 and FUN_004AD280. The strongest enabled candidate among Lagna Moon and Sun supplies the starting sign. Planets are then collected through the native kendrapanapharaapoklima sign sequence. Every planet has two complementary periods whose total is its Vimshottari allotment. Civil boundaries are exact returns of the natal sidereal Sun. 
+        :return: MoolaDasaResult
+         """
+        endpoint = "MoolaDasa"
+        params = {
+            "time": time.to_json(),
+            "useLagna": useLagna,
+            "useMoon": useMoon,
+            "useSun": useSun,
+            "noCorrectionInMoolatrikona": noCorrectionInMoolatrikona,
         }
         return cls._make_request(endpoint, params)
 
@@ -8770,3 +8825,19 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
 
+
+
+class _AyanamsaScope:
+    # context manager returned by Calculate.use_ayanamsa(...)
+
+    def __init__(self, ayanamsa):
+        self._ayanamsa = None if ayanamsa is None else str(getattr(ayanamsa, "name", ayanamsa)).strip()
+        self._token = None
+
+    def __enter__(self):
+        self._token = Calculate._ayanamsa_scope.set(self._ayanamsa)
+        return self._ayanamsa
+
+    def __exit__(self, exc_type, exc, traceback):
+        Calculate._ayanamsa_scope.reset(self._token)
+        return False

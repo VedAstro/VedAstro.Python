@@ -16,20 +16,20 @@ RUN:
 python demo_marriage_compatibility.py
 
 EXPECTED OUTPUT:
-💑 Marriage Compatibility Report
+Marriage Compatibility Report
 
 Person 1: 31 December 1996, 23:40, Tokyo
 Person 2: 15 June 1997, 14:30, New York
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---------------------------------------
 Overall Compatibility: 65.0/100
 Status: Good match - Near perfect match, overall happiness
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---------------------------------------
 
 16-Factor Kuta Analysis:
-✅ Graha Maitram: Good (Mental compatibility)
-✅ Rajju: Good (Longevity of marriage)
-✅ Nadi Kuta: Good (Health & progeny)
+[ok] Graha Maitram: Good (Mental compatibility)
+[ok] Rajju: Good (Longevity of marriage)
+[ok] Nadi Kuta: Good (Health & progeny)
 ...
 """
 
@@ -58,15 +58,15 @@ person2_birth = Time(person2_time, person2_location)
 # - Individual Kuta factors (Graha Maitram, Yoni, Nadi, etc.)
 # - Detailed predictions for marriage life
 # - Dosha checks (Kuja Dosha/Manglik, etc.)
-print("⏳ Calculating compatibility... (this may take a few seconds)\n")
+print("... Calculating compatibility... (this may take a few seconds)\n")
 
 match_report = Calculate.MatchReport(person1_birth, person2_birth)
 
 # Step 5: Display Overall Compatibility
-print("💑 Marriage Compatibility Report\n")
+print("Marriage Compatibility Report\n")
 print(f"Person 1: {person1_time}, {person1_location.Name()}")
 print(f"Person 2: {person2_time}, {person2_location.Name()}\n")
-print("━" * 50)
+print("-" * 50)
 
 # Get overall score (Kuta score out of 36 is normalized to 100)
 kuta_score = match_report['KutaScore']
@@ -75,7 +75,7 @@ print(f"Overall Compatibility: {kuta_score}/100")
 # Get summary assessment
 summary = match_report['Summary']['ScoreSummary']
 print(f"Status: {summary}")
-print("━" * 50)
+print("-" * 50)
 
 # Step 6: Display Individual Kuta Factors
 print("\n16-Factor Kuta Analysis:\n")
@@ -88,11 +88,11 @@ for prediction in match_report['PredictionList']:
 
     # Use emoji to make it easy to scan
     if nature == "Good":
-        emoji = "✅"
+        emoji = "[ok]"
     elif nature == "Bad":
-        emoji = "❌"
+        emoji = "[x]"
     else:
-        emoji = "⚠️"
+        emoji = "[!]"
 
     print(f"{emoji} {name}: {nature}")
     print(f"   {info}\n")
@@ -124,7 +124,7 @@ for prediction in match_report['PredictionList']:
 # - Check individual horoscopes: Calculate.HoroscopePredictions()
 
 # BONUS: Extract specific Kuta scores
-print("\n🎯 Key Compatibility Factors:\n")
+print("\nKey Compatibility Factors:\n")
 
 # Find specific Kutas
 for prediction in match_report['PredictionList']:
@@ -144,7 +144,7 @@ for prediction in match_report['PredictionList']:
 
 # COMMON QUESTIONS:
 # Q: What if we don't have exact birth times?
-# A: Try birth time rectification: Calculate.BirthTimeAutoAIFill()
+# A: Try birth time narrowing: Calculate.FindBirthTimeByRisingSign(possibleBirthTime)
 #    Or use noon (12:00) as an approximation (less accurate)
 #
 # Q: What if the score is low but we love each other?
