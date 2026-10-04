@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='VedAstro',
-    version='1.23.28',
+    version='1.23.29',
     description='An open source Python library for advanced astronomical calculations like planet longitude, house sign, shadbala, etc...',
     author='Tharaka Umayanga',
     author_email='tharakau@gmail.com',
