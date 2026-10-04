@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 20:44 23/06/2026 +08:00
+# AUTO GENERATED ON 02:07 02/09/2026 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -142,30 +142,6 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def ListAPICalls(cls, ):
-        """
-         Returns a JSON array containing the method signatures of all calculator methods exposed for APIstyle use. The method gathers calculator metadata extracts a signature for each method and returns the results in a simple list format. This is useful for inspection debugging tooling documentation or quick discovery of available API calls. 
-        :return: JArray
-         """
-        endpoint = "ListAPICalls"
-        params = {
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SearchCalculateMethods(cls, query, topK=5):
-        """
-         Naturallanguage semantic search over all Calculate methods. Returns topK compact matches with only methodName description and rounded score. Powered by Cosmos DB vector index built from Calculate.cs by StaticTableGenerator. 
-        :return: Task`1
-         """
-        endpoint = "SearchCalculateMethods"
-        params = {
-            "query": query,
-            "topK": topK,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
     def SearchSourceText(cls, query, topK=5, sourceName=None, contextSize=600):
         """
          Naturallanguage semantic search over the classical Vedic astrology sourcetext knowledge base e.g. Hindu Predictive Astrology BPHS. Returns topK most relevant passages with sourceName pageNumber chunkIndex text and similarity score. Powered by the same DashScope embeddings Cosmos DB vector index used by ContextBasedAstrologyDatas RAG enrichment step. 
@@ -188,107 +164,6 @@ class Calculate:
          """
         endpoint = "GetAvailableSourceTexts"
         params = {
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SearchWebsitePages(cls, query, topK=5):
-        """
-         Naturallanguage semantic search over the curated VedAstro website pages Horoscope MatchChecker Numerology etc.. Returns topK matching pages with slug url title description and similarity score one row per distinct page chunks deduped by slug. Powered by DashScope embeddings the websiteknowledgekb Cosmos vector index built by StaticTableGenerator task 5. Replaces the old keywordscoring catalog in MCPApps search_website_pages. 
-        :return: Task`1
-         """
-        endpoint = "SearchWebsitePages"
-        params = {
-            "query": query,
-            "topK": topK,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def ContextBasedAstrologyData(cls, query, birthTime=None, checkTime=None):
-        """
-         Allinone agentic entrypoint. Takes a plainEnglish query plus up to two Times a birth Time andor a checkcurrent Time semanticsearches the bestmatching Calculate methods autobinds their parameters invokes them in parallel and returns the results with metadata showing which methods were routed to and which Time each parameter was bound from. Replaces handpicking from 640 Calculate methods. Binding rules inside SmartInvokeAsync a methods FIRST Time parameter receives birthTime falling back to checkTime if birthTime is null a methods SECOND Time parameter receives checkTime falling back to birthTime. At least one of the two Times must be supplied if both are null the method returns an error JObject instead of throwing. 
-        :return: Task`1
-         """
-        endpoint = "ContextBasedAstrologyData"
-        params = {
-            "query": query,
-            "birthTime": birthTime,
-            "checkTime": checkTime,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AddressToGeoLocation(cls, address):
-        """
-         Converts a freeform address or location string into its corresponding geographic location. The method decodes the incoming address if it was URLencoded checks the cache first calls the location provider only when needed returns the resolved GeoLocation. This is typically used when a user supplies a city name place name or coordinatelike text and the system needs a normalized location object. 
-        :return: Task`1
-         """
-        endpoint = "AddressToGeoLocation"
-        params = {
-            "address": address,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SearchLocation(cls, address):
-        """
-         Searches for matching locations based on a partial or full address string and returns a list of possible results. This method is designed for location search or autocompletestyle behavior. It checks the cache first and then delegates the lookup to the configured location provider. 
-        :return: Task`1
-         """
-        endpoint = "SearchLocation"
-        params = {
-            "address": address,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def CoordinatesToGeoLocation(cls, latitude, longitude):
-        """
-         Converts latitude and longitude coordinates into a humanreadable geographic location. The method checks the cache first and then performs reverse geolocation using the configured location provider. 
-        :return: Task`1
-         """
-        endpoint = "CoordinatesToGeoLocation"
-        params = {
-            "latitude": latitude,
-            "longitude": longitude,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def GeoLocationToTimezone(cls, geoLocation, timeAtLocation):
-        """
-         Resolves the timezone offset for a given geographic location at a specific moment in time. This method is designed to account for daylight saving time historical timezone changes locationspecific offset rules. It first checks the cache and then delegates the timezone lookup to the location provider. 
-        :return: Task`1
-         """
-        endpoint = "GeoLocationToTimezone"
-        params = {
-            "geoLocation": geoLocation,
-            "timeAtLocation": timeAtLocation,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def IpAddressToGeoLocation(cls, ipAddress):
-        """
-         Resolves a geographic location from an IP address. The method checks the cache first then calls the location provider to perform IPbased geolocation. 
-        :return: Task`1
-         """
-        endpoint = "IpAddressToGeoLocation"
-        params = {
-            "ipAddress": ipAddress,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def StandardTimeNowAtLocation(cls, locationName):
-        """
-         Gets the current standard time for a given location name. The method 1. decodes the input if it is URLencoded 2. resolves the location name into a GeoLocation 3. determines the current timezone offset for that location 4. converts the current UTC time into the local standard time 5. returns the result as a Time object tied to the resolved location. 
-        :return: Task`1
-         """
-        endpoint = "StandardTimeNowAtLocation"
-        params = {
-            "locationName": locationName,
         }
         return cls._make_request(endpoint, params)
 
@@ -398,17 +273,6 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def ListEventTypes(cls, ):
-        """
-         Returns the full list of event definitions supported by the engine. Used for discovery autocomplete dropdowns app builders and any UI that needs to enumerate what kinds of events the system can compute. 
-        :return: List`1
-         """
-        endpoint = "ListEventTypes"
-        params = {
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
     def MatchReport(cls, maleBirthTime, femaleBirthTime):
         """
          Creates a full Kutabased compatibility report for two birth times. The method wraps the male and female birth times into temporary Person objects passes those objects into the compatibility engine returns the generated MatchReport. This is the core compatibility method for producing a standard Vedic match report between two charts. 
@@ -418,134 +282,6 @@ class Calculate:
         params = {
             "maleBirthTime": maleBirthTime.to_json(),
             "femaleBirthTime": femaleBirthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MatchReportWithBazi(cls, maleBirthTime, femaleBirthTime):
-        """
-         Generates a combined compatibility report that includes both the standard Vedic match report and additional Bazibased compatibility analysis. The method 1. builds the regular Vedic compatibility report 2. calls the external Bazi API twice in parallel once for friendship analysis once for marriage analysis 3. merges all results into a single JSON structure 4. removes extra indentation and carriage returns before returning the final string. This is useful when a broader multisystem compatibility summary is needed. 
-        :return: Task`1
-         """
-        endpoint = "MatchReportWithBazi"
-        params = {
-            "maleBirthTime": maleBirthTime.to_json(),
-            "femaleBirthTime": femaleBirthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BirthTimeLocationAutoAIFill(cls, personFullName):
-        """
-         Builds a compact summary string of AIfilled relationship data for a famous person. The method collects the persons birth time the persons birth location the name of the first marriage partner the partners birth time the partners birth location the marriagerelated tag output. It then returns all of that information as a single commaseparated string. 
-        :return: Task`1
-         """
-        endpoint = "BirthTimeLocationAutoAIFill"
-        params = {
-            "personFullName": personFullName,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BirthTimeAutoAIFill(cls, personFullName):
-        """
-         Uses a language model to estimate or retrieve a famous persons birth time in a specific text format. The method reads the configured API key sends a prompt with example formatting asks the model to return a birth time in the form HHmm DDMMYYYY zzz extracts the assistant response from the returned JSON. 
-        :return: Task`1
-         """
-        endpoint = "BirthTimeAutoAIFill"
-        params = {
-            "personFullName": personFullName,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MarriageTagsAutoAIFill(cls, personA, personB):
-        """
-         Uses a language model to generate a short marriagerelated tag for a couple. The prompt examples show the model how to respond using compact labels such as 2Years 14Years StillMarried This helper is intended to produce a quick summary of the couples marriage duration or status. 
-        :return: Task`1
-         """
-        endpoint = "MarriageTagsAutoAIFill"
-        params = {
-            "personA": personA,
-            "personB": personB,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def BirthLocationAutoAIFill(cls, personFullName):
-        """
-         Uses a language model to generate a famous persons birth location in a simplified plaintext format. The prompt instructs the model to return a location in the form city state country 
-        :return: Task`1
-         """
-        endpoint = "BirthLocationAutoAIFill"
-        params = {
-            "personFullName": personFullName,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MarriagePartnerNameAutoAIFill(cls, personFullName):
-        """
-         Uses a language model to return the name of a famous persons first marriage partner. The method sends a guided prompt with an example and returns the models final answer as plain text. 
-        :return: Task`1
-         """
-        endpoint = "MarriagePartnerNameAutoAIFill"
-        params = {
-            "personFullName": personFullName,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AIBirthDataParser(cls, birthDataRawText):
-        """
-         Accepts a freeform naturallanguage birth description and returns a parsed Person JSON object. Sends the raw text to the Rahu Nova LLM and converts the reply to a valid Person instance. Defaults GenderFemale Time1200 noon LocationNew Delhi India 0530. 
-        :return: Task`1
-         """
-        endpoint = "AIBirthDataParser"
-        params = {
-            "birthDataRawText": birthDataRawText,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MatchChat(cls, maleBirthTime, femaleBirthTime, userQuestion, chatSession=None):
-        """
-         Intended to send a compatibilityrelated question to the AI astrologer using two birth charts. The method currently switches the ayanamsa setting to RAMAN prepares for a future chatbased compatibility workflow throws NotImplementedException. 
-        :return: Task`1
-         """
-        endpoint = "MatchChat"
-        params = {
-            "maleBirthTime": maleBirthTime.to_json(),
-            "femaleBirthTime": femaleBirthTime.to_json(),
-            "userQuestion": userQuestion,
-            "chatSession": chatSession,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HoroscopeLLMSearch(cls, birthTime, textInput):
-        """
-         Searches horoscope predictions using an LLMpowered or embeddingbased search service. The method 1. converts the birth time into URLfriendly form 2. prepares a JSON payload containing the search query and birth time 3. posts the request to a remote search endpoint 4. converts each returned item into a HoroscopePrediction 5. returns the final list. This is useful for semantic search across horoscope prediction data. 
-        :return: Task`1
-         """
-        endpoint = "HoroscopeLLMSearch"
-        params = {
-            "birthTime": birthTime.to_json(),
-            "textInput": textInput,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def GenerateTimeListCSV(cls, startTime, endTime, hoursBetween):
-        """
-         Generates a CSV table of evenly spaced time entries between two points in time. The output contains three columns Name Time Location For each generated time slice the method adds a row name such as row0 the formatted standard date and time the location name with commas removed so the CSV stays valid. This is useful for building machinelearning or datascience input tables from time ranges. 
-        :return: String
-         """
-        endpoint = "GenerateTimeListCSV"
-        params = {
-            "startTime": startTime.to_json(),
-            "endTime": endTime.to_json(),
-            "hoursBetween": hoursBetween,
         }
         return cls._make_request(endpoint, params)
 
@@ -2027,6 +1763,55 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
+    def Samvatsara(cls, inputTime):
+        """
+         Gets the bSamvatsarab the name of the Hindu lunar year from the 60year Jupiter cycle e.g. Prabhava Vikari Sarwari for a given time. The method 1. scans backward new moon by new moon until it finds the new moon with the Moon in sidereal Pisces this new moon begins the lunar month of Chaitra and Chaitra Shukla Pratipada the day after it is the Hindu lunar new year 2. takes the calendar year in which that Chaitra new moon fell always MarchApril 3. counts years by simple succession modulo 60 from a verified anchor the lunar year beginning at Chaitra 2019 was Vikari 33. Anchor crosschecks from classical literature B.V. Raman My Experiences in Astrology records Vikari as 1899 A.D. 1899 60 60 2019 Ramans Hindu Predictive Astrology Chapter III lists the 60 names in order. Effects of each year are given in Brihat Samhita Adhyaya VIII. Note names follow simple succession the system used by modern pancangas not the meanJupiter motion method with expunged years used in some northern traditions. 
+        :return: Samvatsara
+         """
+        endpoint = "Samvatsara"
+        params = {
+            "inputTime": inputTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def LordOfLunarYear(cls, inputTime):
+        """
+         Gets the bLord of the Lunar Yearb VarshadhipatiAbdadhipathi the planet ruling the Hindu lunar year that contains the given time. Principle per B.V. Raman Graha and Bhava Balas Article 60 The Abdadhipathi the year lord is the planet that rules over the weekday on which the year begins. This method applies that principle to the actual lunar calendar year as pancangas do 1. finds the Chaitra new moon that began the current lunar year 2. finds the first sunrise after it Chaitra Shukla Pratipada the years first day 3. returns the lord of that weekday SundaySun ... SaturdaySaturn. Example the lunar year Vikari 201920 began Saturday 6 April 2019 so its year lord is Saturn. Note the related method YearAndMonthLord computes Article 60s arithmetic variant used for Kala Bala 360day years counted by ahargana from an epoch which can give a different planet from the pancanga lunarcalendar year lord returned here. 
+        :return: PlanetName
+         """
+        endpoint = "LordOfLunarYear"
+        params = {
+            "inputTime": inputTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def KalaSarpaYoga(cls, inputTime):
+        """
+         Detects bKala Sarpa Yogab all seven classical planets hemmed on one side of the RahuKetu axis at any given time works for birth charts and transits. Definition per B.V. Raman My Experiences in Astrology You are born in Kalasarpa Yoga all the planets being hemmed in between Rahu and Ketu. Raman also applied it to transits with Moonexception windows From 2971942 to 2681942 excepting the period of the Moons transit from Leo to Capricorn Kalasarpa Yoga... the yoga forms and breaks as the fast Moon sweeps in and out of the nodal envelope. The method splits the zodiac into the two arcs bounded by Rahu and Ketu and tests which arc each of the 7 planets Sun to Saturn occupies. The yoga is complete IsOccuring only when all 7 sit strictly inside ONE arc a planet exactly conjunct either node 0 degree boundary counts as breaking the yoga. Returns JSON with full working IsOccuring OccupiedSide RahuToKetu the zodiacal arc from Rahu forward to Ketu KetuToRahu the arc from Ketu forward to Rahu None planets on both sides HemmedPlanets majority side EscapedPlanets planets outside the majority arc breaking the yoga and the nodal longitudes used. 
+        :return: JObject
+         """
+        endpoint = "KalaSarpaYoga"
+        params = {
+            "inputTime": inputTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def IsPlanetInGandanta(cls, planetName, inputTime):
+        """
+         Checks if a planet is in bGandantab the treacherous junction zones between the water and fire signs. Per Prasna Marga glossary Gandanta ... The conjunction of PiscesAries CancerLeo and ScorpioSagittarius. Brihat Parasara Hora Sastra Ch. 92 describes the three kinds of Gandanta Tithi Nakshatra Lagna and calls births and undertakings in Gandanta inauspicious. Uses the same zone as this engines Gandanta event calculators within 3 degrees 20 minutes on either side of the three waterfire junctions CancerLeo 120 ScorpioSagittarius 240 PiscesAries 0. This equals the last quarter of the nakshatras Aslesha Jyeshta and Revati plus the first quarter of Magha Moola and Aswini. 
+        :return: Boolean
+         """
+        endpoint = "IsPlanetInGandanta"
+        params = {
+            "planetName": planetName.value,
+            "inputTime": inputTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
     def NextNewMoon(cls, inputTime):
         """
          Finds the bnext New Moonb after the supplied time by scanning forward in small time steps. The method starts at the input time moves forward in 30minute increments checks the SunMoon conjunction angle at each step returns the first time where the conjunction angle is under 1 degree. 
@@ -2344,47 +2129,6 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def AutoCalculateTimeRange(cls, inputBirthTime, timePreset, outputTimezone):
-        """
-         Builds a cTimeRangec automatically from a compact btime preset stringb. This method supports several preset styles including simple relative spans such as c3daysc c2yearsc cweekc or cmonthc year ranges such as c19902000c age ranges such as cage1to50c special presets such as cfulllifec The method 1. uses the birth location from cinputBirthTimec 2. interprets the requested output timezone as the display or client timezone 3. detects which preset style was supplied 4. routes the request to the matching preset parser 5. returns the resulting cTimeRangec. 
-        :return: TimeRange
-         """
-        endpoint = "AutoCalculateTimeRange"
-        params = {
-            "inputBirthTime": inputBirthTime.to_json(),
-            "timePreset": timePreset,
-            "outputTimezone": outputTimezone,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DaysBetweenTimeRangePreset(cls, inputBirthTime, timePreset, outputTimezone):
-        """
-         Calculates the number of days represented by a time preset. The method 1. converts the preset into a cTimeRangec using cAutoCalculateTimeRange...c 2. measures the total days between the start and end 3. rounds the result to two decimal places. This is used by the web UI and API when estimating chart ranges or precision needs. 
-        :return: Double
-         """
-        endpoint = "DaysBetweenTimeRangePreset"
-        params = {
-            "inputBirthTime": inputBirthTime.to_json(),
-            "timePreset": timePreset,
-            "outputTimezone": outputTimezone,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def ParseJHDFiles(cls, personName, rawTextData):
-        """
-         Parses raw bJagannatha Hora c.jhdc file textb and converts it into a cPersonc object that can be used inside VedAstro. The method 1. splits the raw file into lines 2. extracts the birth date and decimalhour time 3. converts the custom timezone format into a usable cTimeSpanc 4. parses the location name and coordinates 5. builds a cGeoLocationc 6. builds a cTimec 7. reads the gender code 8. combines everything into a cPersonc. This is a convenience importer for bringing JHora data into the librarys own object model. 
-        :return: Person
-         """
-        endpoint = "ParseJHDFiles"
-        params = {
-            "personName": personName,
-            "rawTextData": rawTextData,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
     def HoroscopePredictionAlpacaTemplateLoRA(cls, birthTime):
         """
          Exports all horoscope prediction definitions in a simple bAlpacastyle instruction datasetb format for model training. For each stored horoscope rule the method creates a JSON object with cinstructionc the prediction name cinputc an empty string coutputc the prediction description. 
@@ -2405,19 +2149,6 @@ class Calculate:
         endpoint = "HoroscopePredictionsForLargeAstrologyModelTrainingData"
         params = {
             "birthTime": birthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def HoroscopePredictionsWithBazi(cls, birthTime, sortByWeight=False):
-        """
-         Generates a combined horoscope result that includes both top weighted bVedic predictionsb and additional bBazi APIb output. The method 1. extracts birth date and hour from the cTimec object 2. calls the external Bazi API 3. removes part of the returned Bazi text 4. removes a specific malelabel marker from the Bazi output 5. calculates Vedic predictions 6. keeps the top 40 Vedic results 7. packages both streams into one JSON object. 
-        :return: Task`1
-         """
-        endpoint = "HoroscopePredictionsWithBazi"
-        params = {
-            "birthTime": birthTime.to_json(),
-            "sortByWeight": sortByWeight,
         }
         return cls._make_request(endpoint, params)
 
@@ -3557,6 +3288,33 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
+    def SpecialDasaApplicability(cls, birthTime):
+        """
+         Checks which of Parasaras 9 special condition conditional Udu Dasa systems apply to a birth chart Ashtottari Shodasottari Dwadasottari Panchottari Satabdika Chaturasiti Sama Dwisaptati Sama Shastihayani and Shattrimsa Sama. Each system has a strict applicability criteria given in BPHS ch 48 e.g. Ashtottari needs Rahu in quadranttrine from the Lagna lord. Returns every applicable system with its reason plus the single winning system as per Parasaras order of precedence. Note that these special dasas supplement the universally applicable Vimshottari Dasa they do not replace it they reveal the special purpose of the birth and time the major turning points that lead to its achievement. 
+        :return: JObject
+         """
+        endpoint = "SpecialDasaApplicability"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SpecialDasaAtTime(cls, birthTime, checkTime, dasaSystem, levels=3):
+        """
+         Returns the planetary period lords PD1 Maha Dasa PD2 subperiod PD3 subsubperiod... operating at a specific moment under one of Parasaras special condition Udu Dasa systems Ashtottari Shodasottari Dwadasottari Panchottari Satabdika Chaturasiti Sama Dwisaptati Sama Shastihayani Shattrimsa Sama. Use SpecialDasaApplicability first to know which system fits the chart. These conditional dasas supplement Vimshottari Dasa for timing the special purpose of the birth. 
+        :return: JObject
+         """
+        endpoint = "SpecialDasaAtTime"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "checkTime": checkTime.to_json(),
+            "dasaSystem": dasaSystem,
+            "levels": levels,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
     def DasaAtRange(cls, birthTime, startTime, endTime, levels=3, precisionHours=100):
         """
          Returns the sequence of Vimshottari Dasa periods across a time range for the given birth chart sampling the range at the given precision and nesting down to the requested number of levels. Use this to build a Dasa timeline between two dates. 
@@ -3632,28 +3390,6 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def GetAllEventDataGroupedByTag(cls, ):
-        """
-         Returns all event definitions grouped by their cEventTagc formatted as a JSON object. The method 1. loops through every value in the cEventTagc enum 2. gets the matching event definitions for that tag 3. converts each event definition into JSON 4. stores the results under the tag name 5. returns an empty JSON array for tags that currently have no event definitions. This is mainly intended for UI or API consumers that need to show users all available event types grouped by category. 
-        :return: JObject
-         """
-        endpoint = "GetAllEventDataGroupedByTag"
-        params = {
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def GetAllEventsChartAlgorithms(cls, ):
-        """
-         Returns the full list of supported beventchart algorithmsb. This is a simple passthrough helper intended for website or API use when showing users which eventcalculation algorithms are available for selection. 
-        :return: JArray
-         """
-        endpoint = "GetAllEventsChartAlgorithms"
-        params = {
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
     def GetHouseTags(cls, house):
         """
          Returns a plainEnglish keyword summary for a house. Each house is mapped to a compact descriptive string covering its main life themes such as health family children profession losses marriage longevity and related subjects. This helper is used when converting technical house references into more readable interpretation text. 
@@ -3722,6 +3458,844 @@ class Calculate:
         endpoint = "GetDasaInfoForAscendant"
         params = {
             "ascendantName": ascendantName.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def D150AmsaRulers(cls, time):
+        """
+         Calculates JHoras D150 Nadyamsa values for Lagna and all planets. JHoras default D150Preference is the nonuniform Nadyamsa table. 
+        :return: List`1
+         """
+        endpoint = "D150AmsaRulers"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetVimsopakaBala(cls, time):
+        """
+        Empty sample text
+        :return: List`1
+         """
+        endpoint = "PlanetVimsopakaBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def JHoraYogaList(cls, time):
+        """
+         Detects the classical natal yogas displayed by JHoras Other strengths pane. Every row is derived from the supplied chart no referencechart rows are stored. 
+        :return: List`1
+         """
+        endpoint = "JHoraYogaList"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetPlanetSignInDivisionalChart(cls, planet, time, divisionalChart):
+        """
+         Gets the zodiac sign occupied by a planet in a divisional chart. Supports the divisionalchart identifiers implemented by VedAstro D1 D2 D3 D4 D7 D9 D10 D12 D16 D20 D24 D27 D30 D40 D45 and D60. Formula Divisional position floorlongitude inside sign division normalized back into zodiac signs. 
+        :return: ZodiacName
+         """
+        endpoint = "GetPlanetSignInDivisionalChart"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+            "divisionalChart": divisionalChart,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetPlanetZodiacSignInDivisionalChart(cls, planet, time, divisionalChart):
+        """
+         Returns the complete divisional position used by JHoras Varga dignity table. Unlike see crefGetPlanetSignInDivisionalChart this preserves the degree inside the destination sign which is required for degreesensitive Moolatrikona checks. 
+        :return: ZodiacSign
+         """
+        endpoint = "GetPlanetZodiacSignInDivisionalChart"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+            "divisionalChart": divisionalChart,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetDignity(cls, planet, sign):
+        """
+         Calculates planetary dignity in a zodiac sign. Used by Vimsopaka Bala and other strength calculations. The signonly overload applies JHoras complete default signlord table including node rows and the special dignity signs. 
+        :return: PlanetDignityType
+         """
+        endpoint = "PlanetDignity"
+        params = {
+            "planet": planet.value,
+            "sign": sign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    # NOTE: overload 'PlanetDignity(PlanetNameplanet,ZodiacSignsign,Timetime)' not exposed - Python has no method
+    #       overloading; the API resolves 'PlanetDignity' to its first definition only.
+
+    # NOTE: overload 'PlanetDignity(PlanetNameplanet,ZodiacSignsign)' not exposed - Python has no method
+    #       overloading; the API resolves 'PlanetDignity' to its first definition only.
+
+    # NOTE: overload 'PlanetDignity(PlanetNameplanet,Timetime)' not exposed - Python has no method
+    #       overloading; the API resolves 'PlanetDignity' to its first definition only.
+
+    @classmethod
+    def PlanetDignityInDivisionalChart(cls, planet, time, divisionalChart):
+        """
+         Calculates the dignity of a planet in a requested divisional chart retaining the Varga degree and the charts compound relationships. 
+        :return: PlanetDignityType
+         """
+        endpoint = "PlanetDignityInDivisionalChart"
+        params = {
+            "planet": planet.value,
+            "time": time.to_json(),
+            "divisionalChart": divisionalChart,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetPanchaVargeeyaBala(cls, time):
+        """
+         Calculates Planet Pancha Vargeeya Bala. Pancha Vargeeya Bala evaluates planetary strength through five important Vargas D1 Rasi D2 Hora D3 Drekkana D9 Navamsa D12 Dwadasamsa Based on Jagannatha Hora calculation method. 
+        :return: List`1
+         """
+        endpoint = "PlanetPanchaVargeeyaBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetPanchaVargeeyaBalaLegacy(cls, time):
+        """
+        Empty sample text
+        :return: List`1
+         """
+        endpoint = "PlanetPanchaVargeeyaBalaLegacy"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetDwadasaVargeeyaBala(cls, time):
+        """
+        Empty sample text
+        :return: List`1
+         """
+        endpoint = "PlanetDwadasaVargeeyaBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetVaiseshikamsa(cls, time):
+        """
+         Calculates JHoras Vaiseshikamsa Dasa count. FUN_004C05F0 calls FUN_004A6AF0 once for every body and every varga in the native Dasavarga list. This is a count of accepted placements not a weighted dignity average. JHoras internal list is D1 D3 D4 D9 D2 D10 D12 D16 D30 and D60. FUN_004A6AF0 first accepts own sign exaltation or the native specialdignity Moolatrikona sign. Friendlyneutral placements do not count in the default JHora preference mode. Maximum score 10 
+        :return: List`1
+         """
+        endpoint = "PlanetVaiseshikamsa"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PlanetHarshaBala(cls, time):
+        """
+         Calculates JHoras Harsha Bala. FUN_004C0FD0 applies four independent fivepoint tests to the seven visible planets planetspecific favorable house own or exalted sign the native genderhousegroup test and daynight agreement with planetary gender. Scores are therefore 0 5 10 15 or 20 Rahu and Ketu are excluded. 
+        :return: List`1
+         """
+        endpoint = "PlanetHarshaBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetHouseFromLongitude(cls, longitude, time):
+        """
+         Gets the house occupied by a longitude relative to Lagna. Uses wholesign house calculation House 1 Lagna sign House 2 next sign ... House 12 previous sign Compatible with classical Jyotisha and JHora planetary house placement. 
+        :return: HouseName
+         """
+        endpoint = "GetHouseFromLongitude"
+        params = {
+            "longitude": longitude,
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetAscendantLongitude(cls, time):
+        """
+        Empty sample text
+        :return: Angle
+         """
+        endpoint = "GetAscendantLongitude"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PrastaraAshtakavarga(cls, time):
+        """
+         Calculates Prastara Ashtakavarga. Generates the raw BinduRekha matrix used by Bhinnashtakavarga Sarvashtakavarga Sodhya Ashtakavarga Rows Sun Moon Mars Mercury Jupiter Venus Saturn Lagna Columns 12 houses 1 Bindu 0 Rekha 
+        :return: List`1
+         """
+        endpoint = "PrastaraAshtakavarga"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SodyaAshtakavarga(cls, time):
+        """
+         Calculates Sodhya Ashtakavarga. Sodhya Ashtakavarga is the purified Sarvashtakavarga after applying 1. Trikona Shodhana 2. Ekadhipatya Shodhana The result represents the final usable bindu strength of each house. Maximum theoretical value 56 bindus Based on Jagannatha Hora Ashtakavarga calculation. 
+        :return: List`1
+         """
+        endpoint = "SodyaAshtakavarga"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def KalachakraChart(cls, time):
+        """
+         Calculates Kalachakra Chart. Kalachakra chart maps Moon Nakshatra Pada into the corresponding Rasi sequence used for Kalachakra Dasa calculations. Based on Jagannatha Hora Kalachakra system. Returns Moon longitude Nakshatra Pada Kalachakra group Starting sign Direction sequence 
+        :return: Object
+         """
+        endpoint = "KalachakraChart"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def KalachakraDasa(cls, time):
+        """
+         Calculates Kalachakra Dasa. Kalachakra Dasa is a Rasi based predictive system derived from Moon Nakshatra Pada. Uses KalachakraChart Rasi sequence Sign lords Classical sign years 
+        :return: List`1
+         """
+        endpoint = "KalachakraDasa"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    # NOTE: overload 'KalachakraDasa(Timetime,JHoraDasaYearDefinitionyearDefinition)' not exposed - Python has no method
+    #       overloading; the API resolves 'KalachakraDasa' to its first definition only.
+
+    # NOTE: overload 'KalachakraDasa(Timetime,JHoraKalachakraCalculationcalculation,JHoraDasaYearDefinitionyearDefinition)' not exposed - Python has no method
+    #       overloading; the API resolves 'KalachakraDasa' to its first definition only.
+
+    # NOTE: overload 'KalachakraDasa(Timetime,doubleyearLengthDays)' not exposed - Python has no method
+    #       overloading; the API resolves 'KalachakraDasa' to its first definition only.
+
+    # NOTE: overload 'KalachakraDasa(Timetime,JHoraKalachakraCalculationcalculation,doubleyearLengthDays)' not exposed - Python has no method
+    #       overloading; the API resolves 'KalachakraDasa' to its first definition only.
+
+    @classmethod
+    def GetSignLord(cls, sign):
+        """
+        Empty sample text
+        :return: PlanetName
+         """
+        endpoint = "GetSignLord"
+        params = {
+            "sign": sign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SarvatobhadraChakra(cls, time):
+        """
+         Generates Sarvatobhadra Chakra. Sarvatobhadra Chakra is a 9x9 astrological grid used for Nakshatra Rasi and transit Vedha analysis. Contains Nakshatra positions Rasi positions Chakra coordinates Based on Jagannatha Hora implementation. 
+        :return: List`1
+         """
+        endpoint = "SarvatobhadraChakra"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def KotaChakra(cls, time):
+        """
+         Calculates Kota Chakra. Kota Chakra Fortress Chakra is a classical Jyotisha transit protection system. It is based on Moon Nakshatra Nakshatra Pada Kota Swami Kota Pala Fortress layers Used for Transit analysis Protection analysis Planetary attackdefence interpretation Based on Jagannatha Hora Kota Chakra. 
+        :return: Object
+         """
+        endpoint = "KotaChakra"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetNakshatraLord(cls, nakshatra):
+        """
+        Empty sample text
+        :return: PlanetName
+         """
+        endpoint = "GetNakshatraLord"
+        params = {
+            "nakshatra": nakshatra,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SuryaKalanalaChakra(cls, time):
+        """
+         Builds JHoras natal Surya Kalanala 28star geometric chakra. The Suns 28star position is placed at the eastern corner and all bodies are located relative to it this is a chart not a synthetic meanmotion progression. 
+        :return: Object
+         """
+        endpoint = "SuryaKalanalaChakra"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ChandraKalanalaChakra(cls, time):
+        """
+         Runs the eclipse facility exposed by JHoras Chandra Kalanala tab. The recovered dispatcher has three modes global lunar eclipse global solar eclipse and locationspecific solar eclipse. 
+        :return: Object
+         """
+        endpoint = "ChandraKalanalaChakra"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SudarsanaChakra(cls, time):
+        """
+         Compatibility entry point for JHoras Sudarsana Chakra Dasa. FUN_004133E0 is a 12by12 oneyear rasi dasa not three rotated copies of the natal chart. 
+        :return: Object
+         """
+        endpoint = "SudarsanaChakra"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def CalculateSudarsanaChakraDasa(cls, time):
+        """
+        Empty sample text
+        :return: SudarsanaChakraResult
+         """
+        endpoint = "CalculateSudarsanaChakraDasa"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NarayanaDasa(cls, time):
+        """
+         Builds JHoras default D1 Narayana mahadasas recovered from FUN_00414060 and FUN_004ACC50. The second twelvesign cycle uses the native 12Y complements including zeroduration periods and civil boundaries are exact sidereal solar returns. 
+        :return: NarayanaDasaResult
+         """
+        endpoint = "NarayanaDasa"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ShoolaChakra(cls, time):
+        """
+         Compatibility entry point for the Shoola rasi dasa recovered at FUN_00407920. It is unrelated to weekday travel directions. 
+        :return: Object
+         """
+        endpoint = "ShoolaChakra"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def CalculateShoolaDasa(cls, time, startingHouse=1, resolvedStartSign=None, antardasaMode="DasaSign"):
+        """
+         Builds twelve consecutive nineyear Shoola mahadasas and twelve equal consecutive antardasas per mahadasa. 
+        :return: ShoolaChakraResult
+         """
+        endpoint = "CalculateShoolaDasa"
+        params = {
+            "time": time.to_json(),
+            "startingHouse": startingHouse,
+            "resolvedStartSign": resolvedStartSign,
+            "antardasaMode": antardasaMode,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TripatakiChakra(cls, time):
+        """
+         Compatibility entry point for CTripatakiChakraViews actual twelvesign lattice and objectplacement logic FUN_00491150. 
+        :return: Object
+         """
+        endpoint = "TripatakiChakra"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def CalculateTripatakiChakra(cls, time, objectGroup="Planets"):
+        """
+        Empty sample text
+        :return: TripatakiChakraResult
+         """
+        endpoint = "CalculateTripatakiChakra"
+        params = {
+            "time": time.to_json(),
+            "objectGroup": objectGroup,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def LattaTransit(cls, time):
+        """
+         Calculates Latta Transit. Latta is a Nakshatra based transit system measuring planetary obstruction relative to the natal Moon Nakshatra. Planetary Latta positions Sun 12th Moon 9th Mars 3rd Mercury 7th Jupiter 6th Venus 5th Saturn 8th Based on Jagannatha Hora Latta calculation. 
+        :return: List`1
+         """
+        endpoint = "LattaTransit"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def AngaGrahaTransit(cls, time):
+        """
+         Calculates Anga Graha Transit. Anga Graha is a Tithibased transit sensitivity calculation. It compares Natal Moon Tithi vs Planet transit Tithi Based on Jagannatha Hora transit calculation methods. 
+        :return: List`1
+         """
+        endpoint = "AngaGrahaTransit"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    # NOTE: overload 'PlanetSignTransit(Timetime)' not exposed - Python has no method
+    #       overloading; the API resolves 'PlanetSignTransit' to its first definition only.
+
+    @classmethod
+    def TajakaVarshaphala(cls, time):
+        """
+         Calculates Tajaka Varshaphala. Tajaka Varshaphala is the annual solar return horoscope system. Calculates Solar return time Varsha Lagna Muntha Year Lord Based on Jagannatha Hora Varshaphala. 
+        :return: Object
+         """
+        endpoint = "TajakaVarshaphala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GetTithiNumber(cls, sunLongitude, moonLongitude):
+        """
+         Gets Tithi number from SunMoon angular difference. 30 Tithis 15 Shukla 15 Krishna 
+        :return: Int32
+         """
+        endpoint = "GetTithiNumber"
+        params = {
+            "sunLongitude": sunLongitude,
+            "moonLongitude": moonLongitude,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TajakaPanchaVargeeyaBala(cls, time):
+        """
+         Calculates JHoras Pancha Vargeeya Bala for the annual solarreturn chart. The annual wrapper preserves Tajakaspecific result names and delegates the actual fivefold strength calculation to see crefPlanetPanchaVargeeyaBalaTime. 
+        :return: List`1
+         """
+        endpoint = "TajakaPanchaVargeeyaBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TajakaHarshaBala(cls, time):
+        """
+         Calculates JHoras fourtest Harsha Bala for the annual solarreturn chart. Each satisfied test contributes five points for a 0..20 result. The annual wrapper delegates scoring to see crefPlanetHarshaBalaTime. 
+        :return: List`1
+         """
+        endpoint = "TajakaHarshaBala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TajakaYogaList(cls, time):
+        """
+         Finds applying Itthasala and separating Ishrafa Tajaka aspects in the annual solarreturn chart. 
+        :return: List`1
+         """
+        endpoint = "TajakaYogaList"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TajakaYogaListFromPlanetaryData(cls, planetaryPositions):
+        """
+         Classifies Tajaka aspects from alreadycomputed planetary positions. The seven classical planets have individual deeptamsas of 15 12 8 7 9 7 and 9 degrees a pairs operative orb is their arithmetic mean. The recognized sign relationships are the five classical Tajaka aspects conjunction sextile square trine and opposition 11 311 410 59 and 77 respectively. Nodes are deliberately unsupported because the classical scheme assigns them no deeptamsa. 
+        :return: IReadOnlyList`1
+         """
+        endpoint = "TajakaYogaListFromPlanetaryData"
+        params = {
+            "planetaryPositions": planetaryPositions,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TithiPravesha(cls, time):
+        """
+         Calculates Tithi Pravesha. Tithi Pravesha is the lunar annual return based on the SunMoon angular relationship. It occurs when the current SunMoon angle returns to the natal Tithi position. Used for Annual lunar predictions Tithi based Varshaphala Muhurta analysis Based on Jagannatha Hora Tithi Pravesha. 
+        :return: Object
+         """
+        endpoint = "TithiPravesha"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    # NOTE: overload 'TithiPravesha(Timetime,intannualYear)' not exposed - Python has no method
+    #       overloading; the API resolves 'TithiPravesha' to its first definition only.
+
+    # NOTE: overload 'TithiPravesha(Timetime,intannualYear,TithiPraveshaMonthDefinitionmonthDefinition)' not exposed - Python has no method
+    #       overloading; the API resolves 'TithiPravesha' to its first definition only.
+
+    @classmethod
+    def TithiAshtottariDasa(cls, time):
+        """
+         Calculates Tithi Ashtottari Dasa. Tithi Ashtottari is an Ashtottari Dasa system whose starting point is the birth Tithi instead of Nakshatra. Cycle Sun 6 Moon 15 Mars 8 Mercury 17 Saturn 10 Jupiter 19 Venus 21 Rahu 12 Total 108 years Based on Jagannatha Hora implementation. 
+        :return: List`1
+         """
+        endpoint = "TithiAshtottariDasa"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    # NOTE: overload 'TithiAshtottariDasa(Timetime,JHoraDasaYearDefinitionyearDefinition)' not exposed - Python has no method
+    #       overloading; the API resolves 'TithiAshtottariDasa' to its first definition only.
+
+    @classmethod
+    def DasaYearLengthInDays(cls, yearDefinition):
+        """
+        Returns the exact day count used for a JHora dasa year.
+        :return: Double
+         """
+        endpoint = "DasaYearLengthInDays"
+        params = {
+            "yearDefinition": yearDefinition,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def JaiminiRasiDrishti(cls, time):
+        """
+         Calculates Jaimini Rasi Drishti. Jaimini Rasi Drishti is the sign aspect system used in Jaimini astrology. Rules Movable signs aspect fixed signs Fixed signs aspect movable signs Dual signs aspect other dual signs Based on Jagannatha Hora Jaimini calculations. 
+        :return: List`1
+         """
+        endpoint = "JaiminiRasiDrishti"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def JaiminiRasiStrength(cls, time):
+        """
+         Calculates Jaimini Rasi Strength. Jaimini Rasi Bala evaluates the relative strength of zodiac signs using Planet occupation Jaimini Rasi Drishti Planetary dignity support Used in Jaimini Dasa Rasi based judgement Sign strength comparison Based on Jagannatha Hora Jaimini calculations. 
+        :return: List`1
+         """
+        endpoint = "JaiminiRasiStrength"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def JaiminiGrahaStrength(cls, time):
+        """
+         Calculates Jaimini Graha Strength. Jaimini Graha Bala evaluates planetary strength using Sign dignity Jaimini Rasi Drishti support Planetary sign placement This is different from Parashara Shadbala. Based on Jagannatha Hora Jaimini system. 
+        :return: List`1
+         """
+        endpoint = "JaiminiGrahaStrength"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TrueTropicalSolarReturn(cls, time):
+        """
+         Calculates true tropical solar return. Finds the exact moment when the tropical Sun returns to the natal tropical Sun longitude. Used for Western Solar Return Tropical annual charts 
+        :return: Time
+         """
+        endpoint = "TrueTropicalSolarReturn"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TrueSiderealSolarReturn(cls, time):
+        """
+         Calculates true sidereal solar return. Finds the exact moment when the sidereal Sun returns to the natal sidereal Sun longitude. Used for Vedic Solar Return Tajaka Varshaphala 
+        :return: Time
+         """
+        endpoint = "TrueSiderealSolarReturn"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TithiNumber(cls, time):
+        """
+         Returns the current Tithi number in the complete lunarmonth sequence. Values 115 Shukla Paksha 1630 Krishna Paksha Reuses VedAstros existing LunarDay calculation. 
+        :return: Int32
+         """
+        endpoint = "TithiNumber"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def TithiBalance(cls, time):
+        """
+         Returns the percentage of the current Tithi still remaining. A Tithi spans 12 degrees of forward angular separation between the Moon and Sun. Values 100 Tithi has just begun 0 Tithi has reached its end 
+        :return: Double
+         """
+        endpoint = "TithiBalance"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def KaranaNumber(cls, time):
+        """
+         Returns the current Karana position in the complete 60Karana sequence of the lunar month. Each Karana is one half of a Tithi and spans 6 degrees of MoonSun angular separation. This is the chronological Karana number not the ordinal of the repeating Karananame enum. Values range from 1 to 60. 
+        :return: Int32
+         """
+        endpoint = "KaranaNumber"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NakshatraPada(cls, time):
+        """
+         Returns the Pada occupied by the Moon in its current Nakshatra. Every Nakshatra contains four equal Padas of 3 degrees 20 minutes. Values range from 1 to 4. 
+        :return: Int32
+         """
+        endpoint = "NakshatraPada"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NakshatraBalance(cls, time):
+        """
+         Returns the percentage of the Moons current Nakshatra remaining. A Nakshatra spans 13 degrees 20 minutes. Values 100 Nakshatra has just begun 0 Nakshatra is about to end 
+        :return: Double
+         """
+        endpoint = "NakshatraBalance"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NithyaYogaNumber(cls, time):
+        """
+         Returns the current Nithya Yoga number. Nithya Yoga is calculated from the normalized sum of the Nirayana longitudes of the Sun and Moon. Values range from 1 to 27. 
+        :return: Int32
+         """
+        endpoint = "NithyaYogaNumber"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def NithyaYogaBalance(cls, time):
+        """
+         Returns the percentage of the current Nithya Yoga remaining. Values 100 Yoga has just begun 0 Yoga has reached its end 
+        :return: Double
+         """
+        endpoint = "NithyaYogaBalance"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def LunarMonthName(cls, time):
+        """
+         Returns the current Chandramana lunarmonth name. This is a convenience wrapper around the existing LunarMonth calculation and preserves Adhika month names. 
+        :return: LunarMonth
+         """
+        endpoint = "LunarMonthName"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def SamvatsaraName(cls, time):
+        """
+         Returns the current Samvatsara name from the sixtyyear cycle. This is a convenience wrapper around the existing Samvatsara calculation. 
+        :return: Samvatsara
+         """
+        endpoint = "SamvatsaraName"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def RahuKala(cls, time):
+        """
+         Calculates the Rahu Kala interval for the Vedic day containing the supplied time. Daylight from sunrise to sunset is divided into eight equal parts. 
+        :return: TimeRange
+         """
+        endpoint = "RahuKala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GulikaKala(cls, time):
+        """
+         Calculates the Gulika Kala interval for the Vedic day containing the supplied time. Daylight from sunrise to sunset is divided into eight equal parts. 
+        :return: TimeRange
+         """
+        endpoint = "GulikaKala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def YamaGhantakaKala(cls, time):
+        """
+         Calculates the Yama Ghantaka Kala interval for the Vedic day containing the supplied time. Daylight from sunrise to sunset is divided into eight equal parts. 
+        :return: TimeRange
+         """
+        endpoint = "YamaGhantakaKala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def VarjyaKala(cls, time):
+        """
+         Calculates Varjya Kala also called Thyajya for the Moons currently occupied Nakshatra. Moola has two separate Varjya periods. Every other Nakshatra has one Varjya period. 
+        :return: List`1
+         """
+        endpoint = "VarjyaKala"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Durmuhurta(cls, time):
+        """
+         Calculates the Durmuhurta interval or intervals for the Vedic weekday containing the supplied time. Sunday Wednesday and Saturday have one interval. The remaining weekdays have two intervals. 
+        :return: List`1
+         """
+        endpoint = "Durmuhurta"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def HoraTable(cls, time):
+        """
+         Generates the twentyfour planetary Horas of the Vedic day. The twelve daytime Horas divide sunrisetosunset equally. The twelve nighttime Horas divide sunsettonextsunrise equally. Planetary rulership is obtained from VedAstros existing LordOfHoraFromWeekday method. 
+        :return: List`1
+         """
+        endpoint = "HoraTable"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def GouriPanchanga(cls, time):
+        """
+         Generates the sixteen Gouri Panchanga or Gauri Choghadiya periods for the Vedic day. Eight periods cover sunrisetosunset. Eight periods cover sunsettonextsunrise. 
+        :return: List`1
+         """
+        endpoint = "GouriPanchanga"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MoonriseTime(cls, time):
+        """
+         Calculates Moonrise for the civil date and location contained in the supplied Time. 
+        :return: Time
+         """
+        endpoint = "MoonriseTime"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MoonsetTime(cls, time):
+        """
+         Calculates Moonset for the civil date and location contained in the supplied Time. 
+        :return: Time
+         """
+        endpoint = "MoonsetTime"
+        params = {
+            "time": time.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def MoonSignChangeTime(cls, time):
+        """
+         Finds the next moment after the supplied time when the Moon enters a different zodiac sign. The transition is first bracketed with sixhour steps and then refined through bisection to approximately fifteen seconds. 
+        :return: Time
+         """
+        endpoint = "MoonSignChangeTime"
+        params = {
+            "time": time.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -7788,7 +8362,7 @@ class Calculate:
     @classmethod
     def CalculateAshtamangalaNumberFromShells(cls, leftPile, centerPile, rightPile, totalShells):
         """
-         Computes the Ashtamangala Number used in cowrieshell Ashtamangala Prasna divination. Supports both the original 108shell system and the reduced 9shell system selected by totalShells turning the three counted piles of shells into a threedigit number whose digits each range 1 to 8. The resulting number feeds Chapter7Predictions for interpretation. 
+         Computes the Ashtamangala Number used in cowrieshell Ashtamangala Prasna divination. Supports both the original 108shell system and the reduced 9shell system selected by totalShells turning the three counted piles of shells into a threedigit number whose digits each range 1 to 8. The resulting number feeds Chapter7PrashnaMargaPredictions for interpretation. 
         :return: Int32
          """
         endpoint = "CalculateAshtamangalaNumberFromShells"
@@ -7801,12 +8375,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter5Predictions(cls, birthTime, queryTime):
+    def Chapter5PrashnaMargaPredictions(cls, birthTime, queryTime):
         """
-         Chapter5Predictions Prasna Marga Chapter V Mathematical Foundations SOURCE Prasna Marga Chapter V Stanzas 1750 WHAT THIS METHOD COMPUTES 1. Trisphuta Stanza 17 Lagna Moon Gulika 2. Chatusphuta Stanza 18 Trisphuta Sun 3. Panchasphuta Stanza 18 Chatusphuta Rahu 4. Pranasphuta Stanza 19 Lagna 5 Gulika primary 5. Dehasphuta Stanza 19 Moon 8 Gulika primary 6. Mrityusphuta Stanza 19 Gulika 7 Sun primary 7. Alt. Pranasphuta Stanza 2022 ghatibased research method 8. Alt. Mrityu Stanza 23 ghati weekdayoffset method 9. Kalasphuta Stanza 23 same as above subtracted 10. Sukshma TrisphutaStanza 4647 Prana Deha Mrityu summed 11. PranaDehaMrityu x9 method Stanza 44 12. Arudha Sphuta Stanza 32 Arudha Rasi start Lagna degrees 13. Stanza 48 sphuta prasna vighatikas 6 562 Gulika 14. Trisphuta Navamsa disease onset Stanza 38 15. Mrityu Nakshatra from Trisphuta Stanza 41 ALL INTERPRETIVE RULES covered Stanzas 2830 3134 CancerScorpioPisces trouble Samhara zone Stanzas 3738 planetary diseases from Trisphuta signNavamsa Stanza 40 evilgood indicators around Trisphuta Stanzas 4143 Mrityu Nakshatra SunMoon transit Panchasphuta death test Stanza 44 x9 PranaDehaMrityu aspect check Stanza 45 Navamsa triad LagnaMoonGulika Navamsas Stanza 46 Sukshma Trisphuta who is greater Mrityu in deadly nakshatra Stanza 47 planets in Sukshma Trisphuta sign family danger Stanzas 4849 additional death tests Stanza 50 longevity Srishti factors 
+         Chapter5PrashnaMargaPredictions Prasna Marga Chapter V Mathematical Foundations SOURCE Prasna Marga Chapter V Stanzas 1750 WHAT THIS METHOD COMPUTES 1. Trisphuta Stanza 17 Lagna Moon Gulika 2. Chatusphuta Stanza 18 Trisphuta Sun 3. Panchasphuta Stanza 18 Chatusphuta Rahu 4. Pranasphuta Stanza 19 Lagna 5 Gulika primary 5. Dehasphuta Stanza 19 Moon 8 Gulika primary 6. Mrityusphuta Stanza 19 Gulika 7 Sun primary 7. Alt. Pranasphuta Stanza 2022 ghatibased research method 8. Alt. Mrityu Stanza 23 ghati weekdayoffset method 9. Kalasphuta Stanza 23 same as above subtracted 10. Sukshma TrisphutaStanza 4647 Prana Deha Mrityu summed 11. PranaDehaMrityu x9 method Stanza 44 12. Arudha Sphuta Stanza 32 Arudha Rasi start Lagna degrees 13. Stanza 48 sphuta prasna vighatikas 6 562 Gulika 14. Trisphuta Navamsa disease onset Stanza 38 15. Mrityu Nakshatra from Trisphuta Stanza 41 ALL INTERPRETIVE RULES covered Stanzas 2830 3134 CancerScorpioPisces trouble Samhara zone Stanzas 3738 planetary diseases from Trisphuta signNavamsa Stanza 40 evilgood indicators around Trisphuta Stanzas 4143 Mrityu Nakshatra SunMoon transit Panchasphuta death test Stanza 44 x9 PranaDehaMrityu aspect check Stanza 45 Navamsa triad LagnaMoonGulika Navamsas Stanza 46 Sukshma Trisphuta who is greater Mrityu in deadly nakshatra Stanza 47 planets in Sukshma Trisphuta sign family danger Stanzas 4849 additional death tests Stanza 50 longevity Srishti factors 
         :return: JObject
          """
-        endpoint = "Chapter5Predictions"
+        endpoint = "Chapter5PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7814,12 +8388,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter7Predictions(cls, ashtamangalaRootNumber, birthTime, queryTime):
+    def Chapter7PrashnaMargaPredictions(cls, ashtamangalaRootNumber, birthTime, queryTime):
         """
          Comprehensive Ashtamangala algorithm found in Chapter 7 of Prasna Marga returns all prediction steps and factors with Janma Rasi and Nakshatra derived from the birth time. 
         :return: JObject
          """
-        endpoint = "Chapter7Predictions"
+        endpoint = "Chapter7PrashnaMargaPredictions"
         params = {
             "ashtamangalaRootNumber": ashtamangalaRootNumber,
             "birthTime": birthTime.to_json(),
@@ -7828,12 +8402,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter8Predictions(cls, ashtamangalaRootNumber, birthTime, queryTime):
+    def Chapter8PrashnaMargaPredictions(cls, ashtamangalaRootNumber, birthTime, queryTime):
         """
          Chapter 8 Effects of Arudha and Related Factors Prasna Marga Comprehensive implementation covering stanzas 165 Analyzes Arudha Avasthas PranaDehaMrityu RahuChakra KalaHora Chandra Navamsa Chandra Kriya 
         :return: JObject
          """
-        endpoint = "Chapter8Predictions"
+        endpoint = "Chapter8PrashnaMargaPredictions"
         params = {
             "ashtamangalaRootNumber": ashtamangalaRootNumber,
             "birthTime": birthTime.to_json(),
@@ -7842,12 +8416,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter9Predictions(cls, birthTime, queryTime):
+    def Chapter9PrashnaMargaPredictions(cls, birthTime, queryTime):
         """
          Prasna Marga Chapter 9 Longevity Determination Ayur Prasna Integrates horary and natal chart methods for assessing life span. Classifies life into Alpayus short 032 yrs Madhyayus medium 3264 yrs or Purnayus long 64100 yrs via Yogayus yogabased and Dasayus Dasabased systems. Per Stanza 3 Longevity must be examined FIRST before all other predictions. 
         :return: JObject
          """
-        endpoint = "Chapter9Predictions"
+        endpoint = "Chapter9PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7855,12 +8429,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter10Predictions(cls, birthTime, queryTime):
+    def Chapter10PrashnaMargaPredictions(cls, birthTime, queryTime):
         """
          Prasna Marga Chapter 10 Timing Death Implements Maraka planet identification DasaAntardasa evil periods Kalachakra Dasa junctions Niryana deathtransit Rasis for SaturnJupiterSunMoon Pramana Gulika Ashtakavarga selection of the critical Niryana Rasi Marana Lagna deathdealing ascendant and Prasnabased timing of death. ETHICAL NOTE This chapter identifies windows of elevated risk not certainties. Use only when directly relevant hospitalised patient welfare assessment of missing person and never volunteer death predictions unsolicited. A multilayer convergence of Dasa transit Ashtakavarga and Prasna factors is the only basis for a strong conclusion. Disagreement among layers indicates danger present but not conclusive. 
         :return: JObject
          """
-        endpoint = "Chapter10Predictions"
+        endpoint = "Chapter10PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7868,12 +8442,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter11Predictions(cls, birthTime, queryTime):
+    def Chapter11PrashnaMargaPredictions(cls, birthTime, queryTime):
         """
          Generates Prasna Marga Chapter 11 predictions on the nature and cause of death. Analyses the 8th house the 22nd Drekkana lord the Navamsa of Mandi Gulika signbased Doshas organ correlations and environmental omens at the query time to describe the likely nature cause and circumstances of death. Source Prasna Marga Chapter XI. 
         :return: JObject
          """
-        endpoint = "Chapter11Predictions"
+        endpoint = "Chapter11PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7881,12 +8455,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter12Predictions(cls, birthTime, queryTime):
+    def Chapter12PrashnaMargaPredictions(cls, birthTime, queryTime):
         """
          Prasna Marga Chapter 12 Diagnosis and Classification of Diseases Roga Prasna SOURCE Prasna Marga Chapter XII Stanzas 179 WHAT THIS METHOD COMPUTES BLOCK 1 General Health Status Stanzas 15 77 Malefics in houses other than 3 and 11 indicate disease planets in 6 8 12 identify the specific affliction. BLOCK 2 Disease Classification Nija vs Agantuka Stanzas 1824 Nija Sarirotha bodily VataPittaKaphaSannipatha Chittotha mental 5th8th lord relationship Agantuka Drishtanimittaja 6th house curses falls Adrishtanimittaja evil spirits Badhaka BLOCK 3 Tridosha Determination Stanzas 4 1015 Which humour is afflicted per the dustha planet. Two systems Varahamihira Stanza 4 and Sarasangraha Stanza 11. BLOCK 4 Dhatu Body Tissue Affected Stanzas 3 16 Sunbone Moonblood Marsmuscle Mercuryskin Jupiterfat Venusspermovum Saturnnerves. BLOCK 5 Season of Disease Onset Stanza 12 Each planet rules a Ritu disease appears in the season of the dustha planet Venusspring SunMarssummer Moonrainy Mercuryautumn Jupiterfall Saturnwinter. BLOCK 6 Dietary Remedies Six Tastes Shadrasas Stanzas 2729 MadhuraAmlaLavana remove Vata ThikthaUshnaKashaya remove Kapha Pitta is destroyed by Madhura Thiktha Kashaya. BLOCK 7 Madness Unmada Stanzas 3132 4649 Eight classical yogas for lunacy causes by house analysis treatment notes. BLOCK 8 Epilepsy Apasmara Stanzas 5057 Saturn in 8th malefics in trines SunMars in 12th twelve classical forms enumerated. BLOCK 9 Bhakta Virodha Anorexia Stanza 63 Malefics aspect Lagna Saturn aspects 8th weak 8th lord. BLOCK 10 Diabetes Madhumeha Stanza 64 Malefics aspect Lagna Lagna lord debilitatedenemy Venus occupies or aspects 8th. BLOCK 11 Diseases by Dustha Planet Stanzas 6774 Full classical catalogue per planet Sun through Gulika. BLOCK 12 Specific Planetary Combinations Stanza 75 Saturn in 10th GulikaRahu in Lagna8th Mars positions etc. BLOCK 13 Body Part Organ Affected Stanza 78 Limbs typified by signs aspected or occupied by malefics. 
         :return: JObject
          """
-        endpoint = "Chapter12Predictions"
+        endpoint = "Chapter12PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7894,12 +8468,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter13Predictions(cls, birthTime, queryTime, firstLetterOfQuery=None):
+    def Chapter13PrashnaMargaPredictions(cls, birthTime, queryTime, firstLetterOfQuery=None):
         """
          Prasna Marga Chapter 13 Timing of Illness Onset and Recovery Roga Kala Prasna SOURCE Prasna Marga Chapter XIII Stanzas 139 WHAT THIS METHOD COMPUTES BLOCK 1 ONSET NAKSHATRAS Stanzas 13 89 Stanza 1 Onset nakshatra from MoonLagna nakshatra distance method Stanza 2 Onset nakshatras from Mandi 9 Mandi 12 MoonMandi Stanza 3 Onset via mostmalefic planet transiting the sign of the querys first letter Stanza 8 Day vs. night onset lordoccupant of 6th diurnal vs. nocturnal Stanza 9 Duration in months three calculation methods via 6th lord BLOCK 2 DIRECTION OF ILLNESS Stanzas 46 Stanza 4 Direction faced by querent place of first attack Stanza 5 Direction number from East yamas from sunrise when illness began Stanza 6 Number of companions number of attendants at the sickbed BLOCK 3 DISEASE DURATION FROM 6TH LORD Stanza 7 Expired portion of 6th lords sign half long illness half near recovery BLOCK 4 RECOVERY INDICATORS Stanzas 1015 2728 Stanza 10 Disease began when Moon was in sign of 6th lord recovery when Moon enters 4th lords sign Stanza 11 Last malefic affliction of LagnalordMoon onset benefic contact recovery Stanza 12 Moon entering Lagna Rasi Navamsa Dwadasamsa Gulikas sign subsidence Stanza 13 Ashtama Rasi nakshatras relief after Moon exits that group Stanza 15 Worst dustha planets sign onset best sustha planets sign recovery Stanza 27 Full Moon in Lagna with Jupiter JupiterVenus in Kendras recovery Stanza 28 Moon in Upachayas with benefics in good places or Lagna aspected by benefics recovery BLOCK 5 RECOVERY TIMELINE BY ONSET NAKSHATRA Stanzas 1617 Specific recovery windows days mapped to each of the 27 onset nakshatras BLOCK 6 DEATH INDICATORS Stanzas 1822 Stanza 18 Fatal combo AshtamiParvaRiktha malefic weekday trijanmaVipatPratyakNaidhana Stanzas 1920 Soola Chakra fatal worsening recovery zones around Suns nakshatra Stanza 21 All coincident factors death certain Stanza 22 Child formula for patients under 12 Janmaonset distance 3 4 BLOCK 7 RECOVERY SPEED AND DIFFICULTY Stanzas 2324 Stanza 23 6th lord speed and sign quality fast or slow recovery Stanza 24 Malefichemmed Lagna weak lord waning Moon in 6812 prolonged or fatal BLOCK 8 CAUSES AND REMEDIES Stanzas 2639 Stanza 26 Two root causes Drishta physical and Adrishta karmic Stanza 29 Diseases as pastbirth karma remedy medicine gifts japa homa worship Stanzas 3135 Deity wrath from malefics in anishta places Karma Vipaka remedies Stanzas 3639 Mrityunjaya Homa universal panacea 8000 Japa for severe illness summary
         :return: JObject
          """
-        endpoint = "Chapter13Predictions"
+        endpoint = "Chapter13PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7908,12 +8482,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter14Predictions(cls, birthTime, queryTime):
+    def Chapter14PrashnaMargaPredictions(cls, birthTime, queryTime):
         """
          Generates Prasna Marga Chapter 14 predictions on house interpretation and the timing of events. Synthesises houselord and karaka dispositions allbhava strength bhava ruin periods the effects of malefics and benefics in each house Gulika and tertiaryplanet effects event fructification timing karma analysis and imprisonment indicators. Source Prasna Marga Chapter XIV. 
         :return: JObject
          """
-        endpoint = "Chapter14Predictions"
+        endpoint = "Chapter14PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7921,12 +8495,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter15Predictions(cls, birthTime, queryTime):
+    def Chapter15PrashnaMargaPredictions(cls, birthTime, queryTime):
         """
          Prasna Marga Chapter 15 Causes of Misery and Remedial Measures SOURCE Prasna Marga Chapter XV Stanzas 1120 OVERVIEW This chapter identifies the eleven root causes of human suffering and provides a complete diagnostic and remedial framework. WHAT THIS METHOD COMPUTES BLOCK 1 KARMA NATURE Stanzas 13 Jupiters disposition favorable or unfavorable destiny. Eleven enumerated causes of misery. BLOCK 2 PLANETARY DEITY MAPPINGS Stanzas 47 Which deity is signified by each planetsignDrekkana SunShivaSubrahmanyaGanesha MoonDurgaBhadrakaliChamundi MarsSubrahmanyaBhairava or ChamundiBhadrakali MercuryVishnu AvatarasKrishna JupiterVishnu VenusAnnapoornaLakshmiYakshi SaturnSasthaKiratha RahuSerpent God. SatwicRajasicTamasic nature of deity determined from sign. BLOCK 3 BADHAKA HOUSE OF HARM Stanzas 110112 Movable Lagna 11th house is Badhakasthana. Fixed Lagna 9th house is Badhakasthana. Common Lagna 7th house is Badhakasthana. BLOCK 4 IDENTIFY THE ANGRY PLANET Stanzas 89 Lord of Badhakasthana in a dusthana 6812 primary angry planet. Angry planets deity the offended deity. BLOCK 5 KARMA SOURCE NATURE DIAGNOSIS Stanzas 101105 Reference point for evil Karma Benefics in 6812 malefics in kendrastrines from Chatra Rasi divine wrath. Same from Arudha Brahmins curse. Same from Moon enemy black magic. Same from Lagna peoples hatred. Dridha deliberate vs Adridha accidental Karma indicator in Moons sign Dridha. Karma type malefic in 5th mental 2nd verbal 10th bodily. BLOCK 6 TEMPLE IDOL CONDITION Stanzas 1011 Malefic in 12th from angry planet idol disfigured. GulikaRahu joining idol polluted by Dundubha. Saturn joining temple worn outpolluted. Mars joining temple guards in dissension. Angry planet in Lagna Mars idol broken Saturn idol dirty. Angry planet in 4th house temple very old needs repairs. BLOCK 7 PALLIATIVES BY ANGRY PLANETS HOUSE POSITION Stanzas 1214 1stPratibimbadana 2ndJapa 3rdPuja 4thTemple construction 5thSantarpana feeding 6thPratheekara Bali 7thDivine dance Nrithya 8thBali 9thDevopasana 10thDantiskandha 11thTarpana 12thno harm. Also angry planet in MarsSun signs illumination MoonVenus signs milkgheepayasa Mercury sign sandal paste Jupiter sign garlands Saturn sign ornamentsdress. Badhaka in 8th10th pujaBali 12th musicdrums. BLOCK 8 PLANETSPECIFIC REMEDIES Stanzas 1518 Sun angry Devaradhana divine worship. Moon angry Sankabhisheka free ricewater distribution. Mars angry illumination and havanas. Mercury angry dance before deity. Jupiter angry homas and feeding Brahmins. Venus angry liberal feeding of all. Saturn angry feeding of backwardpoor classes. BLOCK 9 FAVORED DEITY NEGLECTED WORSHIP Stanza 19 Planet with benefic in Lagna favoring deity. Lord of 9th in harm house neglected worship. BLOCK 10 MISAPPROPRIATION OF DEITYS PROPERTY Stanzas 2021 Lord of harm house in 2nd or 11th misappropriation. Lagna movable Dhatu minerals taken fixed Moola plantsland common Jeeva living beings. BLOCK 11 INTENSITY OF DEITYS WRATH Stanzas 2830 Lord of harm in 4th or lord of 4th in harm house or crosssign occupancy active wrath. Sun Moon in harm house anger of family deities. BLOCK 12 ANGER OF THE SERPENT GOD Stanzas 3132 38 Jupiter as lord of harm in 6812 in kendras of Rahu superior serpents angry. Jupiter in kendras of Gulika inferior serpents. Rahu in harm house serpent trouble with Sun good serpents with Moon bad ones. Rahu remedies by house 6810harm Sarpa Bali 4th Chitra Kuta stone 12th singing Lagna milk siddhapayasa 7th devotional music. Gulika alone in Rahus kendra serpent abodes unclean. Saturn Gulika in kendras purify surroundings with trees and rites. BLOCK 13 PARENTAL CURSES Stanzas 3940 SunMoon in harm house in Mars signNavamsa fathersmothers curse. Malefic in LeoCancer in unfavorable house same. Evil planet in harm house Jupiters sign BrahminDeva curse Purva Sapa. Harm house Leo or Sun present ancestors curse Mars as evil planet very intense. BLOCK 14 CURSES OF ELDERS AND PRECEPTORS Stanza 41 Lord of 6th in 9th OR lord of 9th in 12th fatherpreceptorelder displeased. Sun in 6th or conjoining 6th lord fathers displeasure. Moon similarly mothers displeasure. BLOCK 15 TROUBLES FROM GHOSTS PRETAS Stanzas 4250 Gulika in harm house ghost trouble. Gulika Mars connection unnatural death fireweaponsdisease. Gulika Saturn died in miserypenury abroad. Gulika Rahu serpent bite death. Gulika evil in watery sign drowned. Sex of Preta from oddeven sign and Navamsa of Gulika. Caste of Preta from sign lords caste. Remedy Shraddhas kshetra pindas tilavahana feeding Brahmins. BLOCK 16 EVIL EYE DRISHTI BADHA Stanzas 5154 115120 Lord of harm aspecting Lagna or lord of Lagna Drishti Badha. Lord of 7th in harm house or lords mutually joinedaspecting Drishti Badha. Movable Lagna evil in Lagna Mars in 7th affliction from Devatas. Nonbenefics in Lagna Saturn in 7th Moon aspected by malefics Pisachas. Intent of Devata harm lord friendly with Lagna lord enjoyment inimical destruction neutral eatingdrinking. BLOCK 17 SPIRITS CATALOGUE Stanzas 6065 18 Mahagrahas Amara Asura Naga Yaksha Gandharva Rakshasa Heydra Kasmala Nistheja Bhasmaka Pitris Krisa Vinayaka Pralapa Pisacha Anthyaja Yonija Bhuta. 9 Laghu Grahas Apasmara Brahmana Brahma Rakshasa Kshatriya Vaisya Sudra Neecha Chandala Vyanthara. All originated from anger of Rudra categories Bali Kama Rati Kama Hanthu Kama. BLOCK 18 OVERALL SYNTHESIS AND RECOMMENDED REMEDIES 
         :return: JObject
          """
-        endpoint = "Chapter15Predictions"
+        endpoint = "Chapter15PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7934,12 +8508,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter16Predictions(cls, birthTime, queryTime, thamBoolaLeafCount=None, firstLetterOfQuery=None):
+    def Chapter16PrashnaMargaPredictions(cls, birthTime, queryTime, thamBoolaLeafCount=None, firstLetterOfQuery=None):
         """
          Prasna Marga Chapter 16 Miscellaneous Queries Final Chapter of Part I SOURCE Prasna Marga Chapter XVI Stanzas 1125 WHAT THIS METHOD COMPUTES BLOCK 1 WHEREABOUTS OF THE QUERIST Stanzas 17 Arudha Lagna sign quality movablefixedcommon distance from home Navamsa of Arudha Lagna living conditions of the absent person Planets in Arudha aspects what they encountered on the journey BLOCK 2 BRIGHT AND DARK FUTURE Stanzas 810 LibraPisces births beneficsmalefics in 6 houses from 4th future 6 houses from 10th past AriesVirgo births houses 410 past houses 104 future BLOCK 3 FOUR MEANS OF ACHIEVING OBJECTIVES Stanzas 1112 Jupiter Venus Sama gentle persuasion Moon Dana bribery gifts Saturn Rahu Mercury Bheda intimidation division Sun Mars Danda force war Determined by the strongest planet in Lagna Upachayas 361011 or Kendras BLOCK 4 TREASURE IN THE HOUSE referenced section Sign of Arudha and planets aspectingoccupying it reveal direction and depth of buried treasure element of sign gives material BLOCK 5 FIRST LETTER OF QUERY DEITY Stanza 42 Letter number modulo 9 mapped to planet ruling deity disease cause BLOCK 6 PREDICTING BY BETEL LEAVES THAMBOOLA LAGNA Stanzas 4750 Formula 2 leafCount 5 1 mod 7 remainder weekday planet Sign of that planet in Prasna chart Thamboola Lagna Housebyhouse leaf quality Bhava prosperity affliction Thamboola Lagna planet immediate prediction BLOCK 7 PERFORMING PARENTAL OBSEQUIES Stanzas 5560 Sun and 9th lord wellplaced obsequies completed successfully Affliction signals Sun combustdebilitated 9th lord in 6812 obstacles Venus in good position grateful children BLOCK 8 ACQUISITION OF POWER Stanzas 7880 Nakshatras of Sun Moon Mars Lagna lord 10th lord at query time 34 falling in Indra Nirithi Varuna direction groups imminent headship BLOCK 9 KALACHAKRA YOGINI AND MRITYU Stanzas 8192 28nakshatra timecycle diagram including Abhijit Prana count from Suns nak pos 1 to Moons nak Deha count from Janma nak to Prana position Mrityu count from Krittika pos 28 anticlockwise to query nak All three on same linepole death same pole DehaMrityu prolonged illness BLOCK 10 KANTAKASTHUNA RAKTASTHUNA STUNA Hell and Heaven Stanzas 116120 Kantakasthuna count from Suns nak to Moola same count from Moola star Raktasthuna Mars longitude subtracted from 138 position Stuna kantaka star sthuna star mod 27 count from Moola If these three afflict Lagna or Arudha hell life equivalent to death BLOCK 11 YUGA LONGEVITY SYSTEM Stanzas 122125 Krita Yuga signs Aries Leo Sagittarius full Dasa years Treta Yuga signs Taurus Virgo Capricorn half Dasa years Dwapara Yuga signs Gemini Libra Aquarius quarter Dasa years Kali Yuga signs Cancer Scorpio Pisces oneeighth Dasa years Apply to both Rasi and Navamsa of each planet for proportionate longevity 
         :return: JObject
          """
-        endpoint = "Chapter16Predictions"
+        endpoint = "Chapter16PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "queryTime": queryTime.to_json(),
@@ -7949,36 +8523,36 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter17Predictions(cls, queryTime):
+    def Chapter17PrashnaMargaPredictions(cls, queryTime):
         """
          Prasna Marga Chapter 17 Vivaha Prasna Marriage Query SOURCE Prasna Marga Chapter XVII Stanzas 142 WHAT THIS METHOD COMPUTES BLOCK 1 MARRIAGE POSSIBILITY Stanzas 712 LagnaArudha7th house analysis malefic vs. benefic balance whether marriage negotiations will succeed or break down. BLOCK 2 DEATH OF THE COUPLE Stanzas 1718 Moon afflicted in 6th8th 8th year additionally Mars in 6th8th from Moon 9th year MoonMars in 7th 7th month. BLOCK 3 YAMA SUKRA ANALYSIS Stanza 19 Calculates Yama Sukra lagna at weekdayspecific ghati after sunrise flags dusthana placement and Yoga Sphuta affliction. BLOCK 4 EARLY MARRIAGE INDICATORS Stanzas 2732 Moon in Upachaya with benefic aspect VenusMoon in Lagna or 7th MercuryVenusJupiter in kendras female DrekkanaNavamsa aspected by MoonVenus benefics in 1st2nd7th full Stanza 32 horary happiness check. BLOCK 5 QUALITY OF WIFE Stanzas 2332 JupiterVenus in 7th owncaste wife strength of 7th lord Venus devoted chaste or vicious wife combinations beautiful bride kendrastrikonas benefic RahuKetu in 7th warnings. BLOCK 6 TIMING OF MARRIAGE Stanzas 5865 Early middle age after prime of youth logic parvatamsa and mridwamsa checks for preyouth marriage JupiterSunMoon transit triggers. BLOCK 7 CHANDRABHILASHA SPHUTA Stanza 41 Full calculation Moonminutes 800 remainder a Chandrabhilasha sign floora3200 Chandravela sign union of all four transit windows for the wedding date. BLOCK 8 SPOUSE DESCRIPTION Stanzas 2021 Physical complexion nature and caste from the stronger of the 7th lord its signNavamsa lord and Venus. BLOCK 9 HORARY OMENS GUIDE Stanzas 2026 Reference table of classical nimittas auspicious inauspicious signs for the astrologer to verify at query time. 
         :return: JObject
          """
-        endpoint = "Chapter17Predictions"
+        endpoint = "Chapter17PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter18Predictions(cls, queryTime):
+    def Chapter18PrashnaMargaPredictions(cls, queryTime):
         """
          Prasna Marga Chapter 18 Santhathi Prasna Children Comprehensive implementation covering the principles of predicting the birth of children pregnancy Garbha Prasna sex of the child adoption curses and Santana Tithi calculations. 
         :return: JObject
          """
-        endpoint = "Chapter18Predictions"
+        endpoint = "Chapter18PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter19Predictions(cls, birthTime, partnerBirthTime=None):
+    def Chapter19PrashnaMargaPredictions(cls, birthTime, partnerBirthTime=None):
         """
          Prasna Marga Chapter 19 Issues According to Birth Horoscope SOURCE Prasna Marga Chapter XIX Stanzas 130 and companion stanzas 147155 WHAT THIS METHOD COMPUTES BLOCK 1 MOON ANALYSIS Stanza 2 Moon in Upachaya vs. Anupachaya with benefic aspect fertility outlook. Crosschart husbandwife comparison when partnerBirthTime is supplied. BLOCK 2 BEEJA SPHUTA MALE FERTILITY Stanzas 46 11 Method A Stanza 5 ghati method contribution of each planet expired arc in nakshatra 27 equivalent to 5 30 on the ghatis Method B Stanza 11 direct sum Sun Venus Jupiter longitudes Strength test Stanza 6 Beeja strong if in odd sign odd Navamsa benefic contact. BLOCK 3 KSHETRA SPHUTA FEMALE FERTILITY Stanzas 4 7 11 Method A Moon Mars Jupiter contributions same ghati formula as Beeja. Method B Moon Mars Jupiter direct longitudes. Strength test Stanza 7 Kshetra strong if in even sign even Navamsa benefic contact. BLOCK 4 AFFLICTION DIAGNOSIS Stanza 8 Rahu serpentgod curse Gulika Preta trouble Saturn pastlife sin Mars enemydeity trouble. BLOCK 5 CHILDLESSNESS AND LOSS YOGAS Stanzas 816 10 classical combinations from Stanzas 816. BLOCK 6 CHILDREN BIRTH YOGAS Stanzas 1720 6 positive combinations for birth of children. BLOCK 7 SANTANA GRAHA SPHUTAS Stanza 18 Each Santana Sphuta planet longitude 5 mod 360. Santana Trisphuta Santana Sun Santana Moon Santana Jupiter mod 360. Checked against 3rd5th7th nakshatra from Janma 88th108th pada 6812 from Lagna. BLOCK 8 SANTANA YOGA SPHUTA Stanzas 147150 Formula Santana Jupiter Yamakantaka 9 mod 360. Number of children floordegreesinsign 5. Jupiter controlling 3 vargas more than 6 sons. Drekkana lord debilitatedenemy which child dies Stanza 149. Mercury Saturn in 3 vargas twins Stanza 150. BLOCK 9 DATTA SPHUTA ADOPTION Stanza 151 Mercury Saturn FifthLord 5 mod 360. Solar odd Rasi Lunar even Navamsa malefic contact adoption. BLOCK 10 TIMING AND SEX Stanzas 153155 Sex of child from Navamsa of Yoga Sphuta odd male even female. Birth timing Santana Guru Yamakantaka Santana Gulika 81 nakshatra. Moon transiting that nakshatra or trines time of birth. 
         :return: JObject
          """
-        endpoint = "Chapter19Predictions"
+        endpoint = "Chapter19PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
             "partnerBirthTime": partnerBirthTime,
@@ -7986,48 +8560,48 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter20Predictions(cls, birthTime):
+    def Chapter20PrashnaMargaPredictions(cls, birthTime):
         """
          Prasna Marga Chapter 20 Seventh House According to Birth Horoscope Spouse Analysis SOURCE Prasna Marga Chapter XX Stanzas 166 OVERVIEW This chapter analyses the natal birth chart to reveal all aspects of the spouse character appearance career longevity and the timing of marriage. It is the horoscopic complement to Chapter XVII Vivaha Prasna which uses the horary chart. Per Stanza 1 when Jataka natal and Prasna agree predictions gain great accuracy. WHAT THIS METHOD COMPUTES BLOCK 1 MARRIAGE POSSIBILITY Stanza 6 7th house affliction indicators probabilities of no marriage or shortlived spouse. BLOCK 2 CHARACTER OF WIFE FROM 7TH HOUSE SIGN Stanzas 45 The 12 signbased character descriptions for the wife. BLOCK 3 DEATH OF WIFE YOGAS Stanzas 716 Stanza 7 MarsSaturnspecific signplanet in 7th wife dies or separation. Stanza 8 Saturn in Pisces 7th Jupiter in Virgo 7th strong malefic in 4th 8th5th lord in 7th SunVenus in 579 wife defective of limbs. Stanza 9 Venus hemmed by malefics danger SunRahu in 7th wasteful. Stanzas 1012 Venus in MarsSaturn sign or Navamsa wifes character. Stanza 13 Venus Ashtakavarga 7th from Venus dominated by malefics Gulika in trine wife dies soon. Stanza 14 Venus in MarsSun sign wife dies by fire. Stanza 15 Venus Mandi Rahu in trinekendra snakebite death. Stanza 16 Venus Saturn malefic in 8th from Venus unnatural death death mode from quadrupedalbirdwatery sign. BLOCK 4 NATURE OF WIFE FROM VENUS CONJUNCTIONS Stanzas 1718 Stanza 17 VenusSun bhutaafflicted but distinguished VenusMoon superior VenusMars Rakshasaafflicted has paramour VenusJupiter virtuous VenusMercury educated handsome. Stanza 18 VenusSaturn Gandharva trouble deceptive VenusRahuKetu low company limb defect VenusGulika sudden accidental death. BLOCK 5 WIFES NATURE FROM VENUS ASHTAKAVARGA Stanza 19 Bindu contributor in 7th from Lagna in Venus Ashtakavarga specific quality. BLOCK 6 PHYSICAL DESCRIPTION AND CASTE OF WIFE Stanzas 2021 Strongest of lord of sign of 7th lord Navamsa lord of 7th lord and Venus appearance. Jupiter or Venus in 7th owncaste wife. BLOCK 7 QUALITY YOGAS FOR THE WIFE Stanzas 2232 Stanza 22 Benefic in 9th from Venus strong 9th lord spiritual lucky. Stanza 23 7th lord benefic beneficaspected loved by husband and children. Stanza 24 7th occupiedaspected by lord or benefics Venus welldisposed good wife. Stanza 25 7th lord strong rich family weak poor family. Stanza 26 7th lord withaspected byhemmed between benefics good wife. Stanza 27 7th lordVenus in benefic signNavamsa strong 10th lord good qualities. Stanza 28 7thlordVenus strong Jupiter aspect devoted wife. Stanza 29 7th lordSun aspected by VenusMercury 7th lord with Jupiter chaste. Stanza 30 7th lord in kendra benefic aspectsignNavamsa paragon of chastity. Stanza 31 7th lordSun in malefic sign malefic Navamsa inclined to vice. Stanza 32 RahuKetu in 7th malefic aspect malefic Navamsa sinful wife. BLOCK 8 HUSBANDS TENDENCIES Stanza 33 Planets in 7th reveal the husbands erotic inclinations. BLOCK 9 SOCIAL STANDING OF WIFES FAMILY Stanzas 3436 Stanza 34 Lagna7th lords friends wifes family friendly enemies inimical. Stanza 35 Lagna lord very strong 7th lord in benefic Navamsa highborn family. Stanza 36 Lagna lord weak 7th lord combustinimicaldebilitated lower family. BLOCK 10 MULTIPLE WIVES REMARRIAGE YOGAS Stanzas 3746 Full enumeration of 10 classical yogas for 2 3 or many wives. BLOCK 11 WIFES BIRTH STAR Nakshatra THREE METHODS Stanzas 4749 Stanza 47 Compatible Janma Rasis from 7 indicators. Stanza 48 Moons Chandra Kaksha lord sign Lagna lord sign. Stanza 49 Three Nakshatra calculations from planetary longitude sums. BLOCK 12 DIRECTION FROM WHICH WIFE COMES Stanzas 5052 13 directional indicators from 7th lord Venus and aspectors. Distance farnearintermediate from sign quality Stanza 52. BLOCK 13 TIMING OF MARRIAGE Stanzas 6566 Stanza 65 DasaBhukti of 7th house occupant aspector 7th lord sign lord of 7th lord Navamsa lord of 7th lord Venus Moon Navamsa lord of Lagna Rahus Dasa also recognised. Stanza 66 Transit of VenusLagna lord7th lord over 7th or its trines Jupiters transit of 7th lords sign or its Navamsa. 
         :return: JObject
          """
-        endpoint = "Chapter20Predictions"
+        endpoint = "Chapter20PrashnaMargaPredictions"
         params = {
             "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter23Predictions(cls, queryTime):
+    def Chapter23PrashnaMargaPredictions(cls, queryTime):
         """
          Prasna Marga Chapter 23 Vrishti Prasna Queries regarding Rain Comprehensive implementation covering the probability of rain quantity timing and nature windystormy based on Arudha Lagna and planetary positions. 
         :return: JObject
          """
-        endpoint = "Chapter23Predictions"
+        endpoint = "Chapter23PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter24Predictions(cls, queryTime):
+    def Chapter24PrashnaMargaPredictions(cls, queryTime):
         """
          Prasna Marga Chapter 24 Raja Prasna Yuddha Prasna Queries on Rulers and War Comprehensive implementation covering the future of the government soldiers fate enemy invasion peace treaties and war outcomes. 
         :return: JObject
          """
-        endpoint = "Chapter24Predictions"
+        endpoint = "Chapter24PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter25Predictions(cls, queryTime, firstLetterOfQuery=None):
+    def Chapter25PrashnaMargaPredictions(cls, queryTime, firstLetterOfQuery=None):
         """
          Prasna Marga Chapter 25 Vrishti Prasna Rainfall Prediction SOURCE Prasna Marga Chapter XXV Stanzas 197 WHAT THIS METHOD COMPUTES BLOCK 1 PLANETARY COMBINATIONS FOR HEAVY RAINFALL Stanzas 15 Solar ingress into Gemini conditions SunMoonMarsSaturnRahu in watery signs MercuryVenus conjoin fixed sign triple conjunctions combustion combos earthy Sun watery vargas rainbow directions. BLOCK 2 MOCK SUN AND RAINBOW GUIDE Stanzas 68 Rainbow direction rules for rainy and other seasons. Pratisurya mock Sun directional effects north rain south tempest both sides flood top danger to king below calamity to people. BLOCK 3 PAKSHAWISE RAINFALL FROM LUNAR PHASE Stanzas 911 Rain on New Moon Pratipada rain in Shukla Paksha Rain on Full Moon no rain in Krishna Paksha 15 ghatikas rule on Dwiteeya Pratipada for paksha forecast. BLOCK 4 ASHADHA LUNAR MONTH SIGNIFICANCE Stanzas 1214 Northeast winds at Ashadha Full Moon evening good rain year Rain on Ashadha Krishna Chaturthi with Poorvabhadra luxuriant vegetation Weekday of Ashadha Shukla Panchami annual rain quality Sun in Aquarius Rohini tithi combinations. BLOCK 5 VENUS MANDALAS Stanzas 1620 Venuss postcombustion nakshatra determines annual rain forecast. Six Mandalas Bharanigroup through Dhanishtagroup 4th and 6th Mandalas copious rain 3rd and 5th famine 1st and 2nd below average. Moon in 7th from Venus or 5th7th9th from Saturn heavy rain Stanza 21. BLOCK 6 SEASONAL PLANETARY TRIGGERS Stanzas 2223 Combustion startend Moon conjunctions Sun in CancerCapricornAridra MercuryJupiter MercuryVenus JupiterVenus rain MarsSaturn without benefic firelightningstorm. BLOCK 7 CLOUD SHAPES AND NATURE OMENS Stanzas 2437 Classical nimitta catalogue ant eggcarrying snake behavior cattle rushing home cat scratching chameleons cocks crowing rainbow at dawndusk thunder patterns cloud colors and shapes Moon disc color honey parroteye Pratichandra mock Moon. BLOCK 8 CHAITRA AND SOLAR INGRESS Stanzas 3866 Chaitra month 1st day by weekday annual rain forecast Solar ingress into AriesCapricorn by nakshatra crop and rain outlook Solar ingress into Aries by tithi and Karana Annual forecast from lagna at Solar Ingress chart. BLOCK 9 ANNUAL NAKSHATRA MANDALA Stanzas 6871 Indra Mandala Rohini group prosperity Agni Mandala Bharani group scarcity fire Vayu Mandala Mrigasira group storms wind Varuna Mandala Aridra group copious rain. Sankramana Purusha by Karana price levels. BLOCK 10 HORARY QUERY INDICATORS NIMITTAS Stanzas 7280 Physical omens at query time querent touching water wet clothes standing near water shedding tears sighting elephantspregnant women Halo round Sun or Moon great downpour Planet pairs SunMars no rain MoonVenus heavy rain MercuryJupiter moderate rain First letter classification ghoshalong vowels rain khara no rain. BLOCK 11 HORARY CHART ANALYSIS Stanzas 8197 Moon aspected by beneficmalefic MoonMercuryJupiterVenus in kendra aspected by benefics floods ArudhaChatra in watery sign with watery planet heavy rain 4th underground water 7th rivers 10th rain from sky Mercury associationaspect winds disperse rain MarsMercurySaturnRahu in kendras storms MoonVenus in watery Lagna Prishtodaya triple RahuSaturn in water signs Full classification of watery signs and aquatic planets. BLOCK 12 OVERALL SYNTHESIS Weighted count of positivenegative indicators verdict. 
         :return: JObject
          """
-        endpoint = "Chapter25Predictions"
+        endpoint = "Chapter25PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
             "firstLetterOfQuery": firstLetterOfQuery,
@@ -8035,12 +8609,12 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter26Predictions(cls, queryTime, firstLetterOfQuery=None):
+    def Chapter26PrashnaMargaPredictions(cls, queryTime, firstLetterOfQuery=None):
         """
          Prasna Marga Chapter 26 Koopa Prasna WellDigging and Water Location SOURCE Prasna Marga Chapter XXVI Stanzas 170 WHAT THIS METHOD COMPUTES BLOCK 1 WATER AVAILABILITY YOGAS Stanzas 715 Thirteen specific planetary combinations that confirm underground water. Stanza 15 Single nowater indicator Moon in Taurus Rahu in Scorpio. BLOCK 2 SPRING QUANTITY Stanza 37 Moveable Lagna small spring Fixed many springs Common two springs. BLOCK 3 OLD BURIED WELL YOGAS Stanzas 3850 Twelve classical combinations indicating a submerged well in the compound. BLOCK 4 DIRECTION FROM BODY TOUCH Stanzas 1618 Observational bodytouch indicators for direction of digging. Bony spot no water Fleshy spot mirymuddy Forehead rocky. BLOCK 5 CHANDRA GUPTI CHAKRA Stanzas 2036 Four methods for locating the exact spot in the compound. Primary method Stanzas 2427 Dinarsha Udaya Nakshatra Moons Nakshatra. The 28square grid maps compass direction to the wells location. BLOCK 6 WATER TASTE Stanzas 5153 From planet inaspecting 4th house or Lagna Navamsa lord. Sunacidhot Moonsaltish Marsbitter Jupitersweet Venussour Saturnpungent Mercurymixed Rahuinsipid. BLOCK 7 VASTU PURUSHA AND COMPOUND DIVISION Stanzas 5557 Head NE of Vastu Purusha is best for wells. Compound divided into 12 signs Aquarius zone best Virgo zone forbidden. BLOCK 8 DEPTH AND WATER CHARACTER Stanzas 5865 Planets in Lagna determine depth rocksandabundance. Rasmis planetary rays measure depth in cubits halfcubits or manheights. Sun16 Moon4 Mars10 Mercury9 Jupiter7 Venus5 Saturn21 rays. Sign rays Aries7 Taurus8 Gemini12 Cancer11 Leo12 Virgo6 Libra9 Scorpio7 Sagittarius13 Capricorn7 Aquarius8 Pisces27. BLOCK 9 PLANETSIGN WATER ABUNDANCE Stanza 68 Watery planets in watery signs water at surface. Watery planets in nonwatery low water table. Nonwatery in nonwatery dry. BLOCK 10 DINARSHA Stanza 70 Expired ghatikas 28 60 Nakshatra counted from Aswini. 
         :return: JObject
          """
-        endpoint = "Chapter26Predictions"
+        endpoint = "Chapter26PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
             "firstLetterOfQuery": firstLetterOfQuery,
@@ -8048,73 +8622,52 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter27Predictions(cls, queryTime):
+    def Chapter27PrashnaMargaPredictions(cls, queryTime):
         """
          Prasna Marga Chapter 27 Bhojana Prasna Food Meal Query and Proshithogamana Prasna Return of a Traveller. BHOJANA PRASNA Cast when someone asks about a recent meal its quality menu server codiners conversation and aftermeal rest. Each of the 12 horary houses carries a fixed meal signification Stanzas 139. PROSHITHOGAMANA PRASNA Cast when someone asks whether an absent person traveller exile person out of contact will return when and how Stanzas 4046. 
         :return: JObject
          """
-        endpoint = "Chapter27Predictions"
+        endpoint = "Chapter27PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter28Predictions(cls, queryTime):
+    def Chapter28PrashnaMargaPredictions(cls, queryTime):
         """
          Prasna Marga Chapter 28 Suratha Prasna Queries on Intimacy SOURCE Prasna Marga Chapter XXVIII Stanzas 119 WHAT THIS METHOD COMPUTES BLOCK 1 UNION OCCURRENCE Stanzas 12 Sun in Lagna7th or aspectingconjoining lords of 1st or 7th no union. Krishnacharya MoonVenus inaspecting 7th union. 7th beneficmalefic happy or unhappy union. BLOCK 2 CONSENT AND EMOTIONAL STATE Stanzas 23 MoonVenus Sun aspectjoin genuine passion. MoonVenus malefic not Sun aspect Lagna no real love. Moon with malefics forced union woman unwilling. Sun with malefics forced union man unwilling. BLOCK 3 PARTNER QUALITIES Stanza 4 Moon with Sun in Suns vargas man is handsome and educated. Moon withaspecting benefics in benefic vargas woman has good qualities. BLOCK 4 PARTNER IDENTITY AND AGE Stanzas 58 Planet aspecting Lagna and its dignity partner type social status caste. 7th house occupant wife another woman dancing girl etc. Moon phase age of partner. BLOCK 5 CHATHRA RASI ANALYSIS Stanza 9 Arudha Chathra wife friend sign Chathra related family enemy sign Chathra inimical family. BLOCK 6 FREQUENCY AND TIMING Stanza 10 Odd ascendant odd aspecting planet sign once. Even twice. MarsVenus vargas exclusively many times. Sun varga daytime Moon varga nighttime. BLOCK 7 INCIDENT DETAILS Stanzas 1113 MoonMars in 1579 quarrel and sleeplessness. MoonSaturn dreamt of union no actual union. MoonSun partial intimacy. MoonVenus private conversation. MoonJupiter union with accomplished woman pregnancy possible. MoonMercury another woman not wife. Mars in Lagna Saturn in 7th or vice versa fear of fire no sleep. BLOCK 8 PLACE OF UNION Stanzas 1418 From 7th house planet Saturnrepaired house Marsburnt Mercurycarpenters Moonnew Sunwooden Venusornamental Jupiterstrong. Alternative Sun in watery sign bath house Sun in other kitchen. Marskitchen Mercuryplayground SaturnSudracowshed Rahulowbornlatrine Moonpalacetemple weak Venusold house. When Lagna unaspected determined by Lagna sign itself Stanzas 1718. 
         :return: JObject
          """
-        endpoint = "Chapter28Predictions"
+        endpoint = "Chapter28PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter29Predictions(cls, queryTime):
+    def Chapter29PrashnaMargaPredictions(cls, queryTime):
         """
          Prasna Marga Chapter 29 Nashta Prasna Lost Article Queries Implements predictions for queries about lost or stolen articles based on horoscope analysis 
         :return: JObject
          """
-        endpoint = "Chapter29Predictions"
+        endpoint = "Chapter29PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def Chapter30Predictions(cls, queryTime, personsPresent=None, bodyPartTouched=None):
+    def Chapter30PrashnaMargaPredictions(cls, queryTime, personsPresent=None, bodyPartTouched=None):
         """
          Generates Prasna Marga Chapter 30 predictions for Nashta Jataka reconstructing an unknown birth chart. When the querent has no birth record the Prasna chart at query time is used to reverseengineer the Janma Nakshatra Janma Lagna birth Moon sign and the birth positions of Jupiter and the Sun. Several methods are provided and should be weighed against Nimittas omens the number of persons present any body part touched and the querents appearance. Source Prasna Marga Chapter XXX. 
         :return: JObject
          """
-        endpoint = "Chapter30Predictions"
+        endpoint = "Chapter30PrashnaMargaPredictions"
         params = {
             "queryTime": queryTime.to_json(),
             "personsPresent": personsPresent,
             "bodyPartTouched": bodyPartTouched,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def Chapter31Predictions(cls, queryTime, dreamDescription=None, isDaytimeDream=False, wasDreamForgotten=False, dreamBeforeMidnight=False, sleptAfterDream=False, hadGoodDreamAfterBad=False, yamaOfNight=0, isQuerentSick=False, querentBackground="ordinary"):
-        """
-         Prasna Marga Chapter 31 Swapna Prasna Dream Interpretation SOURCE Prasna Marga Chapter XXXI Stanzas 168 ARCHITECTURE Three targeted LLM calls Qwenflash are fused into pure chartcalculation blocks when a dreamDescription is provided. All LLM calls are grounded exclusively in verbatim stanza text the model performs semantic lookup not free interpretation. Pure chart blocks always run. LLM CALL 1 DoshaChart CrossValidation gates everything Determines whether the dream is Doshaja physiological nonprophetic or Bhavija prophetic by crosschecking chart dosha against dream imagery. Source Stanza 46 Doshaja dreams will not be effective Stanzas 25 planet in Lagna specific imagery type. Runs in parallel with Call 2. LLM CALL 2 Symbol Matching with Severity Tiers Semantic matching of dream description against verbatim stanza catalogues. Returns four severity tiers immediateDeathSymbols diseaseThenDeathSymbols dreadfulResultSymbols earlyDeathOmen auspiciousSymbols Bharata pattern Abhichara indicator. Source Stanzas 1129 bad and 3667 good. Runs in parallel with Call 1. LLM CALL 3 PersonAdjusted Synthesis Oracle Waits for Calls 1 and 2. Applies sickhealthy distinction Stanzas 3031 6667 varnaspecific symbols Stanzas 6061 Bharata severity escalation Stanzas 4859 and Yama timing. Every claim must cite a stanza number. DECISION TREE dreamDescription empty pure chart blocks only no LLM isDaytimeDream mark ineffective no LLM Stanza 32 wasDreamForgottenpreMidnight mark very weak skip all LLM Stanza 33 isDoshaja strong match skip Call 3 UNLESS critical symbols found hadGoodDreamAfterBad Call 2 analyses both flags accordingly otherwise Calls 12 parallel Call 3 
-        :return: Task`1
-         """
-        endpoint = "Chapter31Predictions"
-        params = {
-            "queryTime": queryTime.to_json(),
-            "dreamDescription": dreamDescription,
-            "isDaytimeDream": isDaytimeDream,
-            "wasDreamForgotten": wasDreamForgotten,
-            "dreamBeforeMidnight": dreamBeforeMidnight,
-            "sleptAfterDream": sleptAfterDream,
-            "hadGoodDreamAfterBad": hadGoodDreamAfterBad,
-            "yamaOfNight": yamaOfNight,
-            "isQuerentSick": isQuerentSick,
-            "querentBackground": querentBackground,
         }
         return cls._make_request(endpoint, params)
 
@@ -8176,20 +8729,6 @@ class Calculate:
         endpoint = "NameNumberPrediction"
         params = {
             "fullName": fullName,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def AIGenerateNames(cls, nameDescription, numberOfNames=20, excludeNames=None):
-        """
-         Generates a batch of suggested names matching a plainlanguage description using AI. Sends the description to the language model with the numerology namegeneration prompt and returns a list of candidate names that vary in length and style. Optionally excludes a set of previously generated names so repeated calls keep producing fresh suggestions. Useful for picking auspicious baby names brand names or business names by theme. 
-        :return: Task`1
-         """
-        endpoint = "AIGenerateNames"
-        params = {
-            "nameDescription": nameDescription,
-            "numberOfNames": numberOfNames,
-            "excludeNames": excludeNames,
         }
         return cls._make_request(endpoint, params)
 
