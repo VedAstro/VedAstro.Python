@@ -16,32 +16,6 @@
 
 ---
 
-## 🚀 Why VedAstro? The Simplest & Most Affordable Vedic Astrology API
-
-### ✨ Unbeatable Value
-
-| What You Get | VedAstro | Competitors |
-|--------------|----------|-------------|
-| **Monthly Cost** | **$1/month** | $50-$200/month |
-| **Free Tier** | ✅ 5 req/min | ❌ None or very limited |
-| **Calculations** | **684+ methods** | 50-200 methods |
-| **Ayanamsa Systems** | **47 systems** | 3-10 systems |
-| **Setup Complexity** | **Zero setup** | Complex (DLLs, ephemeris files) |
-| **Commercial Use** | ✅ Both tiers | ❌ Enterprise only |
-
-**The Bottom Line:** Get 10x more features at 1/50th the price. No credit card needed to start.
-
-### 💰 Pricing That Makes Sense
-
-| Tier | Price | Rate Limit | Best For |
-|------|-------|------------|----------|
-| **Free** | $0/month | 5 req/min | Learning, testing, personal projects |
-| **Premium** | **$1/month** | **Unlimited** | Production apps, commercial use |
-
-**Indian Developers:** ₹79/month or ₹758/year (₹63/month, most popular)
-
-> **All 684 calculations included in both tiers.** The only difference is rate limits.
-
 ### 🎯 Built for Real Apps
 
 Perfect for:
@@ -663,6 +637,34 @@ No attribution required (but appreciated!).
 Calculate.SetAPIKey('your-premium-key-here')
 # Now unlimited requests!
 ```
+
+---
+
+## 🚀 Why VedAstro? The Simplest & Most Affordable Vedic Astrology API
+
+### ✨ Unbeatable Value
+
+| What You Get | VedAstro | Competitors |
+|--------------|----------|-------------|
+| **Monthly Cost** | **$1/month** | $50-$200/month |
+| **Free Tier** | ✅ 5 req/min | ❌ None or very limited |
+| **Calculations** | **684+ methods** | 50-200 methods |
+| **Ayanamsa Systems** | **47 systems** | 3-10 systems |
+| **Setup Complexity** | **Zero setup** | Complex (DLLs, ephemeris files) |
+| **Commercial Use** | ✅ Both tiers | ❌ Enterprise only |
+
+**The Bottom Line:** Get 10x more features at 1/50th the price. No credit card needed to start.
+
+### 💰 Pricing That Makes Sense
+
+| Tier | Price | Rate Limit | Best For |
+|------|-------|------------|----------|
+| **Free** | $0/month | 5 req/min | Learning, testing, personal projects |
+| **Premium** | **$1/month** | **Unlimited** | Production apps, commercial use |
+
+**Indian Developers:** ₹79/month or ₹758/year (₹63/month, most popular)
+
+> **All 684 calculations included in both tiers.** The only difference is rate limits.
 
 ---
 
