@@ -559,6 +559,28 @@ Calculate.SetAyanamsa(Ayanamsa.Lahiri)  # Most common choice
 
 ---
 
+### Q: "Is there a request timeout?"
+
+**A:** No, and that is deliberate. A VedAstro calculation can take milliseconds or minutes depending
+on the endpoint and the load on the service, and this library has no way to know what is acceptable
+for your workload. A built-in deadline would be exactly the kind of brittle logic that silently
+truncates a valid answer, so **none is applied**. If a call is still running, it is still working.
+
+When you want a deadline — because your own request or job budget demands one — set it explicitly:
+
+```python
+Calculate.SetTimeout(30)     # seconds; only because *you* decided 30s is too long
+print(Calculate.GetTimeout())  # 30
+
+Calculate.SetTimeout(None)   # remove it again
+```
+
+`SetTimeout` takes seconds and rejects a non-positive value or a non-number. Without it, the library
+passes no timeout to `requests` at all, so your process is bounded only by whatever your own
+framework, task runner or shell imposes — which is usually the right place to express the limit.
+
+---
+
 ### Q: "API returns error or 'Fail' status - why?"
 
 **A:** Common causes:

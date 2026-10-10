@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 02:07 05/10/2026 +08:00
+# AUTO GENERATED ON 11:47 10/10/2026 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -20,6 +20,33 @@ class Calculate:
     _ayanamsa_default = None
     base_url = "https://vedastro.zaishi.net/api/Calculate"
     _ayanamsa_scope = contextvars.ContextVar("vedastro_ayanamsa", default=None)
+    # No request deadline unless the caller sets one. A VedAstro
+    # calculation can take milliseconds or minutes, and this library
+    # cannot know what is acceptable for the caller's workload, so a
+    # built-in deadline would be brittle logic that can truncate a
+    # valid answer. None means requests applies no timeout at all.
+    request_timeout = None
+
+    @classmethod
+    def SetTimeout(cls, seconds):
+        # Set a deadline for each API call, in seconds, because your
+        # own code decided a request has run too long. Pass None to
+        # remove it again; requests treats None as "no timeout", which
+        # is also the default here.
+        if seconds is None:
+            cls.request_timeout = None
+            return
+        if isinstance(seconds, bool) or not isinstance(seconds, (int, float)):
+            raise TypeError("timeout must be a number of seconds or None")
+        if seconds <= 0:
+            raise ValueError("timeout must be a positive number of seconds")
+        cls.request_timeout = seconds
+
+    @classmethod
+    def GetTimeout(cls):
+        # The deadline in force, or None when calls may run as long
+        # as they need.
+        return cls.request_timeout
 
     @classmethod
     def SetAPIKey(cls, api_key):
@@ -59,7 +86,7 @@ class Calculate:
         ayanamsa = cls.GetAyanamsa()
         if ayanamsa and "Ayanamsa" not in params:
             params["Ayanamsa"] = ayanamsa
-        response = requests.post(url, json=params, timeout=120)
+        response = requests.post(url, json=params, timeout=cls.request_timeout)
         response.raise_for_status()
         data = response.json()
         if data.get("Status") == "Fail":
