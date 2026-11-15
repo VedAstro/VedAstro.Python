@@ -287,7 +287,7 @@ Example:
   = Delay in marriage, or marriage with responsibility
 
 HOW TO USE:
-1. Check current Mahadasa: Calculate.DasaAtTime(birth, current_time, levels=3)
+1. Check current Mahadasa: Calculate.DasaAtTime(birth, current_time, "VimshottariJanma", levels=3)
 2. Check current transits (as above)
 3. Where they align, events manifest
 4. Where they conflict, challenges arise

@@ -20,10 +20,9 @@ end_time = Time("23:59 31/12/2025 +08:00", geolocation)
 # PART 2 : CALCULATE DASA
 #-----------------------------------
 
-# set levels and precision hours
+# Choose the starting system explicitly; levels controls nesting depth.
 levels = 3 # represents Dasa, Bhukti, Antaram, Pratyanthar, etc...
-precision_hours = 100 # accuracy, if set 100h then accuracy ~100h (lower number takes longer to calculate)
 
-dasaAtRange = Calculate.DasaAtRange(birth_time, start_time, end_time, levels, precision_hours)
+dasaAtRange = Calculate.DasaAtRange(birth_time, start_time, end_time, "VimshottariJanma", levels=levels)
 
 print(json.dumps(dasaAtRange, indent=4))

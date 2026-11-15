@@ -226,26 +226,34 @@ Yoga: Ganda
 **Use Case:** Get planetary periods (Mahadasa → Bhukti → Antaram)
 
 ```python
-from vedastro import *
-
-Calculate.SetAPIKey('FreeAPIUser')
-
-# Birth details
-birth = Time("14:30 25/10/1992 +05:30",
-             GeoLocation("Mumbai", 72.8777, 19.0760))
-
-# Get dasa from 2020-2030
-start = Time("00:00 01/01/2020 +05:30",
-             GeoLocation("Mumbai", 72.8777, 19.0760))
-end = Time("23:59 31/12/2030 +05:30",
-           GeoLocation("Mumbai", 72.8777, 19.0760))
-
-# Calculate with 3 levels of depth
-dasa = Calculate.DasaAtRange(birth, start, end, levels=3, precisionHours=100)
-
-# Print Mahadasa -> Bhukti -> Antaram
+from vedastro import *  # install via pip
 import json
-print(json.dumps(dasa, indent=2))
+
+# PART 0 : Set API key
+Calculate.SetAPIKey('FreeAPIUser')  # !!unlimited speed  API key from "vedastro.org/API.html"
+
+# PART 1 : PREPARE NEEDED DATA
+#-----------------------------------
+
+# set birth location
+geolocation = GeoLocation("Tokyo, Japan", 139.83, 35.65)
+
+# group all birth time data together (day/month/year)
+birth_time = Time("23:40 31/12/2010 +07:00", geolocation)
+
+# set start and end time for the range
+start_time = Time("00:00 01/01/2020 +08:00", geolocation)
+end_time = Time("23:59 31/12/2025 +08:00", geolocation)
+
+# PART 2 : CALCULATE DASA
+#-----------------------------------
+
+# Choose the starting system explicitly; levels controls nesting depth.
+levels = 3 # represents Dasa, Bhukti, Antaram, Pratyanthar, etc...
+
+dasaAtRange = Calculate.DasaAtRange(birth_time, start_time, end_time, "VimshottariJanma", levels=levels)
+
+print(json.dumps(dasaAtRange, indent=4))
 ```
 
 👉 **See full example:** [`demo_vimshottari_dasa.py`](demo_vimshottari_dasa.py)
@@ -710,7 +718,7 @@ Calculate.SetAPIKey('your-premium-key-here')
 `HoroscopePredictions`, `EventsAtTime`, `EventsAtRange`, `EventStartTime`, `MuhurthaFinder`, +175 more
 
 ### Dasa (8 methods)
-`DasaAtRange`, `CurrentDasa`, `VimshottariDasaMahadasa`, `VimshottariBhukti`, +4 more
+`DasaSystems`, `DasaAtTime`, `DasaForLife` (use the language-specific naming shown in the examples).
 
 ### Divisional Charts (60 methods)
 `AllHouseNavamshaSigns` (D9), `AllHouseDrekkana Signs` (D3), `AllHouseChaturthamsaSigns` (D4), D1-D60 vargas
