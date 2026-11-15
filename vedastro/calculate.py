@@ -15,10 +15,12 @@ except Exception:
     _AyanamsaEnum = None
 
 
+_API_ENDPOINT = "https://vedastro.zaishi.net/api/Calculate"
+
+
 class Calculate:
     api_key = None
     _ayanamsa_default = None
-    base_url = "https://vedastro.zaishi.net/api/Calculate"
     _ayanamsa_scope = contextvars.ContextVar("vedastro_ayanamsa", default=None)
     # No request deadline unless the caller sets one. A VedAstro
     # calculation can take milliseconds or minutes, and this library
@@ -80,7 +82,7 @@ class Calculate:
 
     @classmethod
     def _make_request(cls, endpoint, params):
-        url = f"{cls.base_url}/{endpoint}"
+        url = f"{_API_ENDPOINT}/{endpoint}"
         if cls.api_key:
             params["APIKey"] = cls.api_key
         ayanamsa = cls.GetAyanamsa()
