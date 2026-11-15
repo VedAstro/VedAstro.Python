@@ -1,4 +1,4 @@
-# AUTO GENERATED ON 11:47 10/10/2026 +08:00
+# AUTO GENERATED ON 23:08 25/10/2026 +08:00
 # DO NOT EDIT DIRECTLY, USE STATIC TABLE GENERATOR IN MAIN REPO
 
 from typing import Any
@@ -88,7 +88,7 @@ class Calculate:
         ayanamsa = cls.GetAyanamsa()
         if ayanamsa and "Ayanamsa" not in params:
             params["Ayanamsa"] = ayanamsa
-        response = requests.post(url, json=params, timeout=cls.request_timeout)
+        response = requests.post(url, json=cls._json_value(params), timeout=cls.request_timeout)
         response.raise_for_status()
         data = response.json()
         if data.get("Status") == "Fail":
@@ -102,6 +102,76 @@ class Calculate:
             values = list(payload.values())
             return values[0] if len(values) == 1 else payload
         return payload
+
+    @staticmethod
+    def _json_value(value):
+        # Batch parameters can contain Time objects inside lists.
+        if isinstance(value, Enum):
+            return value.value
+        if hasattr(value, "to_json"):
+            return Calculate._json_value(value.to_json())
+        if isinstance(value, dict):
+            return {key: Calculate._json_value(item) for key, item in value.items()}
+        if isinstance(value, (list, tuple)):
+            return [Calculate._json_value(item) for item in value]
+        return value
+
+    @classmethod
+    def FindBirthTimeByLifeEvents(cls, birthDateReference, lifeEvents, precision="Day", options=None):
+        """
+        NO DESC FOUND!! ERROR
+        :return: BirthTimePredictionResult
+         """
+        endpoint = "FindBirthTimeByLifeEvents"
+        params = {
+            "birthDateReference": birthDateReference.to_json(),
+            "lifeEvents": lifeEvents,
+            "precision": precision,
+            "options": options,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def ScoreBirthTimeByLifeEvents(cls, candidateBirthTime, lifeEvents):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "ScoreBirthTimeByLifeEvents"
+        params = {
+            "candidateBirthTime": candidateBirthTime.to_json(),
+            "lifeEvents": lifeEvents,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DasaChartReading(cls, birthTime, atDate):
+        """
+        NO DESC FOUND!! ERROR
+        :return: Double
+         """
+        endpoint = "DasaChartReading"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "atDate": atDate.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def Astrocartography(cls, birthTime, locations=None, planets=None, zodiac="Tropical", siderealAyanamsa="FAGAN_BRADLEY"):
+        """
+         Birthtime angular lines and comparative scores for exact geographic points. Line geometry is equatorial and therefore independent of the displayed zodiac. 
+        :return: JObject
+         """
+        endpoint = "Astrocartography"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "locations": locations,
+            "planets": planets,
+            "zodiac": zodiac,
+            "siderealAyanamsa": siderealAyanamsa,
+        }
+        return cls._make_request(endpoint, params)
 
     @classmethod
     def FindBirthTimeByAnimal(cls, possibleBirthTime, precisionHours=1):
@@ -2764,19 +2834,6 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def DasaPeriodAshtakavargaStrength(cls, dasaPlanet, birthTime):
-        """
-         Returns an Ashtakavargabased strength score for a Dasa planet on a 0100 scale. The method calculates the planets Sodya Pinda normalizes it to a percentagelike scale rounds the final result. This can be used as a quick indicator of how strong a Dasa period may be from an Ashtakavarga perspective. 
-        :return: Double
-         """
-        endpoint = "DasaPeriodAshtakavargaStrength"
-        params = {
-            "dasaPlanet": dasaPlanet.value,
-            "birthTime": birthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
     def SarvashtakavargaReductions(cls, birthTime):
         """
          Returns the Sarvashtakavarga reduction result after applying the Mandala Sodhana reduction pipeline. This is a higherlevel reduction across the combined Sarvashtakavarga figures rather than a singleplanet Bhinnashtakavarga result. 
@@ -3244,6 +3301,32 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
+    def IsGocharaFavourable(cls, planet, houseFromMoon):
+        """
+         Whether a transit sits in one of Ramans favourable Gochara positions for that planet. This is only the base classification Raman insists a favourable position guarantees nothing until it is qualified by the planets bindus and by Vedha so read it together with see crefGocharaTransit.Bindu and see crefGocharaTransit.VedhaPartnerOccupied. 
+        :return: Boolean
+         """
+        endpoint = "IsGocharaFavourable"
+        params = {
+            "planet": planet.value,
+            "houseFromMoon": houseFromMoon,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def RamanGochara(cls, birthTime, transitTime):
+        """
+         All seven classical planets transits at one moment each judged against the same natal chart with Ramans method the Moonrelative position and its base classification the planets own Bhinnashtakavarga bindu in the transited sign Vedha the active Kakshyas contributor and the Sarvashtakavarga total of the transited sign. Ramans stated order is birth chart then dasa then Gochara qualified by Ashtakavarga then Vedha then Kakshya unless Gochara is combined with Ashtakavarga results cannot be predicted with appreciable accuracy. This method supplies those transit pieces and leaves the weighing to the caller because Raman gives no calibrated formula for it. Rahu and Ketu are not included Ramans Ashtakavarga is defined for the seven planets and invents no contribution tables for the nodes. 
+        :return: Dictionary`2
+         """
+        endpoint = "RamanGochara"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "transitTime": transitTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
     def PlanetsInGocharaHouse(cls, birthTime, currentTime, gocharaHouse):
         """
          Returns all planets currently occupying a specific Gochara house where the house count is measured from the natal Moon sign. The method calculates the Gochara house for each tracked planet and returns a list of all planets whose current transit count matches the requested house. The current implementation checks Sun Moon Mars Mercury Jupiter Venus and Saturn. 
@@ -3316,144 +3399,30 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def GetCharaDasaAtTime(cls, birthTime, checkTime):
+    def PlanetSignsAtTimes(cls, checkTimes, planets=None):
         """
-         Calculates the active Chara Dasa sign period at a given moment and when found also fills in its subperiods. The method determines the natal Lagna sign builds the Chara Dasa sign order from that Lagna calculates the duration of each Dasa sign generates the full sequence of Dasa periods finds which period contains the requested checkTime computes the subperiods for the active Dasa. This is the main entry point for Chara Dasa lookup in this section. 
-        :return: DashaPeriod
+         Returns the zodiac sign each requested planet occupies at each of the supplied moments in one call. This is the batch form of PlanetRasiD1Sign a caller charting a timeline needs a planets sign at many dates and one request per date is both slow and ratelimit hostile. Signs follow the sidereal zodiac honouring the requests Ayanamsa setting matching PlanetSignTransit and the dasha calculations. 
+        :return: JObject
          """
-        endpoint = "GetCharaDasaAtTime"
+        endpoint = "PlanetSignsAtTimes"
         params = {
-            "birthTime": birthTime.to_json(),
-            "checkTime": checkTime.to_json(),
+            "checkTimes": checkTimes,
+            "planets": planets,
         }
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def DasaForNow(cls, birthTime, levels=3):
+    def PlanetSignBoundaries(cls, startTime, endTime, planets=None, precisionHours=24):
         """
-         Returns the Vimshottari Dasa periods operating right now current system time at the birth location for the given birth chart nested down to the requested number of levels Maha Dasa Bhukti Antaram .... Handy for what planetary period am I in today. 
+         Returns every moment a planet changes zodiac sign inside a date range for several planets at once. PlanetSignTransit scans its whole range on a fixed 3minute grid which makes any multiyear range far too expensive to answer that is why it is unusable for long timelines. This walks the range on a coarse precisionHours grid and then bisects each detected change so the work scales with the number of changes rather than the length of the range and the reported boundary is accurate to well within a minute. Retrograde reentries are reported as separate intervals so the sequence is complete. 
         :return: JObject
          """
-        endpoint = "DasaForNow"
+        endpoint = "PlanetSignBoundaries"
         params = {
-            "birthTime": birthTime.to_json(),
-            "levels": levels,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DasaAtTime(cls, birthTime, checkTime, levels=3):
-        """
-         Returns the Vimshottari Dasa periods operating at a specific moment for the given birth chart nested down to the requested number of levels Maha Dasa Bhukti Antaram .... 
-        :return: JObject
-         """
-        endpoint = "DasaAtTime"
-        params = {
-            "birthTime": birthTime.to_json(),
-            "checkTime": checkTime.to_json(),
-            "levels": levels,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SpecialDasaApplicability(cls, birthTime):
-        """
-         Checks which of Parasaras 9 special condition conditional Udu Dasa systems apply to a birth chart Ashtottari Shodasottari Dwadasottari Panchottari Satabdika Chaturasiti Sama Dwisaptati Sama Shastihayani and Shattrimsa Sama. Each system has a strict applicability criteria given in BPHS ch 48 e.g. Ashtottari needs Rahu in quadranttrine from the Lagna lord. Returns every applicable system with its reason plus the single winning system as per Parasaras order of precedence. Note that these special dasas supplement the universally applicable Vimshottari Dasa they do not replace it they reveal the special purpose of the birth and time the major turning points that lead to its achievement. 
-        :return: JObject
-         """
-        endpoint = "SpecialDasaApplicability"
-        params = {
-            "birthTime": birthTime.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SpecialDasaAtTime(cls, birthTime, checkTime, dasaSystem, levels=3):
-        """
-         Returns the planetary period lords PD1 Maha Dasa PD2 subperiod PD3 subsubperiod... operating at a specific moment under one of Parasaras special condition Udu Dasa systems Ashtottari Shodasottari Dwadasottari Panchottari Satabdika Chaturasiti Sama Dwisaptati Sama Shastihayani Shattrimsa Sama. Use SpecialDasaApplicability first to know which system fits the chart. These conditional dasas supplement Vimshottari Dasa for timing the special purpose of the birth. 
-        :return: JObject
-         """
-        endpoint = "SpecialDasaAtTime"
-        params = {
-            "birthTime": birthTime.to_json(),
-            "checkTime": checkTime.to_json(),
-            "dasaSystem": dasaSystem,
-            "levels": levels,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DasaAtRange(cls, birthTime, startTime, endTime, levels=3, precisionHours=100):
-        """
-         Returns the sequence of Vimshottari Dasa periods across a time range for the given birth chart sampling the range at the given precision and nesting down to the requested number of levels. Use this to build a Dasa timeline between two dates. 
-        :return: JObject
-         """
-        endpoint = "DasaAtRange"
-        params = {
-            "birthTime": birthTime.to_json(),
             "startTime": startTime.to_json(),
             "endTime": endTime.to_json(),
-            "levels": levels,
+            "planets": planets,
             "precisionHours": precisionHours,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DasaForLife(cls, birthTime, levels=3, precisionHours=24, scanYears=100):
-        """
-         Returns the full Vimshottari Dasa timeline for an entire life starting at birth and scanning forward the given number of years nested down to the requested number of levels. A convenience wrapper over DasaAtRange covering birth to birth scanYears. 
-        :return: JObject
-         """
-        endpoint = "DasaForLife"
-        params = {
-            "birthTime": birthTime.to_json(),
-            "levels": levels,
-            "precisionHours": precisionHours,
-            "scanYears": scanYears,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DasaAtRangeString(cls, birthTime, startTime, endTime, levels=3, precisionHours=100):
-        """
-         Same as DasaAtRange but returns the Dasa timeline as a compact JSON string instead of a JObject. Useful for callers that want the raw serialized payload directly. 
-        :return: String
-         """
-        endpoint = "DasaAtRangeString"
-        params = {
-            "birthTime": birthTime.to_json(),
-            "startTime": startTime.to_json(),
-            "endTime": endTime.to_json(),
-            "levels": levels,
-            "precisionHours": precisionHours,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def DasaForLifeString(cls, birthTime, levels=3, precisionHours=24, scanYears=100):
-        """
-         Same as DasaForLife but returns the wholelife Dasa timeline as a compact JSON string instead of a JObject. Useful for callers that want the raw serialized payload directly. 
-        :return: String
-         """
-        endpoint = "DasaForLifeString"
-        params = {
-            "birthTime": birthTime.to_json(),
-            "levels": levels,
-            "precisionHours": precisionHours,
-            "scanYears": scanYears,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def PlanetDasaEffectsBasedOnIshtaKashta(cls, planetName, birthTime):
-        """
-         Reference Bhava Graha Bala pg. 104 A planet with more lshta Phala is always supposed to be inclined to do good in its Dasa or Bhukti while a planet with more Kashta Phala is supposed to give rise to more evil results. In case of Venus in the Standard Horoscope the Kashta predominates over Ishta. Therefore in his Dasa or Bhukti Venus will give aJl sorts of miseries with regard to the bhavas ruled or aspected by him. As lord of the 5th house in such a circumstance Saturn is sure to cause loss of children and producing evil on this account. 
-        :return: String
-         """
-        endpoint = "PlanetDasaEffectsBasedOnIshtaKashta"
-        params = {
-            "planetName": planetName.value,
-            "birthTime": birthTime.to_json(),
         }
         return cls._make_request(endpoint, params)
 
@@ -3514,18 +3483,6 @@ class Calculate:
         endpoint = "GetHouseType"
         params = {
             "houseNumber": houseNumber.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def GetDasaInfoForAscendant(cls, ascendantName):
-        """
-         Returns traditional bDasa interpretation guidance for a given ascendantb. The method 1. selects the list of generally favorable planets for the ascendant 2. selects the list of generally unfavorable planets 3. retrieves a narrative description explaining how those planets behave for that Lagna 4. packages the result into an cAscendantDasaInfoc object. This helper is meant to support Dasa interpretation by giving quick signspecific guidance on which planets are broadly auspicious inauspicious or capable of producing yoga or maraka effects. 
-        :return: AscendantDasaInfo
-         """
-        endpoint = "GetDasaInfoForAscendant"
-        params = {
-            "ascendantName": ascendantName.value,
         }
         return cls._make_request(endpoint, params)
 
@@ -3739,54 +3696,6 @@ class Calculate:
         return cls._make_request(endpoint, params)
 
     @classmethod
-    def KalachakraChart(cls, time):
-        """
-         Calculates Kalachakra Chart. Kalachakra chart maps Moon Nakshatra Pada into the corresponding Rasi sequence used for Kalachakra Dasa calculations. Based on Jagannatha Hora Kalachakra system. Returns Moon longitude Nakshatra Pada Kalachakra group Starting sign Direction sequence 
-        :return: Object
-         """
-        endpoint = "KalachakraChart"
-        params = {
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def KalachakraDasa(cls, time):
-        """
-         Calculates Kalachakra Dasa. Kalachakra Dasa is a Rasi based predictive system derived from Moon Nakshatra Pada. Uses KalachakraChart Rasi sequence Sign lords Classical sign years 
-        :return: List`1
-         """
-        endpoint = "KalachakraDasa"
-        params = {
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    # NOTE: overload 'KalachakraDasa(Timetime,JHoraDasaYearDefinitionyearDefinition)' not exposed - Python has no method
-    #       overloading; the API resolves 'KalachakraDasa' to its first definition only.
-
-    # NOTE: overload 'KalachakraDasa(Timetime,JHoraKalachakraCalculationcalculation,JHoraDasaYearDefinitionyearDefinition)' not exposed - Python has no method
-    #       overloading; the API resolves 'KalachakraDasa' to its first definition only.
-
-    # NOTE: overload 'KalachakraDasa(Timetime,doubleyearLengthDays)' not exposed - Python has no method
-    #       overloading; the API resolves 'KalachakraDasa' to its first definition only.
-
-    # NOTE: overload 'KalachakraDasa(Timetime,JHoraKalachakraCalculationcalculation,doubleyearLengthDays)' not exposed - Python has no method
-    #       overloading; the API resolves 'KalachakraDasa' to its first definition only.
-
-    @classmethod
-    def GetSignLord(cls, sign):
-        """
-        Empty sample text
-        :return: PlanetName
-         """
-        endpoint = "GetSignLord"
-        params = {
-            "sign": sign.value,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
     def SarvatobhadraChakra(cls, time):
         """
          Generates Sarvatobhadra Chakra. Sarvatobhadra Chakra is a 9x9 astrological grid used for Nakshatra Rasi and transit Vedha analysis. Contains Nakshatra positions Rasi positions Chakra coordinates Based on Jagannatha Hora implementation. 
@@ -3843,85 +3752,6 @@ class Calculate:
         endpoint = "ChandraKalanalaChakra"
         params = {
             "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def SudarsanaChakra(cls, time):
-        """
-         Compatibility entry point for JHoras Sudarsana Chakra Dasa. FUN_004133E0 is a 12by12 oneyear rasi dasa not three rotated copies of the natal chart. 
-        :return: Object
-         """
-        endpoint = "SudarsanaChakra"
-        params = {
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def CalculateSudarsanaChakraDasa(cls, time):
-        """
-        Empty sample text
-        :return: SudarsanaChakraResult
-         """
-        endpoint = "CalculateSudarsanaChakraDasa"
-        params = {
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def MoolaDasa(cls, time, useLagna=True, useMoon=True, useSun=True, noCorrectionInMoolatrikona=False):
-        """
-         Builds JHoras Moola Dasa recovered from FUN_00410CD0 together with FUN_004AB650 FUN_004AB730 and FUN_004AD280. The strongest enabled candidate among Lagna Moon and Sun supplies the starting sign. Planets are then collected through the native kendrapanapharaapoklima sign sequence. Every planet has two complementary periods whose total is its Vimshottari allotment. Civil boundaries are exact returns of the natal sidereal Sun. 
-        :return: MoolaDasaResult
-         """
-        endpoint = "MoolaDasa"
-        params = {
-            "time": time.to_json(),
-            "useLagna": useLagna,
-            "useMoon": useMoon,
-            "useSun": useSun,
-            "noCorrectionInMoolatrikona": noCorrectionInMoolatrikona,
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def NarayanaDasa(cls, time):
-        """
-         Builds JHoras default D1 Narayana mahadasas recovered from FUN_00414060 and FUN_004ACC50. The second twelvesign cycle uses the native 12Y complements including zeroduration periods and civil boundaries are exact sidereal solar returns. 
-        :return: NarayanaDasaResult
-         """
-        endpoint = "NarayanaDasa"
-        params = {
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def ShoolaChakra(cls, time):
-        """
-         Compatibility entry point for the Shoola rasi dasa recovered at FUN_00407920. It is unrelated to weekday travel directions. 
-        :return: Object
-         """
-        endpoint = "ShoolaChakra"
-        params = {
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    @classmethod
-    def CalculateShoolaDasa(cls, time, startingHouse=1, resolvedStartSign=None, antardasaMode="DasaSign"):
-        """
-         Builds twelve consecutive nineyear Shoola mahadasas and twelve equal consecutive antardasas per mahadasa. 
-        :return: ShoolaChakraResult
-         """
-        endpoint = "CalculateShoolaDasa"
-        params = {
-            "time": time.to_json(),
-            "startingHouse": startingHouse,
-            "resolvedStartSign": resolvedStartSign,
-            "antardasaMode": antardasaMode,
         }
         return cls._make_request(endpoint, params)
 
@@ -4067,33 +3897,6 @@ class Calculate:
 
     # NOTE: overload 'TithiPravesha(Timetime,intannualYear,TithiPraveshaMonthDefinitionmonthDefinition)' not exposed - Python has no method
     #       overloading; the API resolves 'TithiPravesha' to its first definition only.
-
-    @classmethod
-    def TithiAshtottariDasa(cls, time):
-        """
-         Calculates Tithi Ashtottari Dasa. Tithi Ashtottari is an Ashtottari Dasa system whose starting point is the birth Tithi instead of Nakshatra. Cycle Sun 6 Moon 15 Mars 8 Mercury 17 Saturn 10 Jupiter 19 Venus 21 Rahu 12 Total 108 years Based on Jagannatha Hora implementation. 
-        :return: List`1
-         """
-        endpoint = "TithiAshtottariDasa"
-        params = {
-            "time": time.to_json(),
-        }
-        return cls._make_request(endpoint, params)
-
-    # NOTE: overload 'TithiAshtottariDasa(Timetime,JHoraDasaYearDefinitionyearDefinition)' not exposed - Python has no method
-    #       overloading; the API resolves 'TithiAshtottariDasa' to its first definition only.
-
-    @classmethod
-    def DasaYearLengthInDays(cls, yearDefinition):
-        """
-        Returns the exact day count used for a JHora dasa year.
-        :return: Double
-         """
-        endpoint = "DasaYearLengthInDays"
-        params = {
-            "yearDefinition": yearDefinition,
-        }
-        return cls._make_request(endpoint, params)
 
     @classmethod
     def JaiminiRasiDrishti(cls, time):
@@ -4392,6 +4195,49 @@ class Calculate:
         endpoint = "SignProperties"
         params = {
             "inputSign": inputSign.value,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DasaSystems(cls, birthTime):
+        """
+         Which Dasa systems exist which apply to this chart and why. Discovery only no periods are calculated. 
+        :return: DasaSystemCatalog
+         """
+        endpoint = "DasaSystems"
+        params = {
+            "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DasaAtTime(cls, birthTime, at, system="Vimshottari", depth=3, options=None):
+        """
+         Raw periods running at one moment through the requested depth. Contains no interpretation text interpretation belongs to the EventsChart layer. 
+        :return: DasaSnapshot
+         """
+        endpoint = "DasaAtTime"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "at": at.to_json(),
+            "system": system,
+            "depth": depth,
+            "options": options,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def DasaForLife(cls, birthTime, system="Vimshottari", depth=3, options=None):
+        """
+         Raw periods for one systemdefined life. The span comes from the system itself Vimshottari 120 years Ashtottari 108 Sudarsana 12 so there is no range year count or precision to supply. Contains no interpretation text. 
+        :return: DasaSchedule
+         """
+        endpoint = "DasaForLife"
+        params = {
+            "birthTime": birthTime.to_json(),
+            "system": system,
+            "depth": depth,
+            "options": options,
         }
         return cls._make_request(endpoint, params)
 
@@ -4738,7 +4584,7 @@ class Calculate:
     @classmethod
     def MoonConstellation(cls, time):
         """
-         Returns the constellation occupied by a planet. The method gets the planets Nirayana longitude and maps that longitude to a constellation. 
+        Returns the Moons constellation at the supplied chart time.
         :return: Constellation
          """
         endpoint = "MoonConstellation"
@@ -8850,6 +8696,76 @@ class Calculate:
         endpoint = "PanchaPakshiBirthBird"
         params = {
             "birthTime": birthTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PanchaPakshiBirdStrength(cls, bird):
+        """
+         The natural vibrational strength of each bird from the books Comparative Strength Analysis Table No. 5. Crow is the strongest bird and Peacock the weakest. Used to decide which of two people wins when they face each other. 
+        :return: Double
+         """
+        endpoint = "PanchaPakshiBirdStrength"
+        params = {
+            "bird": bird,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PanchaPakshiActivityFactor(cls, activity):
+        """
+         The relative strength factor of each activity Ruling strongest Dying weakest from Table No. 5. Multiplied against see crefPanchaPakshiBirdStrength to get a persons combined vibrational strength at a moment. 
+        :return: Double
+         """
+        endpoint = "PanchaPakshiActivityFactor"
+        params = {
+            "activity": activity,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PanchaPakshiCompare(cls, personA, personB, checkTime):
+        """
+         Compares two people at one moment and reports who is vibrationally stronger wins. Each persons combined strength natural bird strength activity factor exactly the model the book uses in its courtship worked example Vulture 75 Ruling beats Peacock 12.5 Walking and in the boss example when the boss is at a lower vibration the former succeeds. A higher strength wins equal strengths are a tie. 
+        :return: PanchaPakshiCompareResult
+         """
+        endpoint = "PanchaPakshiCompare"
+        params = {
+            "personA": personA.to_json(),
+            "personB": personB.to_json(),
+            "checkTime": checkTime.to_json(),
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PanchaPakshiTimeline(cls, personA, personB, startTime, endTime, precisionHours=1):
+        """
+         Scans a time window and returns for each sample which of the two people is stronger see see crefPanchaPakshiCompare. Use it to find the hours in a dayweekmonth year when person A can get their way with person B ask for a promotion court compete and the hours to avoid. The sample step is clamped so the answer never exceeds 2000 rows. 
+        :return: List`1
+         """
+        endpoint = "PanchaPakshiTimeline"
+        params = {
+            "personA": personA.to_json(),
+            "personB": personB.to_json(),
+            "startTime": startTime.to_json(),
+            "endTime": endTime.to_json(),
+            "precisionHours": precisionHours,
+        }
+        return cls._make_request(endpoint, params)
+
+    @classmethod
+    def PanchaPakshiTimelineByDuration(cls, personA, personB, startTime, durationHours=24, precisionHours=1):
+        """
+         Convenience overload of see crefPanchaPakshiTimeline that derives the window end from a duration instead of a second time so callers only need one checktime URL. Used by the websites twoperson who wins tool. 
+        :return: List`1
+         """
+        endpoint = "PanchaPakshiTimelineByDuration"
+        params = {
+            "personA": personA.to_json(),
+            "personB": personB.to_json(),
+            "startTime": startTime.to_json(),
+            "durationHours": durationHours,
+            "precisionHours": precisionHours,
         }
         return cls._make_request(endpoint, params)
 
