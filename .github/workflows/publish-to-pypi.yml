@@ -23,7 +23,7 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]' && !startsWith(github.event.head_commit.message, 'Auto bump version to ')
     steps:
     - uses: actions/checkout@v4
       with:
