@@ -13,6 +13,10 @@ on:
       - 'setup.py'
   workflow_dispatch:
 
+concurrency:
+  group: pypi-release
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -36,17 +40,21 @@ jobs:
         python -m pip install --upgrade pip
         pip install poetry
 
-    - name: Get current version from PyPI
+    - name: Choose a fresh release version
       run: |
-        current_version=$(pip index versions VedAstro 2>/dev/null | head -1 | grep -oP '\(\K[^)]+' || echo "0.0.0")
-        echo "CURRENT_VERSION=$current_version" >> $GITHUB_ENV
-
-    - name: Bump version
-      run: |
-        IFS=. read -r major minor patch <<< "${CURRENT_VERSION}"
-        patch=$((patch + 1))
-        new_version="${major}.${minor}.${patch}"
-        echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
+        python - <<'PY'
+        import json, os, tomllib, urllib.request
+        from packaging.version import Version
+        with urllib.request.urlopen('https://pypi.org/pypi/vedastro/json', timeout=30) as response:
+            published = Version(json.load(response)['info']['version'])
+        with open('pyproject.toml', 'rb') as source:
+            local = Version(tomllib.load(source)['tool']['poetry']['version'])
+        current = max(published, local)
+        version = f'{current.major}.{current.minor}.{current.micro + 1}'
+        with open(os.environ['GITHUB_ENV'], 'a') as output:
+            output.write(f'NEW_VERSION={version}\n')
+        print(f'Releasing {version}')
+        PY
 
     - name: Update version in pyproject.toml
       run: |
@@ -76,6 +84,11 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add pyproject.toml setup.py
-        git commit -m "Auto bump version to $NEW_VERSION"
-        git push origin main
+        git add pyproject.toml setup.py poetry.lock
+        if git diff --cached --quiet; then
+          echo "Version files are already current."
+        else
+          git commit -m "Auto bump version to $NEW_VERSION"
+          git pull --rebase origin main
+          git push origin main
+        fi
